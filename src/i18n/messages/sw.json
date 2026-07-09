@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "network": "Mtandao wa Kimataifa wa Mageuzi",
+    "tagline": "Kukuza viongozi wanaobadilisha jamii."
+  },
+  "nav": {
+    "startHere": "Anza Hapa",
+    "teachings": "Mafundisho",
+    "leadership": "Uongozi",
+    "mentorship": "Ushauri",
+    "institutions": "Taasisi",
+    "community": "Jamii",
+    "events": "Matukio",
+    "library": "Maktaba",
+    "give": "Toa",
+    "myJourney": "Safari Yangu",
+    "search": "Tafuta rasilimali…",
+    "account": "Akaunti",
+    "menu": "Menyu",
+    "partnership": "Ushirika"
+  },
+  "common": {
+    "learnMore": "Jifunze zaidi",
+    "takeAssessment": "Fanya tathmini",
+    "chooseJourney": "Chagua safari yako",
+    "watchNow": "Tazama",
+    "listen": "Sikiliza",
+    "readMore": "Soma zaidi",
+    "register": "Jisajili",
+    "apply": "Omba",
+    "explore": "Chunguza",
+    "viewAll": "Ona zote",
+    "subscribe": "Jiandikishe"
+  },
+  "footer": {
+    "tagline": "Kukuza viongozi wanaobadilisha jamii kupitia kusudi, ushauri, na ujenzi wa taasisi.",
+    "explore": "Chunguza",
+    "institutions": "Taasisi",
+    "getInvolved": "Shiriki",
+    "connect": "Unganisha",
+    "rights": "Haki zote zimehifadhiwa."
+  },
+  "home": {
+    "heroBadge": "Mtandao wa Kimataifa wa Mageuzi",
+    "heroTitle": "Kukuza viongozi wanaobadilisha jamii.",
+    "heroSubtitle": "Mtandao wa kimataifa uliojitolea kwa kusudi, ufuasi, uongozi, ushauri, na ujenzi wa taasisi na mataifa.",
+    "assessmentTitle": "Uko wapi kama kiongozi?"
+  }
+}

@@ -1,0 +1,98 @@
+import type { Chapter } from "@/data/types";
+
+export const chapters: Chapter[] = [
+  {
+    id: "ch-lagos",
+    name: "Dominion City Lagos",
+    area: "Lekki Phase 1",
+    city: "Lagos",
+    country: "Nigeria",
+    serviceTimes: ["Sun 8:00 AM", "Sun 10:30 AM", "Wed 6:00 PM"],
+    contact: "lagos@dogtn.org",
+    lat: 6.4478,
+    lng: 3.4723,
+  },
+  {
+    id: "ch-abuja",
+    name: "Dominion City Abuja",
+    area: "Wuse 2",
+    city: "Abuja",
+    country: "Nigeria",
+    serviceTimes: ["Sun 9:00 AM", "Wed 5:30 PM"],
+    contact: "abuja@dogtn.org",
+    lat: 9.0765,
+    lng: 7.4886,
+  },
+  {
+    id: "ch-enugu",
+    name: "Dominion City Enugu",
+    area: "Independence Layout",
+    city: "Enugu",
+    country: "Nigeria",
+    serviceTimes: ["Sun 8:30 AM", "Sun 11:00 AM", "Thu 6:00 PM"],
+    contact: "enugu@dogtn.org",
+    lat: 6.4413,
+    lng: 7.4988,
+  },
+  {
+    id: "ch-port-harcourt",
+    name: "Dominion City Port Harcourt",
+    area: "GRA Phase 2",
+    city: "Port Harcourt",
+    country: "Nigeria",
+    serviceTimes: ["Sun 9:00 AM", "Wed 6:00 PM"],
+    contact: "portharcourt@dogtn.org",
+    lat: 4.8156,
+    lng: 7.0498,
+  },
+  {
+    id: "ch-london",
+    name: "Dominion City London",
+    area: "Barking, East London",
+    city: "London",
+    country: "United Kingdom",
+    serviceTimes: ["Sun 11:00 AM", "Tue 7:00 PM"],
+    contact: "london@dogtn.org",
+    lat: 51.5397,
+    lng: 0.081,
+  },
+  {
+    id: "ch-houston",
+    name: "Dominion City Houston",
+    area: "Westchase District",
+    city: "Houston",
+    country: "United States",
+    serviceTimes: ["Sun 10:00 AM", "Wed 7:00 PM"],
+    contact: "houston@dogtn.org",
+    lat: 29.7355,
+    lng: -95.5615,
+  },
+  {
+    id: "ch-nairobi",
+    name: "Dominion City Nairobi",
+    area: "Westlands",
+    city: "Nairobi",
+    country: "Kenya",
+    serviceTimes: ["Sun 9:30 AM", "Fri 6:00 PM"],
+    contact: "nairobi@dogtn.org",
+    lat: -1.2673,
+    lng: 36.8065,
+  },
+  {
+    id: "ch-johannesburg",
+    name: "Dominion City Johannesburg",
+    area: "Sandton",
+    city: "Johannesburg",
+    country: "South Africa",
+    serviceTimes: ["Sun 10:00 AM", "Wed 6:30 PM"],
+    contact: "johannesburg@dogtn.org",
+    lat: -26.1076,
+    lng: 28.0567,
+  },
+];
+
+export function getChapter(id: string): Chapter | undefined {
+  return chapters.find((c) => c.id === id);
+}
+
+export default chapters;

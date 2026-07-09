@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "network": "Rede Global de Transformação",
+    "tagline": "Formando líderes que transformam a sociedade."
+  },
+  "nav": {
+    "startHere": "Comece Aqui",
+    "teachings": "Ensinos",
+    "leadership": "Liderança",
+    "mentorship": "Mentoria",
+    "institutions": "Instituições",
+    "community": "Comunidade",
+    "events": "Eventos",
+    "library": "Biblioteca",
+    "give": "Doar",
+    "myJourney": "Minha Jornada",
+    "search": "Buscar recursos…",
+    "account": "Conta",
+    "menu": "Menu",
+    "partnership": "Parceria"
+  },
+  "common": {
+    "learnMore": "Saiba mais",
+    "takeAssessment": "Fazer avaliação",
+    "chooseJourney": "Escolha sua jornada",
+    "watchNow": "Assistir",
+    "listen": "Ouvir",
+    "readMore": "Leia mais",
+    "register": "Inscreva-se",
+    "apply": "Candidatar-se",
+    "explore": "Explorar",
+    "viewAll": "Ver tudo",
+    "subscribe": "Assinar"
+  },
+  "footer": {
+    "tagline": "Formando líderes que transformam a sociedade por meio de propósito, mentoria e construção de instituições.",
+    "explore": "Explorar",
+    "institutions": "Instituições",
+    "getInvolved": "Envolva-se",
+    "connect": "Conectar",
+    "rights": "Todos os direitos reservados."
+  },
+  "home": {
+    "heroBadge": "Rede Global de Transformação",
+    "heroTitle": "Formando líderes que transformam a sociedade.",
+    "heroSubtitle": "Uma rede global dedicada ao propósito, discipulado, liderança, mentoria e à construção estratégica de instituições e nações.",
+    "assessmentTitle": "Onde você está como líder?"
+  }
+}

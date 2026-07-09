@@ -1,0 +1,56 @@
+{
+  "brand": {
+    "name": "David Ogbueli",
+    "network": "Global Transformation Network",
+    "tagline": "Raising leaders that transform society."
+  },
+  "nav": {
+    "startHere": "Start Here",
+    "teachings": "Teachings",
+    "leadership": "Leadership",
+    "mentorship": "Mentorship",
+    "institutions": "Institutions",
+    "community": "Community",
+    "events": "Events",
+    "library": "Library",
+    "give": "Give",
+    "myJourney": "My Journey",
+    "search": "Search resources…",
+    "account": "Account",
+    "menu": "Menu",
+    "partnership": "Partnership"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "takeAssessment": "Take Assessment",
+    "chooseJourney": "Choose Your Journey",
+    "watchNow": "Watch Now",
+    "listen": "Listen",
+    "readMore": "Read More",
+    "register": "Register Now",
+    "apply": "Apply",
+    "explore": "Explore",
+    "viewAll": "View All",
+    "subscribe": "Subscribe",
+    "backToTop": "Back to top",
+    "loading": "Loading…"
+  },
+  "footer": {
+    "tagline": "Raising leaders that transform society through purpose, mentorship, and institution-building.",
+    "explore": "Explore",
+    "institutions": "Institutions",
+    "getInvolved": "Get Involved",
+    "connect": "Connect",
+    "rights": "All rights reserved.",
+    "network": "Global Transformation Network"
+  },
+  "home": {
+    "heroBadge": "Global Transformation Network",
+    "heroTitle": "Raising Leaders That Transform Society.",
+    "heroSubtitle": "A global network dedicated to purpose, discipleship, leadership, mentorship, and the strategic building of institutions and nations.",
+    "assessmentTitle": "Where are you as a leader?",
+    "assessmentBody": "Discover your leadership profile and your sphere of impact through our 7-minute diagnostic.",
+    "newsletterTitle": "Stay Connected to the Vision",
+    "newsletterBody": "Receive weekly wisdom, institutional updates, and access to the Transformation Network."
+  }
+}

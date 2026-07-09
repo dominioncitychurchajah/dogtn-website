@@ -1,0 +1,49 @@
+{
+  "brand": {
+    "network": "Réseau Mondial de Transformation",
+    "tagline": "Former des leaders qui transforment la société."
+  },
+  "nav": {
+    "startHere": "Commencer ici",
+    "teachings": "Enseignements",
+    "leadership": "Leadership",
+    "mentorship": "Mentorat",
+    "institutions": "Institutions",
+    "community": "Communauté",
+    "events": "Événements",
+    "library": "Bibliothèque",
+    "give": "Donner",
+    "myJourney": "Mon Parcours",
+    "search": "Rechercher des ressources…",
+    "account": "Compte",
+    "menu": "Menu",
+    "partnership": "Partenariat"
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "takeAssessment": "Faire l'évaluation",
+    "chooseJourney": "Choisissez votre parcours",
+    "watchNow": "Regarder",
+    "listen": "Écouter",
+    "readMore": "Lire la suite",
+    "register": "S'inscrire",
+    "apply": "Postuler",
+    "explore": "Explorer",
+    "viewAll": "Voir tout",
+    "subscribe": "S'abonner"
+  },
+  "footer": {
+    "tagline": "Former des leaders qui transforment la société par le but, le mentorat et la construction d'institutions.",
+    "explore": "Explorer",
+    "institutions": "Institutions",
+    "getInvolved": "S'impliquer",
+    "connect": "Se connecter",
+    "rights": "Tous droits réservés."
+  },
+  "home": {
+    "heroBadge": "Réseau Mondial de Transformation",
+    "heroTitle": "Former des leaders qui transforment la société.",
+    "heroSubtitle": "Un réseau mondial dédié au but, au discipulat, au leadership, au mentorat et à la construction d'institutions et de nations.",
+    "assessmentTitle": "Où en êtes-vous en tant que leader ?"
+  }
+}
