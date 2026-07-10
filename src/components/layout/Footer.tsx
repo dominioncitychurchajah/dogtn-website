@@ -1,12 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Globe, Send, Rss } from "lucide-react";
+import { Globe, MessageCircle, PlayCircle, Send } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary, t } from "@/lib/i18n-utils";
 
 export function Footer({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const p = (path: string) => `/${locale}${path}`;
+  const socials = [
+    {
+      label: "Dominion City on YouTube",
+      href: "https://www.youtube.com/@DominionCity",
+      icon: PlayCircle,
+    },
+    {
+      label: "Dominion City Lagos on Instagram",
+      href: "https://www.instagram.com/dominioncitylagos/?hl=en",
+      icon: Globe,
+    },
+    {
+      label: "Email support",
+      href: "mailto:support@davidogbueli.org",
+      icon: Send,
+    },
+    {
+      label: "Community",
+      href: p("/community"),
+      icon: MessageCircle,
+    },
+  ];
 
   const cols = [
     {
@@ -75,10 +97,16 @@ export function Footer({ locale }: { locale: Locale }) {
           <p className="text-caption text-ink-500">
             © 2026 David Ogbueli. {t(dict, "footer.network")}.
           </p>
-          <div className="flex gap-4">
-            {[MessageCircle, Globe, Send, Rss].map((Icon, i) => (
-              <a key={i} href="#" aria-label="Social link" className="text-ink-500 transition-colors hover:text-gold-400">
-                <Icon className="h-5 w-5" />
+          <div className="flex gap-3">
+            {socials.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="flex h-11 w-11 items-center justify-center rounded-full text-ink-300 transition-colors hover:bg-paper-0/10 hover:text-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 focus-visible:outline-offset-ink-900"
+                {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <Icon className="h-5 w-5" aria-hidden />
               </a>
             ))}
           </div>

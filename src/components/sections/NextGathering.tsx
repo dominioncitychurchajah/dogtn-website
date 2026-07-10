@@ -100,7 +100,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
             </dl>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col">
               <a
-                href="https://www.youtube.com/results?search_query=David+Ogbueli+live"
+                href="https://www.youtube.com/@DominionCity"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-5 text-body-m font-semibold text-ink-900 hover:bg-gold-hover"
