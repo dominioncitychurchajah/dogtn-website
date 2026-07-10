@@ -63,7 +63,7 @@ export default async function CommunityPage({
                 {c.primaryCta}
               </a>
               <Link
-                href={p("/events")}
+                href={p("/my-journey")}
                 className="inline-flex h-14 items-center justify-center gap-2 rounded-[var(--radius-m)] border border-paper-0/30 px-8 text-body-l font-semibold text-paper-0 hover:bg-paper-0/10"
               >
                 {c.secondaryCta}

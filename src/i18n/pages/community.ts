@@ -26,7 +26,7 @@ export const communityCopy: Record<Locale, CommunityCopy> = {
     subtitle: "Community is not a placeholder here. It is the pathway.",
     body: "Whether you are planning your first visit, looking for a chapter, joining the WhatsApp broadcast, or taking your next step in service, we want to help you connect with people who will walk with you.",
     primaryCta: "Request WhatsApp Access",
-    secondaryCta: "Plan Your Visit",
+    secondaryCta: "Explore our Community App",
     cards: [
       {
         title: "Visit This Sunday",
