@@ -89,12 +89,12 @@ const ADDRESS = "Dominion City Auditorium, Lekki-Epe Expressway, Ajah, Lagos.";
 export const homeCopy: Record<Locale, HomeCopy> = {
   en: {
     hero: {
-      badge: "Global Leadership Foundation",
+      badge: "David Ogbueli Transformation Network",
       titlePre: "Raising Leaders That ",
       titleAccent: "Transform",
       titlePost: " Society.",
       subtitle:
-        "A global transformation network dedicated to purpose, discipleship, leadership, mentorship, and the strategic building of institutions and nations.",
+        "For over three decades, Dr. David Ogbueli has equipped individuals, leaders, ministries, institutions, and nations through transformational leadership, discipleship, and human capital development.",
       ctaJourney: "Choose Your Journey",
       ctaAssessment: "Take Assessment",
     },

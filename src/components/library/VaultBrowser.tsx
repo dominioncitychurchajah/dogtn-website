@@ -148,7 +148,7 @@ export function VaultBrowser({ books, locale }: { books: Book[]; locale: Locale 
             <span className="mb-4 block text-[11px] font-bold uppercase tracking-widest text-ink-300">Affiliate Institution</span>
             <div className="relative">
               <select className="w-full appearance-none rounded-[var(--radius-m)] border border-ink-100 bg-paper-0 px-4 py-3 text-body-m focus:border-gold-600 focus:outline-none">
-                <option>Global Leadership Foundation</option>
+                <option>David Ogbueli Transformation Network</option>
                 <option>Dominion City Global</option>
                 <option>DLI Academy</option>
               </select>

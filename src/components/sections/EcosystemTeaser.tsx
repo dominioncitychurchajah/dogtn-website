@@ -12,7 +12,7 @@ import { institutions } from "@/data/institutions";
 const TEASER_TAGLINE: Record<string, string> = {
   "dominion-city": "Raising leaders who take their place in destiny.",
   "dominion-leadership-institute": "Discipleship Leadership Institute for strategic growth.",
-  "global-leadership-forum": "Global Leadership Foundation for institutional excellence.",
+  "global-leadership-forum": "David Ogbueli Transformation Network for institutional excellence.",
   "golden-heart-foundation": "Youth mentorship and value-based education network.",
   "priesthood-institute": "Equipping ministers for global impact and revival.",
   "global-missions-network": "The heartbeat of reach and soul-winning worldwide.",

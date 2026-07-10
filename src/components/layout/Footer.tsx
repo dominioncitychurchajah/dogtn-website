@@ -21,7 +21,7 @@ export function Footer({ locale }: { locale: Locale }) {
     {
       title: t(dict, "footer.institutions"),
       links: [
-        { label: "Global Leadership Foundation", href: p("/institutions/global-leadership-forum") },
+        { label: "David Ogbueli Transformation Network", href: p("/institutions/global-leadership-forum") },
         { label: "DLI Academy", href: p("/institutions/dominion-leadership-institute") },
         { label: "Golden Heart Foundation", href: p("/institutions/golden-heart-foundation") },
         { label: "Priesthood Institute", href: p("/institutions/priesthood-institute") },
