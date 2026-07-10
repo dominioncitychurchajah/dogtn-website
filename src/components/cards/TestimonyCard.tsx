@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import type { Testimony } from "@/data/types";
-import { Badge } from "@/components/ui/Badge";
 
 export function TestimonyCard({ testimony }: { testimony: Testimony }) {
   return (
@@ -16,9 +15,10 @@ export function TestimonyCard({ testimony }: { testimony: Testimony }) {
         </blockquote>
         <figcaption className="mt-5 flex flex-col items-center gap-2 md:flex-row">
           <span className="text-body-m font-semibold text-ink-900">{testimony.name}</span>
-          <span className="hidden text-ink-300 md:inline">·</span>
-          <span className="text-body-s text-ink-500">{testimony.role}</span>
-          <Badge tone="gold" className="md:ms-2">{testimony.stage}</Badge>
+          <span className="hidden text-ink-300 md:inline">,</span>
+          <span className="text-body-s text-ink-500">
+            {testimony.role}, {testimony.stage}
+          </span>
         </figcaption>
       </div>
     </figure>

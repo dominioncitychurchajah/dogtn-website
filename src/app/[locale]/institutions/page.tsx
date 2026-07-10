@@ -32,14 +32,13 @@ export default async function InstitutionsPage({
         <Container>
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
-              <Badge tone="gold">The Institution Engine</Badge>
+              <Badge tone="gold">Our Institutions</Badge>
               <h1 className="mt-4 text-display-xl gravity-text text-ink-900">
                 One mandate. Seven institutions.
               </h1>
               <p className="measure mt-6 text-body-l text-ink-500">
-                A global infrastructure built to raise leaders, form disciples, strengthen
-                communities and serve nations — each institution a distinct gateway into the work
-                of transformation.
+                A global network built to raise leaders, form disciples, strengthen communities,
+                and serve nations. Each institution is a unique gateway to transformation.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href={`/${loc}/start-here`} size="l">
@@ -73,7 +72,7 @@ export default async function InstitutionsPage({
             ))}
           </div>
           <p className="mt-8 text-center text-caption italic text-ink-500">
-            Network-wide impact indicators across training, missions, and community initiatives.
+            Impact across training, missions, and community initiatives.
           </p>
         </Container>
       </Section>
@@ -84,7 +83,7 @@ export default async function InstitutionsPage({
           <SectionHeading
             eyebrow="The Ecosystem"
             title="How the network fits together"
-            intro="One central mandate radiating into seven institutional engines. Switch between the map and the directory to explore every entity."
+            intro="One mission, seven institutions working together. Switch between the map and the directory to explore each one."
             dark
           />
           <EcosystemMap institutions={institutions} locale={loc} />

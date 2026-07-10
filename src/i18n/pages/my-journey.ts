@@ -47,9 +47,9 @@ export const myJourneyCopy: Record<Locale, MyJourneyCopy> = {
     journeyProgress: "Journey Progress",
     complete: "Complete",
     checklist: [
-      { label: "Complete current journey", detail: "Modules remaining: 4/12" },
+      { label: "Complete your current journey", detail: "4 modules remaining" },
       { label: "Join a chapter", detail: "Connect with your local cohort" },
-      { label: "Save one reflection", detail: "Document your spiritual growth" },
+      { label: "Save a reflection", detail: "Document your spiritual growth" },
     ],
     continueLearning: "Continue Learning",
     viewAll: "View All",

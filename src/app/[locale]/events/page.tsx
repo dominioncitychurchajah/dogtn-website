@@ -7,7 +7,7 @@ import { events } from "@/data/events";
 export const metadata: Metadata = {
   title: "Events",
   description:
-    "Gatherings for formation, leadership, and transformation — conferences, academies, retreats, and online forums across the network.",
+    "Gatherings for formation, leadership, and transformation through conferences, academies, retreats, and online forums across the network.",
 };
 
 export default async function EventsPage({
@@ -27,11 +27,11 @@ export default async function EventsPage({
             The Global Calendar
           </span>
           <h1 className="mx-auto max-w-3xl text-display-l text-ink-900">
-            Gatherings for formation, leadership, and transformation
+            Gatherings for Formation, Leadership, and Transformation
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-body-l text-ink-500">
-            Join a global movement of leaders and spiritual architects. Engage in world-class
-            intensives, conferences, and forums designed to reshape your influence and impact.
+            Join a global movement of leaders. Engage in world-class conferences, intensives, and
+            online forums designed to expand your influence.
           </p>
         </Container>
       </section>
@@ -41,8 +41,8 @@ export default async function EventsPage({
         <Container>
           <SectionHeading
             eyebrow="Upcoming & recent"
-            title="Browse the calendar"
-            intro="Filter by institution, type, or format — then switch between a month-grouped calendar and a flat list."
+            title="Browse the Calendar"
+            intro="Filter by institution, type, or format. Switch between calendar view and list view."
           />
           <EventsBrowser events={events} locale={loc} />
         </Container>

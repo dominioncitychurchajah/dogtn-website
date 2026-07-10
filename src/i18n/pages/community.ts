@@ -23,14 +23,14 @@ export const communityCopy: Record<Locale, CommunityCopy> = {
     metaDescription: "Connect with the Dominion City family online, in person, and through local chapters.",
     badge: "Connect with your global family",
     title: "Find your place to belong and grow.",
-    subtitle: "Community is not a placeholder here. It is the pathway.",
-    body: "Whether you are planning your first visit, looking for a chapter, joining the WhatsApp broadcast, or taking your next step in service, we want to help you connect with people who will walk with you.",
-    primaryCta: "Request WhatsApp Access",
-    secondaryCta: "Explore our Community App",
+    subtitle: "Community is more than a gathering, it is the pathway.",
+    body: "Whether you are planning your first visit, looking for a chapter near you, or joining our WhatsApp broadcast, we want to connect you with people who will walk with you.",
+    primaryCta: "Join Our WhatsApp",
+    secondaryCta: "Explore the Community App",
     cards: [
       {
         title: "Visit This Sunday",
-        body: "Join us in person at Dominion City Auditorium, Ajah. Expect a warm welcome, heartfelt worship, and a practical message rooted in Scripture.",
+        body: "Join us at Dominion City Auditorium, Ajah. Expect a warm welcome, heartfelt worship, and a practical message rooted in Scripture.",
         href: "/events",
         cta: "See Gatherings",
       },
@@ -42,7 +42,7 @@ export const communityCopy: Record<Locale, CommunityCopy> = {
       },
       {
         title: "Need Prayer?",
-        body: "Reach out for prayer, counsel, or a human touchpoint. Someone from the team can help you take the next step.",
+        body: "Reach out for prayer, counsel, or a personal connection. Someone from the team can help you take the next step.",
         href: "mailto:support@davidogbueli.org?subject=Prayer%20Request",
         cta: "Send a Request",
       },

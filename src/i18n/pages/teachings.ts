@@ -44,11 +44,11 @@ export const teachingsCopy: Record<Locale, TeachingsCopy> = {
   en: {
     metaTitle: "Teachings",
     metaDescription:
-      "Access the complete METANOIA ecosystem. Search thousands of proprietary leadership sessions, theological depth, and transformation frameworks.",
-    eyebrow: "Message Engine",
+      "Access decades of teaching. Search thousands of leadership sessions, theological insights, and transformation frameworks.",
+    eyebrow: "Teachings Archive",
     title: "Teachings",
     subtitle:
-      "Access the complete METANOIA ecosystem. Search thousands of proprietary leadership sessions, theological depth, and transformation frameworks.",
+      "Access decades of teaching. Search thousands of leadership sessions, theological insights, and transformation frameworks.",
     searchPlaceholder: "Search leadership, purpose, family…",
     filterTopic: "Topic",
     filterFormat: "Format",
@@ -68,13 +68,13 @@ export const teachingsCopy: Record<Locale, TeachingsCopy> = {
     featuredBadge: "Featured Series",
     featuredTitle: "The Laws of Transformation",
     featuredBlurb:
-      "A definitive 12-part framework on institutional gravity and the physics of individual change. Led by the Foundation's global visionaries.",
+      "A definitive 12-part series on the principles that govern personal growth and institutional impact. Led by Dr. David Ogbueli and the teaching team.",
     startJourney: "Start Journey",
     viewCurriculum: "View Curriculum",
     noResults: "No teachings match these filters yet.",
     bridgeHeading: "Not sure where to start?",
     bridgeBody:
-      "Let our curriculum engine map your current leadership season to the most relevant transformation path.",
+      "Let us guide you to the teaching path that matches your current season and your goals.",
     chooseJourney: "Choose a Guided Journey",
     newInLibrary: "New in the Library",
     viewAllArchive: "View All Archive",

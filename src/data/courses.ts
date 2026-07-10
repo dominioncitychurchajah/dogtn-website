@@ -3,7 +3,7 @@ import type { Course } from "@/data/types";
 export const courses: Course[] = [
   {
     id: "dli-basic-2026-q3",
-    title: "DLI Basic — Leadership Foundations",
+    title: "DLI Basic: Leadership Foundations",
     institution: "Dominion Leadership Institute",
     cohortDate: "2026-09-07T00:00:00.000Z",
     durationWeeks: 8,
@@ -13,7 +13,7 @@ export const courses: Course[] = [
   },
   {
     id: "dli-advanced-2026-q4",
-    title: "DLI Advanced — Strategy & Governance",
+    title: "DLI Advanced: Strategy and Governance",
     institution: "Dominion Leadership Institute",
     cohortDate: "2026-10-19T00:00:00.000Z",
     durationWeeks: 10,

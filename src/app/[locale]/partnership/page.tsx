@@ -11,19 +11,19 @@ import { PrivateBriefingForm } from "@/components/forms/PrivateBriefingForm";
 export const metadata: Metadata = {
   title: "Partnership",
   description:
-    "Invest in the blueprint for a better future. Your stewardship fuels the institutional engines of leadership, mentorship, and global missions.",
+    "Invest in a better future. Your generosity fuels our work in leadership, mentorship, and global missions.",
 };
 
 const PILLARS = [
-  "Direct oversight of 400+ mentorship hubs worldwide.",
-  "Digitization of 30+ years of transformation teachings.",
-  "Deployment of rapid-response global mission teams.",
+  "400+ mentorship hubs across the globe.",
+  "Over 30 years of transformation teachings being preserved and shared.",
+  "Rapid-response mission teams reaching communities worldwide.",
 ];
 
 const TIERS = [
   {
     icon: Rocket,
-    name: "Strategic Partner",
+    name: "Community Partner",
     level: "Foundation Level",
     featureIcon: CheckCircle2,
     features: ["Quarterly Impact Updates", "Annual Transformation Report", "Monthly Prayer Digest"],
@@ -32,15 +32,15 @@ const TIERS = [
   {
     icon: Landmark,
     name: "Legacy Builder",
-    level: "Institutional Support",
+    level: "Growing Support",
     featureIcon: Star,
     features: ["VIP access to the teachings vault", "Institutional voting on select projects", "Reserved seating at global summits"],
     featured: true,
   },
   {
     icon: Medal,
-    name: "Kingdom Financier",
-    level: "Strategic Deployment",
+    name: "Visionary Partner",
+    level: "Deep Impact",
     featureIcon: ShieldCheck,
     features: ["Direct mentor briefings", "Private roundtable participation", "Legacy naming opportunities"],
     featured: false,
@@ -73,15 +73,15 @@ export default async function PartnershipPage({
             Global Transformation Network
           </span>
           <h1 className="mx-auto max-w-4xl text-display-l leading-tight">
-            Architecting a Legacy of <span className="text-gold-600">Transformation.</span>
+            Build a Legacy of <span className="text-gold-600">Transformation</span>
           </h1>
           <p className="mx-auto mt-8 max-w-2xl text-body-l text-ink-300">
-            Invest in the blueprint for a better future. Your stewardship fuels the institutional
-            engines of leadership, mentorship, and global missions.
+            Invest in a better future. Your generosity fuels our work in leadership, mentorship,
+            and global missions.
           </p>
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button href="#giving-engine" size="l" className="uppercase tracking-wider">
-              Partner with the Mission
+              Partner With Us
             </Button>
             <Button
               href={`/${loc}/give`}
@@ -104,12 +104,12 @@ export default async function PartnershipPage({
           <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
             <div>
               <h2 className="text-heading-1 text-paper-0">
-                Invest into the <span className="text-gold-600">Transformation Ecosystem</span>
+                Invest in the <span className="text-gold-600">Transformation Network</span>
               </h2>
               <p className="mt-8 text-body-l leading-relaxed text-ink-300">
-                Dominion City is more than a gathering; it is an institutional gravity point. When
-                you partner, you help carry global transformation across four critical pillars of
-                society through prayer, service, connection, and committed participation.
+                Dominion City is more than a gathering, it is a movement. When you partner, you
+                help carry transformation across every sphere of society through prayer, service,
+                connection, and committed participation.
               </p>
               <ul className="mt-12 space-y-6">
                 {PILLARS.map((p) => (
@@ -130,10 +130,10 @@ export default async function PartnershipPage({
         <Container>
           <div className="mb-20 text-center">
             <h2 className="text-heading-1 text-ink-900">
-              Partnership <span className="text-gold-600">Echelons</span>
+              Partnership <span className="text-gold-600">Levels</span>
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-body-l text-ink-500">
-              Elevate your stewardship through dedicated tiers of institutional involvement and access.
+              Choose the level of involvement that fits your heart and your capacity.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -212,13 +212,13 @@ export default async function PartnershipPage({
             </div>
             <div>
               <h2 className="text-heading-1 text-ink-900">
-                Your Stewardship, <br />
-                <span className="text-gold-600">Our Collective Influence.</span>
+                Your Generosity, <br />
+                <span className="text-gold-600">Our Shared Impact</span>
               </h2>
               <p className="mt-8 text-body-l text-ink-500">
-                For private foundations, family offices, or individuals seeking structured legacy
-                partnerships, we offer a dedicated concierge to discuss strategic mission alignment
-                and asset-based giving.
+                For individuals, families, or organizations looking to make a meaningful, lasting
+                impact, we offer a personal conversation to explore how your giving can align with
+                the mission.
               </p>
               <div className="mt-12">
                 <PrivateBriefingForm />

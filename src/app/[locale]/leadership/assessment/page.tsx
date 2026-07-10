@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "Leadership Assessment",
   description:
-    "A comprehensive 7-minute growth diagnostic designed to evaluate your current sphere of impact and unlock the next tier of your global leadership potential.",
+    "A seven-minute assessment designed to evaluate your current sphere of impact and identify the next step in your leadership journey.",
 };
 
 const PILLARS = [
@@ -19,9 +19,9 @@ const PILLARS = [
 ];
 
 const TRUST = [
-  { label: "Institutional Gravity", icon: Building2 },
-  { label: "Global Standards", icon: Globe },
-  { label: "Evidence-Based", icon: TrendingUp },
+  { label: "Designed for Leaders", icon: Building2 },
+  { label: "Global Perspective", icon: Globe },
+  { label: "Research-Based", icon: TrendingUp },
 ];
 
 export default async function AssessmentIntroPage({
@@ -49,12 +49,12 @@ export default async function AssessmentIntroPage({
         <div className="mx-auto max-w-3xl text-center">
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-600/20 bg-gold-600/10 px-3 py-1 text-caption font-semibold uppercase tracking-[0.2em] text-gold-hover">
             <span className="h-2 w-2 rounded-full bg-gold-600" aria-hidden />
-            Institutional Diagnostic
+            Leadership Assessment
           </span>
-          <h1 className="text-display-l text-ink-900">Find your next leadership step</h1>
+          <h1 className="text-display-l text-ink-900">Find Your Next Leadership Step</h1>
           <p className="mx-auto mt-6 max-w-2xl text-body-l leading-relaxed text-ink-500">
-            A comprehensive 7-minute growth diagnostic designed to evaluate your current sphere of
-            impact and unlock the next tier of your global leadership potential.
+            A seven-minute assessment designed to evaluate your current sphere of impact and
+            identify the next step in your leadership journey.
           </p>
         </div>
 
@@ -66,10 +66,10 @@ export default async function AssessmentIntroPage({
           <div className="grid items-center gap-12 md:grid-cols-2">
             {/* Left: content */}
             <div>
-              <h2 className="text-heading-2 text-ink-900">Leadership Maturity Matrix</h2>
+              <h2 className="text-heading-2 text-ink-900">Leadership Assessment</h2>
               <p className="mt-4 text-body-m text-ink-500">
-                This assessment utilizes the Transformation Ecosystem framework to provide a
-                precise roadmap for your personal and institutional advancement.
+                This assessment evaluates your leadership across five key areas and provides a
+                clear picture of where you stand and where to go next.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -77,14 +77,14 @@ export default async function AssessmentIntroPage({
                   <Timer className="mt-1 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
                   <div>
                     <p className="text-body-m font-semibold text-ink-900">7-Minute Duration</p>
-                    <p className="text-caption text-ink-500">Efficient, high-impact diagnostic flow.</p>
+                    <p className="text-caption text-ink-500">A focused, efficient assessment that respects your time.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <FileText className="mt-1 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
                   <div>
                     <p className="text-body-m font-semibold text-ink-900">Personalized Insight Report</p>
-                    <p className="text-caption text-ink-500">Receive a detailed breakdown of your metrics.</p>
+                    <p className="text-caption text-ink-500">Receive a detailed breakdown of your results.</p>
                   </div>
                 </div>
               </div>

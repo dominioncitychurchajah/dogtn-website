@@ -10,12 +10,12 @@ import { institutions } from "@/data/institutions";
 // Homepage-only tagline overrides — keeps data/institutions.ts (used by the
 // ecosystem map + institution detail pages) untouched.
 const TEASER_TAGLINE: Record<string, string> = {
-  "dominion-city": "Raising leaders who take their place in destiny.",
-  "dominion-leadership-institute": "Discipleship Leadership Institute for strategic growth.",
-  "global-leadership-forum": "David Ogbueli Transformation Network for institutional excellence.",
-  "golden-heart-foundation": "Youth mentorship and value-based education network.",
-  "priesthood-institute": "Equipping ministers for global impact and revival.",
-  "global-missions-network": "The heartbeat of reach and soul-winning worldwide.",
+  "dominion-city": "A community of believers growing together in faith, service, and leadership.",
+  "dominion-leadership-institute": "Where future leaders are formed with character, purpose, and the skills to transform their sphere.",
+  "global-leadership-forum": "Where leaders convene to shape nations and build lasting institutions.",
+  "golden-heart-foundation": "Empowering young people with the values, skills, and mentorship they need to lead.",
+  "priesthood-institute": "Forming ministers who carry the gospel with depth, integrity, and global vision.",
+  "global-missions-network": "Taking the message of transformation to communities around the world.",
 };
 
 export function EcosystemTeaser({

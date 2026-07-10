@@ -32,19 +32,18 @@ export async function generateMetadata({
 }
 
 const identities = [
-  { title: "Visitor", label: "Entry Protocol", icon: User, active: true },
-  { title: "Learner", label: "Knowledge Acquisition", icon: GraduationCap },
-  { title: "Disciple", label: "Spiritual Maturity", icon: Sparkles },
-  { title: "Leader", label: "Influential Command", icon: ShieldCheck },
-  { title: "Mentor", label: "Generational Legacy", icon: Users },
-  { title: "Nation Builder", label: "Global Governance", icon: Globe2 },
+  { title: "Visitor", label: "Getting Started", icon: User, active: true },
+  { title: "Learner", label: "Building Foundations", icon: GraduationCap },
+  { title: "Disciple", label: "Growing in Faith", icon: Sparkles },
+  { title: "Leader", label: "Leading with Purpose", icon: ShieldCheck },
+  { title: "Mentor", label: "Guiding Others", icon: Users },
+  { title: "Nation Builder", label: "Transforming Nations", icon: Globe2 },
 ];
 
 const dossiers = [
   {
-    archive: "Archive.01",
-    title: "Purpose Protocol",
-    body: "A systemic methodology for uncovering institutional and divine calling.",
+    title: "Discover Your Purpose",
+    body: "A proven path to uncover your calling and divine purpose.",
     icon: Lightbulb,
     href: "/journeys/discover-purpose",
     featured: false,
@@ -52,9 +51,8 @@ const dossiers = [
     images: ["/images/pastor/whiteboard-5-laws-bw.jpg", "/images/pastor/ecosystem-side-profile.jpg"],
   },
   {
-    archive: "Core.Pillar",
-    title: "Spiritual Mastery",
-    body: "Advanced spiritual conditioning through systematic Kingdom teaching.",
+    title: "Deepen Your Faith",
+    body: "Strengthen your spiritual foundation through systematic Kingdom teaching.",
     icon: BookOpen,
     href: "/journeys/grow-spiritually",
     featured: true,
@@ -62,9 +60,8 @@ const dossiers = [
     images: ["/images/pastor/prayer-hands-raised.jpg", "/images/pastor/preaching-purple-lit.jpg"],
   },
   {
-    archive: "Archive.03",
-    title: "Command Strategy",
-    body: "The architecture of institutional governance and leader-shaping.",
+    title: "Build Your Leadership",
+    body: "Learn the principles of governance and how to shape the next generation.",
     icon: Medal,
     href: "/journeys/become-a-leader",
     featured: false,
@@ -72,9 +69,8 @@ const dossiers = [
     images: ["/images/pastor/leadership-hand-raised.jpg", "/images/pastor/hero-stadium-arms-wide.jpg"],
   },
   {
-    archive: "Archive.04",
-    title: "Institutional Logic",
-    body: "Engineering scalable ministries and global mission institutions.",
+    title: "Scale Your Ministry",
+    body: "Equip yourself to build and lead ministries with global impact.",
     icon: Network,
     href: "/journeys/build-a-ministry",
     featured: false,
@@ -82,9 +78,8 @@ const dossiers = [
     images: ["/images/pastor/dli-conference-whiteboard.jpg", "/images/pastor/sermon-blue-backdrop.jpg"],
   },
   {
-    archive: "Archive.05",
-    title: "Societal Reform",
-    body: "Executing dominion across the seven spheres of global culture.",
+    title: "Transform Your Society",
+    body: "Learn how to carry transformation into business, culture, and governance.",
     icon: Landmark,
     href: "/journeys/transform-society",
     featured: false,
@@ -96,21 +91,18 @@ const dossiers = [
 const methodology = [
   {
     number: "01",
-    title: "Curate Your Path",
-    body: "Selection of a domain-specific stream based on current capacity and visionary objective.",
-    meta: "Protocol 01 / Alignment",
+    title: "Choose Your Path",
+    body: "Select the journey that matches your current season and your vision for the future. This is where we align your goals with the right resources.",
   },
   {
     number: "02",
-    title: "Systemic Integration",
-    body: "Engagement with world-class curriculum designed for immediate institutional implementation.",
-    meta: "Protocol 02 / Execution",
+    title: "Engage and Grow",
+    body: "Work through world-class curriculum designed to be applied immediately in your life, ministry, and career.",
   },
   {
     number: "03",
-    title: "Credentialing",
-    body: "Attainment of mentorship, accountability, and next-step clarity within the institutional ecosystem.",
-    meta: "Protocol 03 / Elevation",
+    title: "Receive Mentorship",
+    body: "Connect with a mentor, gain accountability, and get clear direction on your next step.",
   },
 ];
 
@@ -128,13 +120,13 @@ export default async function StartHerePage({
       <section className="px-5 pb-16 pt-24 text-center sm:pb-20 sm:pt-28 lg:pb-28 lg:pt-32">
         <Container className="px-0">
           <span className="mb-8 block text-[11px] font-bold uppercase tracking-[0.45em] text-gold-hover">
-            Institutional Gateway
+            Your Starting Point
           </span>
           <h1 className="text-display-l text-ink-900 sm:text-[5.5rem] sm:leading-[0.95]">Start Here</h1>
           <div className="mx-auto mt-8 h-px w-20 bg-gold-600/35" />
           <p className="mx-auto mt-8 max-w-3xl font-serif text-2xl italic leading-snug text-ink-500 sm:text-3xl">
-            The architected gateway to global transformation.{" "}
-            <span className="font-bold not-italic text-ink-900">Identify your pillar of influence.</span>
+            Your gateway to growth and transformation.{" "}
+            <span className="font-bold not-italic text-ink-900">Discover where you fit and how you can grow.</span>
           </p>
         </Container>
       </section>
@@ -172,10 +164,10 @@ export default async function StartHerePage({
       <section className="px-5 py-16 sm:py-20 lg:py-28">
         <Container className="px-0">
           <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end">
-            <h2 className="text-heading-1 text-ink-900 sm:text-[3.5rem] sm:leading-tight">Selective Pathfinding</h2>
+            <h2 className="text-heading-1 text-ink-900 sm:text-[3.5rem] sm:leading-tight">Find Your Path</h2>
             <div className="hidden h-px flex-1 bg-ink-100 md:block" />
             <Button href={`/${loc}/teachings`} variant="ghost" className="w-fit px-0 text-gold-hover hover:bg-transparent">
-              Explore All Streams
+              View All Paths
               <ArrowRight className="h-4 w-4 -rotate-45 rtl:rotate-[225deg]" aria-hidden />
             </Button>
           </div>
@@ -206,7 +198,7 @@ export default async function StartHerePage({
                         dossier.featured ? "text-gold-400" : "text-ink-400",
                       )}
                     >
-                      {dossier.archive}
+                        {dossier.featured ? "Core Path" : "Journey"}
                     </span>
                     <Icon className="h-5 w-5 shrink-0 text-gold-hover" aria-hidden />
                   </div>
@@ -235,7 +227,7 @@ export default async function StartHerePage({
                       dossier.featured ? "bg-gold-600 text-ink-900 hover:bg-paper-0" : "bg-ink-900 text-paper-0 hover:bg-gold-600 hover:text-ink-900",
                     )}
                   >
-                    Initiate
+                    Get Started
                     <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
                   </Button>
                 </article>
@@ -253,8 +245,6 @@ export default async function StartHerePage({
             <span className="font-bold not-italic text-gold-hover">we build people</span> who build nations.&quot;
           </blockquote>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5 text-[10px] font-bold uppercase tracking-[0.32em] text-ink-400">
-            <span>Mission Mandate</span>
-            <span className="h-px w-10 bg-gold-600/30" aria-hidden />
             <span>Dominion City Global</span>
           </div>
         </Container>
@@ -267,7 +257,7 @@ export default async function StartHerePage({
             <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.45em] text-gold-400">
               Methodology
             </span>
-            <h2 className="text-heading-1 text-paper-0 sm:text-[4rem] sm:leading-tight">How Journeys Work</h2>
+            <h2 className="text-heading-1 text-paper-0 sm:text-[4rem] sm:leading-tight">How Your Journey Works</h2>
             <div className="mt-6 h-px w-28 bg-gold-600" />
           </div>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-20">
@@ -281,10 +271,6 @@ export default async function StartHerePage({
                     {step.title}
                   </h3>
                   <p className="mt-5 max-w-sm text-body-m italic leading-relaxed text-ink-300">{step.body}</p>
-                  <p className="mt-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-gold-400">
-                    {step.meta}
-                    <span className="h-px w-10 bg-gold-600/50" aria-hidden />
-                  </p>
                 </div>
               </article>
             ))}
@@ -301,19 +287,19 @@ export default async function StartHerePage({
                 <span className="mb-5 block text-[11px] font-bold uppercase tracking-[0.34em] text-gold-hover">
                   Diagnostic Console
                 </span>
-                <h2 className="text-heading-1 text-ink-900">Unsure of your specific domain?</h2>
+                <h2 className="text-heading-1 text-ink-900">Not sure where to start?</h2>
                 <p className="mt-5 text-body-l italic leading-relaxed text-ink-500">
-                  Engage our systemic diagnostic to align your current capacity with your destined
-                  sphere of global influence.
+                  Take our seven-minute assessment to discover your current leadership level and
+                  the best next step for your journey.
                 </p>
               </div>
               <div className="flex shrink-0 flex-col items-stretch gap-4 sm:items-center">
                 <Button href={p("/leadership/assessment")} size="l" className="rounded-[var(--radius-s)] bg-ink-900 text-paper-0 hover:bg-gold-600 hover:text-ink-900">
-                  Launch Diagnostic
+                  Take the Assessment
                   <Compass className="h-4 w-4" aria-hidden />
                 </Button>
                 <Button href={p("/mentorship")} variant="ghost" className="text-[11px] uppercase tracking-[0.2em] text-ink-400 hover:bg-transparent hover:text-gold-hover">
-                  Speak with a Path Navigator
+                  Talk to Someone
                 </Button>
               </div>
             </div>

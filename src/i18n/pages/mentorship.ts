@@ -54,11 +54,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   en: {
     metaTitle: "Mentorship",
     metaDescription:
-      "Structured mentorship tracks that form leaders — from emerging leaders to nation builders — through cohorts, personal mentoring, and accountability.",
+      "Structured mentorship tracks that form leaders from emerging leaders to nation builders through cohorts, personal mentoring, and accountability.",
     eyebrow: "Let Dr David Mentor You",
     title: "Mentorship Tracks",
     subtitle:
-      "A structured pathway for leaders ready to be formed, corrected, equipped, and sent into greater responsibility. Choose the track that meets you where you are — and grow under mentors who have walked the road.",
+      "A structured pathway for leaders ready to grow and step into greater responsibility. Choose the track that meets you where you are, and learn from mentors who have walked the road.",
     exploreTracksCta: "Explore the Tracks",
     gridTitle: "Four Tracks, One Journey of Formation",
     gridSubtitle:
@@ -66,7 +66,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     exploreTrackCta: "Explore Track",
     closingTitle: "Not sure which track fits?",
     closingBody:
-      "Take the leadership assessment — it points you to the track built for your season.",
+      "Take the leadership assessment and discover the track that matches your current season.",
     takeAssessmentCta: "Take the Assessment",
     applyNow: "Apply Now",
     viewExpectations: "View Expectations",

@@ -13,7 +13,7 @@ const pathway = [
   {
     step: "01",
     title: "Belong: Find Your Foundation",
-    body: "Your journey begins with belonging. Membership and foundation pathways ground you in salvation, prayer, God's Word, and the Holy Spirit.",
+    body: "Your journey begins with belonging. Our membership and foundation pathways ground you in salvation, prayer, Scripture, and the Holy Spirit.",
   },
   {
     step: "02",
@@ -100,7 +100,7 @@ export default async function MinistriesPage({
             <span className="mb-3 block text-caption font-semibold uppercase tracking-[0.2em] text-gold-hover">
               The Dominion Pathway
             </span>
-            <h2 className="text-heading-1 text-ink-900">Your journey: from discovery to global impact.</h2>
+            <h2 className="text-heading-1 text-ink-900">Your Journey: From Discovery to Global Impact</h2>
           </div>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {pathway.map((item) => (

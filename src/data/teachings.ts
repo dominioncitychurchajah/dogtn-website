@@ -12,7 +12,7 @@ export const teachings: Teaching[] = [
     tags: ["Wealth", "Covenant", "Wisdom"],
     publishedAt: "2026-01-14",
     description:
-      "Wealth is not an accident — it is a covenant discipline. In this opening teaching, Dr. Ogbueli unpacks the ancient, time-tested principles that govern generational increase and how to apply them today.",
+      "Wealth is not an accident, it is a covenant discipline. In this opening teaching, Dr. Ogbueli unpacks the ancient, time-tested principles that govern generational increase and shows you how to apply them today.",
     journeySlug: "become-a-leader",
   },
   {
@@ -25,7 +25,7 @@ export const teachings: Teaching[] = [
     tags: ["Governance", "Kingdom", "Leadership"],
     publishedAt: "2026-01-07",
     description:
-      "In this foundational teaching, Dr. David Ogbueli explores the spiritual and administrative principles that govern the expansion of the Kingdom and the transformation of modern institutions.",
+      "Dr. David Ogbueli explores the principles that govern the expansion of the Kingdom and the transformation of nations and institutions.",
     journeySlug: "become-a-leader",
     featured: true,
   },
@@ -40,7 +40,7 @@ export const teachings: Teaching[] = [
     tags: ["Governance", "Nations", "Society"],
     publishedAt: "2026-01-28",
     description:
-      "Nations rise and fall by principles, not personalities. A study of the unseen laws that determine the destiny of peoples and how leaders can align with them.",
+      "Nations rise and fall by principles, not personalities. This teaching explores the unseen laws that determine the destiny of peoples and how leaders can align with them.",
     journeySlug: "transform-society",
   },
   {
@@ -54,7 +54,7 @@ export const teachings: Teaching[] = [
     tags: ["Communication", "Speech", "Wisdom"],
     publishedAt: "2026-02-11",
     description:
-      "Words frame worlds. Dr. Ogbueli teaches the five laws of proper speech and how disciplined language builds — or destroys — a leader's future.",
+      "Words frame worlds. Dr. Ogbueli teaches the five laws of proper speech and how disciplined language can build or destroy a leader's future.",
     journeySlug: "become-a-leader",
   },
   {
@@ -68,7 +68,7 @@ export const teachings: Teaching[] = [
     tags: ["Communication", "Faith", "Speech"],
     publishedAt: "2026-02-25",
     description:
-      "What you repeatedly say becomes what you consistently see. A practical session on aligning your confession with your assignment.",
+      "What you repeatedly say becomes what you consistently see. A practical session on aligning your words with your purpose.",
   },
   {
     slug: "solomons-secret-of-wisdom",
@@ -81,7 +81,7 @@ export const teachings: Teaching[] = [
     tags: ["Wisdom", "Wealth", "Prosperity"],
     publishedAt: "2026-03-10",
     description:
-      "Before the wealth came the wisdom. An exposition of the pillar that made Solomon the wealthiest man of his age, and how it applies to your work today.",
+      "Before the wealth came the wisdom. This teaching explores the pillar that made Solomon the wealthiest man of his age and how it applies to your work today.",
     journeySlug: "discover-purpose",
   },
   {
@@ -95,7 +95,7 @@ export const teachings: Teaching[] = [
     tags: ["Wealth", "Mindset", "Stewardship"],
     publishedAt: "2026-03-24",
     description:
-      "A written study of the covenant principles behind generational wealth creation, and the disciplines that turn income into an inheritance.",
+      "A written study of the covenant principles behind generational wealth creation and the disciplines that turn income into an inheritance.",
     journeySlug: "transform-society",
   },
   {
@@ -109,7 +109,7 @@ export const teachings: Teaching[] = [
     tags: ["Leadership", "Mentorship", "Character"],
     publishedAt: "2026-04-07",
     description:
-      "The measure of a leader is the leaders they leave behind. Principles for identifying, forming, and releasing the next generation.",
+      "The measure of a leader is the leaders they leave behind. Learn how to identify, form, and release the next generation.",
     journeySlug: "build-a-ministry",
   },
   {
@@ -123,7 +123,7 @@ export const teachings: Teaching[] = [
     tags: ["Character", "Integrity", "Leadership"],
     publishedAt: "2026-04-21",
     description:
-      "Promotion without formation is a trap. Why God builds the vessel before He entrusts the assignment.",
+      "Promotion without formation is a trap. This teaching explains why God builds the vessel before entrusting the assignment.",
     journeySlug: "become-a-leader",
   },
   {
@@ -137,7 +137,7 @@ export const teachings: Teaching[] = [
     tags: ["Prayer", "Devotion", "Spiritual Growth"],
     publishedAt: "2026-05-05",
     description:
-      "Public power is sustained by private discipline. A call back to the secret place as the source of every enduring ministry.",
+      "Public power is sustained by private discipline. This teaching calls leaders back to the secret place as the source of every enduring ministry.",
     journeySlug: "grow-spiritually",
   },
   {
@@ -151,7 +151,7 @@ export const teachings: Teaching[] = [
     tags: ["Rest", "Grace", "Spiritual Growth"],
     publishedAt: "2026-05-19",
     description:
-      "Striving exhausts; rest sustains. A written reflection on labouring from a place of finished grace rather than fearful performance.",
+      "Striving exhausts, but rest sustains. A written reflection on working from a place of finished grace rather than fearful performance.",
     journeySlug: "grow-spiritually",
   },
   {
@@ -165,7 +165,7 @@ export const teachings: Teaching[] = [
     tags: ["Business", "Marketplace", "Wealth"],
     publishedAt: "2026-06-02",
     description:
-      "The marketplace is a mission field. How to run enterprises with integrity, excellence, and eternal impact.",
+      "The marketplace is a mission field. This teaching covers how to run enterprises with integrity, excellence, and eternal impact.",
     journeySlug: "transform-society",
   },
   {
@@ -179,7 +179,7 @@ export const teachings: Teaching[] = [
     tags: ["Vision", "Destiny", "Faith"],
     publishedAt: "2026-06-23",
     description:
-      "A rousing charge from the Night of Glory gathering — a summons to arise, take responsibility, and carry transformation into your sphere.",
+      "A rousing charge from the Night of Glory gathering, calling you to arise, take responsibility, and carry transformation into your sphere.",
     journeySlug: "discover-purpose",
   },
   {
@@ -193,7 +193,7 @@ export const teachings: Teaching[] = [
     tags: ["Vision", "Governance", "Leadership"],
     publishedAt: "2026-03-03",
     description:
-      "Vision is not a feeling; it is a discipline. How to see the preferred future clearly and govern your days toward it.",
+      "Vision is not a feeling, it is a discipline. This teaching shows how to see the future clearly and govern your days toward it.",
     journeySlug: "become-a-leader",
   },
 ];

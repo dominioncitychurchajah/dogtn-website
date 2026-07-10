@@ -11,14 +11,14 @@ import { VaultBrowser } from "@/components/library/VaultBrowser";
 export const metadata: Metadata = {
   title: "Legacy Vault",
   description:
-    "A digital archive curated for global leaders. Access transcripts, manuscripts, and multi-media sessions across three decades of transformation strategy.",
+    "A digital archive for global leaders. Access transcripts, manuscripts, and multimedia sessions across three decades of teaching.",
 };
 
 const PILLARS = [
-  { label: "Leadership", icon: Landmark, desc: "Build your strategic governance & executive institutional power." },
+  { label: "Leadership", icon: Landmark, desc: "Build your capacity for governance and institutional influence." },
   { label: "Purpose", icon: Compass, desc: "Discover your identity and know who you are." },
-  { label: "Family", icon: Users, desc: "Generational legacy & kingdom home foundations." },
-  { label: "Ministry", icon: Sparkles, desc: "Ecclesiastical growth & apostolic spiritual administration." },
+  { label: "Family", icon: Users, desc: "Build a lasting legacy and strengthen your home." },
+  { label: "Ministry", icon: Sparkles, desc: "Grow in ministry depth and apostolic vision." },
 ];
 
 export default async function LibraryPage({
@@ -31,7 +31,7 @@ export default async function LibraryPage({
 
   return (
     <>
-      {/* Hero — research console */}
+      {/* Hero */}
       <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-ink-900 text-paper-0">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.04]"
@@ -40,14 +40,14 @@ export default async function LibraryPage({
         />
         <Container className="relative py-24 text-center">
           <span className="mb-6 block text-caption font-semibold uppercase tracking-[0.4em] text-gold-600">
-            Legacy Engine
+            Legacy Archive
           </span>
           <h1 className="mx-auto max-w-4xl text-display-l leading-[1.1] text-paper-0">
             Search Three Decades of Teaching
           </h1>
           <p className="mx-auto mb-14 mt-8 max-w-2xl text-body-l leading-relaxed text-ink-300">
-            A digital archive curated for global leaders. Access transcripts, manuscripts, and
-            multi-media sessions across 30 years of transformation strategy.
+            A digital archive for global leaders. Access transcripts, manuscripts, and multimedia
+            sessions across 30 years of teaching.
           </p>
           <Suspense>
             <VaultSearchConsole />
@@ -99,8 +99,8 @@ export default async function LibraryPage({
               <span className="relative inline-flex h-4 w-4 rounded-full bg-flame-600" />
             </span>
             <span className="text-caption font-bold uppercase tracking-[0.3em] text-ink-900">
-              Legacy Engine Live:{" "}
-              <span className="font-medium text-ink-500">32,402 scholars researching now</span>
+              Legacy Archive:{" "}
+              <span className="font-medium text-ink-500">Resources available for study now</span>
             </span>
           </div>
           <div className="flex gap-12">

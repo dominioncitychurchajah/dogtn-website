@@ -16,7 +16,7 @@ export function PartnershipEngine() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    toast(`Thank you — your partnership interest for ${pillar} has been noted.`);
+    toast(`Thank you. Your partnership interest for ${pillar} has been noted.`);
   }
 
   return (
@@ -82,7 +82,7 @@ export function PartnershipEngine() {
         type="submit"
         className="group flex w-full items-center justify-center gap-3 rounded-[var(--radius-m)] bg-gold-600 py-5 text-body-m font-bold text-ink-900 transition-all hover:bg-gold-hover"
       >
-        Register Partnership Interest
+        Start Your Partnership Journey
         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 rtl:rotate-180" aria-hidden />
       </button>
       <p className="mt-6 text-center text-caption text-ink-300">

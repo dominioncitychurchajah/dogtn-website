@@ -62,22 +62,22 @@ export const giveCopy: Record<Locale, GiveCopy> = {
     metaDescription:
       "Partner with the institutions, missions, training, and outreach work raising leaders and transforming society across the globe.",
     eyebrow: "Give",
-    title: "Give: Invest in Eternal Impact.",
+    title: "Give: Invest in Eternal Impact",
     subtitle:
-      "Your generosity fuels the mission to train leaders, reach cities, serve communities, and transform lives. Discover the various ways to give below, and sow your seed with joy.",
+      "Your generosity trains leaders, reaches communities, and transforms lives. Discover the different ways you can give below.",
     trust: ["Secure SSL", "PCI Compliant", "Global Reach"],
     impact: [
       {
         title: "Training Leaders",
-        body: "Equipping the next generation of societal reformers through strategic leadership institutes.",
+        body: "Equipping the next generation of leaders through world-class institutes.",
       },
       {
         title: "Supporting Missions",
-        body: "Facilitating global outreach projects and humanitarian efforts in unreached territories.",
+        body: "Funding outreach and humanitarian efforts in communities around the world.",
       },
       {
         title: "Serving Communities",
-        body: "Investing in community transformation initiatives, infrastructure, and social welfare.",
+        body: "Investing in community transformation, education, and social welfare.",
       },
     ],
     partnershipTitle: "Partnership & General Giving: Your Impact Starts Here.",
@@ -91,7 +91,7 @@ export const giveCopy: Record<Locale, GiveCopy> = {
       },
       {
         title: "Missions Partner",
-        body: "Directly fund frontier outreach. Your partnership ensures the light of transformation reaches the ends of the earth.",
+        body: "Fund outreach and humanitarian efforts. Your partnership ensures transformation reaches communities around the world.",
         link: "Explore Impact",
       },
       {

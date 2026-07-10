@@ -78,13 +78,13 @@ export default async function AboutPage({
               <span className="mb-3 block text-caption font-semibold uppercase tracking-[0.2em] text-gold-hover">
                 Our Story
               </span>
-              <h2 className="text-heading-1 text-ink-900">A hunger for God became a movement.</h2>
+              <h2 className="text-heading-1 text-ink-900">A Hunger for God Became a Movement</h2>
             </div>
             <div className="space-y-5 text-body-m leading-relaxed text-ink-600">
               <p>
                 Dominion City began with a simple, profound hunger for God. What started in the
-                early 1990s as a small campus fellowship, The New Covenant Family, led by David
-                Ogbueli, officially became a church in 1996. From that modest beginning, a
+                early 1990s as a small campus fellowship led by David Ogbueli became a church in
+                1996. From those modest beginnings, a
                 movement began to grow.
               </p>
               <p>

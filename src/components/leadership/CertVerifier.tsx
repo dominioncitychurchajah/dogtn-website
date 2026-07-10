@@ -36,7 +36,7 @@ export function CertVerifier() {
       </div>
       <p className="mt-3 flex items-center gap-2 text-caption text-ink-300">
         <ShieldCheck className="h-4 w-4 text-gold-400" aria-hidden />
-        Secured verification of every DLI credential we issue.
+        Every credential we issue is secured and independently verifiable.
       </p>
     </form>
   );

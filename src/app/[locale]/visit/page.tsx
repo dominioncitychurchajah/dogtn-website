@@ -58,9 +58,9 @@ export default async function VisitPage({
             <CalendarDays className="h-4 w-4" aria-hidden />
             Plan Your Visit
           </span>
-          <h1 className="mx-auto max-w-4xl text-display-l text-paper-0">Your first visit should feel simple.</h1>
+          <h1 className="mx-auto max-w-4xl text-display-l text-paper-0">Your First Visit Should Feel Simple</h1>
           <p className="mx-auto mt-6 max-w-2xl text-body-l text-ink-300">
-            We know visiting a new church or ministry gathering can feel like a big step. Here is what to expect before you arrive.
+            We know visiting a new gathering can feel like a big step. Here is what to expect before you arrive.
           </p>
         </Container>
       </section>
