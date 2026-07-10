@@ -30,9 +30,7 @@ export function NewsletterCapture({
             <div className="flex flex-col gap-3 border-t border-paper-0/10 pt-6 sm:flex-row sm:items-center sm:gap-4">
               <span className="text-body-s text-ink-300">{copy.whatsappPrompt}</span>
               <a
-                href="https://wa.me/000000000000"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:support@davidogbueli.org?subject=WhatsApp%20Broadcast%20Request"
                 className="inline-flex items-center gap-2 text-body-m font-semibold text-gold-400 transition-colors hover:text-gold-hover"
               >
                 <MessageCircle className="h-5 w-5" />

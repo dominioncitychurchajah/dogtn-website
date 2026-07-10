@@ -202,7 +202,7 @@ export function GivingCard({ locale }: { locale: Locale }) {
       </Button>
       <p className="mt-6 text-center text-caption leading-relaxed text-ink-500">
         {c.termsPrefix}{" "}
-        <a href="#" className="underline">
+        <a href={`/${locale}/about`} className="underline">
           {c.termsLink}
         </a>{" "}
         {c.termsSuffix}

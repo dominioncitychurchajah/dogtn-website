@@ -56,9 +56,7 @@ export default async function CommunityPage({
             <p className="mt-6 measure text-body-m text-ink-300">{c.body}</p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
-                href="https://wa.me/000000000000"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:support@davidogbueli.org?subject=WhatsApp%20Broadcast%20Request"
                 className="inline-flex h-14 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-8 text-body-l font-semibold text-ink-900 shadow-elev-1 hover:bg-gold-hover"
               >
                 <MessageCircle className="h-5 w-5" aria-hidden />

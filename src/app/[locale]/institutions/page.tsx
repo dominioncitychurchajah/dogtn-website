@@ -42,7 +42,7 @@ export default async function InstitutionsPage({
                 of transformation.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button href={`/${loc}/start`} size="l">
+                <Button href={`/${loc}/start-here`} size="l">
                   Find Your Place
                 </Button>
                 <Button href="#ecosystem" variant="secondary" size="l">
@@ -73,7 +73,7 @@ export default async function InstitutionsPage({
             ))}
           </div>
           <p className="mt-8 text-center text-caption italic text-ink-500">
-            Aggregate figures across the network; to be verified.
+            Network-wide impact indicators across training, missions, and community initiatives.
           </p>
         </Container>
       </Section>
@@ -101,7 +101,7 @@ export default async function InstitutionsPage({
               today.
             </p>
             <div className="mt-8">
-              <Button href={`/${loc}/start`} size="l">
+              <Button href={`/${loc}/start-here`} size="l">
                 Start Here
               </Button>
             </div>

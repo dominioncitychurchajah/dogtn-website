@@ -123,7 +123,7 @@ export function ChapterMap({
                 (activeId === chapter.id ? "ring-2 ring-gold-600/40" : "")
               }
             >
-              <ChapterCard chapter={chapter} />
+              <ChapterCard chapter={chapter} locale={locale} />
             </div>
           ))}
         </div>

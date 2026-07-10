@@ -91,7 +91,11 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
             <dl className="space-y-4 border-t border-paper-0/5 pt-6">
               <div className="flex items-center justify-between">
                 <dt className="text-caption uppercase tracking-widest text-ink-300">{copy.phoneSupport}</dt>
-                <dd className="text-body-m font-medium text-paper-0">+234 803 123 4567</dd>
+                <dd className="text-body-m font-medium text-paper-0">
+                  <a href="mailto:support@davidogbueli.org" className="hover:text-gold-400">
+                    Email Support
+                  </a>
+                </dd>
               </div>
               <div className="flex items-center justify-between">
                 <dt className="text-caption uppercase tracking-widest text-ink-300">{copy.parking}</dt>
@@ -100,16 +104,14 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
             </dl>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col">
               <a
-                href="https://www.youtube.com/@DominionCity"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`/${locale}/live`}
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-5 text-body-m font-semibold text-ink-900 hover:bg-gold-hover"
               >
                 <Radio className="h-4 w-4" aria-hidden />
                 Watch Online
               </a>
               <Link
-                href={`/${locale}/events`}
+                href={`/${locale}/visit`}
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] border border-paper-0/15 px-5 text-body-m font-semibold text-paper-0 hover:bg-paper-0/10"
               >
                 Plan Your Visit

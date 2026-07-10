@@ -2,7 +2,15 @@ import { MapPin, Clock, Phone } from "lucide-react";
 import type { Chapter } from "@/data/types";
 import { Button } from "@/components/ui/Button";
 
-export function ChapterCard({ chapter, distanceKm }: { chapter: Chapter; distanceKm?: number }) {
+export function ChapterCard({
+  chapter,
+  distanceKm,
+  locale,
+}: {
+  chapter: Chapter;
+  distanceKm?: number;
+  locale: string;
+}) {
   return (
     <div className="card-lift flex flex-col rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6">
       <div className="flex items-start justify-between gap-3">
@@ -28,7 +36,7 @@ export function ChapterCard({ chapter, distanceKm }: { chapter: Chapter; distanc
           <Phone className="h-4 w-4 shrink-0 text-gold-hover" /> {chapter.contact}
         </li>
       </ul>
-      <Button href="#" variant="secondary" size="s" className="mt-5 self-start">
+      <Button href={`/${locale}/visit`} variant="secondary" size="s" className="mt-5 self-start">
         Plan a Visit
       </Button>
     </div>

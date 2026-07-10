@@ -134,6 +134,7 @@ export function ChapterSearch({
                 <ChapterCard
                   key={chapter.id}
                   chapter={chapter}
+                  locale={locale}
                   distanceKm={distances?.[chapter.id]}
                 />
               ))
