@@ -32,7 +32,7 @@ export function CertificateCard({
         <Button size="s" variant="ghost" onClick={() => toast("Verification link copied", "info")}>
           <Share2 className="h-4 w-4" /> Share
         </Button>
-        <a href={`/verify/${verifyId}`} className="ms-auto self-center text-caption text-gold-hover underline">
+        <a href={`/verify?id=${encodeURIComponent(verifyId)}`} className="ms-auto self-center text-caption text-gold-hover underline">
           Verify
         </a>
       </div>

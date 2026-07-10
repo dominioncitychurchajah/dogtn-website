@@ -1,18 +1,9 @@
+"use client";
+
+import { Suspense } from "react";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { useSearchParams } from "next/navigation";
 import { ShieldCheck, Award, XCircle, Landmark } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Verify Credential",
-  description:
-    "Public verification of credentials issued by the David Ogbueli Global Transformation Network.",
-};
-
-export const dynamicParams = true;
-
-export function generateStaticParams() {
-  return [{ id: "DOGTN-2026-0891" }];
-}
 
 /** A credential id is treated as valid unless it is empty or the sentinel "invalid". */
 function isValidId(id: string) {
@@ -22,13 +13,7 @@ function isValidId(id: string) {
 
 /** Deterministic mock holder/credential details derived from the id (no DB). */
 function mockCredential(id: string) {
-  const HOLDERS = [
-    "Grace Adeyemi",
-    "Emmanuel Okonkwo",
-    "Ruth Balogun",
-    "Samuel Chukwu",
-    "Deborah Nwosu",
-  ];
+  const HOLDERS = ["Grace Adeyemi", "Emmanuel Okonkwo", "Ruth Balogun", "Samuel Chukwu", "Deborah Nwosu"];
   const CREDENTIALS = [
     "Executive Leadership Certification",
     "DLI Advanced — Strategy & Governance",
@@ -70,24 +55,19 @@ function FooterLine() {
   );
 }
 
-export default async function VerifyPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
+function VerifyContent() {
+  const params = useSearchParams();
+  const id = params.get("id") ?? "";
   const valid = isValidId(id);
   const record = valid ? mockCredential(id) : null;
 
   return (
     <div className="flex min-h-dvh flex-col bg-paper-50 text-ink-900">
       <BrandBar />
-
       <main className="flex flex-1 items-center justify-center px-5 py-16">
         {valid && record ? (
           <div className="w-full max-w-md overflow-hidden rounded-[var(--radius-xl)] border border-ink-100 bg-paper-0 shadow-elev-3">
-            {/* Gold seal header */}
-            <div className="flex flex-col items-center gap-3 bg-gradient-to-b from-gold-600/10 to-paper-0 px-8 pt-10 pb-6 text-center">
+            <div className="flex flex-col items-center gap-3 bg-gradient-to-b from-gold-600/10 to-paper-0 px-8 pb-6 pt-10 text-center">
               <span className="grid h-16 w-16 place-items-center rounded-full bg-gold-600 text-ink-900 shadow-elev-2 ring-8 ring-gold-600/15">
                 <Award className="h-8 w-8" aria-hidden />
               </span>
@@ -96,19 +76,11 @@ export default async function VerifyPage({
                 Verified &#10003;
               </span>
             </div>
-
             <div className="px-8 pb-10 text-center">
-              <p className="text-caption font-semibold uppercase tracking-[0.2em] text-ink-500">
-                This certifies that
-              </p>
+              <p className="text-caption font-semibold uppercase tracking-[0.2em] text-ink-500">This certifies that</p>
               <h1 className="mt-2 text-heading-2 text-ink-900">{record.holder}</h1>
-              <p className="mt-4 text-caption font-semibold uppercase tracking-[0.2em] text-ink-500">
-                has been awarded
-              </p>
-              <p className="mt-1 font-display text-body-l font-semibold text-ink-900">
-                {record.credential}
-              </p>
-
+              <p className="mt-4 text-caption font-semibold uppercase tracking-[0.2em] text-ink-500">has been awarded</p>
+              <p className="mt-1 font-display text-body-l font-semibold text-ink-900">{record.credential}</p>
               <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-m)] border border-ink-100 bg-ink-100 text-start">
                 <div className="bg-paper-0 p-4">
                   <dt className="text-caption uppercase tracking-wider text-ink-500">Issued</dt>
@@ -116,21 +88,18 @@ export default async function VerifyPage({
                 </div>
                 <div className="bg-paper-0 p-4">
                   <dt className="text-caption uppercase tracking-wider text-ink-500">Credential ID</dt>
-                  <dd className="mt-1 break-all font-mono text-body-s font-semibold text-ink-900">
-                    {id}
-                  </dd>
+                  <dd className="mt-1 break-all font-mono text-body-s font-semibold text-ink-900">{id}</dd>
                 </div>
               </dl>
-
               <p className="mt-6 text-caption text-ink-500">
-                Issued by the Dominion Leadership Institute, an institution of the David Ogbueli
-                Global Transformation Network.
+                Issued by the Dominion Leadership Institute, an institution of the David Ogbueli Global
+                Transformation Network.
               </p>
             </div>
           </div>
         ) : (
           <div className="w-full max-w-md overflow-hidden rounded-[var(--radius-xl)] border border-ink-100 bg-paper-0 shadow-elev-3">
-            <div className="flex flex-col items-center gap-3 bg-gradient-to-b from-error-600/8 to-paper-0 px-8 pt-10 pb-6 text-center">
+            <div className="flex flex-col items-center gap-3 bg-gradient-to-b from-error-600/8 to-paper-0 px-8 pb-6 pt-10 text-center">
               <span className="grid h-16 w-16 place-items-center rounded-full bg-error-600 text-paper-0 shadow-elev-2 ring-8 ring-error-600/15">
                 <XCircle className="h-8 w-8" aria-hidden />
               </span>
@@ -152,18 +121,22 @@ export default async function VerifyPage({
                 )}
                 . Please check the identifier and try again, or contact the registrar.
               </p>
-              <Link
-                href="/en/my-journey"
-                className="mt-6 inline-flex text-body-s font-semibold text-gold-hover underline"
-              >
+              <Link href="/en/my-journey" className="mt-6 inline-flex text-body-s font-semibold text-gold-hover underline">
                 Return to your journey
               </Link>
             </div>
           </div>
         )}
       </main>
-
       <FooterLine />
     </div>
+  );
+}
+
+export default function VerifyPage() {
+  return (
+    <Suspense fallback={<div className="min-h-dvh bg-paper-50" />}>
+      <VerifyContent />
+    </Suspense>
   );
 }

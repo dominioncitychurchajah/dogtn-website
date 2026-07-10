@@ -3,8 +3,15 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ApplicationReview } from "@/components/admin/ApplicationReview";
 
-export const dynamicParams = true;
 export const metadata: Metadata = { title: "Admin · Application Review" };
+
+// Applicant ids shown on the Kanban board — prerendered for the static export.
+export function generateStaticParams() {
+  return [
+    "APP-1021", "APP-1028", "APP-1030", "APP-1031", "APP-1035",
+    "APP-1039", "APP-1040", "APP-1042", "APP-1043", "APP-1044",
+  ].map((id) => ({ id }));
+}
 
 export default async function ApplicationReviewPage({
   params,

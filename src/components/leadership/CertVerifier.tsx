@@ -14,7 +14,7 @@ export function CertVerifier() {
     e.preventDefault();
     const id = value.trim();
     if (!id) return;
-    router.push(`/verify/${encodeURIComponent(id)}`);
+    router.push(`/verify?id=${encodeURIComponent(id)}`);
   }
 
   return (
