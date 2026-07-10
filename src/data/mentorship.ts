@@ -28,7 +28,7 @@ export const tracks: MentorshipTrack[] = [
       "Completed the Discover Your Purpose journey (recommended)",
     ],
     faqs: [
-      { q: "Is there a cost?", a: "Emerging Leaders is offered free of charge, sponsored by the Golden Heart Foundation." },
+      { q: "Is this free?", a: "Yes. Emerging Leaders is offered free to participants." },
       { q: "Do I need prior leadership experience?", a: "No. This track is designed for those just beginning." },
       { q: "Is it available online?", a: "Yes — cohorts run online and in-person across our chapters." },
       { q: "What if I miss a session?", a: "Sessions are recorded, and your mentor will help you catch up." },
@@ -63,7 +63,7 @@ export const tracks: MentorshipTrack[] = [
     faqs: [
       { q: "Can I do this alongside a full-time job?", a: "Yes — sessions are scheduled for evenings and weekends." },
       { q: "Is it sector-specific?", a: "Cohorts are grouped by sector where numbers allow." },
-      { q: "What is the fee?", a: "A subsidised programme fee applies; scholarships are available." },
+      { q: "Is this free?", a: "Yes. Young Professionals is offered free to participants." },
       { q: "Do I receive a certificate?", a: "Yes, on completion of the programme and capstone project." },
     ],
   },
@@ -130,7 +130,7 @@ export const tracks: MentorshipTrack[] = [
       { q: "How do I join?", a: "By application and interview, or by referral from existing Nation Builders." },
       { q: "Is this only for ministers?", a: "No — it is for leaders across business, government, media, and culture." },
       { q: "What is expected afterwards?", a: "Nation Builders commit to mentoring the next generation of leaders." },
-      { q: "Is there a fee?", a: "A programme investment applies; details are shared during the interview." },
+      { q: "Is this free?", a: "Yes. Nation Builders is offered free to participants." },
     ],
   },
 ];

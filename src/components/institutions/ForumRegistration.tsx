@@ -7,34 +7,25 @@ import { Modal } from "@/components/ui/Modal";
 import { cn } from "@/lib/utils";
 
 const TIERS = [
-  { id: "ga", name: "General Access", price: 450, desc: "Standard seating & event materials." },
-  { id: "vip", name: "Institutional (VIP)", price: 1200, desc: "Front row, VIP lounge & networking dinner." },
-  { id: "group", name: "Group Delegate", price: 380, suffix: "/pp", desc: "Min. 10 delegates. Shared seating block." },
+  { id: "ga", name: "General Access", desc: "Standard seating and event materials." },
+  { id: "leader", name: "Institutional Leader", desc: "Reserved arrival support for senior leaders and guests." },
+  { id: "group", name: "Group Delegates", desc: "Shared seating block for groups of 10 or more." },
 ];
-
-const ADMIN_FEE = 12;
 
 export function ForumRegistration() {
   const [tierId, setTierId] = React.useState("ga");
   const [open, setOpen] = React.useState(false);
 
   const tier = TIERS.find((t) => t.id === tierId)!;
-  const total = tier.price + ADMIN_FEE;
-  const fmt = (n: number) => `$${n.toLocaleString("en-US")}.00`;
 
   return (
     <div className="lg:sticky lg:top-28">
       <div className="flex flex-col gap-8 rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-8 shadow-elev-3">
         <div className="flex items-center justify-between border-b border-ink-100 pb-6">
           <h3 className="text-heading-3 text-ink-900">Registration</h3>
-          <select
-            aria-label="Currency"
-            className="rounded-[var(--radius-s)] border-none bg-paper-50 px-3 py-1 text-caption font-semibold uppercase tracking-wider text-ink-700 focus:outline-none"
-          >
-            <option>USD ($)</option>
-            <option>GBP (£)</option>
-            <option>NGN (₦)</option>
-          </select>
+          <span className="rounded-[var(--radius-s)] bg-verd-600/10 px-3 py-1 text-caption font-semibold uppercase tracking-wider text-verd-700">
+            Free
+          </span>
         </div>
 
         {/* Tiers */}
@@ -67,10 +58,7 @@ export function ForumRegistration() {
                 <span className="flex-1">
                   <span className="mb-1 flex items-center justify-between">
                     <span className="font-semibold text-ink-900">{t.name}</span>
-                    <span className="font-display text-heading-3 text-ink-900">
-                      ${t.price.toLocaleString("en-US")}
-                      {t.suffix && <span className="text-caption font-normal text-ink-500">{t.suffix}</span>}
-                    </span>
+                    <span className="font-display text-heading-3 text-ink-900">Free</span>
                   </span>
                   <span className="block text-body-s text-ink-500">{t.desc}</span>
                 </span>
@@ -82,16 +70,12 @@ export function ForumRegistration() {
         {/* Summary */}
         <div className="flex flex-col gap-3 rounded-[var(--radius-m)] bg-paper-50 p-6">
           <div className="flex justify-between text-body-s text-ink-700">
-            <span>Subtotal</span>
-            <span>{fmt(tier.price)}</span>
-          </div>
-          <div className="flex justify-between text-body-s text-ink-700">
-            <span>Admin Fee</span>
-            <span>{fmt(ADMIN_FEE)}</span>
+            <span>Selected pass</span>
+            <span>{tier.name}</span>
           </div>
           <div className="mt-2 flex justify-between border-t border-ink-100 pt-3 text-body-l font-bold text-ink-900">
-            <span>Total Due</span>
-            <span className="text-gold-hover">{fmt(total)}</span>
+            <span>Participant access</span>
+            <span className="text-verd-700">Free</span>
           </div>
         </div>
 
@@ -99,7 +83,7 @@ export function ForumRegistration() {
           Register Now
         </Button>
         <p className="text-center text-caption uppercase tracking-widest text-ink-500">
-          Secure transaction via encrypted institutional gateway
+          Free institutional registration
         </p>
       </div>
 
@@ -121,8 +105,8 @@ export function ForumRegistration() {
                 <span className="text-body-l font-semibold text-ink-900">{tier.name}</span>
               </div>
               <div className="text-end">
-                <span className="block text-caption uppercase tracking-widest text-ink-500">Total</span>
-                <span className="text-body-l font-semibold text-gold-hover">{fmt(total)}</span>
+                <span className="block text-caption uppercase tracking-widest text-ink-500">Access</span>
+                <span className="text-body-l font-semibold text-verd-700">Free</span>
               </div>
             </div>
             <div className="mx-auto grid h-32 w-32 grid-cols-6 grid-rows-6 gap-1 rounded-[var(--radius-s)] bg-paper-0 p-3 shadow-elev-1">

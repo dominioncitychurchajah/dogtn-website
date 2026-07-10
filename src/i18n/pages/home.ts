@@ -96,7 +96,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       subtitle:
         "For over three decades, Dr. David Ogbueli has equipped individuals, leaders, ministries, institutions, and nations through transformational leadership, discipleship, and human capital development.",
       ctaJourney: "Choose Your Journey",
-      ctaAssessment: "Take Assessment",
+      ctaAssessment: "Take Free Assessment",
     },
     nextGathering: {
       titlePre: "Next Global ",
@@ -142,7 +142,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     assessment: {
       title: "Where are you as a leader?",
       body: "Discover your leadership profile and your sphere of impact through our 7-minute institutional diagnostic. Honest questions, a clear picture, and a recommended next step.",
-      cta: "Take Assessment",
+      cta: "Take Free Assessment",
     },
     testimonies: {
       eyebrow: "Testimonies",

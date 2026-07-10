@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Accordion } from "@/components/ui/Accordion";
 import { EventRegistration } from "@/components/forms/EventRegistration";
-import { formatDate, formatCurrency, dateParts } from "@/lib/utils";
+import { formatDate, dateParts } from "@/lib/utils";
 
 export function generateStaticParams() {
   return events.map((e) => ({ slug: e.slug }));
@@ -37,8 +37,6 @@ export default async function EventDetailPage({
   if (!event) notFound();
 
   const { day, monthLong, year } = dateParts(event.date);
-  const isPaid = event.tiers.some((t) => t.price > 0);
-  const lowest = event.tiers.length ? Math.min(...event.tiers.map((t) => t.price)) : 0;
 
   const schedule = [
     { id: "s1", question: "Opening & Worship", answer: "Doors open, pre-service worship and welcome." },
@@ -96,9 +94,7 @@ export default async function EventDetailPage({
                 <span className="text-caption font-bold uppercase text-ink-500">{monthLong.slice(0, 3)} {year}</span>
               </div>
               <div>
-                <p className="text-body-s font-semibold text-ink-900">
-                  {isPaid ? `From ${formatCurrency(lowest, event.tiers[0]?.currency)}` : "Free RSVP"}
-                </p>
+                <p className="text-body-s font-semibold text-ink-900">Free RSVP</p>
                 <p className="inline-flex items-center gap-1 text-caption text-ink-500">
                   <Clock className="h-3.5 w-3.5" /> {event.online ? "Online" : event.location}
                 </p>
@@ -110,9 +106,7 @@ export default async function EventDetailPage({
                 {event.tiers.map((t) => (
                   <li key={t.name} className="flex items-center justify-between py-3">
                     <span className="text-body-s text-ink-700">{t.name}</span>
-                    <span className="text-body-s font-semibold text-ink-900">
-                      {t.price === 0 ? "Free" : formatCurrency(t.price, t.currency)}
-                    </span>
+                    <span className="text-body-s font-semibold text-ink-900">Free</span>
                   </li>
                 ))}
               </ul>
@@ -120,7 +114,7 @@ export default async function EventDetailPage({
 
             <EventRegistration
               event={event}
-              trigger={<Button className="w-full">{isPaid ? "Register" : "Reserve free spot"}</Button>}
+              trigger={<Button className="w-full">Reserve free spot</Button>}
             />
             <p className="mt-3 text-center text-caption uppercase tracking-[0.2em] text-ink-500">
               Secure institutional registration

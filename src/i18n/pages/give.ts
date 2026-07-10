@@ -96,7 +96,7 @@ export const giveCopy: Record<Locale, GiveCopy> = {
       },
       {
         title: "Scholarship Partner",
-        body: "Remove barriers to excellence. Provide tuition and resources for promising leaders in our global training programs.",
+        body: "Remove barriers to excellence. Provide learning resources and care for promising leaders in our global training programs.",
         link: "Give Scholarship",
       },
     ],
@@ -180,7 +180,7 @@ export const giveCopy: Record<Locale, GiveCopy> = {
       },
       {
         title: "Partenaire des bourses",
-        body: "Levez les obstacles à l'excellence. Offrez frais de scolarité et ressources à des leaders prometteurs de nos programmes de formation mondiaux.",
+        body: "Levez les obstacles à l'excellence. Offrez des ressources d'apprentissage et un accompagnement à des leaders prometteurs de nos programmes de formation mondiaux.",
         link: "Offrir une bourse",
       },
     ],

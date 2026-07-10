@@ -28,11 +28,7 @@ export const events: EventItem[] = [
     summary: "Equipping institutional heads for national and global impact.",
     description:
       "The flagship gathering of the Global Leadership Forum. Three days of keynotes, sector roundtables, and networking for leaders committed to transforming their spheres of influence.",
-    tiers: [
-      { name: "Delegate", price: 75000, currency: "NGN" },
-      { name: "Executive", price: 150000, currency: "NGN" },
-      { name: "VIP Table", price: 500000, currency: "NGN" },
-    ],
+    tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
     slug: "dli-immersion-week",
@@ -47,10 +43,7 @@ export const events: EventItem[] = [
     summary: "A deep-dive intensive into kingdom discipleship and governance.",
     description:
       "An accelerated, residential immersion in the Dominion Leadership Institute curriculum. Five days of teaching, cohort work, and mentorship designed to fast-track your formation as a leader.",
-    tiers: [
-      { name: "Standard", price: 120000, currency: "NGN" },
-      { name: "Residential (incl. lodging)", price: 220000, currency: "NGN" },
-    ],
+    tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
     slug: "global-leaders-online-forum",
@@ -79,7 +72,7 @@ export const events: EventItem[] = [
     summary: "A renewal retreat for ministers and ministry leaders.",
     description:
       "A restful, restorative retreat for ministers carrying long-term responsibility. Days of prayer, mentorship, and renewal in a serene mountain setting.",
-    tiers: [{ name: "Retreat Pass", price: 180000, currency: "NGN" }],
+    tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
     slug: "dominion-city-london-gathering",
@@ -93,10 +86,7 @@ export const events: EventItem[] = [
     summary: "A regional celebration for the Dominion City UK family.",
     description:
       "A past regional gathering that drew the Dominion City family across the UK for worship, teaching, and fellowship. Recordings are available in the library.",
-    tiers: [
-      { name: "General", price: 0, currency: "USD" },
-      { name: "Partner Reserved", price: 40, currency: "USD" },
-    ],
+    tiers: [{ name: "General", price: 0, currency: "USD" }],
   },
   {
     slug: "leaders-masterclass-webinar",

@@ -108,8 +108,8 @@ export default async function PartnershipPage({
               </h2>
               <p className="mt-8 text-body-l leading-relaxed text-ink-300">
                 Dominion City is more than a gathering; it is an institutional gravity point. When
-                you give, you are not just donating — you are seed-funding global transformation
-                across four critical pillars of society.
+                you partner, you help carry global transformation across four critical pillars of
+                society through prayer, service, connection, and committed participation.
               </p>
               <ul className="mt-12 space-y-6">
                 {PILLARS.map((p) => (

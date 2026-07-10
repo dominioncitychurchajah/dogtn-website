@@ -5,13 +5,12 @@ import { Sparkles, CheckCircle2 } from "lucide-react";
 import type { EventItem } from "@/data/types";
 import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/ui/Button";
-import { Input, Select } from "@/components/ui/Input";
+import { Input } from "@/components/ui/Input";
 import { useToast } from "@/components/ui/Toast";
-import { formatCurrency } from "@/lib/utils";
 
 /**
- * Registration modal for an event. Paid events show a tier select; free events
- * show an RSVP. On submit, renders a success state with a stylized QR block.
+ * Registration modal for a free event RSVP. On submit, renders a success state
+ * with a stylized QR block.
  */
 export function EventRegistration({
   event,
@@ -25,7 +24,6 @@ export function EventRegistration({
   const [done, setDone] = React.useState(false);
   const [name, setName] = React.useState("");
 
-  const isPaid = event.tiers.some((t) => t.price > 0);
   const confirmationId = React.useMemo(
     () => `${event.slug.slice(0, 6).toUpperCase()}-${Math.floor(1000 + Math.random() * 8999)}`,
     [event.slug],
@@ -51,9 +49,7 @@ export function EventRegistration({
       onOpenChange={handleOpenChange}
       trigger={trigger}
       title={done ? "You're registered" : `Register — ${event.title}`}
-      description={
-        done ? undefined : isPaid ? "Choose your pass and enter your details." : "Reserve your free spot."
-      }
+      description={done ? undefined : "Reserve your free spot."}
     >
       {done ? (
         <div className="flex flex-col items-center text-center">
@@ -112,18 +108,8 @@ export function EventRegistration({
           <Input label="Phone" name="reg-phone" type="tel" required autoComplete="tel" />
           <Input label="Country" name="reg-country" required autoComplete="country-name" />
 
-          {isPaid && (
-            <Select label="Select a pass" name="reg-tier" required defaultValue={event.tiers[0]?.name}>
-              {event.tiers.map((t) => (
-                <option key={t.name} value={t.name}>
-                  {t.name} — {t.price === 0 ? "Free" : formatCurrency(t.price, t.currency)}
-                </option>
-              ))}
-            </Select>
-          )}
-
           <Button type="submit" className="mt-2 w-full">
-            {isPaid ? "Register" : "Confirm free RSVP"}
+            Confirm free RSVP
           </Button>
           <p className="text-center text-caption uppercase tracking-[0.2em] text-ink-500">
             Secure institutional registration

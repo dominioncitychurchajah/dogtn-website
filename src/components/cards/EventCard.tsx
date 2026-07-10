@@ -5,12 +5,10 @@ import type { EventItem } from "@/data/types";
 import type { Locale } from "@/i18n/config";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { dateParts, formatCurrency } from "@/lib/utils";
+import { dateParts } from "@/lib/utils";
 
 export function EventCard({ event, locale }: { event: EventItem; locale: Locale }) {
   const { day, month } = dateParts(event.date);
-  const lowest = event.tiers.length ? Math.min(...event.tiers.map((t) => t.price)) : 0;
-  const priceLabel = lowest === 0 ? "Free" : formatCurrency(lowest, event.tiers[0]?.currency);
 
   return (
     <div className="card-lift group flex flex-col overflow-hidden rounded-[var(--radius-l)] border border-ink-100 bg-paper-0">
@@ -32,7 +30,7 @@ export function EventCard({ event, locale }: { event: EventItem; locale: Locale 
         <h3 className="text-heading-3 leading-tight text-ink-900">{event.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-body-s text-ink-500">{event.summary}</p>
         <div className="mt-5 flex items-center justify-between gap-3">
-          <span className="text-body-s font-semibold text-ink-900">{priceLabel}</span>
+          <span className="text-body-s font-semibold text-ink-900">Free</span>
           <Button href={`/${locale}/events/${event.slug}`} size="s" variant="secondary">
             Register
           </Button>

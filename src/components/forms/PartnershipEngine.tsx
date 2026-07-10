@@ -5,29 +5,18 @@ import { ArrowRight } from "lucide-react";
 import { useToast } from "@/components/ui/Toast";
 import { cn } from "@/lib/utils";
 
-const FREQUENCIES = ["One-time", "Monthly", "Quarterly"] as const;
+const RHYTHMS = ["Pray", "Serve", "Connect"] as const;
 const PILLARS = ["Institutional Excellence", "Legacy Vault Digitization", "Global Missions", "General Support"];
-const PRESETS = [100, 500, 1000];
 
-/** The "Giving Engine" glass donation card on the Partnership page. */
+/** Partnership interest card on the Partnership page. */
 export function PartnershipEngine() {
   const { toast } = useToast();
-  const [frequency, setFrequency] = React.useState<(typeof FREQUENCIES)[number]>("One-time");
+  const [rhythm, setRhythm] = React.useState<(typeof RHYTHMS)[number]>("Pray");
   const [pillar, setPillar] = React.useState(PILLARS[0]);
-  const [amount, setAmount] = React.useState<number | null>(100);
-  const [custom, setCustom] = React.useState("");
-
-  const effective = custom !== "" && Number(custom) > 0 ? Number(custom) : amount ?? 0;
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (effective <= 0) {
-      toast("Please choose an amount to sow.", "info");
-      return;
-    }
-    toast(
-      `Thank you — $${effective.toLocaleString("en-US")} ${frequency.toLowerCase()} toward ${pillar}. Redirecting to secure checkout…`,
-    );
+    toast(`Thank you — your partnership interest for ${pillar} has been noted.`);
   }
 
   return (
@@ -35,21 +24,21 @@ export function PartnershipEngine() {
       onSubmit={submit}
       className="rounded-[var(--radius-l)] border border-gold-600/20 bg-paper-0/5 p-8 backdrop-blur-md lg:p-10"
     >
-      {/* Frequency */}
+      {/* Partnership rhythm */}
       <div className="mb-8">
         <label className="mb-4 block text-caption font-semibold uppercase tracking-wider text-paper-0">
-          Select Frequency
+          Select Partnership Path
         </label>
         <div className="grid grid-cols-3 gap-2">
-          {FREQUENCIES.map((f) => (
+          {RHYTHMS.map((f) => (
             <button
               key={f}
               type="button"
-              onClick={() => setFrequency(f)}
-              aria-pressed={frequency === f}
+              onClick={() => setRhythm(f)}
+              aria-pressed={rhythm === f}
               className={cn(
                 "rounded-[var(--radius-s)] py-3 text-body-s font-semibold transition-all",
-                frequency === f ? "bg-gold-600 text-ink-900" : "bg-paper-0/10 text-paper-0 hover:bg-paper-0/20",
+                rhythm === f ? "bg-gold-600 text-ink-900" : "bg-paper-0/10 text-paper-0 hover:bg-paper-0/20",
               )}
             >
               {f}
@@ -77,60 +66,27 @@ export function PartnershipEngine() {
         </select>
       </div>
 
-      {/* Amount */}
       <div className="mb-10">
-        <label className="mb-4 block text-caption font-semibold uppercase tracking-wider text-paper-0">
-          Select Amount (USD)
+        <label htmlFor="partnership-note" className="mb-4 block text-caption font-semibold uppercase tracking-wider text-paper-0">
+          Note
         </label>
-        <div className="mb-4 grid grid-cols-3 gap-2">
-          {PRESETS.map((v) => (
-            <button
-              key={v}
-              type="button"
-              onClick={() => {
-                setAmount(v);
-                setCustom("");
-              }}
-              aria-pressed={custom === "" && amount === v}
-              className={cn(
-                "rounded-[var(--radius-s)] border py-3 text-body-s font-semibold transition-all",
-                custom === "" && amount === v
-                  ? "border-gold-600 bg-gold-600/15 text-paper-0"
-                  : "border-paper-0/20 bg-paper-0/5 text-paper-0 hover:border-gold-600",
-              )}
-            >
-              ${v.toLocaleString("en-US")}
-            </button>
-          ))}
-        </div>
-        <div className="relative">
-          <span className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-ink-300">$</span>
-          <input
-            type="number"
-            inputMode="numeric"
-            min={1}
-            value={custom}
-            onChange={(e) => {
-              setCustom(e.target.value);
-              setAmount(null);
-            }}
-            placeholder="Custom Amount"
-            aria-label="Custom amount"
-            className="w-full rounded-[var(--radius-s)] border border-paper-0/20 bg-paper-0/5 p-4 ps-8 text-body-m text-paper-0 outline-none transition-colors placeholder:text-ink-300 focus:border-gold-600"
-          />
-        </div>
+        <textarea
+          id="partnership-note"
+          rows={4}
+          placeholder="Tell us how you would like to partner."
+          className="w-full resize-none rounded-[var(--radius-s)] border border-paper-0/20 bg-paper-0/5 p-4 text-body-m text-paper-0 outline-none transition-colors placeholder:text-ink-300 focus:border-gold-600"
+        />
       </div>
 
       <button
         type="submit"
         className="group flex w-full items-center justify-center gap-3 rounded-[var(--radius-m)] bg-gold-600 py-5 text-body-m font-bold text-ink-900 transition-all hover:bg-gold-hover"
       >
-        Sow into the Kingdom
+        Register Partnership Interest
         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1 rtl:rotate-180" aria-hidden />
       </button>
       <p className="mt-6 text-center text-caption text-ink-300">
-        Securely processed via Global Transformation Trust. All gifts are tax-deductible in
-        accordance with local regulations.
+        Our team will follow up with the most relevant next step for your selected pillar.
       </p>
     </form>
   );

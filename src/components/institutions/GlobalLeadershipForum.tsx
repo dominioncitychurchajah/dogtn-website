@@ -20,8 +20,8 @@ const DAY_ONE = [
 const FAQS = [
   {
     id: "faq-group",
-    question: "Is there a group discount?",
-    answer: "Yes, groups of 10 or more receive a 15% discount automatically applied during checkout.",
+    question: "Can groups register together?",
+    answer: "Yes. Groups of 10 or more can register together so the team can prepare seating and arrival support.",
   },
   {
     id: "faq-visa",
