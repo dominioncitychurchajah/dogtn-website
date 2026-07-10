@@ -12,10 +12,10 @@ export function Footer({ locale }: { locale: Locale }) {
     {
       title: t(dict, "footer.explore"),
       links: [
-        { label: "The Journey", href: p("/start-here") },
-        { label: "Daily Word", href: p("/teachings") },
-        { label: "Media Library", href: p("/library") },
-        { label: "Find a Location", href: p("/community") },
+        { label: "Start Here", href: p("/start-here") },
+        { label: "Teachings", href: p("/teachings") },
+        { label: "Library", href: p("/library") },
+        { label: "Community", href: p("/community") },
       ],
     },
     {
@@ -30,8 +30,10 @@ export function Footer({ locale }: { locale: Locale }) {
     {
       title: "Connect",
       links: [
-        { label: "Get Involved", href: p("/mentorship") },
-        { label: "Partnership", href: p("/give") },
+        { label: "About", href: p("/about") },
+        { label: "Ministries", href: p("/ministries") },
+        { label: "Mentorship", href: p("/mentorship") },
+        { label: "Give", href: p("/give") },
         { label: "Global Missions", href: p("/institutions/global-missions-network") },
         { label: "Contact Support", href: "mailto:support@davidogbueli.org" },
       ],

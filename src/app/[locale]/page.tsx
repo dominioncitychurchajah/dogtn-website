@@ -30,7 +30,7 @@ export default async function HomePage({
       <Hero locale={loc} copy={c.hero} />
 
       {/* 2 — Next gathering countdown (overlaps hero) */}
-      <NextGathering copy={c.nextGathering} />
+      <NextGathering copy={c.nextGathering} locale={loc} />
 
       {/* 3 — Journey selector strip */}
       <JourneyStrip locale={loc} />

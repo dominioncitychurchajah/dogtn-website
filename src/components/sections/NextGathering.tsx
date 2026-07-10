@@ -1,7 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { MapPin } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, MapPin, Radio } from "lucide-react";
+import type { Locale } from "@/i18n/config";
 import type { HomeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
 
@@ -25,7 +27,7 @@ function timeToNextGathering() {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-export function NextGathering({ copy }: { copy: HomeCopy["nextGathering"] }) {
+export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"]; locale: Locale }) {
   // Start at null so SSR and first client render match (renders "00"); the
   // interval fills in real values after mount.
   const [t, setT] = React.useState<ReturnType<typeof timeToNextGathering> | null>(null);
@@ -96,6 +98,24 @@ export function NextGathering({ copy }: { copy: HomeCopy["nextGathering"] }) {
                 <dd className="text-body-m font-medium text-gold-600">{copy.parkingValue}</dd>
               </div>
             </dl>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <a
+                href="https://www.youtube.com/results?search_query=David+Ogbueli+live"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-5 text-body-m font-semibold text-ink-900 hover:bg-gold-hover"
+              >
+                <Radio className="h-4 w-4" aria-hidden />
+                Watch Online
+              </a>
+              <Link
+                href={`/${locale}/events`}
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] border border-paper-0/15 px-5 text-body-m font-semibold text-paper-0 hover:bg-paper-0/10"
+              >
+                Plan Your Visit
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
           </div>
         </div>
       </Container>

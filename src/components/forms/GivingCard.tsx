@@ -14,10 +14,10 @@ type Frequency = "one-time" | "monthly";
 const SYMBOL: Record<Currency, string> = { USD: "$", GBP: "£", EUR: "€", NGN: "₦" };
 const FLAG: Record<Currency, string> = { USD: "🇺🇸", GBP: "🇬🇧", EUR: "🇪🇺", NGN: "🇳🇬" };
 const PRESETS: Record<Currency, number[]> = {
-  USD: [10, 25, 50, 100],
-  GBP: [10, 25, 50, 100],
-  EUR: [10, 25, 50, 100],
-  NGN: [5000, 10000, 25000, 50000],
+  USD: [5, 10, 25, 50],
+  GBP: [5, 10, 25, 50],
+  EUR: [5, 10, 25, 50],
+  NGN: [2500, 5000, 10000, 25000],
 };
 
 export function GivingCard({ locale }: { locale: Locale }) {

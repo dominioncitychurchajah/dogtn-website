@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, ClipboardCheck, Star } from "lucide-react";
+import { ArrowRight, ClipboardCheck, Radio, Star } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { HomeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
@@ -36,6 +36,11 @@ export function Hero({ locale, copy }: { locale: Locale; copy: HomeCopy["hero"] 
           </h1>
 
           <p className="measure mt-6 text-body-l text-ink-300">{copy.subtitle}</p>
+
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-paper-0/20 bg-paper-0/10 px-4 py-2 text-body-s font-semibold text-paper-0">
+            <Radio className="h-4 w-4 text-gold-400" aria-hidden />
+            Watch live Sundays, 8 AM GMT+1
+          </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Button href={`/${locale}/start-here`} size="l">

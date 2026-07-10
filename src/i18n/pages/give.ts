@@ -62,9 +62,9 @@ export const giveCopy: Record<Locale, GiveCopy> = {
     metaDescription:
       "Partner with the institutions, missions, training, and outreach work raising leaders and transforming society across the globe.",
     eyebrow: "Give",
-    title: "Give toward lasting transformation.",
+    title: "Give: Invest in Eternal Impact.",
     subtitle:
-      "Partner with the institutions, missions, training, and outreach work raising leaders and transforming society across the globe.",
+      "Your generosity fuels the mission to train leaders, reach cities, serve communities, and transform lives. Discover the various ways to give below, and sow your seed with joy.",
     trust: ["Secure SSL", "PCI Compliant", "Global Reach"],
     impact: [
       {
@@ -80,9 +80,9 @@ export const giveCopy: Record<Locale, GiveCopy> = {
         body: "Investing in community transformation initiatives, infrastructure, and social welfare.",
       },
     ],
-    partnershipTitle: "Partnership Programs",
+    partnershipTitle: "Partnership & General Giving: Your Impact Starts Here.",
     partnershipSubtitle:
-      "Deepen your commitment to the vision by joining one of our core partnership circles.",
+      "Choose the purpose that resonates with your heart, then continue securely with the giving option that fits you.",
     cards: [
       {
         title: "Monthly Partner",

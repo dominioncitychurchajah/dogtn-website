@@ -56,6 +56,7 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
       href: p("/institutions"),
       mega: [
         { label: "Ecosystem Map", href: p("/institutions"), desc: "The 7 institutions" },
+        { label: "Ministries", href: p("/ministries"), desc: "Grow, serve, and belong" },
         { label: "Dominion Leadership Institute", href: p("/institutions/dominion-leadership-institute") },
         { label: "Dominion City", href: "https://www.dominioncity.cc" },
         { label: "Global Leadership Forum", href: p("/institutions/global-leadership-forum") },

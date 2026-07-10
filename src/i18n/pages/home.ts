@@ -102,7 +102,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       titlePre: "Next Global ",
       titleAccent: "Gathering",
       titlePost: "",
-      subtitle: "Join our glorious service online or in-person this Sunday at 8:00 AM.",
+      subtitle: "Watch live or join us in person this Sunday at 8:00 AM GMT+1.",
       days: "Days",
       hours: "Hours",
       mins: "Mins",
@@ -114,8 +114,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       parkingValue: "Free & Secure",
     },
     events: {
-      title: "Global Gatherings",
-      subtitle: "Join us at our major annual conferences and leadership summits.",
+      title: "Gather, grow, and be transformed.",
+      subtitle: "Join powerful conferences, leadership intensives, and online gatherings across the network. Come with expectation, leave transformed.",
       viewAll: "View All Events",
     },
     ecosystem: {
@@ -154,8 +154,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     give: {
       badge: "Partner With the Vision",
-      title: "Give, and Help Transform a Nation",
-      body: "Every gift trains a leader, plants a work, and restores dignity to a life. Sow into a mission that outlasts us all.",
+      title: "Make an Eternal Impact",
+      body: "Your generosity trains leaders, plants works, serves communities, and restores dignity to lives. Invest in what moves your heart.",
       cta: "Give",
     },
     newsletter: {
