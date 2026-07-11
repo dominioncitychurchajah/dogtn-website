@@ -69,7 +69,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <div>
             <Link href={`/${locale}`} className="inline-flex items-center" aria-label="David Ogbueli — home">
               <Image
-                src="/images/logo/dr-david-ogbueli-dark.png"
+                src="/images/logo/dr-david-ogbueli-brand-dark.png"
                 alt="David Ogbueli"
                 width={341}
                 height={122}

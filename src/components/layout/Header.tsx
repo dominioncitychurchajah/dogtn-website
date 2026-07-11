@@ -46,7 +46,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
           {/* Brand */}
           <Link href={`/${locale}`} className="flex shrink-0 items-center" aria-label="David Ogbueli — home">
             <Image
-              src={solid ? "/images/logo/dr-david-ogbueli-white.png" : "/images/logo/dr-david-ogbueli-dark.png"}
+              src={solid ? "/images/logo/dr-david-ogbueli-brand-white.png" : "/images/logo/dr-david-ogbueli-brand-dark.png"}
               alt="David Ogbueli"
               width={341}
               height={122}
