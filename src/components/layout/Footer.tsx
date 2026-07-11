@@ -71,9 +71,9 @@ export function Footer({ locale }: { locale: Locale }) {
               <Image
                 src="/images/logo/dr-david-ogbueli-dark.png"
                 alt="David Ogbueli"
-                width={403}
-                height={83}
-                className="h-10 w-auto"
+                width={341}
+                height={122}
+                className="h-14 w-auto"
               />
             </Link>
             <p className="mt-4 max-w-xs text-body-s leading-relaxed">{t(dict, "footer.tagline")}</p>

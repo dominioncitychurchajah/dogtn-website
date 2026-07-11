@@ -48,10 +48,10 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             <Image
               src={solid ? "/images/logo/dr-david-ogbueli-white.png" : "/images/logo/dr-david-ogbueli-dark.png"}
               alt="David Ogbueli"
-              width={403}
-              height={83}
+              width={341}
+              height={122}
               priority
-              className="h-9 w-auto lg:h-10"
+              className="h-12 w-auto lg:h-14"
             />
           </Link>
 
