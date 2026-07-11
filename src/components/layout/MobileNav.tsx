@@ -5,6 +5,7 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import type { NavGroup } from "./nav-config";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import type { Locale } from "@/i18n/config";
 
@@ -83,6 +84,10 @@ export function MobileNav({
           ))}
         </ul>
       </nav>
+      <div className="flex items-center justify-between gap-4 border-t border-paper-0/10 px-5 py-3">
+        <span className="text-body-s text-ink-300">Appearance</span>
+        <ThemeToggle className="flex" />
+      </div>
       <div className="flex items-center justify-between gap-4 border-t border-paper-0/10 px-5 py-4">
         <LanguageSwitcher locale={locale} />
         <Button href={`/${locale}/give`} onClick={onClose} className="flex-1">

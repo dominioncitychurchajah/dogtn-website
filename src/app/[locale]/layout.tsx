@@ -4,8 +4,8 @@ import { getDictionary, t } from "@/lib/i18n-utils";
 import { HtmlLangDir } from "@/components/layout/HtmlLangDir";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
 import { MiniAudioPlayer } from "@/components/layout/MiniAudioPlayer";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { ToastProvider } from "@/components/ui/Toast";
 import type { NavStrings } from "@/components/layout/nav-config";
 import type { Metadata } from "next";
@@ -68,12 +68,12 @@ export default async function LocaleLayout({
       </a>
       <ToastProvider>
         <Header locale={locale} strings={navStrings} />
-        <main id="main" className="flex-1 pb-16 md:pb-0">
+        <main id="main" className="flex-1">
           {children}
         </main>
         <Footer locale={locale} />
-        <MobileBottomBar locale={locale} />
         <MiniAudioPlayer />
+        <ChatWidget locale={locale} />
       </ToastProvider>
     </div>
   );

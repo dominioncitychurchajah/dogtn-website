@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Search, UserCircle2, Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileNav } from "./MobileNav";
 import { buildNav, type NavStrings } from "./nav-config";
@@ -45,14 +46,36 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
         <nav className="mx-auto flex h-20 max-w-content items-center justify-between gap-6 px-5 lg:px-16">
           {/* Brand */}
           <Link href={`/${locale}`} className="flex shrink-0 items-center" aria-label="David Ogbueli — home">
-            <Image
-              src={solid ? "/images/logo/dr-david-ogbueli-brand-white.png" : "/images/logo/dr-david-ogbueli-brand-dark.png"}
-              alt="David Ogbueli"
-              width={341}
-              height={122}
-              priority
-              className="h-12 w-auto lg:h-14"
-            />
+            {solid ? (
+              // Solid bar surface follows the theme: light bar → dark-artwork
+              // logo, dark bar → white-artwork logo (CSS swaps pre-paint).
+              <>
+                <Image
+                  src="/images/logo/dr-david-ogbueli-brand-white.png"
+                  alt="David Ogbueli"
+                  width={341}
+                  height={122}
+                  priority
+                  className="theme-logo-light h-12 w-auto lg:h-14"
+                />
+                <Image
+                  src="/images/logo/dr-david-ogbueli-brand-dark.png"
+                  alt="David Ogbueli"
+                  width={341}
+                  height={122}
+                  className="theme-logo-dark h-12 w-auto lg:h-14"
+                />
+              </>
+            ) : (
+              <Image
+                src="/images/logo/dr-david-ogbueli-brand-dark.png"
+                alt="David Ogbueli"
+                width={341}
+                height={122}
+                priority
+                className="h-12 w-auto lg:h-14"
+              />
+            )}
           </Link>
 
           {/* Desktop nav */}
@@ -110,6 +133,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             >
               <Search className="h-5 w-5" />
             </Link>
+            <ThemeToggle className="hidden lg:flex" />
             <LanguageSwitcher locale={locale} className="hidden sm:block" />
             <Link href={`/${locale}/my-journey`} aria-label={strings.account} className="rounded-full p-2 hover:bg-current/10">
               <UserCircle2 className="h-6 w-6" />
