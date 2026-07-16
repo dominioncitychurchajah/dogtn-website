@@ -20,6 +20,7 @@ import { startHereCopy } from "@/i18n/pages/start-here";
 import { Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { StartHereExperience } from "@/components/start-here/StartHereExperience";
 
 export async function generateMetadata({
   params,
@@ -117,19 +118,7 @@ export default async function StartHerePage({
 
   return (
     <main className="overflow-hidden bg-[#faf9ff] text-ink-900">
-      <section className="px-5 pb-16 pt-24 text-center sm:pb-20 sm:pt-28 lg:pb-28 lg:pt-32">
-        <Container className="px-0">
-          <span className="mb-8 block text-[11px] font-bold uppercase tracking-[0.45em] text-gold-hover">
-            Your Starting Point
-          </span>
-          <h1 className="text-display-l text-ink-900 sm:text-[5.5rem] sm:leading-[0.95]">Start Here</h1>
-          <div className="mx-auto mt-8 h-px w-20 bg-gold-600/35" />
-          <p className="mx-auto mt-8 max-w-3xl font-serif text-2xl italic leading-snug text-ink-500 sm:text-3xl">
-            Your gateway to growth and transformation.{" "}
-            <span className="font-bold not-italic text-ink-900">Discover where you fit and how you can grow.</span>
-          </p>
-        </Container>
-      </section>
+      <StartHereExperience locale={loc} />
 
       <section className="px-5">
         <Container className="px-0">
@@ -295,7 +284,7 @@ export default async function StartHerePage({
               </div>
               <div className="flex shrink-0 flex-col items-stretch gap-4 sm:items-center">
                 <Button href={p("/leadership/assessment")} size="l" className="rounded-[var(--radius-s)] bg-ink-900 text-paper-0 hover:bg-gold-600 hover:text-ink-900">
-                  Take the Assessment
+                  Take Free Assessment
                   <Compass className="h-4 w-4" aria-hidden />
                 </Button>
                 <Button href={p("/mentorship")} variant="ghost" className="text-[11px] uppercase tracking-[0.2em] text-ink-400 hover:bg-transparent hover:text-gold-hover">
