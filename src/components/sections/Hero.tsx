@@ -1,25 +1,15 @@
-import Image from "next/image";
 import { ArrowRight, ClipboardCheck, Star } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { HomeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
+import { HeroMedia } from "@/components/sections/HeroMedia";
 
 export function Hero({ locale, copy }: { locale: Locale; copy: HomeCopy["hero"] }) {
   return (
     <section className="relative flex min-h-[85svh] items-center overflow-hidden bg-ink-900 lg:min-h-[100svh]">
       <div className="absolute inset-0">
-        <Image
-          src="/images/pastor/hero-preaching-stage.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        {/* Left-to-right ink gradient for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-900 via-ink-900/75 to-ink-900/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 via-transparent to-ink-900/30" />
+        <HeroMedia />
       </div>
 
       <Container className="relative z-10 py-24">
