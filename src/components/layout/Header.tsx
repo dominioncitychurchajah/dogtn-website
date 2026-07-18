@@ -12,7 +12,6 @@ import { MobileNav } from "./MobileNav";
 import { buildNav, type NavStrings } from "./nav-config";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
-
 export function Header({ locale, strings }: { locale: Locale; strings: NavStrings }) {
   const pathname = usePathname();
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;

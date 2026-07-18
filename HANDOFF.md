@@ -52,13 +52,13 @@ The old project reference/name `dogtn-website` may not work in Wrangler anymore.
 
 ## Current Known Good State
 
-Latest confirmed deployed commit at handoff:
+Latest commit pushed to GitHub:
 
 ```text
-f9fd1a9 Use versioned logo asset paths
+14d6b35 Add optimized desktop hero video fallback
 ```
 
-That deployment was confirmed active on Cloudflare Pages, and the public site was verified to serve the new logo files.
+Cloudflare Pages should automatically build this commit from the connected `main` branch. The latest confirmed Cloudflare deployment before the hero-video push was the logo deployment; verify the new commit in the Cloudflare dashboard or with Wrangler after authenticating to the correct Cloudflare account.
 
 Useful verification commands:
 
@@ -112,6 +112,22 @@ The logo dimensions were updated to:
 ```
 
 The older same-name logo paths were being cached by the public Pages domain, so versioned filenames were added to force Cloudflare to request the fresh artwork immediately.
+
+### Homepage Hero Video
+
+The homepage hero now uses:
+
+- Desktop-capable connections: `/public/video/home-hero.mp4`, muted, inline, and looped.
+- Mobile visitors: the existing `/public/images/pastor/hero-preaching-stage.png` poster image only.
+- Slow or `Save-Data` connections: poster image only.
+- Unsupported browsers: poster image fallback.
+
+The source MP4 is approximately 7.5 MB. It is intentionally not loaded on mobile, but a future optimization pass should create a smaller desktop web encode or move the asset to Cloudflare Stream if traffic grows.
+
+The loading policy is implemented in:
+
+- `/src/components/sections/HeroMedia.tsx`
+- `/src/components/sections/Hero.tsx`
 
 ## Important Development Notes
 
@@ -188,6 +204,8 @@ Use:
 npx wrangler pages deployment list --project-name dr-david-ogbueli
 
 Current logo assets are /public/images/logo/dr-david-ogbueli-brand-dark.png and /public/images/logo/dr-david-ogbueli-brand-white.png, referenced in Header.tsx and Footer.tsx.
+
+The homepage hero video is /public/video/home-hero.mp4. It is desktop-only by policy, with /public/images/pastor/hero-preaching-stage.png as the mobile and network fallback.
 
 Keep edits surgical, preserve existing design patterns, and verify with npm run build before pushing.
 ```

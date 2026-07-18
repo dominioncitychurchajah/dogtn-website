@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Globe, MessageCircle, PlayCircle, Send } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { getDictionary, t } from "@/lib/i18n-utils";

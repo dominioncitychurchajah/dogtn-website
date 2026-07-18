@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { X, Mail, Send } from "lucide-react";
 import { useChatStore } from "@/lib/chat-store";
 import { useAudioPlayer } from "@/lib/audio-store";
@@ -33,6 +33,9 @@ export function ChatWidget({ locale }: { locale: Locale }) {
   const [draft, setDraft] = React.useState("");
   const [faceState, setFaceState] = React.useState<DebbieFaceState>("idle");
 
+  const pathname = usePathname();
+  const isStartHere = pathname === `/${locale}/start-here` || pathname === `/${locale}/start-here/`;
+
   useDebbieProactiveTriggers(locale);
 
   React.useEffect(() => {
@@ -48,6 +51,8 @@ export function ChatWidget({ locale }: { locale: Locale }) {
     const t = setTimeout(() => setFaceState("idle"), 900);
     return () => clearTimeout(t);
   }, [isTyping, messages.length]);
+
+  if (isStartHere) return null;
 
   function handleSend(e: React.FormEvent) {
     e.preventDefault();

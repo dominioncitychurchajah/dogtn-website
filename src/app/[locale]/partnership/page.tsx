@@ -1,51 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ChevronsDown, BadgeCheck, Rocket, Landmark, Medal, CheckCircle2, Star, ShieldCheck } from "lucide-react";
+import { ChevronsDown } from "lucide-react";
 import type { Locale } from "@/i18n/config";
-import { Section, Container } from "@/components/layout/Section";
+import { Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
-import { PartnershipEngine } from "@/components/forms/PartnershipEngine";
-import { PrivateBriefingForm } from "@/components/forms/PrivateBriefingForm";
+import { PartnershipClient } from "./components/PartnershipClient";
 
 export const metadata: Metadata = {
-  title: "Partnership",
+  title: "Partnership | David Ogbueli Global Transformation Network",
   description:
-    "Invest in a better future. Your generosity fuels our work in leadership, mentorship, and global missions.",
+    "Every $50 you give trains one leader for a lifetime of impact. Join 2,400 partners worldwide who are already transforming nations through purpose, mentorship, and community.",
 };
-
-const PILLARS = [
-  "400+ mentorship hubs across the globe.",
-  "Over 30 years of transformation teachings being preserved and shared.",
-  "Rapid-response mission teams reaching communities worldwide.",
-];
-
-const TIERS = [
-  {
-    icon: Rocket,
-    name: "Community Partner",
-    level: "Foundation Level",
-    featureIcon: CheckCircle2,
-    features: ["Quarterly Impact Updates", "Annual Transformation Report", "Monthly Prayer Digest"],
-    featured: false,
-  },
-  {
-    icon: Landmark,
-    name: "Legacy Builder",
-    level: "Growing Support",
-    featureIcon: Star,
-    features: ["VIP access to the teachings vault", "Institutional voting on select projects", "Reserved seating at global summits"],
-    featured: true,
-  },
-  {
-    icon: Medal,
-    name: "Visionary Partner",
-    level: "Deep Impact",
-    featureIcon: ShieldCheck,
-    features: ["Direct mentor briefings", "Private roundtable participation", "Legacy naming opportunities"],
-    featured: false,
-  },
-];
 
 export default async function PartnershipPage({
   params,
@@ -56,177 +21,67 @@ export default async function PartnershipPage({
   const loc = locale as Locale;
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative flex min-h-[80vh] flex-col justify-center overflow-hidden bg-ink-900 text-paper-0">
+    <main className="overflow-hidden bg-ink-900">
+      {/* PERSUASIVE HERO */}
+      <section className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-ink-900 text-paper-0">
         <Image
           src="/images/pastor/community-vestments-auditorium.jpg"
-          alt=""
+          alt="Dr. David Ogbueli addressing leadership auditorium"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-30"
+          className="object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/60 to-ink-900/40" aria-hidden />
-        <Container className="relative z-10 py-28 text-center">
-          <span className="mb-8 block text-caption font-semibold uppercase tracking-[0.3em] text-gold-400">
+        <Container className="relative z-10 pt-32 pb-24 text-center">
+          <span className="mb-6 block text-[11px] font-bold uppercase tracking-[0.45em] text-gold-400">
             Global Transformation Network
           </span>
-          <h1 className="mx-auto max-w-4xl text-display-l leading-tight">
-            Build a Legacy of <span className="text-gold-600">Transformation</span>
+          <h1 className="mx-auto max-w-4xl font-display text-[32px] sm:text-[48px] lg:text-[64px] leading-tight text-paper-0">
+            Your Partnership Raises Leaders Who <span className="text-gold-600 font-bold block sm:inline">Transform Nations</span>
           </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-body-l text-ink-300">
-            Invest in a better future. Your generosity fuels our work in leadership, mentorship,
-            and global missions.
+          <p className="mx-auto mt-8 max-w-2xl text-body-l text-ink-300 leading-relaxed">
+            Every $50 you give trains one leader for a lifetime of impact. Join 2,400 partners who are already changing the world.
           </p>
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href="#giving-engine" size="l" className="uppercase tracking-wider">
-              Partner With Us
+            <Button href="#giving-engine" size="l" className="uppercase tracking-widest font-bold">
+              Become a Partner
             </Button>
             <Button
-              href={`/${loc}/give`}
+              href={`/${loc}/teachings`}
               size="l"
               variant="secondary"
-              className="border-paper-0/30 bg-transparent uppercase tracking-wider text-paper-0 hover:bg-paper-0/10"
+              className="border-paper-0/30 bg-transparent uppercase tracking-widest text-paper-0 hover:bg-paper-0/10"
             >
-              View Annual Impact Report
+              Download Annual Report
             </Button>
           </div>
-        </Container>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-          <ChevronsDown className="h-8 w-8 animate-bounce text-gold-600" aria-hidden />
-        </div>
-      </section>
 
-      {/* Giving engine */}
-      <Section surface="dark" id="giving-engine">
-        <Container>
-          <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <h2 className="text-heading-1 text-paper-0">
-                Invest in the <span className="text-gold-600">Transformation Network</span>
-              </h2>
-              <p className="mt-8 text-body-l leading-relaxed text-ink-300">
-                Dominion City is more than a gathering, it is a movement. When you partner, you
-                help carry transformation across every sphere of society through prayer, service,
-                connection, and committed participation.
-              </p>
-              <ul className="mt-12 space-y-6">
-                {PILLARS.map((p) => (
-                  <li key={p} className="flex items-start gap-4 text-body-m text-ink-300">
-                    <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <PartnershipEngine />
-          </div>
-        </Container>
-      </Section>
-
-      {/* Partnership echelons */}
-      <Section surface="paper">
-        <Container>
-          <div className="mb-20 text-center">
-            <h2 className="text-heading-1 text-ink-900">
-              Partnership <span className="text-gold-600">Levels</span>
-            </h2>
-            <p className="mx-auto mt-6 max-w-3xl text-body-l text-ink-500">
-              Choose the level of involvement that fits your heart and your capacity.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {TIERS.map((tier) => {
-              const TierIcon = tier.icon;
-              const FeatIcon = tier.featureIcon;
-              return (
-                <div
-                  key={tier.name}
-                  className={
-                    tier.featured
-                      ? "card-lift relative flex flex-col border border-gold-600/40 bg-ink-900 p-10 text-paper-0"
-                      : "card-lift flex flex-col border border-ink-100 bg-paper-0 p-10"
-                  }
-                >
-                  {tier.featured && (
-                    <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gold-600 px-4 py-1 text-caption font-bold uppercase tracking-wider text-ink-900">
-                      Recommended
-                    </span>
-                  )}
-                  <div className="mb-8">
-                    <TierIcon className="mb-4 h-9 w-9 text-gold-600" aria-hidden />
-                    <h3 className={tier.featured ? "text-heading-3 text-paper-0" : "text-heading-3 text-ink-900"}>
-                      {tier.name}
-                    </h3>
-                    <p className={tier.featured ? "text-caption font-semibold uppercase tracking-wider text-gold-400" : "text-caption font-semibold uppercase tracking-wider text-ink-500"}>
-                      {tier.level}
-                    </p>
-                  </div>
-                  <div
-                    className="mb-8 h-px w-full"
-                    style={{ background: "linear-gradient(90deg, transparent, #C5A059, transparent)" }}
-                    aria-hidden
-                  />
-                  <ul className={tier.featured ? "mb-10 flex-1 space-y-4 text-body-s text-ink-300" : "mb-10 flex-1 space-y-4 text-body-s text-ink-500"}>
-                    {tier.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2">
-                        <FeatIcon className="h-4 w-4 shrink-0 text-gold-600" aria-hidden /> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  {tier.featured ? (
-                    <Link
-                      href={`/${loc}/give`}
-                      className="w-full rounded-[var(--radius-s)] bg-gold-600 py-4 text-center text-caption font-semibold uppercase tracking-widest text-ink-900 transition-all hover:bg-gold-hover"
-                    >
-                      Join at this level
-                    </Link>
-                  ) : (
-                    <Link
-                      href={`/${loc}/give`}
-                      className="w-full rounded-[var(--radius-s)] border-2 border-ink-900 py-4 text-center text-caption font-semibold uppercase tracking-widest text-ink-900 transition-all hover:bg-ink-900 hover:text-paper-0"
-                    >
-                      Join at this level
-                    </Link>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Private foundation module */}
-      <Section surface="alt">
-        <Container>
-          <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-20">
-            <div className="relative aspect-video overflow-hidden rounded-[var(--radius-l)] shadow-elev-3">
-              <Image
-                src="/images/pastor/dli-conference-whiteboard.jpg"
-                alt=""
-                fill
-                sizes="(max-width:1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <h2 className="text-heading-1 text-ink-900">
-                Your Generosity, <br />
-                <span className="text-gold-600">Our Shared Impact</span>
-              </h2>
-              <p className="mt-8 text-body-l text-ink-500">
-                For individuals, families, or organizations looking to make a meaningful, lasting
-                impact, we offer a personal conversation to explore how your giving can align with
-                the mission.
-              </p>
-              <div className="mt-12">
-                <PrivateBriefingForm />
+          {/* Stats Bar */}
+          <div className="mt-16 max-w-3xl mx-auto border-t border-white/10 pt-8">
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <span className="block text-heading-2 font-display font-bold text-gold-400">12,000+</span>
+                <span className="text-[10px] uppercase tracking-wider text-white/50 block mt-1">Leaders Trained</span>
+              </div>
+              <div>
+                <span className="block text-heading-2 font-display font-bold text-gold-400">400+</span>
+                <span className="text-[10px] uppercase tracking-wider text-white/50 block mt-1">Mentorship Hubs</span>
+              </div>
+              <div>
+                <span className="block text-heading-2 font-display font-bold text-gold-400">30+</span>
+                <span className="text-[10px] uppercase tracking-wider text-white/50 block mt-1">Nations Reached</span>
               </div>
             </div>
           </div>
         </Container>
-      </Section>
-    </>
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden sm:block">
+          <ChevronsDown className="h-6 w-6 animate-bounce text-gold-600" aria-hidden />
+        </div>
+      </section>
+
+      {/* RENDER DYNAMIC LAYOUT PORTIONS */}
+      <PartnershipClient locale={loc} />
+    </main>
   );
 }
