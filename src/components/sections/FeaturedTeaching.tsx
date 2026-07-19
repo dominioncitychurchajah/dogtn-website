@@ -61,15 +61,15 @@ export function FeaturedTeaching({
             <p className="measure mt-5 text-body-l text-ink-500">{teaching.description}</p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button href={`/${locale}/teachings/${teaching.slug}`}>
+              <Button href={`/${locale}/media`}>
                 <Play className="h-5 w-5 fill-ink-900" />
                 {copy.watch}
               </Button>
-              <Button href={`/${locale}/teachings/${teaching.slug}`} variant="secondary">
+              <Button href={`/${locale}/media`} variant="secondary">
                 <Headphones className="h-5 w-5" />
                 {copy.listen}
               </Button>
-              <Button href={`/${locale}/teachings/${teaching.slug}`} variant="ghost">
+              <Button href={`/${locale}/media`} variant="ghost">
                 <FileText className="h-5 w-5" />
                 {copy.notes}
               </Button>

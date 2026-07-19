@@ -5,8 +5,7 @@ export interface NavStrings {
   teachings: string;
   leadership: string;
   mentorship: string;
-  institutions: string;
-  community: string;
+  ministry: string;
   events: string;
   library: string;
   partnership: string;
@@ -34,36 +33,28 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
   return [
     { label: s.startHere, href: p("/start-here") },
     {
-      label: s.teachings,
-      href: p("/teachings"),
+      label: "About",
+      href: p("/his-story"),
       mega: [
-        { label: "Knowledge Library", href: p("/teachings"), desc: "Video, audio & articles" },
-        { label: "Legacy Vault", href: p("/library"), desc: "Books & searchable archive" },
-        { label: "My Journey", href: p("/my-journey"), desc: "Continue where you left off" },
+        { label: "His Story", href: p("/his-story"), desc: "The man, the mandate, the mission" },
+        { label: "The Ministry", href: p("/ministry"), desc: "Global network overview" },
+        { label: "Mentorship Track", href: p("/mentorship"), desc: "4 tracks, with a mentor for the journey" },
+        { label: "Take the Leadership Assessment", href: p("/leadership/assessment"), desc: "7-minute free assessment" },
       ],
     },
     {
-      label: s.leadership,
-      href: p("/leadership"),
+      label: "Books",
+      href: p("/books"),
       mega: [
-        { label: "Leadership Assessment", href: p("/leadership/assessment"), desc: "7-min diagnostic" },
-        { label: "Leadership Hub", href: p("/leadership"), desc: "Pathways & courses" },
-        { label: "Mentorship Tracks", href: p("/mentorship"), desc: "Apply to a cohort" },
+        { label: "All Books", href: p("/books"), desc: "Complete library" },
+        { label: "Pillars of Solomon's Wealth", href: p("/books/the-pillars-of-solomons-wealth"), desc: "Generational abundance" },
+        { label: "Jewish Secrets of Wealth Creation", href: p("/books/the-jewish-secrets-of-wealth-creation"), desc: "Covenant increase" },
+        { label: "The Laws of Proper Speech", href: p("/books/the-laws-of-proper-speech"), desc: "The power of words" },
       ],
     },
-    {
-      label: s.institutions,
-      href: p("/institutions"),
-      mega: [
-        { label: "Ecosystem Map", href: p("/institutions"), desc: "The 7 institutions" },
-        { label: "Ministries", href: p("/ministries"), desc: "Grow, serve, and belong" },
-        { label: "Dominion Leadership Institute", href: p("/institutions/dominion-leadership-institute") },
-        { label: "Dominion City", href: "https://www.dominioncity.cc" },
-        { label: "Global Leadership Forum", href: p("/institutions/global-leadership-forum") },
-      ],
-    },
-    { label: s.community, href: p("/community") },
-    { label: s.events, href: p("/events") },
+    { label: s.teachings, href: p("/media") },
+    { label: s.events, href: "https://dcglobal-gules.vercel.app/en/events" },
     { label: s.partnership, href: p("/partnership") },
+    { label: "Contact", href: p("/contact") },
   ];
 }

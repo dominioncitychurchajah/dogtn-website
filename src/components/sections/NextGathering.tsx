@@ -104,14 +104,14 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
             </dl>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col">
               <a
-                href={`/${locale}/live`}
+                href={`/${locale}/media`}
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-5 text-body-m font-semibold text-ink-900 hover:bg-gold-hover"
               >
                 <Radio className="h-4 w-4" aria-hidden />
                 Watch Online
               </a>
               <Link
-                href={`/${locale}/visit`}
+                href="https://dcglobal-gules.vercel.app/en/events"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] border border-paper-0/15 px-5 text-body-m font-semibold text-paper-0 hover:bg-paper-0/10"
               >
                 Plan Your Visit

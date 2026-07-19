@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BadgeCheck, CheckCircle2, Star, ShieldCheck, Heart, ArrowRight, HelpCircle, ChevronDown, ChevronLeft, ChevronRight, Download, BookOpen, Quote, Shield } from "lucide-react";
+import { CheckCircle2, Star, ShieldCheck, Heart, ArrowRight, HelpCircle, ChevronDown, ChevronLeft, ChevronRight, BookOpen, Quote, Shield, Play, X } from "lucide-react";
 import { Container, Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { PartnershipEngine } from "@/components/forms/PartnershipEngine";
@@ -11,14 +11,6 @@ import { PartnershipEngine } from "@/components/forms/PartnershipEngine";
 interface PartnershipClientProps {
   locale: string;
 }
-
-const TRUST_SEALS = [
-  "501(c)(3) nonprofit organization — all gifts are fully tax-deductible.",
-  "ECFA accredited — meeting the highest standards of financial integrity.",
-  "Annual audited financial reports available transparently for download.",
-  "87% of every dollar goes directly to global missions and leadership programs.",
-  "Secure payment gateways with 256-bit SSL network encryption.",
-];
 
 const TESTIMONIALS = [
   {
@@ -67,40 +59,24 @@ const FAQS = [
   }
 ];
 
-const ALLOCATION_DETAILS = {
-  50: {
-    title: "Seed Partner Allocation ($50/mo)",
-    desc: "Your seed is optimized for local community mobilization and leadership training.",
-    metrics: [
-      { label: "Emerging Leaders Training", pct: 75, amount: 37.5 },
-      { label: "Curriculum Print & Distribution", pct: 15, amount: 7.5 },
-      { label: "Program Support & Admin", pct: 10, amount: 5.0 },
-    ]
-  },
-  150: {
-    title: "Harvest Partner Allocation ($150/mo)",
-    desc: "Your seed multiplies local capacity, funding hubs and digitization work.",
-    metrics: [
-      { label: "Mentorship Hub Sponsorship", pct: 65, amount: 97.5 },
-      { label: "Teachings Vault Digitization", pct: 20, amount: 30.0 },
-      { label: "Missions & Hub Coordination", pct: 15, amount: 22.5 },
-    ]
-  },
-  500: {
-    title: "Kingdom Partner Allocation ($500/mo)",
-    desc: "Your seed sponsors strategic global conferences and systemic reforms.",
-    metrics: [
-      { label: "National Transformation Initiatives", pct: 70, amount: 350.0 },
-      { label: "Global Summit Sponsorships", pct: 20, amount: 100.0 },
-      { label: "Executive Liaison Briefings", pct: 10, amount: 50.0 },
-    ]
-  }
-};
-
-export function PartnershipClient({ locale }: PartnershipClientProps) {
-  const [allocationTab, setAllocationTab] = React.useState<50 | 150 | 500>(150);
+export function PartnershipClient(_props: PartnershipClientProps) {
   const [activeTestimonial, setActiveTestimonial] = React.useState(0);
   const [openFaqIdx, setOpenFaqIdx] = React.useState<number | null>(null);
+  const [videoOpen, setVideoOpen] = React.useState(false);
+
+  // Close the video lightbox on Escape and lock body scroll while it's open.
+  React.useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setVideoOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [videoOpen]);
 
   const selectTier = (tier: "seed" | "harvest" | "kingdom") => {
     // Update URL query parameters so PartnershipEngine picks it up
@@ -165,163 +141,29 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
               </div>
             </div>
 
-            {/* Video Placeholder Card */}
-            <div className="lg:col-span-5 relative aspect-video lg:aspect-square overflow-hidden rounded-[12px] border border-white/10 bg-white/5 shadow-elev-3 flex items-center justify-center group">
-              <div className="absolute inset-0 bg-ink-900/60 z-10 transition-colors group-hover:bg-ink-900/40" />
+            {/* Video Thumbnail — opens lightbox */}
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              aria-label="Play our mission video"
+              className="lg:col-span-5 relative aspect-video lg:aspect-square w-full overflow-hidden rounded-[12px] border border-white/10 bg-white/5 shadow-elev-3 flex items-center justify-center group cursor-pointer"
+            >
+              <Image
+                src="/images/partnership/mission-video-thumb.jpg"
+                alt="Partnership Solves All Problems — Dr. David Ogbueli"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-ink-900/50 z-10 transition-colors group-hover:bg-ink-900/35" />
               <div className="relative z-20 text-center px-6">
-                <div className="w-14 h-14 rounded-full bg-gold-600 text-ink-900 flex items-center justify-center mx-auto mb-4 hover:scale-105 active:scale-95 transition-all shadow-lg cursor-pointer">
-                  <svg className="w-6 h-6 fill-current pl-1" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                <div className="w-14 h-14 rounded-full bg-gold-600 text-ink-900 flex items-center justify-center mx-auto mb-4 transition-all group-hover:scale-105 shadow-lg">
+                  <Play className="w-6 h-6 fill-current pl-0.5" />
                 </div>
                 <h4 className="text-body-m font-bold text-paper-0">Watch Our Mission Video</h4>
-                <p className="text-caption text-white/50 mt-1 max-w-[240px] mx-auto">Discover the global footprint of your partnership (90s)</p>
+                <p className="text-caption text-white/60 mt-1 max-w-[240px] mx-auto">Discover the global footprint of your partnership (90s)</p>
               </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* TRUST & GIVING ALLOCATION DASHBOARD */}
-      <Section surface="paper">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            {/* Left: Interactive giving allocation dashboard */}
-            <div className="lg:col-span-7 bg-paper-50 border border-ink-100 rounded-[12px] p-6 lg:p-8 shadow-sm">
-              <h3 className="text-body-l font-bold text-ink-900 mb-2">Where Your Giving Goes</h3>
-              <p className="text-body-s text-ink-500 mb-6 leading-relaxed">
-                Click a level below to see a detailed, audited breakdown of how your monthly seeds are allocated.
-              </p>
-
-              {/* Tabs */}
-              <div className="flex gap-2 p-1 bg-ink-100 rounded-full mb-8 max-w-md">
-                {(Object.keys(ALLOCATION_DETAILS) as unknown as Array<50 | 150 | 500>).map((val) => (
-                  <button
-                    key={val}
-                    onClick={() => setAllocationTab(val)}
-                    className={`flex-1 py-2 rounded-full text-caption font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                      allocationTab === val ? "bg-ink-900 text-paper-0 shadow-sm" : "text-ink-500 hover:text-ink-900"
-                    }`}
-                  >
-                    ${val}/mo
-                  </button>
-                ))}
-              </div>
-
-              {/* Allocation values */}
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-body-m font-bold text-ink-900 mb-1">
-                    {ALLOCATION_DETAILS[allocationTab].title}
-                  </h4>
-                  <p className="text-body-s italic text-ink-500 leading-relaxed">
-                    {ALLOCATION_DETAILS[allocationTab].desc}
-                  </p>
-                </div>
-
-                <div className="space-y-4 pt-4 border-t border-ink-100">
-                  {ALLOCATION_DETAILS[allocationTab].metrics.map((m) => (
-                    <div key={m.label} className="space-y-1.5">
-                      <div className="flex justify-between text-body-s font-semibold">
-                        <span className="text-ink-900">{m.label}</span>
-                        <span className="text-gold-hover">${m.amount.toFixed(2)} ({m.pct}%)</span>
-                      </div>
-                      <div className="h-2 bg-ink-100 w-full rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-gold-600 rounded-full transition-all duration-500" 
-                          style={{ width: `${m.pct}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Stewardship & Trust badging */}
-            <div className="lg:col-span-5 lg:sticky lg:top-24">
-              <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.4em] text-gold-hover">
-                Stewardship
-              </span>
-              <h2 className="text-heading-1 text-ink-900">Your Trust is Our Covenant</h2>
-              <p className="mt-4 text-body-m leading-relaxed text-ink-500">
-                We implement strict financial governance protocols to ensure that every dollar you invest is converted directly into measurable, audited Kingdom outcomes.
-              </p>
-
-              <ul className="mt-8 space-y-4">
-                {TRUST_SEALS.map((s, idx) => (
-                  <li key={idx} className="flex gap-3 text-body-s text-ink-700 items-start">
-                    <BadgeCheck className="w-5 h-5 text-gold-600 shrink-0 mt-0.5" />
-                    <span>{s}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8 pt-6 border-t border-ink-100">
-                <a
-                  href={`/${locale}/partnership/annual-report.pdf`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 border border-ink-100 hover:border-gold-600 rounded-[var(--radius-s)] text-caption font-bold uppercase tracking-wider text-ink-700 hover:text-gold-hover transition-colors"
-                >
-                  <Download className="w-4 h-4" />
-                  Download 2025 Audited Report
-                </a>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* TRANSFORMATION STORIES (SOCIAL PROOF CAROUSEL) */}
-      <Section surface="dark">
-        <Container>
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.4em] text-gold-400">
-              Social Proof
-            </span>
-            <h2 className="text-heading-1 text-paper-0">Stories of Covenant Transformation</h2>
-            <p className="mt-4 text-body-l text-white/60">
-              Read how covenant partnership is actively raising leaders and driving systemic change worldwide.
-            </p>
-          </div>
-
-          {/* Testimonial slider */}
-          <div className="relative max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-[12px] p-8 lg:p-12 shadow-xl">
-            <Quote className="absolute top-6 left-6 w-10 h-10 text-white/5" />
-            
-            <div className="min-h-[140px] flex flex-col justify-center">
-              <p className="text-body-l italic text-paper-0 leading-relaxed text-center mb-6">
-                "{TESTIMONIALS[activeTestimonial].quote}"
-              </p>
-              
-              <div className="text-center">
-                <div className="text-body-m font-bold text-gold-400">
-                  {TESTIMONIALS[activeTestimonial].name}
-                </div>
-                <div className="text-caption text-white/50 mt-1">
-                  {TESTIMONIALS[activeTestimonial].location} · <span className="text-white/70">{TESTIMONIALS[activeTestimonial].tier}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Slider Controls */}
-            <div className="flex justify-center gap-3 mt-8">
-              <button
-                onClick={handlePrevTestimonial}
-                className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Previous story"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNextTestimonial}
-                className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Next story"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
+            </button>
           </div>
         </Container>
       </Section>
@@ -519,6 +361,59 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
 
 
 
+      {/* TRANSFORMATION STORIES (SOCIAL PROOF CAROUSEL) */}
+      <Section surface="dark">
+        <Container>
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.4em] text-gold-400">
+              Social Proof
+            </span>
+            <h2 className="text-heading-1 text-paper-0">Stories of Covenant Transformation</h2>
+            <p className="mt-4 text-body-l text-white/60">
+              Read how covenant partnership is actively raising leaders and driving systemic change worldwide.
+            </p>
+          </div>
+
+          {/* Testimonial slider */}
+          <div className="relative max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-[12px] p-8 lg:p-12 shadow-xl">
+            <Quote className="absolute top-6 left-6 w-10 h-10 text-white/5" />
+            
+            <div className="min-h-[140px] flex flex-col justify-center">
+              <p className="text-body-l italic text-paper-0 leading-relaxed text-center mb-6">
+                "{TESTIMONIALS[activeTestimonial].quote}"
+              </p>
+              
+              <div className="text-center">
+                <div className="text-body-m font-bold text-gold-400">
+                  {TESTIMONIALS[activeTestimonial].name}
+                </div>
+                <div className="text-caption text-white/50 mt-1">
+                  {TESTIMONIALS[activeTestimonial].location} · <span className="text-white/70">{TESTIMONIALS[activeTestimonial].tier}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Slider Controls */}
+            <div className="flex justify-center gap-3 mt-8">
+              <button
+                onClick={handlePrevTestimonial}
+                className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Previous story"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleNextTestimonial}
+                className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Next story"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* ACCORDION FAQ SECTION */}
       <Section surface="paper">
         <Container className="max-w-4xl">
@@ -560,6 +455,39 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
           </div>
         </Container>
       </Section>
+
+      {/* VIDEO LIGHTBOX */}
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-900/90 p-4 backdrop-blur-sm"
+          onClick={() => setVideoOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mission video"
+        >
+          <button
+            type="button"
+            onClick={() => setVideoOpen(false)}
+            aria-label="Close video"
+            className="absolute top-5 right-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-paper-0 transition-colors hover:bg-white/20"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <div
+            className="relative w-full max-w-4xl overflow-hidden rounded-[12px] shadow-2xl"
+            style={{ aspectRatio: "16 / 9" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              src="https://www.youtube.com/embed/6ODrqCfl_b4?autoplay=1&rel=0"
+              title="Partnership Solves All Problems — Dr. David Ogbueli"
+              className="absolute inset-0 h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

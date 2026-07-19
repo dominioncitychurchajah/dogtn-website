@@ -95,7 +95,7 @@ export function QuickPills({ onPillClick, disabled }: QuickPillsProps) {
             key={pill.intent}
             onClick={() => handleClick(pill)}
             disabled={disabled}
-            className="group snap-start shrink-0 inline-flex items-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/12 border border-white/10 hover:border-gold-400/50 text-paper-0 rounded-full cursor-pointer transition-all shadow-[0_2px_8px_rgba(0,0,0,0.15)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:-translate-y-0.5 active:translate-y-0"
+            className="group snap-start shrink-0 inline-flex items-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/12 border border-white/10 hover:border-gold-400/50 text-paper-0 rounded-full cursor-pointer transition-all shadow-[0_2px_8px_rgba(0,0,0,0.15)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.25)] hover:scale-[1.02] active:scale-95"
             style={{
               animation: `pillFadeIn 400ms cubic-bezier(0.16,1,0.3,1) ${idx * 50}ms both`,
               transform: isClicked ? "scale(0.95)" : undefined,

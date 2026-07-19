@@ -46,11 +46,9 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
           {/* Brand */}
           <Link href={`/${locale}`} className="flex shrink-0 items-center" aria-label="David Ogbueli — home">
             {solid ? (
-              // Solid bar surface follows the theme: light bar → dark-artwork
-              // logo, dark bar → white-artwork logo (CSS swaps pre-paint).
               <>
                 <Image
-                  src="/images/logo/dr-david-ogbueli-brand-white.png"
+                  src="/images/logo/dr-david-ogbueli-brand-dark.png"
                   alt="David Ogbueli"
                   width={341}
                   height={122}
@@ -58,7 +56,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
                   className="theme-logo-light h-12 w-auto lg:h-14"
                 />
                 <Image
-                  src="/images/logo/dr-david-ogbueli-brand-dark.png"
+                  src="/images/logo/dr-david-ogbueli-brand-white.png"
                   alt="David Ogbueli"
                   width={341}
                   height={122}
@@ -67,7 +65,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
               </>
             ) : (
               <Image
-                src="/images/logo/dr-david-ogbueli-brand-dark.png"
+                src="/images/logo/dr-david-ogbueli-brand-white.png"
                 alt="David Ogbueli"
                 width={341}
                 height={122}
@@ -79,18 +77,25 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-1 lg:flex">
-            {groups.map((g) => (
+            {groups.map((g) => {
+              const groupIsExternal = g.href.startsWith("http");
+              const groupClassName = cn(
+                "flex items-center gap-1 rounded-[var(--radius-s)] px-3 py-2 text-body-s font-semibold transition-colors",
+                solid ? "hover:text-gold-hover" : "hover:text-gold-400",
+              );
+              return (
               <div key={g.href} className="relative" onMouseEnter={() => setOpenMega(g.mega ? g.label : null)}>
-                <Link
-                  href={g.href}
-                  className={cn(
-                    "flex items-center gap-1 rounded-[var(--radius-s)] px-3 py-2 text-body-s font-semibold transition-colors",
-                    solid ? "hover:text-gold-hover" : "hover:text-gold-400",
-                  )}
-                >
-                  {g.label}
-                  {g.mega && <ChevronDown className="h-3.5 w-3.5 opacity-70" />}
-                </Link>
+                {groupIsExternal ? (
+                  <a href={g.href} target="_blank" rel="noopener noreferrer" className={groupClassName}>
+                    {g.label}
+                    {g.mega && <ChevronDown className="h-3.5 w-3.5 opacity-70" />}
+                  </a>
+                ) : (
+                  <Link href={g.href} className={groupClassName}>
+                    {g.label}
+                    {g.mega && <ChevronDown className="h-3.5 w-3.5 opacity-70" />}
+                  </Link>
+                )}
                 {g.mega && openMega === g.label && (
                   <div className="absolute start-0 top-full w-72 pt-2">
                     <ul className="overflow-hidden rounded-[var(--radius-m)] border border-ink-100 bg-paper-0 py-2 text-ink-900 shadow-elev-3">
@@ -120,13 +125,14 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
                   </div>
                 )}
               </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Right actions */}
           <div className="flex items-center gap-1.5">
             <Link
-              href={`/${locale}/library`}
+              href={`/${locale}/books`}
               aria-label={strings.search}
               className="rounded-full p-2 hover:bg-current/10"
             >
@@ -137,7 +143,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             <Link href={`/${locale}/my-journey`} aria-label={strings.account} className="rounded-full p-2 hover:bg-current/10">
               <UserCircle2 className="h-6 w-6" />
             </Link>
-            <Button href={`/${locale}/give`} size="s" className="hidden sm:inline-flex">
+            <Button href={`/${locale}/leadership/assessment`} size="s" className="hidden sm:inline-flex">
               {strings.give}
             </Button>
             <button
@@ -156,7 +162,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
         onClose={() => setMobileOpen(false)}
         groups={groups}
         locale={locale}
-        giveLabel={strings.give}
+        ctaLabel={strings.give}
       />
     </>
   );

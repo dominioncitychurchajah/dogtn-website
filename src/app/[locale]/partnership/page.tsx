@@ -48,12 +48,14 @@ export default async function PartnershipPage({
               Become a Partner
             </Button>
             <Button
-              href={`/${loc}/teachings`}
+              href="https://dcglobal-gules.vercel.app/en/projects"
+              target="_blank"
+              rel="noopener noreferrer"
               size="l"
               variant="secondary"
               className="border-paper-0/30 bg-transparent uppercase tracking-widest text-paper-0 hover:bg-paper-0/10"
             >
-              Download Annual Report
+              See the Impact
             </Button>
           </div>
 

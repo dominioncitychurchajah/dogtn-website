@@ -41,13 +41,13 @@ const responses: Record<IntentKey, Response> = {
     message: "Purpose is not a feeling. It is an assignment.",
     detail: "Begin a guided path through the ideas and teachings that help you name your calling and take your first faithful step.",
     card: { title: "Discover Purpose", meta: "Guided journey • Audio-first", label: "Begin the Journey", href: "/journeys/discover-purpose" },
-    secondary: [{ label: "Explore teachings", href: "/teachings" }],
+    secondary: [{ label: "Explore teachings", href: "/media" }],
   },
   spiritual: {
     message: "A strong life is built from a strong foundation.",
     detail: "Grow through systematic Kingdom teaching, prayer, and practical disciplines that can be lived out every day.",
     card: { title: "Deepen Your Faith", meta: "Faith Foundations • Prayer Dynamics", label: "Begin the Journey", href: "/journeys/grow-spiritually" },
-    secondary: [{ label: "Browse the library", href: "/library" }],
+    secondary: [{ label: "Browse the books", href: "/books" }],
   },
   leadership: {
     message: "Leadership is not a title. It is a track.",
@@ -64,14 +64,14 @@ const responses: Record<IntentKey, Response> = {
   society: {
     message: "Nations are transformed one prepared leader and one strong institution at a time.",
     detail: "Learn how the network develops people and institutions that carry transformation into culture, business, governance, and society.",
-    card: { title: "Transform Society", meta: "Institutions • Governance • Global impact", label: "Explore Institutions", href: "/institutions" },
+    card: { title: "Transform Society", meta: "Ministry • Governance • Global impact", label: "Explore Ministry", href: "/ministry" },
     secondary: [{ label: "View the leadership path", href: "/leadership" }],
   },
   chapter: {
     message: "You are not meant to grow alone.",
     detail: "Find a Dominion City community near you, or connect with the wider network online as you take your next step.",
-    card: { title: "Find Your Chapter", meta: "Global directory • Local community", label: "Find a Chapter", href: "/community" },
-    secondary: [{ label: "Join the online community", href: "/community" }],
+    card: { title: "Find Your Chapter", meta: "Global directory • Local community", label: "Find a Chapter", href: "https://dcglobal-gules.vercel.app/en/locations" },
+    secondary: [{ label: "Join the online community", href: "/ministry" }],
   },
   assessment: {
     message: "There are no wrong answers here, only honest ones.",

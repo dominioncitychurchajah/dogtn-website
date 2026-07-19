@@ -56,7 +56,7 @@ export default async function LeadershipPage({
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const c = leadershipCopy[loc];
 
-  const dliHref = `/${loc}/institutions/dominion-leadership-institute`;
+  const dliHref = `/${loc}/ministry`;
 
   const modules = [
     {
@@ -286,7 +286,7 @@ export default async function LeadershipPage({
           <h2 className="mb-12 text-heading-1 text-ink-900">{c.journalTitle}</h2>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {journal.map((t) => (
-              <Link key={t.slug} href={`/${loc}/teachings/${t.slug}`} className="group">
+              <Link key={t.slug} href={`/${loc}/media`} className="group">
                 <div className="relative mb-6 aspect-[4/3] overflow-hidden bg-ink-900">
                   <Image
                     src={t.thumbnail}

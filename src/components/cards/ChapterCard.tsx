@@ -36,7 +36,7 @@ export function ChapterCard({
           <Phone className="h-4 w-4 shrink-0 text-gold-hover" /> {chapter.contact}
         </li>
       </ul>
-      <Button href={`/${locale}/visit`} variant="secondary" size="s" className="mt-5 self-start">
+      <Button href={`/${locale}/ministry`} variant="secondary" size="s" className="mt-5 self-start">
         Plan a Visit
       </Button>
     </div>

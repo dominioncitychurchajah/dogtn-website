@@ -11,7 +11,7 @@ export function ContentCard({ teaching, locale }: { teaching: Teaching; locale: 
   const Icon = formatIcon[teaching.format];
   return (
     <Link
-      href={`/${locale}/teachings/${teaching.slug}`}
+      href={`/${locale}/media`}
       className="card-lift group block overflow-hidden rounded-[var(--radius-l)] border border-ink-100 bg-paper-0"
     >
       <div className="relative aspect-video overflow-hidden bg-ink-900">

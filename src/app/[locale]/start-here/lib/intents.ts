@@ -63,7 +63,7 @@ export const DECISION_TREE: {
       keywords: ["community", "group", "fellowship", "connect", "belong", "family", "people", "friends", "network", "meet people", "find people", "where are you", "location"],
       title: "Join a Community",
       description: "Find your tribe. Connect with like-minded believers in your region or online.",
-      url: "/community",
+      url: "/ministry",
       cta: "Find a Group",
       secondaryCta: "Explore Communities",
       response: "You were not meant to do life alone. There is a community waiting to welcome you."
@@ -81,7 +81,7 @@ export const DECISION_TREE: {
       keywords: ["teaching", "sermon", "message", "video", "audio", "podcast", "learn", "study", "course", "training", "watch", "listen", "read", "content", "resource"],
       title: "Explore Teachings",
       description: "Access world-class Kingdom teachings from Dr. David Ogbueli and guest faculty.",
-      url: "/teachings",
+      url: "/media",
       cta: "Browse Teachings",
       secondaryCta: "Latest Sermons",
       response: "Knowledge is the foundation of transformation. Dive into our library of teachings covering purpose, faith, leadership, and more."
@@ -90,7 +90,7 @@ export const DECISION_TREE: {
       keywords: ["give", "donate", "offering", "tithe", "support", "sow", "seed", "partner", "financial", "money", "contribute", "help fund", "support the work"],
       title: "Partner With Us",
       description: "Your giving helps us raise leaders who transform nations.",
-      url: "/give",
+      url: "/partnership",
       cta: "Give Now",
       secondaryCta: "Partnership Options",
       response: "Thank you for your heart to give. Every seed sown helps us reach more lives and build more leaders."
@@ -99,7 +99,7 @@ export const DECISION_TREE: {
       keywords: ["event", "conference", "summit", "retreat", "meeting", "gathering", "calendar", "when", "where", "attend", "visit", "coming up", "next", "schedule"],
       title: "Upcoming Events",
       description: "Join us for conferences, summits, and gatherings around the world.",
-      url: "/events",
+      url: "https://dcglobal-gules.vercel.app/en/events",
       cta: "View Events",
       secondaryCta: "Subscribe",
       response: "We would love to see you at one of our gatherings. Check out what is coming up near you."

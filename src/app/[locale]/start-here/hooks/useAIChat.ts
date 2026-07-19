@@ -158,14 +158,14 @@ Rules: Be warm, not verbose (under 60 words). If unclear, ask ONE clarifying que
     // Start thinking animation with enforced minimum time
     const thinkingStart = Date.now();
     setIsThinking(true);
-    setThinkingSteps(["Understanding your intent..."]);
+    setThinkingSteps(["Understanding your question..."]);
 
     const step1Timer = setTimeout(() => {
-      setThinkingSteps((prev) => [...prev, "Identifying the best path..."]);
+      setThinkingSteps((prev) => [...prev, "Finding the best path..."]);
     }, 800);
 
     const step2Timer = setTimeout(() => {
-      setThinkingSteps((prev) => [...prev, "Preparing your next step..."]);
+      setThinkingSteps((prev) => [...prev, "Preparing your direction..."]);
     }, 1800);
 
     try {

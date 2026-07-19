@@ -9,7 +9,7 @@
    ============================================================ */
 @theme {
   /* ---- Color: Ink (institutional gravity) ---- */
-  --color-ink-900: #0a0e1a;
+  --color-ink-900: #0a192f;
   --color-ink-700: #171b28;
   --color-ink-500: #46464c;
   --color-ink-300: #97979c;
@@ -79,10 +79,10 @@
   --radius-xl: 8px;
 
   /* ---- Elevation: tonal layers + low-contrast outlines, soft diffused navy tint ---- */
-  --shadow-elev-1: 0 1px 2px rgba(10, 14, 26, 0.03);
-  --shadow-elev-2: 0 4px 20px rgba(10, 14, 26, 0.04);
-  --shadow-elev-3: 0 12px 32px rgba(10, 14, 26, 0.06);
-  --shadow-elev-4: 0 24px 64px rgba(10, 14, 26, 0.08);
+  --shadow-elev-1: 0 1px 2px rgba(10, 25, 47, 0.03);
+  --shadow-elev-2: 0 4px 20px rgba(10, 25, 47, 0.04);
+  --shadow-elev-3: 0 12px 32px rgba(10, 25, 47, 0.06);
+  --shadow-elev-4: 0 24px 64px rgba(10, 25, 47, 0.08);
 
   /* ---- Motion ---- */
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
@@ -134,7 +134,7 @@
     .text-body-l     { font-size: 17px; line-height: 27px; }
   }
 
-  .gravity-text { text-shadow: 0 4px 12px rgba(10, 14, 26, 0.45); }
+  .gravity-text { text-shadow: 0 4px 12px rgba(10, 25, 47, 0.45); }
   .measure { max-width: 72ch; }
 
   .snap-x-strip { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
@@ -211,40 +211,40 @@
 
 @layer utilities {
   /* ---- 1. Branded dark surfaces stay dark ---- */
-  [data-theme="dark"] :where(.bg-ink-900, .hover\:bg-ink-900:hover, .focus\:bg-ink-900:focus) { background-color: #0a0e1a; }
-  [data-theme="dark"] :where(.bg-ink-900\/90) { background-color: rgb(10 14 26 / 0.9); }
-  [data-theme="dark"] :where(.bg-ink-900\/85) { background-color: rgb(10 14 26 / 0.85); }
-  [data-theme="dark"] :where(.bg-ink-900\/80) { background-color: rgb(10 14 26 / 0.8); }
-  [data-theme="dark"] :where(.bg-ink-900\/60) { background-color: rgb(10 14 26 / 0.6); }
-  [data-theme="dark"] :where(.bg-ink-900\/50) { background-color: rgb(10 14 26 / 0.5); }
-  [data-theme="dark"] :where(.bg-ink-900\/40) { background-color: rgb(10 14 26 / 0.4); }
-  [data-theme="dark"] :where(.bg-ink-900\/25) { background-color: rgb(10 14 26 / 0.25); }
+  [data-theme="dark"] :where(.bg-ink-900, .hover\:bg-ink-900:hover, .focus\:bg-ink-900:focus) { background-color: #0a192f; }
+  [data-theme="dark"] :where(.bg-ink-900\/90) { background-color: rgb(10 25 47 / 0.9); }
+  [data-theme="dark"] :where(.bg-ink-900\/85) { background-color: rgb(10 25 47 / 0.85); }
+  [data-theme="dark"] :where(.bg-ink-900\/80) { background-color: rgb(10 25 47 / 0.8); }
+  [data-theme="dark"] :where(.bg-ink-900\/60) { background-color: rgb(10 25 47 / 0.6); }
+  [data-theme="dark"] :where(.bg-ink-900\/50) { background-color: rgb(10 25 47 / 0.5); }
+  [data-theme="dark"] :where(.bg-ink-900\/40) { background-color: rgb(10 25 47 / 0.4); }
+  [data-theme="dark"] :where(.bg-ink-900\/25) { background-color: rgb(10 25 47 / 0.25); }
   [data-theme="dark"] :where(.bg-ink-700, .hover\:bg-ink-700:hover) { background-color: #171b28; }
-  [data-theme="dark"] :where(.ring-ink-900) { --tw-ring-color: #0a0e1a; }
+  [data-theme="dark"] :where(.ring-ink-900) { --tw-ring-color: #0a192f; }
 
   /* Hero/dark-section gradient stops */
-  [data-theme="dark"] :where(.from-ink-900) { --tw-gradient-from: #0a0e1a; }
-  [data-theme="dark"] :where(.from-ink-900\/85) { --tw-gradient-from: rgb(10 14 26 / 0.85); }
-  [data-theme="dark"] :where(.from-ink-900\/80) { --tw-gradient-from: rgb(10 14 26 / 0.8); }
-  [data-theme="dark"] :where(.from-ink-900\/70) { --tw-gradient-from: rgb(10 14 26 / 0.7); }
-  [data-theme="dark"] :where(.from-ink-900\/65) { --tw-gradient-from: rgb(10 14 26 / 0.65); }
-  [data-theme="dark"] :where(.from-ink-900\/60) { --tw-gradient-from: rgb(10 14 26 / 0.6); }
-  [data-theme="dark"] :where(.from-ink-900\/40) { --tw-gradient-from: rgb(10 14 26 / 0.4); }
-  [data-theme="dark"] :where(.via-ink-900\/85) { --tw-gradient-via: rgb(10 14 26 / 0.85); }
-  [data-theme="dark"] :where(.via-ink-900\/82) { --tw-gradient-via: rgb(10 14 26 / 0.82); }
-  [data-theme="dark"] :where(.via-ink-900\/75) { --tw-gradient-via: rgb(10 14 26 / 0.75); }
-  [data-theme="dark"] :where(.via-ink-900\/70) { --tw-gradient-via: rgb(10 14 26 / 0.7); }
-  [data-theme="dark"] :where(.via-ink-900\/60) { --tw-gradient-via: rgb(10 14 26 / 0.6); }
-  [data-theme="dark"] :where(.via-ink-900\/40) { --tw-gradient-via: rgb(10 14 26 / 0.4); }
-  [data-theme="dark"] :where(.to-ink-900) { --tw-gradient-to: #0a0e1a; }
-  [data-theme="dark"] :where(.to-ink-900\/90) { --tw-gradient-to: rgb(10 14 26 / 0.9); }
-  [data-theme="dark"] :where(.to-ink-900\/40) { --tw-gradient-to: rgb(10 14 26 / 0.4); }
-  [data-theme="dark"] :where(.to-ink-900\/30) { --tw-gradient-to: rgb(10 14 26 / 0.3); }
-  [data-theme="dark"] :where(.to-ink-900\/20) { --tw-gradient-to: rgb(10 14 26 / 0.2); }
+  [data-theme="dark"] :where(.from-ink-900) { --tw-gradient-from: #0a192f; }
+  [data-theme="dark"] :where(.from-ink-900\/85) { --tw-gradient-from: rgb(10 25 47 / 0.85); }
+  [data-theme="dark"] :where(.from-ink-900\/80) { --tw-gradient-from: rgb(10 25 47 / 0.8); }
+  [data-theme="dark"] :where(.from-ink-900\/70) { --tw-gradient-from: rgb(10 25 47 / 0.7); }
+  [data-theme="dark"] :where(.from-ink-900\/65) { --tw-gradient-from: rgb(10 25 47 / 0.65); }
+  [data-theme="dark"] :where(.from-ink-900\/60) { --tw-gradient-from: rgb(10 25 47 / 0.6); }
+  [data-theme="dark"] :where(.from-ink-900\/40) { --tw-gradient-from: rgb(10 25 47 / 0.4); }
+  [data-theme="dark"] :where(.via-ink-900\/85) { --tw-gradient-via: rgb(10 25 47 / 0.85); }
+  [data-theme="dark"] :where(.via-ink-900\/82) { --tw-gradient-via: rgb(10 25 47 / 0.82); }
+  [data-theme="dark"] :where(.via-ink-900\/75) { --tw-gradient-via: rgb(10 25 47 / 0.75); }
+  [data-theme="dark"] :where(.via-ink-900\/70) { --tw-gradient-via: rgb(10 25 47 / 0.7); }
+  [data-theme="dark"] :where(.via-ink-900\/60) { --tw-gradient-via: rgb(10 25 47 / 0.6); }
+  [data-theme="dark"] :where(.via-ink-900\/40) { --tw-gradient-via: rgb(10 25 47 / 0.4); }
+  [data-theme="dark"] :where(.to-ink-900) { --tw-gradient-to: #0a192f; }
+  [data-theme="dark"] :where(.to-ink-900\/90) { --tw-gradient-to: rgb(10 25 47 / 0.9); }
+  [data-theme="dark"] :where(.to-ink-900\/40) { --tw-gradient-to: rgb(10 25 47 / 0.4); }
+  [data-theme="dark"] :where(.to-ink-900\/30) { --tw-gradient-to: rgb(10 25 47 / 0.3); }
+  [data-theme="dark"] :where(.to-ink-900\/20) { --tw-gradient-to: rgb(10 25 47 / 0.2); }
 
   /* ---- 2. Solid gold surfaces always carry dark text ---- */
-  [data-theme="dark"] :where(.bg-gold-600, .bg-gold-400, .hover\:bg-gold-600:hover) { color: #0a0e1a; }
-  [data-theme="dark"] .group:hover .bg-gold-600 { color: #0a0e1a; }
+  [data-theme="dark"] :where(.bg-gold-600, .bg-gold-400, .hover\:bg-gold-600:hover) { color: #0a192f; }
+  [data-theme="dark"] .group:hover .bg-gold-600 { color: #0a192f; }
 
   /* ---- 3. Light text on dark surfaces stays light ---- */
   [data-theme="dark"] :where(.text-paper-0, .hover\:text-paper-0:hover, .focus\:text-paper-0:focus, .focus-visible\:text-paper-0:focus-visible) { color: #faf9f5; }
@@ -274,4 +274,33 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Hide scrollbars on horizontal carousels/sliders while keeping scroll. */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slow, subtle ambient gradient drift for dark hero sections — keeps the
+   surface feeling alive without competing with foreground content. Uses
+   ::after (not ::before) so it paints above the background image/overlay
+   but stays below the z-10 content column. */
+.ambient-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 20%, rgba(197, 160, 89, 0.14), transparent 45%),
+    radial-gradient(circle at 75% 80%, rgba(197, 160, 89, 0.10), transparent 50%);
+  background-size: 140% 140%;
+  animation: ambientDrift 20s ease-in-out infinite;
+}
+@keyframes ambientDrift {
+  0%, 100% { background-position: 0% 0%, 100% 100%; }
+  50% { background-position: 100% 50%, 0% 50%; }
 }

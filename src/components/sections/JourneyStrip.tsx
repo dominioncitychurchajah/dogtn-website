@@ -6,9 +6,9 @@ import { Container } from "@/components/layout/Section";
 const TILES = [
   { label: "Grow Spiritually", icon: Sparkles, href: "/journeys/grow-spiritually" },
   { label: "Become a Leader", icon: GraduationCap, href: "/journeys/become-a-leader" },
-  { label: "Join a Community", icon: Users, href: "/community" },
-  { label: "Access Teachings", icon: BookOpen, href: "/teachings" },
-  { label: "Explore Institutions", icon: Landmark, href: "/institutions" },
+  { label: "Join a Community", icon: Users, href: "/start-here" },
+  { label: "Access Teachings", icon: BookOpen, href: "/media" },
+  { label: "Explore the Ministry", icon: Landmark, href: "/ministry" },
 ];
 
 export function JourneyStrip({ locale }: { locale: Locale }) {

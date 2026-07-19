@@ -80,14 +80,23 @@ export interface Book {
   title: string;
   subtitle?: string;
   author: string;
-  cover: string;
+  /** Real per-title cover art. Omit when no real artwork exists yet — do not reuse another title's cover. */
+  cover?: string;
+  /** Real Amazon listing for this exact title. Falls back to the author's Amazon page when unset. */
+  amazonUrl?: string;
   category: string;
   formats: ("ebook" | "paperback" | "audiobook")[];
   price: { amount: number; currency: "NGN" | "USD" };
   synopsis: string;
-  sample: string;
+  /** A genuine excerpt from the book — leave unset rather than inventing book text. */
+  sample?: string;
   relatedTeachings: string[]; // teaching slugs
   featured?: boolean;
+  desc?: string;
+  fullDesc?: string;
+  takeaways?: string[];
+  /** Real reader reviews only — leave unset rather than inventing quotes. */
+  reviews?: { quote: string; name: string }[];
 }
 
 export interface Chapter {

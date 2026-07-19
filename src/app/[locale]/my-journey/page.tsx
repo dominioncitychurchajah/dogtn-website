@@ -72,9 +72,9 @@ export default async function MyJourneyPage({
 
   const utilities = [
     { label: c.utilities[0].label, icon: Award, desc: c.utilities[0].desc, href: `/${loc}/my-journey` },
-    { label: c.utilities[1].label, icon: CalendarDays, desc: c.utilities[1].desc, href: `/${loc}/events` },
+    { label: c.utilities[1].label, icon: CalendarDays, desc: c.utilities[1].desc, href: "https://dcglobal-gules.vercel.app/en/events" },
     { label: c.utilities[2].label, icon: FileText, desc: c.utilities[2].desc, href: `/${loc}/mentorship/ministry-leaders/status` },
-    { label: c.utilities[3].label, icon: HandHeart, desc: c.utilities[3].desc, href: `/${loc}/give` },
+    { label: c.utilities[3].label, icon: HandHeart, desc: c.utilities[3].desc, href: `/${loc}/partnership` },
   ];
 
   return (
@@ -174,7 +174,7 @@ export default async function MyJourneyPage({
           <div className="mb-12 flex items-center justify-between">
             <h2 className="text-heading-2 text-ink-900">{c.continueLearning}</h2>
             <Link
-              href={`/${loc}/teachings`}
+              href={`/${loc}/media`}
               className="inline-flex items-center gap-2 text-body-s font-semibold text-gold-hover"
             >
               {c.viewAll} <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />

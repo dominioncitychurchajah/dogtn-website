@@ -8,7 +8,6 @@ import { questions } from "@/data/assessment";
 import { DEBBIE_NODES, ROOT_ID } from "@/data/debbie-flows";
 
 const HIGH_INTENT_MESSAGES: Record<string, string> = {
-  "/give": "Would you like to set up a monthly partnership? It takes 60 seconds.",
   "/partnership": "Would you like to set up a monthly partnership? It takes 60 seconds.",
   "/start-here": "Still deciding where to begin? I can help you find your first step.",
 };
@@ -85,7 +84,7 @@ export function useDebbieProactiveTriggers(locale: string) {
     if (firedRef.current.has("live") || !isLiveServiceWindow()) return;
     firedRef.current.add("live");
     triggerProactive("Service is live now. Watch or listen?", [
-      { kind: "link", label: "Watch Online", href: "/live", confirm: "Opening the live stream." },
+      { kind: "link", label: "Watch Online", href: "/media", confirm: "Opening Media." },
       { kind: "advance", label: "Maybe later", to: ROOT_ID },
     ]);
   }, [triggerProactive]);

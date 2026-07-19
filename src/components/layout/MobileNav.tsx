@@ -14,13 +14,13 @@ export function MobileNav({
   onClose,
   groups,
   locale,
-  giveLabel,
+  ctaLabel,
 }: {
   open: boolean;
   onClose: () => void;
   groups: NavGroup[];
   locale: Locale;
-  giveLabel: string;
+  ctaLabel: string;
 }) {
   React.useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
@@ -90,8 +90,8 @@ export function MobileNav({
       </div>
       <div className="flex items-center justify-between gap-4 border-t border-paper-0/10 px-5 py-4">
         <LanguageSwitcher locale={locale} />
-        <Button href={`/${locale}/give`} onClick={onClose} className="flex-1">
-          {giveLabel}
+        <Button href={`/${locale}/leadership/assessment`} onClick={onClose} className="flex-1">
+          {ctaLabel}
         </Button>
       </div>
     </div>

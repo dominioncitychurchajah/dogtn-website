@@ -2,103 +2,186 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Globe, MessageCircle, PlayCircle, Send } from "lucide-react";
+import * as React from "react";
+import { Mic2, Send, Phone, Mail } from "lucide-react";
 import type { Locale } from "@/i18n/config";
-import { getDictionary, t } from "@/lib/i18n-utils";
+
+function YoutubeIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z" />
+      <polygon points="10 15 15 12 10 9" />
+    </svg>
+  );
+}
+
+function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
+function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
 
 export function Footer({ locale }: { locale: Locale }) {
-  const dict = getDictionary(locale);
   const p = (path: string) => `/${locale}${path}`;
+  const [email, setEmail] = React.useState("");
+  const [subscribed, setSubscribed] = React.useState(false);
+
   const socials = [
-    {
-      label: "Dominion City on YouTube",
-      href: "https://www.youtube.com/@DominionCity",
-      icon: PlayCircle,
-    },
-    {
-      label: "Dominion City Lagos on Instagram",
-      href: "https://www.instagram.com/dominioncitylagos/?hl=en",
-      icon: Globe,
-    },
-    {
-      label: "Email support",
-      href: "mailto:support@davidogbueli.org",
-      icon: Send,
-    },
-    {
-      label: "Community",
-      href: p("/community"),
-      icon: MessageCircle,
-    },
+    { label: "YouTube", href: "https://www.youtube.com/@DominionCity", icon: YoutubeIcon },
+    { label: "Instagram", href: "https://www.instagram.com/dominioncitylagos/", icon: InstagramIcon },
+    { label: "Facebook", href: "https://www.facebook.com/DominionCity", icon: FacebookIcon },
+    { label: "Podcast", href: "https://open.spotify.com/", icon: Mic2 },
   ];
 
   const cols = [
     {
-      title: t(dict, "footer.explore"),
+      title: "His Story",
       links: [
-        { label: "Start Here", href: p("/start-here") },
-        { label: "Teachings", href: p("/teachings") },
-        { label: "Library", href: p("/library") },
-        { label: "Community", href: p("/community") },
+        { label: "Biography", href: p("/his-story") },
+        { label: "Timeline", href: p("/his-story#timeline") },
+        { label: "Education", href: p("/his-story#education") },
+        { label: "Family", href: p("/his-story#family") },
       ],
     },
     {
-      title: t(dict, "footer.institutions"),
+      title: "Ministry",
       links: [
-        { label: "David Ogbueli Transformation Network", href: p("/institutions/global-leadership-forum") },
-        { label: "DLI Academy", href: p("/institutions/dominion-leadership-institute") },
-        { label: "Golden Heart Foundation", href: p("/institutions/golden-heart-foundation") },
-        { label: "Priesthood Institute", href: p("/institutions/priesthood-institute") },
+        { label: "Dominion City", href: p("/ministry") },
+        { label: "Golden Heart Foundation", href: p("/ministry#golden-heart") },
+        { label: "Leadership Institute", href: p("/ministry#dli") },
+        { label: "Global Missions", href: p("/ministry#missions") },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { label: "Books", href: p("/books") },
+        { label: "Media", href: p("/media") },
+        { label: "Free Assessment", href: p("/leadership/assessment") },
+        { label: "Events", href: "https://dcglobal-gules.vercel.app/en/events" },
       ],
     },
     {
       title: "Connect",
       links: [
-        { label: "About", href: p("/about") },
-        { label: "Ministries", href: p("/ministries") },
-        { label: "Mentorship", href: p("/mentorship") },
-        { label: "Give", href: p("/give") },
-        { label: "Global Missions", href: p("/institutions/global-missions-network") },
-        { label: "Contact Support", href: "mailto:support@davidogbueli.org" },
+        { label: "Speaking Inquiries", href: p("/contact#contact-form") },
+        { label: "Media Requests", href: p("/contact#contact-form") },
+        { label: "Prayer Request", href: p("/contact#contact-form") },
+        { label: "General Contact", href: p("/contact") },
       ],
     },
   ];
 
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail("");
+  };
+
   return (
-    <footer className="mt-auto bg-ink-900 text-ink-300">
-      <div className="mx-auto max-w-content px-5 py-16 lg:px-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
-          <div>
-            <Link href={`/${locale}`} className="inline-flex items-center" aria-label="David Ogbueli — home">
+    <footer className="mt-auto bg-[#1A1A1A] text-white/60">
+      <div className="mx-auto max-w-[1280px] px-5 py-16 lg:px-16">
+        {/* Top: Logo + Newsletter */}
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between border-b border-white/10 pb-14 mb-14">
+          <div className="max-w-xs">
+            <Link href={`/${locale}`} className="inline-flex items-center mb-5" aria-label="Dr. David Ogbueli — home">
               <Image
-                src="/images/logo/dr-david-ogbueli-brand-dark.png"
-                alt="David Ogbueli"
+                src="/images/logo/dr-david-ogbueli-brand-white.png"
+                alt="Dr. David Ogbueli"
                 width={341}
                 height={122}
-                className="h-14 w-auto"
+                className="h-12 w-auto"
               />
             </Link>
-            <p className="mt-4 max-w-xs text-body-s leading-relaxed">{t(dict, "footer.tagline")}</p>
+            <p className="text-sm leading-relaxed text-white/50">
+              Stay connected to the global transformation movement.
+            </p>
+
+            <div className="mt-6 space-y-2.5 text-sm text-white/50">
+              <a href="tel:+14705352006" className="flex items-center gap-2.5 transition-colors hover:text-[#C9A227]">
+                <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9A227]" aria-hidden />
+                +1-470-535-2006
+              </a>
+              <a href="tel:+2348035508230" className="flex items-center gap-2.5 transition-colors hover:text-[#C9A227]">
+                <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9A227]" aria-hidden />
+                +234-8035508230
+              </a>
+              <a href="mailto:mail@davidogbueli.org" className="flex items-center gap-2.5 transition-colors hover:text-[#C9A227]">
+                <Mail className="h-3.5 w-3.5 shrink-0 text-[#C9A227]" aria-hidden />
+                mail@davidogbueli.org
+              </a>
+            </div>
           </div>
+
+          <form onSubmit={handleSubscribe} className="flex flex-col gap-3 w-full max-w-md">
+            <label htmlFor="footer-email" className="text-[11px] uppercase tracking-[0.2em] font-semibold text-white/40">
+              Newsletter
+            </label>
+            {subscribed ? (
+              <p className="text-[#C9A227] text-sm font-semibold py-3">✓ You're subscribed — welcome to the movement.</p>
+            ) : (
+              <div className="flex gap-2">
+                <input
+                  id="footer-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email address"
+                  className="flex-1 bg-white/5 border border-white/10 rounded-[8px] px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#C9A227]/50"
+                />
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 bg-[#C9A227] text-[#0A192F] text-sm font-bold rounded-[8px] hover:bg-[#e0b430] transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  Subscribe
+                </button>
+              </div>
+            )}
+          </form>
+        </div>
+
+        {/* Middle: link columns */}
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4 mb-14">
           {cols.map((col) => (
             <div key={col.title}>
-              <h4 className="mb-4 text-caption font-semibold uppercase tracking-widest text-paper-0">{col.title}</h4>
+              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="text-body-s transition-colors hover:text-gold-400">
-                      {l.label}
-                    </Link>
+                  <li key={l.label}>
+                    {l.href.startsWith("http") ? (
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-[#C9A227] transition-colors">
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link href={l.href} className="text-sm text-white/50 hover:text-[#C9A227] transition-colors">
+                        {l.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-        <div className="mt-14 flex flex-col items-center justify-between gap-6 border-t border-paper-0/10 pt-8 md:flex-row">
-          <p className="text-caption text-ink-500">
-            © 2026 David Ogbueli. {t(dict, "footer.network")}.
+
+        {/* Bottom */}
+        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
+          <p className="text-xs text-white/30">
+            © 2026 Dr. David Ogbueli. All rights reserved.
           </p>
           <div className="flex gap-3">
             {socials.map(({ label, href, icon: Icon }) => (
@@ -106,10 +189,11 @@ export function Footer({ locale }: { locale: Locale }) {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="flex h-11 w-11 items-center justify-center rounded-full text-ink-300 transition-colors hover:bg-paper-0/10 hover:text-gold-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 focus-visible:outline-offset-ink-900"
-                {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition-all hover:bg-white/10 hover:text-[#C9A227]"
               >
-                <Icon className="h-5 w-5" aria-hidden />
+                <Icon className="h-4 w-4" aria-hidden />
               </a>
             ))}
           </div>

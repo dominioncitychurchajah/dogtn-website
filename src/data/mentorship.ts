@@ -69,7 +69,7 @@ export const tracks: MentorshipTrack[] = [
   },
   {
     slug: "ministry-leaders",
-    name: "Ministry Leaders",
+    name: "Global Leaders",
     audience: "Ministers and ministry leaders stewarding a work.",
     hero: "Go deeper. Steward your calling for the long haul.",
     image: "/images/pastor/preaching-purple-lit.jpg",

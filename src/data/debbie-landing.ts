@@ -35,8 +35,8 @@ export const LANDING_SECONDARY: { icon: LandingIconKey; label: string; chip: Deb
     chip: {
       kind: "link",
       label: "Explore teachings",
-      href: "/teachings",
-      confirm: "Opening the Teachings library.",
+      href: "/media",
+      confirm: "Opening Media.",
     },
   },
   {
