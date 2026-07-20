@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { PlayCircle, Mic2, ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Section";
+import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
+import { mediaCopy } from "@/i18n/pages/media";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -14,12 +16,22 @@ const fadeUp = {
   viewport: { once: true, amount: 0.2 }
 };
 
-const tabs = ["All", "Teachings", "TV Broadcast", "Podcast", "Conference Archives"];
+const TAB_KEYS = ["all", "teachings", "tv", "podcast", "conference"] as const;
+type TabKey = (typeof TAB_KEYS)[number];
+
+// Stable English category keys — data (`videos`) stays keyed on these regardless of UI locale.
+const CATEGORY_MAP: Record<TabKey, string> = {
+  all: "All",
+  teachings: "Teachings",
+  tv: "TV Broadcast",
+  podcast: "Podcast",
+  conference: "Conference Archives",
+};
 
 // Tabs that scroll to a dedicated section below rather than filtering the video grid.
-const SECTION_TABS: Record<string, string> = {
-  "TV Broadcast": "tv-broadcast",
-  Podcast: "podcast",
+const SECTION_TABS: Partial<Record<TabKey, string>> = {
+  tv: "tv-broadcast",
+  podcast: "podcast",
 };
 
 const videos = [
@@ -32,11 +44,14 @@ const videos = [
 ];
 
 export default function MediaClient({ locale }: { locale: string }) {
-  const [activeTab, setActiveTab] = useState("All");
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale;
+  const c = mediaCopy[loc];
+  const [activeTab, setActiveTab] = useState<TabKey>("all");
 
-  const filteredVideos = activeTab === "All" ? videos : videos.filter((v) => v.category === activeTab);
+  const activeCategory = CATEGORY_MAP[activeTab];
+  const filteredVideos = activeTab === "all" ? videos : videos.filter((v) => v.category === activeCategory);
 
-  const handleTabClick = (tab: string) => {
+  const handleTabClick = (tab: TabKey) => {
     setActiveTab(tab);
     const sectionId = SECTION_TABS[tab];
     if (sectionId) {
@@ -56,18 +71,18 @@ export default function MediaClient({ locale }: { locale: string }) {
           priority
         />
         <Container className="relative z-10 py-20 flex flex-col items-center">
-          <motion.h1 
+          <motion.h1
             {...fadeUp}
             className="font-serif text-[56px] lg:text-[72px] text-white leading-tight"
           >
-            Watch. Listen. Grow.
+            {c.heroTitle}
           </motion.h1>
           <motion.p
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.1 }}
             className="text-white/80 mt-4 text-lg max-w-2xl"
           >
-            Decades of transformative teaching, now available wherever you are.
+            {c.heroSubtitle}
           </motion.p>
         </Container>
       </section>
@@ -76,17 +91,17 @@ export default function MediaClient({ locale }: { locale: string }) {
       <div className="sticky top-20 z-10 bg-white border-b border-[#E5E7EB]">
         <Container>
           <div className="flex overflow-x-auto hide-scrollbar space-x-8">
-            {tabs.map((tab) => (
+            {TAB_KEYS.map((tab) => (
               <button
                 key={tab}
                 onClick={() => handleTabClick(tab)}
                 className={`py-4 whitespace-nowrap text-sm font-medium transition-colors ${
-                  activeTab === tab 
-                    ? "border-b-2 border-[#C9A227] text-[#0A192F]" 
+                  activeTab === tab
+                    ? "border-b-2 border-[#C9A227] text-[#0A192F]"
                     : "text-[#6B7280] hover:text-[#0A192F]"
                 }`}
               >
-                {tab}
+                {c.tabs[tab]}
               </button>
             ))}
           </div>
@@ -126,7 +141,7 @@ export default function MediaClient({ locale }: { locale: string }) {
             </motion.div>
           ) : (
             <p className="text-[#6B7280] py-8 text-center">
-              No videos in this category yet — see the section below.
+              {c.noVideos}
             </p>
           )}
         </Container>
@@ -138,10 +153,10 @@ export default function MediaClient({ locale }: { locale: string }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div {...fadeUp}>
               <h2 className="font-serif text-[40px] text-[#0A192F] leading-tight mb-4">
-                Expand Your World
+                {c.tvHeading}
               </h2>
               <p className="text-[#6B7280] mb-6 text-lg">
-                Join thousands globally who tune in to the weekly TV broadcast. Experience life-transforming messages right from your living room.
+                {c.tvBody}
               </p>
               <div className="space-y-4">
                 <div className="border-l-2 border-[#C9A227] pl-4">
@@ -157,7 +172,7 @@ export default function MediaClient({ locale }: { locale: string }) {
             <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.2 }}>
               <div className="bg-[#0A192F] rounded-[12px] aspect-video flex items-center justify-center shadow-lg relative overflow-hidden">
                 <span className="text-[#C9A227] font-bold tracking-widest text-xl relative z-10">
-                  LIVE BROADCAST
+                  {c.liveBroadcast}
                 </span>
                 <div className="absolute inset-0 bg-[#C9A227]/5 animate-pulse"></div>
               </div>
@@ -171,10 +186,10 @@ export default function MediaClient({ locale }: { locale: string }) {
         <Container>
           <motion.div {...fadeUp} className="max-w-2xl mx-auto flex flex-col items-center">
             <h2 className="font-serif text-[40px] text-[#0A192F] mb-4">
-              The Transformation Podcast
+              {c.podcastHeading}
             </h2>
             <p className="text-[#6B7280] mb-8 text-lg">
-              Subscribe on your favourite platform and never miss an episode.
+              {c.podcastBody}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {[
@@ -201,14 +216,14 @@ export default function MediaClient({ locale }: { locale: string }) {
       <section className="bg-[#0A192F] py-16">
         <Container>
           <motion.div {...fadeUp} className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <h2 className="font-serif text-[40px] text-white">Press & Media Appearances</h2>
+            <h2 className="font-serif text-[40px] text-white">{c.pressHeading}</h2>
             <Link href={`/${locale}/contact`} className="group flex items-center gap-2 text-[#C9A227] hover:text-white transition-colors mt-4 md:mt-0">
-              <span className="font-medium">For media enquiries</span>
+              <span className="font-medium">{c.pressCta}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
             initial="initial"
             whileInView="whileInView"

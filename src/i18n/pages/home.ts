@@ -60,6 +60,28 @@ export interface HomeCopy {
     body: string;
     cta: string;
   };
+  /** Current hero (replaces the unused legacy `hero` block above for the live homepage). */
+  heroCurrent: {
+    eyebrow: string;
+    body: string;
+    ctaStartHere: string;
+    ctaAssessment: string;
+  };
+  statsSection: {
+    eyebrow: string;
+    heading: string;
+    labelChurches: string;
+    labelNations: string;
+    labelLives: string;
+    labelYears: string;
+    body: string;
+    exploreMinistry: string;
+  };
+  testimonialSection: {
+    quote: string;
+    attribution: string;
+    goToLabel: string;
+  };
   testimonies: {
     eyebrow: string;
     title: string;
@@ -143,6 +165,27 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       title: "Where Are You as a Leader?",
       body: "Discover your leadership profile and sphere of impact in seven minutes. Get honest questions, a clear picture of where you stand, and a recommended next step.",
       cta: "Take Free Assessment",
+    },
+    heroCurrent: {
+      eyebrow: "Apostolic Leader · Social Reformer · Global Voice",
+      body: "For over three decades, one man's voice has called a generation to transform society through the power of kingdom principles.",
+      ctaStartHere: "Start Here",
+      ctaAssessment: "Take Free Assessment",
+    },
+    statsSection: {
+      eyebrow: "Global Impact",
+      heading: "From One Room to 50+ Nations",
+      labelChurches: "Churches",
+      labelNations: "Nations Reached",
+      labelLives: "Lives Transformed",
+      labelYears: "Years of Ministry",
+      body: "Today, Dominion City Global spans Nigeria, Africa, Europe, Asia, and the Americas. Dr. Ogbueli has been honoured by the Mayor of Brampton, Canada, for his community impact, and his voice has reached the United Nations and global leadership platforms.",
+      exploreMinistry: "Explore the Ministry",
+    },
+    testimonialSection: {
+      quote: "Dr. Ogbueli's teaching on kingdom governance completely changed how I lead my company and serve my community. His voice is a prophetic compass for our generation.",
+      attribution: "Business Leader, Lagos, Nigeria",
+      goToLabel: "Go to testimony",
     },
     testimonies: {
       eyebrow: "Testimonies",
@@ -228,6 +271,27 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       body: "Découvrez votre profil de leadership et votre sphère d'impact grâce à notre diagnostic institutionnel de 7 minutes. Des questions honnêtes, une image claire et une prochaine étape recommandée.",
       cta: "Faire l'évaluation",
     },
+    heroCurrent: {
+      eyebrow: "Leader apostolique · Réformateur social · Voix mondiale",
+      body: "Depuis plus de trois décennies, la voix d'un seul homme a appelé une génération à transformer la société par le pouvoir des principes du royaume.",
+      ctaStartHere: "Commencer ici",
+      ctaAssessment: "Faire l'évaluation gratuite",
+    },
+    statsSection: {
+      eyebrow: "Impact mondial",
+      heading: "D'une seule pièce à plus de 50 nations",
+      labelChurches: "Églises",
+      labelNations: "Nations atteintes",
+      labelLives: "Vies transformées",
+      labelYears: "Années de ministère",
+      body: "Aujourd'hui, Dominion City Global s'étend sur le Nigeria, l'Afrique, l'Europe, l'Asie et les Amériques. Le Dr Ogbueli a été honoré par le maire de Brampton, au Canada, pour son impact communautaire, et sa voix a atteint les Nations Unies et les plateformes mondiales de leadership.",
+      exploreMinistry: "Découvrir le ministère",
+    },
+    testimonialSection: {
+      quote: "L'enseignement du Dr Ogbueli sur la gouvernance du royaume a complètement changé ma façon de diriger mon entreprise et de servir ma communauté. Sa voix est une boussole prophétique pour notre génération.",
+      attribution: "Chef d'entreprise, Lagos, Nigeria",
+      goToLabel: "Aller au témoignage",
+    },
     testimonies: {
       eyebrow: "Témoignages",
       title: "Des vies transformées",
@@ -311,6 +375,27 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       title: "Onde está como líder?",
       body: "Descubra o seu perfil de liderança e a sua esfera de impacto através do nosso diagnóstico institucional de 7 minutos. Perguntas honestas, uma imagem clara e um próximo passo recomendado.",
       cta: "Fazer a avaliação",
+    },
+    heroCurrent: {
+      eyebrow: "Líder Apostólico · Reformador Social · Voz Global",
+      body: "Por mais de três décadas, a voz de um homem tem chamado uma geração a transformar a sociedade através do poder dos princípios do reino.",
+      ctaStartHere: "Comece Aqui",
+      ctaAssessment: "Fazer Avaliação Gratuita",
+    },
+    statsSection: {
+      eyebrow: "Impacto Global",
+      heading: "De Uma Sala a Mais de 50 Nações",
+      labelChurches: "Igrejas",
+      labelNations: "Nações Alcançadas",
+      labelLives: "Vidas Transformadas",
+      labelYears: "Anos de Ministério",
+      body: "Hoje, a Dominion City Global abrange a Nigéria, a África, a Europa, a Ásia e as Américas. O Dr. Ogbueli foi homenageado pelo Prefeito de Brampton, no Canadá, pelo seu impacto comunitário, e a sua voz já alcançou as Nações Unidas e plataformas globais de liderança.",
+      exploreMinistry: "Explorar o Ministério",
+    },
+    testimonialSection: {
+      quote: "O ensino do Dr. Ogbueli sobre governança do reino mudou completamente a forma como lidero a minha empresa e sirvo a minha comunidade. A sua voz é uma bússola profética para a nossa geração.",
+      attribution: "Líder Empresarial, Lagos, Nigéria",
+      goToLabel: "Ir para o depoimento",
     },
     testimonies: {
       eyebrow: "Testemunhos",
@@ -396,6 +481,27 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       body: "Gundua wasifu wako wa uongozi na nyanja yako ya athari kupitia uchunguzi wetu wa kitaasisi wa dakika 7. Maswali ya kweli, picha iliyo wazi, na hatua inayofuata inayopendekezwa.",
       cta: "Fanya tathmini",
     },
+    heroCurrent: {
+      eyebrow: "Kiongozi wa Kitume · Mrekebishaji wa Jamii · Sauti ya Kimataifa",
+      body: "Kwa zaidi ya miongo mitatu, sauti ya mtu mmoja imeita kizazi kubadilisha jamii kupitia nguvu ya kanuni za ufalme.",
+      ctaStartHere: "Anza Hapa",
+      ctaAssessment: "Fanya Tathmini ya Bure",
+    },
+    statsSection: {
+      eyebrow: "Athari ya Kimataifa",
+      heading: "Kutoka Chumba Kimoja Hadi Mataifa Zaidi ya 50",
+      labelChurches: "Makanisa",
+      labelNations: "Mataifa Yaliyofikiwa",
+      labelLives: "Maisha Yaliyobadilishwa",
+      labelYears: "Miaka ya Huduma",
+      body: "Leo, Dominion City Global inaenea Nigeria, Afrika, Ulaya, Asia, na Amerika. Dr. Ogbueli ameheshimiwa na Meya wa Brampton, Kanada, kwa athari yake katika jamii, na sauti yake imefika Umoja wa Mataifa na majukwaa ya uongozi wa kimataifa.",
+      exploreMinistry: "Gundua Huduma",
+    },
+    testimonialSection: {
+      quote: "Mafundisho ya Dr. Ogbueli kuhusu utawala wa ufalme yalibadilisha kabisa jinsi ninavyoongoza kampuni yangu na kuhudumia jamii yangu. Sauti yake ni dira ya kinabii kwa kizazi chetu.",
+      attribution: "Kiongozi wa Biashara, Lagos, Nigeria",
+      goToLabel: "Nenda kwenye ushuhuda",
+    },
     testimonies: {
       eyebrow: "Ushuhuda",
       title: "Maisha Yanabadilishwa",
@@ -477,6 +583,27 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       title: "أين أنت كقائد؟",
       body: "اكتشف ملفك القيادي ومجال تأثيرك من خلال تشخيصنا المؤسسي الذي يستغرق 7 دقائق. أسئلة صادقة، وصورة واضحة، وخطوة تالية موصى بها.",
       cta: "قم بالتقييم",
+    },
+    heroCurrent: {
+      eyebrow: "قائد رسولي · مُصلح اجتماعي · صوت عالمي",
+      body: "منذ أكثر من ثلاثة عقود، دعا صوت رجل واحد جيلاً كاملاً لتغيير المجتمع من خلال قوة مبادئ الملكوت.",
+      ctaStartHere: "ابدأ هنا",
+      ctaAssessment: "خذ التقييم المجاني",
+    },
+    statsSection: {
+      eyebrow: "الأثر العالمي",
+      heading: "من غرفة واحدة إلى أكثر من 50 دولة",
+      labelChurches: "الكنائس",
+      labelNations: "الدول التي تم الوصول إليها",
+      labelLives: "الأرواح التي تغيّرت",
+      labelYears: "سنوات الخدمة",
+      body: "اليوم، تمتد Dominion City Global عبر نيجيريا وأفريقيا وأوروبا وآسيا والأمريكتين. تكرّم الدكتور أوغبويلي من قبل عمدة برامبتون في كندا لأثره المجتمعي، ووصل صوته إلى الأمم المتحدة ومنصات القيادة العالمية.",
+      exploreMinistry: "استكشف الخدمة",
+    },
+    testimonialSection: {
+      quote: "غيّرت تعاليم الدكتور أوغبويلي حول حوكمة الملكوت طريقة قيادتي لشركتي وخدمتي لمجتمعي تمامًا. صوته بوصلة نبوية لجيلنا.",
+      attribution: "قائد أعمال، لاغوس، نيجيريا",
+      goToLabel: "الانتقال إلى الشهادة",
     },
     testimonies: {
       eyebrow: "الشهادات",

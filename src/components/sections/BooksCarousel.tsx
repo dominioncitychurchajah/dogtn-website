@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Container } from "@/components/layout/Section";
 import { BOOKS } from "@/data/books";
+import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
+import { booksCopy } from "@/i18n/pages/books";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -18,6 +20,8 @@ const fadeUp = {
 /** Horizontal product-style carousel showcasing Dr. Ogbueli's books.
  *  Content source is the same BOOKS data used across the site. */
 export function BooksCarousel({ locale }: { locale: string }) {
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale;
+  const c = booksCopy[loc];
   const scrollerRef = React.useRef<HTMLDivElement>(null);
   const books = BOOKS.filter((b) => b.cover);
 
@@ -35,10 +39,10 @@ export function BooksCarousel({ locale }: { locale: string }) {
         <motion.div className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between" {...fadeUp}>
           <div>
             <span className="mb-4 block text-sm font-bold uppercase tracking-widest text-[#C9A227]">
-              The Teachings
+              {c.carouselEyebrow}
             </span>
             <h2 className="font-serif text-[40px] leading-tight text-[#0A192F] lg:text-[56px]">
-              Books That Redefine a Generation
+              {c.carouselHeading}
             </h2>
           </div>
           <div className="flex shrink-0 gap-3">
@@ -94,7 +98,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
                   href={`/${locale}/books/${book.slug}`}
                   className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#C9A227] transition-colors hover:text-[#b38f22]"
                 >
-                  Get the Book <ArrowRight className="h-4 w-4" />
+                  {c.getTheBook} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
@@ -106,7 +110,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
             href={`/${locale}/books`}
             className="inline-block rounded-sm bg-[#0A192F] px-7 py-3.5 font-medium text-white transition-colors hover:bg-[#112a4f]"
           >
-            Browse the Complete Library →
+            {c.browseLibrary}
           </Link>
         </motion.div>
       </Container>

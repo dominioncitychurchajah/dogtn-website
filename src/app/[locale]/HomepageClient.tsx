@@ -22,13 +22,6 @@ const fadeUpVariant = {
   viewport: { once: true, amount: 0.2 },
 };
 
-const STATS = [
-  { value: 2000, suffix: "+", label: "Churches" },
-  { value: 50, suffix: "+", label: "Nations Reached" },
-  { value: 1.2, suffix: "M+", label: "Lives Transformed", decimals: 1 },
-  { value: 30, suffix: "+", label: "Years of Ministry" },
-];
-
 function StatCounter({ value, suffix, label, decimals = 0 }: { value: number; suffix: string; label: string; decimals?: number }) {
   const scale = 10 ** decimals;
   const { ref, value: display } = useCountUp(Math.round(value * scale));
@@ -76,21 +69,21 @@ function useHeroVideoEnabled() {
   return enabled;
 }
 
-const HOMEPAGE_TESTIMONIALS = [
-  {
-    id: "spec-1",
-    quote:
-      "Dr. Ogbueli's teaching on kingdom governance completely changed how I lead my company and serve my community. His voice is a prophetic compass for our generation.",
-    attribution: "Business Leader, Lagos, Nigeria",
-  },
-  ...testimonies.map((t) => ({ id: t.id, quote: t.quote, attribution: `${t.name}, ${t.role}` })),
-];
+function buildHomepageTestimonials(copy: { quote: string; attribution: string }) {
+  return [
+    { id: "spec-1", quote: copy.quote, attribution: copy.attribution },
+    ...testimonies.map((t) => ({ id: t.id, quote: t.quote, attribution: `${t.name}, ${t.role}` })),
+  ];
+}
 
 export function HomepageClient({ locale }: { locale: string }) {
   const heroVideoEnabled = useHeroVideoEnabled();
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const gatheringCopy = homeCopy[loc].nextGathering;
   const assessmentCopy = homeCopy[loc].assessment;
+  const heroCopy = homeCopy[loc].heroCurrent;
+  const statsCopy = homeCopy[loc].statsSection;
+  const testimonialCopy = homeCopy[loc].testimonialSection;
 
   return (
     <main className="w-full flex flex-col min-h-screen">
@@ -129,27 +122,27 @@ export function HomepageClient({ locale }: { locale: string }) {
               transition={{ duration: 0.8 }}
             >
               <div className="text-[11px] uppercase tracking-[0.15em] text-[#C9A227] mb-4 font-semibold">
-                Apostolic Leader · Social Reformer · Global Voice
+                {heroCopy.eyebrow}
               </div>
               <h1 className="font-serif text-[56px] sm:text-[72px] lg:text-[96px] font-bold leading-none text-white mb-6">
                 Dr. David Ogbueli
               </h1>
               <p className="font-sans text-[20px] text-white/70 mb-10 leading-relaxed">
-                For over three decades, one man&apos;s voice has called a generation to transform society through the power of kingdom principles.
+                {heroCopy.body}
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href={`/${locale}/start-here`}
                   className="inline-flex items-center justify-center bg-[#C9A227] text-[#0A192F] px-8 py-4 text-sm font-bold uppercase tracking-widest rounded-sm hover:bg-[#e0b430] transition-colors"
                 >
-                  Start Here
+                  {heroCopy.ctaStartHere}
                 </Link>
                 <Link
                   href={`/${locale}/leadership/assessment`}
                   className="inline-flex items-center justify-center border border-white/40 text-white px-8 py-4 text-sm font-semibold rounded-sm hover:bg-white/5 transition-colors gap-2"
                 >
-                  <ClipboardCheck className="w-4 h-4" /> Take Free Assessment
+                  <ClipboardCheck className="w-4 h-4" /> {heroCopy.ctaAssessment}
                 </Link>
               </div>
             </motion.div>
@@ -168,28 +161,33 @@ export function HomepageClient({ locale }: { locale: string }) {
         <Container>
           <motion.div className="text-center mb-16" {...fadeUpVariant}>
             <span className="text-[#C9A227] uppercase tracking-widest text-sm font-bold mb-4 block">
-              Global Impact
+              {statsCopy.eyebrow}
             </span>
             <h2 className="font-serif text-[48px] lg:text-[56px] text-white">
-              From One Room to 50+ Nations
+              {statsCopy.heading}
             </h2>
           </motion.div>
 
           <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center mb-16" {...fadeUpVariant}>
-            {STATS.map((stat) => (
+            {[
+              { value: 2000, suffix: "+", label: statsCopy.labelChurches },
+              { value: 50, suffix: "+", label: statsCopy.labelNations },
+              { value: 1.2, suffix: "M+", label: statsCopy.labelLives, decimals: 1 },
+              { value: 30, suffix: "+", label: statsCopy.labelYears },
+            ].map((stat) => (
               <StatCounter key={stat.label} {...stat} />
             ))}
           </motion.div>
 
           <motion.div className="text-center max-w-4xl mx-auto" {...fadeUpVariant}>
             <p className="text-white/80 text-lg leading-relaxed mb-8">
-              Today, Dominion City Global spans Nigeria, Africa, Europe, Asia, and the Americas. Dr. Ogbueli has been honoured by the Mayor of Brampton, Canada, for his community impact, and his voice has reached the United Nations and global leadership platforms.
+              {statsCopy.body}
             </p>
             <Link
               href={`/${locale}/ministry`}
               className="text-[#C9A227] font-semibold flex items-center justify-center gap-2 hover:text-[#b38f22] transition-colors"
             >
-              Explore the Ministry <ArrowRight className="w-5 h-5" />
+              {statsCopy.exploreMinistry} <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
         </Container>
@@ -202,15 +200,16 @@ export function HomepageClient({ locale }: { locale: string }) {
       <AssessmentBand copy={assessmentCopy} locale={loc} />
 
       {/* SECTION 6 — TESTIMONIAL */}
-      <TestimonialSection />
+      <TestimonialSection copy={testimonialCopy} />
     </main>
   );
 }
 
-function TestimonialSection() {
+function TestimonialSection({ copy }: { copy: { quote: string; attribution: string; goToLabel: string } }) {
   const [index, setIndex] = React.useState(0);
-  const count = HOMEPAGE_TESTIMONIALS.length;
-  const t = HOMEPAGE_TESTIMONIALS[index];
+  const testimonials = React.useMemo(() => buildHomepageTestimonials(copy), [copy]);
+  const count = testimonials.length;
+  const t = testimonials[index];
 
   const go = React.useCallback(
     (next: number) => setIndex(((next % count) + count) % count),
@@ -230,12 +229,12 @@ function TestimonialSection() {
           <div className="text-[#C9A227] text-base mt-8 font-medium">— {t.attribution}</div>
 
           <div className="mt-10 flex items-center justify-center gap-2">
-            {HOMEPAGE_TESTIMONIALS.map((item, i) => (
+            {testimonials.map((item, i) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => go(i)}
-                aria-label={`Go to testimony ${i + 1}`}
+                aria-label={`${copy.goToLabel} ${i + 1}`}
                 aria-current={i === index}
                 className={`h-2.5 rounded-full transition-all ${
                   i === index ? "w-6 bg-[#C9A227]" : "w-2.5 bg-white/20 hover:bg-white/40"

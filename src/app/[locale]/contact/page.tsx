@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ShieldCheck,
@@ -17,6 +18,8 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { Container } from '@/components/layout/Section';
+import { isLocale, defaultLocale, type Locale } from '@/i18n/config';
+import { contactCopy, type ContactCopy } from '@/i18n/pages/contact';
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -34,42 +37,33 @@ const SOCIAL_LINKS = [
   { label: "Podcast", href: "https://open.spotify.com/show/2JO3Nr5fVyyuLuq8DiGQDa" },
 ];
 
-const OFFICES = [
-  { flag: "🇺🇸", name: "United States", address: ["1127 Misty Valley Court,", "Lawrenceville GA 30045"], phones: ["+1-470-535-2006", "+1-678-622-7090"] },
-  { flag: "🇬🇧", name: "United Kingdom", address: ["The Hub, 123 Star Lane,", "London E16 4PZ"], phones: ["+44-7956670069", "+44-7760919119"] },
-  { flag: "🇳🇬", name: "Abuja, Nigeria", address: ["17 Oladipo Diya Way, Gudu District,", "FCT Abuja"], phones: ["+234-8038246281", "+234-7060574969"] },
-  { flag: "🇳🇬", name: "Lagos, Nigeria", address: ["Km 22, Lekki-Epe Expressway,", "beside LBS, Ajah Lekki"], phones: ["+234-8034954566", "+234-8035508230"] },
-];
+function buildOffices(c: ContactCopy) {
+  return [
+    { flag: "🇺🇸", name: c.offices.us, address: ["1127 Misty Valley Court,", "Lawrenceville GA 30045"], phones: ["+1-470-535-2006", "+1-678-622-7090"] },
+    { flag: "🇬🇧", name: c.offices.uk, address: ["The Hub, 123 Star Lane,", "London E16 4PZ"], phones: ["+44-7956670069", "+44-7760919119"] },
+    { flag: "🇳🇬", name: c.offices.abuja, address: ["17 Oladipo Diya Way, Gudu District,", "FCT Abuja"], phones: ["+234-8038246281", "+234-7060574969"] },
+    { flag: "🇳🇬", name: c.offices.lagos, address: ["Km 22, Lekki-Epe Expressway,", "beside LBS, Ajah Lekki"], phones: ["+234-8034954566", "+234-8035508230"] },
+  ];
+}
 
-const MESSAGE_TYPES = [
-  { value: "testimony", label: "Share a Testimony", placeholder: "Share your testimony with us. How has God moved in your life? We'd love to celebrate with you.", helper: "Tip: Include what happened, when, and how it has impacted your life." },
-  { value: "prayer", label: "Prayer Request", placeholder: "Share your prayer request with us. Our prayer team is standing with you.", helper: "Tip: You can share as much or as little detail as you're comfortable with." },
-  { value: "partnership", label: "Partnership Inquiry", placeholder: "Tell us about your organization and how you'd like to partner with the ministry.", helper: "Tip: Include your organization's mission, location, and proposed collaboration." },
-  { value: "general", label: "General Correspondence", placeholder: "Share your message, question, or feedback here...", helper: "Tip: Be as detailed as you feel comfortable sharing." },
-];
+function buildMessageTypes(c: ContactCopy) {
+  return [
+    { value: "testimony", ...c.messageTypes.testimony },
+    { value: "prayer", ...c.messageTypes.prayer },
+    { value: "partnership", ...c.messageTypes.partnership },
+    { value: "general", ...c.messageTypes.general },
+  ];
+}
 
-const FAQS = [
-  {
-    q: "How quickly will I receive a response?",
-    a: "We commit to responding to all inquiries within 24 hours. For urgent prayer requests, our team often replies within 4-6 hours during business days.",
-  },
-  {
-    q: "Can I share a testimony through this form?",
-    a: "Absolutely! Select \"Share a Testimony\" from the dropdown and tell us your story. We love hearing how God is moving in your life.",
-  },
-  {
-    q: "How do I submit a prayer request?",
-    a: "Select \"Prayer Request\" from the dropdown and share as much detail as you're comfortable with. Our prayer team reviews every submission and will follow up if you request it.",
-  },
-  {
-    q: "How do I partner with the ministry?",
-    a: "Select \"Partnership Inquiry\" from the dropdown. Our partnerships team will reach out to discuss alignment and collaboration opportunities.",
-  },
-  {
-    q: "Is my information kept private?",
-    a: "Yes, completely. Your information is encrypted and protected. We never share your details with third parties and will only use them to respond to your message.",
-  },
-];
+function buildFaqs(c: ContactCopy) {
+  return [
+    { q: c.faqs.q1, a: c.faqs.a1 },
+    { q: c.faqs.q2, a: c.faqs.a2 },
+    { q: c.faqs.q3, a: c.faqs.a3 },
+    { q: c.faqs.q4, a: c.faqs.a4 },
+    { q: c.faqs.q5, a: c.faqs.a5 },
+  ];
+}
 
 /** No form backend exists yet, so this opens the user's email client with the message
  *  pre-filled — genuinely functional with zero new accounts, rather than faking success. */
@@ -82,6 +76,15 @@ function buildMailto(subject: string, fields: Record<string, string>) {
 }
 
 export default function ContactPage() {
+  const params = useParams();
+  const locale = (params?.locale as string | undefined) ?? "en";
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale;
+  const c = contactCopy[loc];
+
+  const MESSAGE_TYPES = buildMessageTypes(c);
+  const OFFICES = buildOffices(c);
+  const FAQS = buildFaqs(c);
+
   const [messageType, setMessageType] = useState("");
   const [status, setStatus] = useState<"idle" | "success">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -91,7 +94,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const typeLabel = activeType?.label || "General Correspondence";
+    const typeLabel = activeType?.label || c.messageTypes.general.label;
     window.location.href = buildMailto(typeLabel, {
       Name: `${data.get("firstName") ?? ""} ${data.get("lastName") ?? ""}`.trim(),
       Email: String(data.get("email") ?? ""),
@@ -109,26 +112,26 @@ export default function ContactPage() {
         <motion.div {...fadeUp} className="relative z-10 mx-auto max-w-3xl">
           <span className="mb-7 inline-flex items-center gap-2 rounded-full border border-[#C9A227]/25 bg-[#C9A227]/15 px-5 py-2 text-[13px] font-medium tracking-wide text-[#C9A227]">
             <ShieldCheck className="h-3.5 w-3.5" />
-            Response Time Promise: Under 24 Hours
+            {c.responsePromise}
           </span>
           <h1 className="font-serif text-[32px] leading-[1.15] text-white sm:text-[44px] lg:text-[56px]">
-            Let&apos;s Start a <span className="text-[#C9A227]">Conversation</span> That Transforms
+            {c.heroTitlePre}<span className="text-[#C9A227]">{c.heroTitleAccent}</span>{c.heroTitlePost}
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-white/65">
-            Whether you&apos;re sharing a testimony, submitting a prayer request, or reaching out for any reason — our team is here to serve you with care and excellence.
+            {c.heroSubtitle}
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
             <div className="flex items-center gap-2 text-[13px] font-medium text-white/50">
               <Lock className="h-4 w-4 text-[#C9A227]" />
-              Your information is secure &amp; private
+              {c.trustSecure}
             </div>
             <div className="flex items-center gap-2 text-[13px] font-medium text-white/50">
               <Clock className="h-4 w-4 text-[#C9A227]" />
-              Average response: 6 hours
+              {c.trustResponse}
             </div>
             <div className="flex items-center gap-2 text-[13px] font-medium text-white/50">
               <Users className="h-4 w-4 text-[#C9A227]" />
-              1.2M+ lives impacted globally
+              {c.trustLives}
             </div>
           </div>
         </motion.div>
@@ -139,19 +142,19 @@ export default function ContactPage() {
         {/* Form panel */}
         <motion.div {...fadeUp}>
           <div className="mb-7">
-            <h2 className="font-serif text-2xl text-[#0A192F]">Get in Touch</h2>
-            <p className="mt-1.5 text-sm text-[#6B7280]">We&apos;d love to hear from you. Select the nature of your message below and share the details.</p>
+            <h2 className="font-serif text-2xl text-[#0A192F]">{c.getInTouch}</h2>
+            <p className="mt-1.5 text-sm text-[#6B7280]">{c.getInTouchSubtitle}</p>
           </div>
 
           {status === "success" ? (
             <div className="rounded-xl bg-[#C9A227]/15 p-6 text-[#0A192F]">
-              Opening your email client with this message pre-filled — just hit send.
+              {c.successMessage}
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">
-                  Nature of Your Message <span className="text-red-500">*</span>
+                  {c.messageTypeLabel} <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
                   <select
@@ -160,49 +163,49 @@ export default function ContactPage() {
                     onChange={(e) => setMessageType(e.target.value)}
                     className="w-full appearance-none rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12"
                   >
-                    <option value="">Select an option...</option>
+                    <option value="">{c.selectOption}</option>
                     {MESSAGE_TYPES.map((t) => (
                       <option key={t.value} value={t.value}>{t.label}</option>
                     ))}
                   </select>
                   <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#718096]" />
                 </div>
-                <p className="mt-1 text-xs text-[#718096]">Choose the option that best describes why you&apos;re reaching out.</p>
+                <p className="mt-1 text-xs text-[#718096]">{c.messageTypeHelper}</p>
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">First Name <span className="text-red-500">*</span></label>
-                  <input required name="firstName" type="text" placeholder="e.g. John" className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
+                  <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">{c.firstName} <span className="text-red-500">*</span></label>
+                  <input required name="firstName" type="text" placeholder={c.firstNamePlaceholder} className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">Last Name <span className="text-red-500">*</span></label>
-                  <input required name="lastName" type="text" placeholder="e.g. Smith" className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
+                  <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">{c.lastName} <span className="text-red-500">*</span></label>
+                  <input required name="lastName" type="text" placeholder={c.lastNamePlaceholder} className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
                 </div>
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">Email Address <span className="text-red-500">*</span></label>
+                <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">{c.emailAddress} <span className="text-red-500">*</span></label>
                 <input required name="email" type="email" placeholder="john@email.com" className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
-                <p className="mt-1 text-xs text-[#718096]">We&apos;ll never share your email with third parties.</p>
+                <p className="mt-1 text-xs text-[#718096]">{c.emailHelper}</p>
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">Phone Number</label>
+                <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">{c.phoneNumber}</label>
                 <input name="phone" type="tel" placeholder="+1 (555) 000-0000" className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
-                <p className="mt-1 text-xs text-[#718096]">Optional — helps us reach you faster if needed.</p>
+                <p className="mt-1 text-xs text-[#718096]">{c.phoneHelper}</p>
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">Your Message <span className="text-red-500">*</span></label>
+                <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">{c.yourMessage} <span className="text-red-500">*</span></label>
                 <textarea
                   required
                   name="message"
                   rows={5}
-                  placeholder={activeType?.placeholder ?? "Share your testimony, prayer request, or message here..."}
+                  placeholder={activeType?.placeholder ?? c.defaultMessageHelper}
                   className="w-full resize-y rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12"
                 />
-                <p className="mt-1 text-xs text-[#718096]">{activeType?.helper ?? "Tip: Be as detailed as you feel comfortable sharing."}</p>
+                <p className="mt-1 text-xs text-[#718096]">{activeType?.helper ?? c.defaultMessageHelper}</p>
               </div>
 
               <button
@@ -210,12 +213,12 @@ export default function ContactPage() {
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#C9A227] py-4 text-[15px] font-bold text-[#0A192F] transition-all hover:-translate-y-px hover:bg-[#d4b85a] hover:shadow-[0_4px_20px_rgba(201,162,39,0.2)]"
               >
                 <Send className="h-[18px] w-[18px]" />
-                Send My Message
+                {c.sendMessage}
               </button>
 
               <div className="flex items-start gap-2.5 rounded-xl bg-[#F8FAFC] p-3.5 text-xs leading-relaxed text-[#718096]">
                 <Lock className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#C9A227]" />
-                <span>Your information is encrypted and protected. We respect your privacy and will only use your details to respond to your inquiry. No spam, ever.</span>
+                <span>{c.privacyNote}</span>
               </div>
             </form>
           )}
@@ -228,14 +231,14 @@ export default function ContactPage() {
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#C9A227]/20">
                 <Clock className="h-5 w-5 text-[#C9A227]" />
               </div>
-              <h3 className="font-serif text-xl">What Happens Next?</h3>
+              <h3 className="font-serif text-xl">{c.whatHappensNext}</h3>
             </div>
-            <p className="mb-5 text-sm leading-relaxed text-white/65">We value your time. Here&apos;s exactly what to expect after you reach out:</p>
+            <p className="mb-5 text-sm leading-relaxed text-white/65">{c.nextStepsIntro}</p>
             <div className="space-y-3.5">
               {[
-                { n: 1, title: "Instant confirmation", text: "You'll receive an email acknowledging your message within minutes." },
-                { n: 2, title: "Personal review", text: "Our team reviews your message and prepares a tailored response." },
-                { n: 3, title: "Direct follow-up", text: "You'll hear back from us within 24 hours with clear next steps." },
+                { n: 1, title: c.steps.instantTitle, text: c.steps.instantBody },
+                { n: 2, title: c.steps.reviewTitle, text: c.steps.reviewBody },
+                { n: 3, title: c.steps.followupTitle, text: c.steps.followupBody },
               ].map((step) => (
                 <div key={step.n} className="flex items-start gap-3">
                   <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border border-[#C9A227]/30 bg-[#C9A227]/20 text-xs font-bold text-[#C9A227]">
@@ -257,19 +260,19 @@ export default function ContactPage() {
               ))}
             </div>
             <blockquote className="mb-4 font-serif text-base italic leading-relaxed text-[#0A192F]">
-              &ldquo;Dr. Ogbueli&apos;s message at our conference was transformational. The team&apos;s professionalism from first contact to the event day was exceptional.&rdquo;
+              &ldquo;{c.testimonialQuote}&rdquo;
             </blockquote>
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0A192F] text-sm font-semibold text-[#C9A227]">P</div>
               <div>
-                <div className="text-sm font-semibold text-[#0A192F]">Pastor Emmanuel K.</div>
-                <div className="text-xs text-[#718096]">Conference Organizer, Lagos</div>
+                <div className="text-sm font-semibold text-[#0A192F]">{c.testimonialName}</div>
+                <div className="text-xs text-[#718096]">{c.testimonialRole}</div>
               </div>
             </div>
           </div>
 
           <div className="rounded-2xl border-[1.5px] border-[#E2E8F0] p-6">
-            <h4 className="mb-4 text-[13px] font-bold uppercase tracking-wider text-[#718096]">Prefer Another Channel?</h4>
+            <h4 className="mb-4 text-[13px] font-bold uppercase tracking-wider text-[#718096]">{c.preferAnotherChannel}</h4>
             <div className="space-y-3">
               <a
                 href={buildMailto("WhatsApp Contact Request", { Note: "Please reach out to me via WhatsApp." })}
@@ -279,8 +282,8 @@ export default function ContactPage() {
                   <MessageCircle className="h-[18px] w-[18px]" />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-[#0A192F]">WhatsApp</span>
-                  <span className="block text-xs text-[#718096]">Request a callback via WhatsApp</span>
+                  <span className="block text-sm font-semibold text-[#0A192F]">{c.whatsapp}</span>
+                  <span className="block text-xs text-[#718096]">{c.whatsappDesc}</span>
                 </span>
                 <ArrowRight className="ml-auto h-4 w-4 text-[#718096] transition-transform group-hover:translate-x-0.5" />
               </a>
@@ -292,7 +295,7 @@ export default function ContactPage() {
                   <Mail className="h-[18px] w-[18px]" />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-[#0A192F]">Email</span>
+                  <span className="block text-sm font-semibold text-[#0A192F]">{c.email}</span>
                   <span className="block text-xs text-[#718096]">{CONTACT_EMAIL}</span>
                 </span>
                 <ArrowRight className="ml-auto h-4 w-4 text-[#718096] transition-transform group-hover:translate-x-0.5" />
@@ -305,8 +308,8 @@ export default function ContactPage() {
                   <Phone className="h-[18px] w-[18px]" />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-[#0A192F]">Phone</span>
-                  <span className="block text-xs text-[#718096]">Call your nearest office</span>
+                  <span className="block text-sm font-semibold text-[#0A192F]">{c.phone}</span>
+                  <span className="block text-xs text-[#718096]">{c.phoneDesc}</span>
                 </span>
                 <ArrowRight className="ml-auto h-4 w-4 text-[#718096] transition-transform group-hover:translate-x-0.5" />
               </a>
@@ -318,8 +321,8 @@ export default function ContactPage() {
                   <CalendarDays className="h-[18px] w-[18px]" />
                 </span>
                 <span>
-                  <span className="block text-sm font-semibold text-[#0A192F]">Book a Call</span>
-                  <span className="block text-xs text-[#718096]">Request a 15-min discovery call</span>
+                  <span className="block text-sm font-semibold text-[#0A192F]">{c.bookACall}</span>
+                  <span className="block text-xs text-[#718096]">{c.bookACallDesc}</span>
                 </span>
                 <ArrowRight className="ml-auto h-4 w-4 text-[#718096] transition-transform group-hover:translate-x-0.5" />
               </a>
@@ -332,8 +335,8 @@ export default function ContactPage() {
       <section id="offices" className="bg-[#0A192F] px-6 py-20">
         <Container>
           <motion.div {...fadeUp} className="mb-12 text-center">
-            <h2 className="font-serif text-[28px] text-white sm:text-4xl">Our Global Offices</h2>
-            <p className="mx-auto mt-3 max-w-md text-white/50">With presence across four continents, we&apos;re never far from where you need us.</p>
+            <h2 className="font-serif text-[28px] text-white sm:text-4xl">{c.officesHeading}</h2>
+            <p className="mx-auto mt-3 max-w-md text-white/50">{c.officesSubtitle}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -381,8 +384,8 @@ export default function ContactPage() {
       {/* FAQ */}
       <section className="mx-auto max-w-[800px] px-6 py-20">
         <motion.div {...fadeUp} className="mb-12 text-center">
-          <h2 className="font-serif text-[28px] text-[#0A192F] sm:text-4xl">Frequently Asked Questions</h2>
-          <p className="mt-3 text-base text-[#718096]">Quick answers to common questions before you reach out.</p>
+          <h2 className="font-serif text-[28px] text-[#0A192F] sm:text-4xl">{c.faqHeading}</h2>
+          <p className="mt-3 text-base text-[#718096]">{c.faqSubtitle}</p>
         </motion.div>
 
         <div>
@@ -417,14 +420,14 @@ export default function ContactPage() {
       {/* CTA BANNER */}
       <section className="bg-[#F5F1E8] px-6 py-16 text-center">
         <motion.div {...fadeUp} className="mx-auto max-w-xl">
-          <h2 className="font-serif text-2xl text-[#0A192F] sm:text-[32px]">Not Sure Where to Start?</h2>
-          <p className="mt-3 mb-7 text-base text-[#718096]">Our team is happy to guide you. Send a quick message and we&apos;ll point you in the right direction.</p>
+          <h2 className="font-serif text-2xl text-[#0A192F] sm:text-[32px]">{c.ctaHeading}</h2>
+          <p className="mt-3 mb-7 text-base text-[#718096]">{c.ctaBody}</p>
           <a
             href="#contact-form"
             className="inline-flex items-center gap-2 rounded-xl bg-[#C9A227] px-9 py-4 text-[15px] font-bold text-[#0A192F] transition-all hover:-translate-y-px hover:bg-[#d4b85a] hover:shadow-[0_4px_20px_rgba(201,162,39,0.2)]"
           >
             <MessageCircle className="h-[18px] w-[18px]" />
-            Send a Quick Message
+            {c.ctaButton}
           </a>
         </motion.div>
       </section>

@@ -6,14 +6,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { BOOKS } from "@/data/books";
 import { Container } from "@/components/layout/Section";
+import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
+import { booksCopy } from "@/i18n/pages/books";
 
 export default function BooksClient({ locale }: { locale: string }) {
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale;
+  const c = booksCopy[loc];
   const [filter, setFilter] = useState("all");
-  
-  const categories = ["all", "leadership", "prayer", "relationships", "politics"];
-  
+
+  const categories = ["all", "leadership", "prayer", "relationships", "politics"] as const;
+
   const filteredBooks = filter === "all" ? BOOKS : BOOKS.filter(book => book.category === filter);
-  
+
   const startHereBooks = BOOKS.slice(0, 3);
 
   const containerVariants = {
@@ -44,10 +48,10 @@ export default function BooksClient({ locale }: { locale: string }) {
             className="max-w-3xl"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#C9A227] mb-6">
-              The Library of a Reformer
+              {c.heroTitle}
             </h1>
             <p className="text-lg md:text-xl text-white/80 max-w-2xl">
-              Explore written works on kingdom governance, strategic intercession, and transformational leadership.
+              {c.heroSubtitle}
             </p>
           </motion.div>
         </Container>
@@ -57,10 +61,10 @@ export default function BooksClient({ locale }: { locale: string }) {
       <section className="py-20 bg-[#F5F1E8]">
         <Container>
           <div className="mb-12">
-            <h2 className="text-3xl font-serif text-[#0A192F] mb-4">Start Here</h2>
-            <p className="text-[#6B7280]">Foundational reading for kingdom citizens.</p>
+            <h2 className="text-3xl font-serif text-[#0A192F] mb-4">{c.startHereTitle}</h2>
+            <p className="text-[#6B7280]">{c.startHereSubtitle}</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {startHereBooks.map((book, index) => (
               <motion.div
@@ -73,7 +77,7 @@ export default function BooksClient({ locale }: { locale: string }) {
               >
                 <div className="bg-[#0A192F] aspect-[3/4] flex items-center justify-center relative overflow-hidden">
                   <div className="absolute top-4 right-4 z-10 bg-[#C9A227] text-[#0A192F] text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-full">
-                    Featured
+                    {c.featured}
                   </div>
                   {book.cover ? (
                     <Image src={book.cover} alt={`${book.title} cover`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
@@ -89,11 +93,11 @@ export default function BooksClient({ locale }: { locale: string }) {
                   </span>
                   <p className="text-[#6B7280] mb-6 flex-grow">{book.desc}</p>
                   <div className="flex items-center gap-4 mt-auto">
-                    <Link 
+                    <Link
                       href={`/${locale}/books/${book.slug}`}
                       className="inline-block bg-[#0A192F] text-white px-5 py-2 text-sm font-medium hover:bg-[#0A192F]/90 transition-colors rounded-md"
                     >
-                      Learn More
+                      {c.learnMore}
                     </Link>
                     <a
                       href={book.amazonUrl}
@@ -101,7 +105,7 @@ export default function BooksClient({ locale }: { locale: string }) {
                       rel="noopener noreferrer"
                       className="text-sm font-medium text-[#0A192F] hover:text-[#C9A227] transition-colors"
                     >
-                      Amazon &rarr;
+                      {c.amazon}
                     </a>
                   </div>
                 </div>
@@ -115,8 +119,8 @@ export default function BooksClient({ locale }: { locale: string }) {
       <section className="py-20 bg-white">
         <Container>
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
-            <h2 className="text-3xl font-serif text-[#0A192F]">All Books</h2>
-            
+            <h2 className="text-3xl font-serif text-[#0A192F]">{c.allBooksHeading}</h2>
+
             <div className="flex flex-wrap gap-2">
               {categories.map((cat) => (
                 <button
@@ -128,13 +132,13 @@ export default function BooksClient({ locale }: { locale: string }) {
                       : "bg-[#F5F1E8] text-[#6B7280] hover:bg-[#C9A227]/20 hover:text-[#0A192F]"
                   }`}
                 >
-                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  {c.categories[cat]}
                 </button>
               ))}
             </div>
           </div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -161,13 +165,13 @@ export default function BooksClient({ locale }: { locale: string }) {
                   </h3>
                   <p className="text-[#6B7280]">{book.desc}</p>
                 </div>
-                
+
                 <div className="flex items-center gap-4 mt-auto pt-4 border-t border-black/10">
-                  <Link 
+                  <Link
                     href={`/${locale}/books/${book.slug}`}
                     className="inline-block bg-[#0A192F] text-white px-5 py-2 text-sm font-medium hover:bg-[#0A192F]/90 transition-colors rounded-md"
                   >
-                    Details
+                    {c.details}
                   </Link>
                   <a
                     href={book.amazonUrl}
@@ -175,15 +179,15 @@ export default function BooksClient({ locale }: { locale: string }) {
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-[#0A192F] hover:text-[#C9A227] transition-colors"
                   >
-                    Buy &rarr;
+                    {c.buy}
                   </a>
                 </div>
               </motion.div>
             ))}
-            
+
             {filteredBooks.length === 0 && (
               <div className="col-span-full py-12 text-center text-[#6B7280]">
-                No books found in this category.
+                {c.noBooksFound}
               </div>
             )}
           </motion.div>

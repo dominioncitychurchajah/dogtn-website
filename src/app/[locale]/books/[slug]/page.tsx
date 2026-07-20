@@ -5,6 +5,8 @@ import Link from "next/link";
 import { BOOKS } from "@/data/books";
 import { teachings } from "@/data/teachings";
 import { Container } from "@/components/layout/Section";
+import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
+import { booksCopy } from "@/i18n/pages/books";
 
 interface PageProps {
   params: Promise<{
@@ -37,8 +39,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BookDetailPage({ params }: PageProps) {
   const { locale, slug } = await params;
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale;
+  const c = booksCopy[loc];
   const book = BOOKS.find((b) => b.slug === slug);
-  
+
   if (!book) {
     notFound();
   }
@@ -49,11 +53,11 @@ export default async function BookDetailPage({ params }: PageProps) {
     <main className="min-h-screen bg-[#F5F1E8] pt-32 pb-20">
       <Container>
         <div className="mb-8">
-          <Link 
+          <Link
             href={`/${locale}/books`}
             className="text-sm font-medium text-[#6B7280] hover:text-[#C9A227] transition-colors inline-flex items-center gap-2"
           >
-            &larr; Back to all books
+            {c.backToBooks}
           </Link>
         </div>
 
@@ -96,7 +100,7 @@ export default async function BookDetailPage({ params }: PageProps) {
             
             <div className="mb-12">
               <h3 className="text-xl font-bold text-[#0A192F] mb-6 border-b border-black/10 pb-4">
-                Key Takeaways
+                {c.keyTakeaways}
               </h3>
               <ul className="space-y-4">
                 {book.takeaways?.map((takeaway, index) => (
@@ -115,7 +119,7 @@ export default async function BookDetailPage({ params }: PageProps) {
             {book.reviews && book.reviews.length > 0 && (
               <div className="mb-12">
                 <h3 className="text-xl font-bold text-[#0A192F] mb-6 border-b border-black/10 pb-4">
-                  Reader Reviews
+                  {c.readerReviews}
                 </h3>
                 <ul className="space-y-6">
                   {book.reviews.map((review, index) => (
@@ -135,14 +139,14 @@ export default async function BookDetailPage({ params }: PageProps) {
                 rel="noopener noreferrer"
                 className="inline-block bg-[#C9A227] text-[#0A192F] px-8 py-4 font-bold rounded hover:bg-[#b59020] transition-colors shadow-sm"
               >
-                Get on Amazon
+                {c.getOnAmazon}
               </a>
 
               <Link
                 href={`/${locale}/books`}
                 className="inline-block bg-white text-[#0A192F] px-8 py-4 font-medium rounded hover:bg-gray-50 border border-black/10 transition-colors shadow-sm"
               >
-                More Books
+                {c.moreBooks}
               </Link>
             </div>
           </div>
@@ -150,7 +154,7 @@ export default async function BookDetailPage({ params }: PageProps) {
 
         {relatedTeachings.length > 0 && (
           <div className="mt-20 border-t border-black/10 pt-16">
-            <h3 className="text-2xl font-serif text-[#0A192F] mb-8">Related Teachings</h3>
+            <h3 className="text-2xl font-serif text-[#0A192F] mb-8">{c.relatedTeachings}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedTeachings.map((teaching) => (
                 <Link

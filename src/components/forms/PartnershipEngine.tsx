@@ -1,72 +1,123 @@
 "use client";
 
 import * as React from "react";
-import { ArrowRight, ArrowLeft, Lock, Heart, CheckCircle2, ShieldCheck, Mail, User, CreditCard } from "lucide-react";
+import { ArrowRight, ArrowLeft, Lock, Heart, CheckCircle2, ShieldCheck, Mail, User } from "lucide-react";
 import { useToast } from "@/components/ui/Toast";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 
 // Form steps definition
 type FormStep = "amount" | "personal" | "payment" | "success";
+type Currency = "USD" | "NGN";
 
-const SUGGESTED_AMOUNTS = [50, 100, 150, 250, 500];
+// Card entry itself happens inside Paystack's own hosted popup — never in this
+// component's state — so this integration never touches raw card data (PCI scope
+// stays with Paystack). Only the public key + subaccount code are safe to ship
+// in the frontend bundle; the secret key lives server-side in the Cloudflare
+// Pages Function at functions/api/paystack-verify.js.
+const PAYSTACK_PUBLIC_KEY = "pk_test_85c8b2a338ef533c919945b708420b840c5c2815";
+const PAYSTACK_SUBACCOUNT = "ACCT_1pp70z6brk7nvtr";
 
-const IMPACT_ANCHORS: Record<number, string> = {
-  50: "Trains 1 leader/month for a lifetime of impact.",
-  100: "Trains 2 leaders/month & equips local community mentors.",
-  150: "Funds 1 entire community mentorship hub every quarter.",
-  250: "Funds a mentorship hub & supports digital teachings digitization.",
-  500: "Sponsors national transformation initiatives and local conferences.",
+const SUGGESTED_AMOUNTS: Record<Currency, number[]> = {
+  USD: [50, 100, 150, 250, 500],
+  // Round Naira giving tiers rather than a live-converted figure.
+  NGN: [75000, 150000, 225000, 375000, 750000],
 };
+
+const CURRENCY_SYMBOL: Record<Currency, string> = { USD: "$", NGN: "₦" };
+
+// Approximate NGN/USD rate used only to pick the right impact-tier message for
+// custom amounts — never shown to the user as a live conversion.
+const NGN_PER_USD = 1500;
+
+const IMPACT_ANCHORS_BY_TIER = [
+  "Trains 1 leader/month for a lifetime of impact.",
+  "Trains 2 leaders/month & equips local community mentors.",
+  "Funds 1 entire community mentorship hub every quarter.",
+  "Funds a mentorship hub & supports digital teachings digitization.",
+  "Sponsors national transformation initiatives and local conferences.",
+];
+
+type PaystackHandler = { openIframe: () => void };
+type PaystackSetupOptions = {
+  key: string;
+  email: string;
+  amount: number;
+  currency: Currency;
+  ref: string;
+  subaccount?: string;
+  metadata?: Record<string, unknown>;
+  callback: (response: { reference: string }) => void;
+  onClose: () => void;
+};
+
+declare global {
+  interface Window {
+    PaystackPop?: { setup: (options: PaystackSetupOptions) => PaystackHandler };
+  }
+}
+
+const PAYSTACK_SCRIPT_SRC = "https://js.paystack.co/v1/inline.js";
 
 export function PartnershipEngine() {
   const { toast } = useToast();
   const searchParams = useSearchParams();
-  
+
   // States
   const [step, setStep] = React.useState<FormStep>("amount");
   const [frequency, setFrequency] = React.useState<"monthly" | "one-time">("monthly");
-  const [selectedAmount, setSelectedAmount] = React.useState<number>(150);
+  const [currency, setCurrency] = React.useState<Currency>("USD");
+  const [selectedTierIndex, setSelectedTierIndex] = React.useState<number | null>(2);
   const [customAmount, setCustomAmount] = React.useState<string>("");
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [prayerRequest, setPrayerRequest] = React.useState("");
-  
-  // Payment states
-  const [cardNumber, setCardNumber] = React.useState("");
-  const [cardExp, setCardExp] = React.useState("");
-  const [cardCvv, setCardCvv] = React.useState("");
-  const [paymentMethod, setPaymentMethod] = React.useState<"card" | "apple-pay" | "google-pay">("card");
-  
+
   // Processing & Loading States
   const [isProcessing, setIsProcessing] = React.useState(false);
   const [validationError, setValidationError] = React.useState("");
+  const [paystackReady, setPaystackReady] = React.useState(false);
+  const [paystackReference, setPaystackReference] = React.useState<string | null>(null);
+
+  // Load the Paystack inline-checkout script once.
+  React.useEffect(() => {
+    if (window.PaystackPop) {
+      setPaystackReady(true);
+      return;
+    }
+    const existing = document.querySelector<HTMLScriptElement>(`script[src="${PAYSTACK_SCRIPT_SRC}"]`);
+    if (existing) {
+      existing.addEventListener("load", () => setPaystackReady(true));
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = PAYSTACK_SCRIPT_SRC;
+    script.async = true;
+    script.onload = () => setPaystackReady(true);
+    document.body.appendChild(script);
+  }, []);
 
   // Read URL search params for pre-selected tier
   React.useEffect(() => {
     const tier = searchParams?.get("tier");
-    if (tier === "seed") {
-      setSelectedAmount(50);
-      setCustomAmount("");
-    } else if (tier === "harvest") {
-      setSelectedAmount(150);
-      setCustomAmount("");
-    } else if (tier === "kingdom") {
-      setSelectedAmount(500);
-      setCustomAmount("");
-    }
+    if (tier === "seed") setSelectedTierIndex(0);
+    else if (tier === "harvest") setSelectedTierIndex(1);
+    else if (tier === "kingdom") setSelectedTierIndex(4);
+    if (tier) setCustomAmount("");
   }, [searchParams]);
 
-  // Derived values
+  const suggestedAmounts = SUGGESTED_AMOUNTS[currency];
+  const selectedAmount = selectedTierIndex !== null ? suggestedAmounts[selectedTierIndex] : 0;
   const currentAmount = customAmount ? parseFloat(customAmount) || 0 : selectedAmount;
 
   // Real-time dynamic explanation text based on amount
   const getImpactExplanation = () => {
     if (currentAmount <= 0) return "Choose an amount to see how you can raise leaders.";
-    if (IMPACT_ANCHORS[currentAmount]) return IMPACT_ANCHORS[currentAmount];
-    if (currentAmount < 50) return "Supports printing curriculum and study guides for local cells.";
-    if (currentAmount < 150) return `Trains ${Math.floor(currentAmount / 50)} leaders per month for a lifetime of impact.`;
-    if (currentAmount < 500) return "Funds a mentorship hub and accelerates teachings distribution.";
+    if (selectedTierIndex !== null && !customAmount) return IMPACT_ANCHORS_BY_TIER[selectedTierIndex];
+    const usdEquivalent = currency === "NGN" ? currentAmount / NGN_PER_USD : currentAmount;
+    if (usdEquivalent < 50) return "Supports printing curriculum and study guides for local cells.";
+    if (usdEquivalent < 150) return `Trains ${Math.max(1, Math.floor(usdEquivalent / 50))} leaders per month for a lifetime of impact.`;
+    if (usdEquivalent < 500) return "Funds a mentorship hub and accelerates teachings distribution.";
     return "Sponsors multiple regional mentorship hubs and national leadership training.";
   };
 
@@ -93,42 +144,64 @@ export function PartnershipEngine() {
     setStep("payment");
   };
 
-  const handlePay = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (paymentMethod === "card") {
-      if (!cardNumber.replace(/\s/g, "") || cardNumber.length < 16) {
-        setValidationError("Please enter a valid 16-digit card number.");
-        return;
-      }
-      if (!cardExp || !/^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(cardExp)) {
-        setValidationError("Expiry date must be MM/YY.");
-        return;
-      }
-      if (!cardCvv || cardCvv.length < 3) {
-        setValidationError("CVV must be 3 or 4 digits.");
-        return;
-      }
+  const handlePaystackPay = () => {
+    if (!paystackReady || !window.PaystackPop) {
+      setValidationError("Payment system is still loading — please try again in a moment.");
+      return;
     }
-
     setValidationError("");
     setIsProcessing(true);
 
-    // Mock processing loader (1.5 seconds)
-    setTimeout(() => {
-      setIsProcessing(false);
-      setStep("success");
-      toast("Partnership set up successfully! Thank you.");
-    }, 1800);
+    const reference = `dogtn_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+
+    const handler = window.PaystackPop.setup({
+      key: PAYSTACK_PUBLIC_KEY,
+      email,
+      amount: Math.round(currentAmount * 100), // Paystack expects the smallest currency unit (cents/kobo).
+      currency,
+      ref: reference,
+      subaccount: PAYSTACK_SUBACCOUNT,
+      metadata: {
+        full_name: name,
+        frequency,
+        prayer_request: prayerRequest,
+        custom_fields: [
+          { display_name: "Full Name", variable_name: "full_name", value: name },
+          { display_name: "Frequency", variable_name: "frequency", value: frequency },
+        ],
+      },
+      callback: (response) => {
+        void verifyAndFinish(response.reference);
+      },
+      onClose: () => {
+        setIsProcessing(false);
+      },
+    });
+
+    handler.openIframe();
   };
 
-  const handleWalletPay = (method: "apple-pay" | "google-pay") => {
-    setPaymentMethod(method);
-    setIsProcessing(true);
-    setTimeout(() => {
+  const verifyAndFinish = async (reference: string) => {
+    try {
+      const res = await fetch("/api/paystack-verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reference }),
+      });
+      const data = await res.json();
+      if (res.ok && data.verified) {
+        setPaystackReference(reference);
+        setIsProcessing(false);
+        setStep("success");
+        toast("Partnership set up successfully! Thank you.");
+      } else {
+        setIsProcessing(false);
+        setValidationError("We couldn't verify that payment. If you were charged, please contact us and we'll sort it out.");
+      }
+    } catch {
       setIsProcessing(false);
-      setStep("success");
-      toast("Partnership set up successfully via mobile wallet! Thank you.");
-    }, 1500);
+      setValidationError("We couldn't confirm your payment with our server. If you were charged, please contact us and we'll sort it out.");
+    }
   };
 
   const getStepProgress = () => {
@@ -160,7 +233,7 @@ export function PartnershipEngine() {
             <span>{getStepProgress()}% Complete</span>
           </div>
           <div className="h-1 bg-white/10 w-full rounded overflow-hidden">
-            <div 
+            <div
               className="h-full bg-gold-600 transition-all duration-300"
               style={{ width: `${getStepProgress()}%` }}
             />
@@ -177,8 +250,28 @@ export function PartnershipEngine() {
       {/* STEP 1: AMOUNT & FREQUENCY */}
       {step === "amount" && (
         <div className="animate-fadeIn">
-          <h3 className="text-body-l font-bold text-paper-0 mb-4">Choose Your Gift</h3>
-          
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-body-l font-bold text-paper-0">Choose Your Gift</h3>
+            <div className="flex gap-1 p-0.5 bg-white/5 rounded-full border border-white/10">
+              {(["USD", "NGN"] as const).map((cur) => (
+                <button
+                  key={cur}
+                  type="button"
+                  onClick={() => {
+                    setCurrency(cur);
+                    setCustomAmount("");
+                  }}
+                  className={cn(
+                    "px-3 py-1.5 text-caption font-bold rounded-full transition-all cursor-pointer",
+                    currency === cur ? "bg-gold-600 text-ink-900" : "text-white/60 hover:text-paper-0"
+                  )}
+                >
+                  {cur === "USD" ? "$ USD" : "₦ NGN"}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Frequency Toggle */}
           <div className="flex gap-2 p-1 bg-white/5 rounded-[var(--radius-s)] border border-white/10 mb-6">
             <button
@@ -208,34 +301,34 @@ export function PartnershipEngine() {
             Select Amount
           </label>
           <div className="grid grid-cols-3 gap-2.5 mb-4">
-            {SUGGESTED_AMOUNTS.map((amt) => (
+            {suggestedAmounts.map((amt, idx) => (
               <button
                 key={amt}
                 type="button"
                 onClick={() => {
-                  setSelectedAmount(amt);
+                  setSelectedTierIndex(idx);
                   setCustomAmount("");
                   setValidationError("");
                 }}
                 className={cn(
                   "py-3.5 text-body-m font-bold border rounded-[var(--radius-s)] transition-all cursor-pointer",
-                  selectedAmount === amt && !customAmount
+                  selectedTierIndex === idx && !customAmount
                     ? "bg-gold-600 border-gold-600 text-ink-900 shadow-elev-2 scale-102"
                     : "bg-white/5 border-white/10 text-paper-0 hover:bg-white/10 hover:border-white/20"
                 )}
               >
-                ${amt}
+                {CURRENCY_SYMBOL[currency]}{amt.toLocaleString()}
               </button>
             ))}
             <div className="relative">
-              <span className="absolute left-3.5 top-3.5 text-body-m text-white/40">$</span>
+              <span className="absolute left-3.5 top-3.5 text-body-m text-white/40">{CURRENCY_SYMBOL[currency]}</span>
               <input
                 type="number"
                 placeholder="Other"
                 value={customAmount}
                 onChange={(e) => {
                   setCustomAmount(e.target.value);
-                  setSelectedAmount(0);
+                  setSelectedTierIndex(null);
                   setValidationError("");
                 }}
                 className="w-full bg-white/5 border border-white/10 hover:border-white/20 rounded-[var(--radius-s)] pl-7 pr-3 py-3.5 text-body-m text-paper-0 outline-none focus:border-gold-600 font-bold placeholder:text-white/30 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -353,11 +446,11 @@ export function PartnershipEngine() {
         </div>
       )}
 
-      {/* STEP 3: SECURE PAYMENT DETAILS */}
+      {/* STEP 3: PAYMENT — hands off to Paystack's own secure checkout */}
       {step === "payment" && (
-        <form onSubmit={handlePay} className="animate-fadeIn">
+        <div className="animate-fadeIn">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-body-l font-bold text-paper-0">Choose Payment Method</h3>
+            <h3 className="text-body-l font-bold text-paper-0">Confirm & Pay</h3>
             <button
               type="button"
               onClick={() => setStep("personal")}
@@ -367,107 +460,24 @@ export function PartnershipEngine() {
             </button>
           </div>
 
-          {/* Quick Pay / Wallet Pay */}
-          <div className="grid grid-cols-2 gap-2.5 mb-6">
-            <button
-              type="button"
-              onClick={() => handleWalletPay("apple-pay")}
-              disabled={isProcessing}
-              className="flex items-center justify-center gap-2 py-3 bg-black hover:bg-black/90 border border-white/10 text-white rounded-[var(--radius-s)] font-semibold transition-all cursor-pointer"
-            >
-               Pay
-            </button>
-            <button
-              type="button"
-              onClick={() => handleWalletPay("google-pay")}
-              disabled={isProcessing}
-              className="flex items-center justify-center gap-2 py-3 bg-[#f8f9fa] hover:bg-[#e9ecef] border border-white/10 text-ink-900 rounded-[var(--radius-s)] font-semibold transition-all cursor-pointer"
-            >
-              Google Pay
-            </button>
-          </div>
-
-          <div className="relative flex py-3 items-center mb-6">
-            <div className="flex-grow border-t border-white/10"></div>
-            <span className="flex-shrink mx-4 text-caption uppercase tracking-wider text-white/40">Or Pay with Card</span>
-            <div className="flex-grow border-t border-white/10"></div>
-          </div>
-
-          {/* Credit Card inputs */}
-          <div className="space-y-4 mb-6">
-            <div>
-              <label htmlFor="cc-number" className="block text-caption font-semibold uppercase tracking-wider text-white/60 mb-2">
-                Card Number
-              </label>
-              <div className="relative">
-                <span className="absolute left-3.5 top-3.5 text-white/40"><CreditCard className="w-5 h-5" /></span>
-                <input
-                  id="cc-number"
-                  type="text"
-                  placeholder="4111 2222 3333 4444"
-                  value={cardNumber}
-                  onChange={(e) => {
-                    // Format spaces
-                    const val = e.target.value.replace(/\D/g, "").slice(0, 16);
-                    const formatted = val.replace(/(.{4})/g, "$1 ").trim();
-                    setCardNumber(formatted);
-                    setValidationError("");
-                  }}
-                  autoComplete="cc-number"
-                  required
-                  className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-s)] pl-11 pr-4 py-3 text-body-m text-paper-0 outline-none focus:border-gold-600 placeholder:text-white/30"
-                  style={{ fontSize: "16px" }}
-                />
-              </div>
+          <div className="bg-white/5 border border-white/10 rounded-[var(--radius-s)] p-5 mb-6 space-y-2.5">
+            <div className="flex justify-between text-body-s text-white/70">
+              <span>Gift</span>
+              <span className="font-bold text-paper-0">{CURRENCY_SYMBOL[currency]}{currentAmount.toLocaleString()} {frequency === "monthly" ? "/ mo" : "one-time"}</span>
             </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="cc-exp" className="block text-caption font-semibold uppercase tracking-wider text-white/60 mb-2">
-                  Expiry Date
-                </label>
-                <input
-                  id="cc-exp"
-                  type="text"
-                  placeholder="MM/YY"
-                  value={cardExp}
-                  onChange={(e) => {
-                    const val = e.target.value.replace(/\D/g, "").slice(0, 4);
-                    const formatted = val.length >= 2 ? `${val.slice(0, 2)}/${val.slice(2)}` : val;
-                    setCardExp(formatted);
-                    setValidationError("");
-                  }}
-                  autoComplete="cc-exp"
-                  required
-                  className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-s)] px-4 py-3 text-body-m text-paper-0 outline-none focus:border-gold-600 placeholder:text-white/30 text-center"
-                  style={{ fontSize: "16px" }}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="cc-csc" className="block text-caption font-semibold uppercase tracking-wider text-white/60 mb-2">
-                  CVV / CVC
-                </label>
-                <input
-                  id="cc-csc"
-                  type="password"
-                  placeholder="***"
-                  value={cardCvv}
-                  onChange={(e) => {
-                    setCardCvv(e.target.value.replace(/\D/g, "").slice(0, 4));
-                    setValidationError("");
-                  }}
-                  autoComplete="cc-csc"
-                  required
-                  className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-s)] px-4 py-3 text-body-m text-paper-0 outline-none focus:border-gold-600 placeholder:text-white/30 text-center"
-                  style={{ fontSize: "16px" }}
-                />
-              </div>
+            <div className="flex justify-between text-body-s text-white/70">
+              <span>Name</span>
+              <span className="text-paper-0">{name}</span>
+            </div>
+            <div className="flex justify-between text-body-s text-white/70">
+              <span>Email</span>
+              <span className="text-paper-0">{email}</span>
             </div>
           </div>
 
           <button
-            type="submit"
+            type="button"
+            onClick={handlePaystackPay}
             disabled={isProcessing}
             className="w-full group flex items-center justify-center gap-2 py-4.5 rounded-[var(--radius-s)] bg-gold-600 hover:bg-gold-hover text-body-m font-bold text-ink-900 transition-all cursor-pointer hover:shadow-elev-2 disabled:opacity-50"
           >
@@ -477,21 +487,27 @@ export function PartnershipEngine() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Securing Your Partnership...
+                Confirming Your Partnership...
               </span>
             ) : (
               <>
                 <Lock className="w-4 h-4" />
-                Partner ${currentAmount}/{frequency === "monthly" ? "mo" : "one-time"}
+                Pay {CURRENCY_SYMBOL[currency]}{currentAmount.toLocaleString()} with Paystack
               </>
             )}
           </button>
 
           <div className="flex items-center justify-center gap-2 mt-4 text-[10px] text-white/40 tracking-wider uppercase">
             <ShieldCheck className="w-3.5 h-3.5 text-gold-400" />
-            <span>256-Bit SSL Encrypted Connection</span>
+            <span>Secured &amp; Verified by Paystack</span>
           </div>
-        </form>
+
+          {frequency === "monthly" && (
+            <p className="mt-4 text-center text-[11px] text-white/40 leading-relaxed">
+              This confirms your first monthly gift now. Our team will follow up to set up automatic recurring billing.
+            </p>
+          )}
+        </div>
       )}
 
       {/* STEP 4: THANK YOU & ONBOARDING */}
@@ -503,7 +519,7 @@ export function PartnershipEngine() {
 
           <h3 className="text-heading-2 font-display text-paper-0 mb-3">Welcome to the family!</h3>
           <p className="text-body-m text-white/70 max-w-sm mx-auto mb-8 leading-relaxed">
-            Your recurring seed of <span className="text-gold-400 font-bold">${currentAmount}</span> has been set up. Together, we are raising leaders who transform nations.
+            Your gift of <span className="text-gold-400 font-bold">{CURRENCY_SYMBOL[currency]}{currentAmount.toLocaleString()}</span> has been confirmed. Together, we are raising leaders who transform nations.
           </p>
 
           <div className="w-full bg-white/5 border border-white/10 rounded-[var(--radius-s)] p-5 text-left mb-8">
@@ -522,6 +538,11 @@ export function PartnershipEngine() {
                 <span>Our leadership coordination team will contact you to align your preferred prayer updates.</span>
               </li>
             </ul>
+            {paystackReference && (
+              <p className="mt-4 pt-4 border-t border-white/10 text-caption text-white/40">
+                Reference: <span className="text-white/60">{paystackReference}</span>
+              </p>
+            )}
           </div>
 
           <button
@@ -530,11 +551,10 @@ export function PartnershipEngine() {
               setStep("amount");
               setName("");
               setEmail("");
-              setCardNumber("");
-              setCardExp("");
-              setCardCvv("");
               setCustomAmount("");
+              setSelectedTierIndex(2);
               setPrayerRequest("");
+              setPaystackReference(null);
             }}
             className="px-6 py-2.5 border border-white/20 hover:border-gold-400 text-body-s text-white hover:text-gold-400 rounded-[var(--radius-s)] transition-colors cursor-pointer"
           >

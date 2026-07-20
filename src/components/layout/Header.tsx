@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Search, UserCircle2, Menu, ChevronDown } from "lucide-react";
+import { Search, Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -140,9 +140,6 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             </Link>
             <ThemeToggle className="hidden lg:flex" />
             <LanguageSwitcher locale={locale} className="hidden sm:block" />
-            <Link href={`/${locale}/my-journey`} aria-label={strings.account} className="rounded-full p-2 hover:bg-current/10">
-              <UserCircle2 className="h-6 w-6" />
-            </Link>
             <Button href={`/${locale}/leadership/assessment`} size="s" className="hidden sm:inline-flex">
               {strings.give}
             </Button>

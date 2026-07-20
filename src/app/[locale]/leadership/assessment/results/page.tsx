@@ -43,23 +43,65 @@ const SHORT_LABEL: Record<string, string> = {
   kingdom: "Service",
 };
 
-// Band narratives framed as honour, not a grade.
-const bandNarrative: Record<Band, { headline: string; body: string }> = {
+// Band narratives framed as honour, not a grade. Keyed by placement as well as
+// band so the headline never contradicts the Recommended Next Step card below
+// it (e.g. telling a DLI Basic alum that "DLI Basic begins" here).
+const bandNarrative: Record<Band, Record<Placement, { headline: string; body: string }>> = {
   Emerging: {
-    headline: "You're an Emerging Leader — and every great leader began here.",
-    body: "You carry real hunger and potential. This is the season to lay deep foundations of character and purpose, and there is a clear path forward built for exactly this moment.",
+    none: {
+      headline: "You're an Emerging Leader — and every great leader began here.",
+      body: "You carry real hunger and potential. This is the season to lay deep foundations of character and purpose, and there is a clear path forward built for exactly this moment.",
+    },
+    "basic-alum": {
+      headline: "You're an Emerging Leader — even with DLI Basic behind you, the foundations deserve a second pass.",
+      body: "Foundations can loosen over time. This is a season to revisit the core disciplines of character and vision with a refresher built for exactly where you are now.",
+    },
+    "ministry-leader": {
+      headline: "You're an Emerging Leader carrying a ministry — and mentorship will meet you right there.",
+      body: "Leading others while your own foundations are still forming is real weight to carry. The Ministry Leaders mentorship offers the depth and support to grow both together.",
+    },
   },
   Developing: {
-    headline: "You're a Developing Leader — and that's exactly where DLI Basic begins.",
-    body: "Your assessment indicates a strong foundational sense of responsibility and service. You possess the raw materials of institutional gravity, yet there is a significant opportunity to refine your strategic vision and core competencies to move from potential to proven global impact.",
+    none: {
+      headline: "You're a Developing Leader — and that's exactly where DLI Basic begins.",
+      body: "Your assessment indicates a strong foundational sense of responsibility and service. You possess the raw materials of institutional gravity, yet there is a significant opportunity to refine your strategic vision and core competencies to move from potential to proven global impact.",
+    },
+    "basic-alum": {
+      headline: "You're a Developing Leader — and with DLI Basic behind you, Advanced is your next tier.",
+      body: "Your assessment indicates a strong foundational sense of responsibility and service. With DLI Basic complete and clear momentum already building, the deeper study of strategy and governance in DLI Advanced is your next faithful step.",
+    },
+    "ministry-leader": {
+      headline: "You're a Developing Leader shepherding others — and it's time to deepen.",
+      body: "You carry real responsibility already. The Priesthood Institute will help you steward your calling with greater depth, integrity, and sustainability as you continue to grow.",
+    },
   },
   Established: {
-    headline: "You're an Established Leader — and there's a next tier waiting for you.",
-    body: "You already carry weight and deliver results. The invitation now is to sharpen your strategy, governance, and influence so your impact multiplies through others.",
+    none: {
+      headline: "You're an Established Leader — and there's a next tier waiting for you.",
+      body: "You already carry weight and deliver results, even without a formal foundation track yet. A DLI Basic fast-track will formalise what you already live out and connect you to the wider network quickly.",
+    },
+    "basic-alum": {
+      headline: "You're an Established Leader — with DLI Basic behind you, it's time to accelerate.",
+      body: "You already carry weight and deliver results. Pairing DLI Advanced with a mentorship track will sharpen your strategy and governance so your impact multiplies through others.",
+    },
+    "ministry-leader": {
+      headline: "You're an Established ministry leader — built to go the distance.",
+      body: "You already carry weight and deliver results. The Ministry Leaders mentorship offers the peer depth and accountability to sustain you for the long haul.",
+    },
   },
   Advanced: {
-    headline: "You're an Advanced Leader — called to build what outlasts you.",
-    body: "Your formation places you among mature leaders. The horizon ahead is institutions, sectors, and nations — and a track designed to match that scale of calling.",
+    none: {
+      headline: "You're an Advanced Leader — called to build what outlasts you.",
+      body: "Your formation places you among mature leaders. We recommend entering DLI Advanced directly via an interview, matched to the scale of calling ahead: institutions, sectors, and nations.",
+    },
+    "basic-alum": {
+      headline: "You're an Advanced Leader — and it's time for the capstone.",
+      body: "Your formation places you among mature leaders, with DLI Basic well behind you. Executive Certification alongside the Nation Builders mentorship will position you to build what outlasts you.",
+    },
+    "ministry-leader": {
+      headline: "You're an Advanced ministry leader — ready to shape what comes next.",
+      body: "Your formation places you among mature leaders carrying real ministry weight. The Nation Builders track invites you to shape institutions, sectors, and nations.",
+    },
   },
 };
 
@@ -77,12 +119,12 @@ export default function ResultsPage() {
   React.useEffect(() => setMounted(true), []);
 
   const hasAnswers = mounted && Object.keys(answers).length > 0;
+  const placement = React.useMemo(() => toPlacement(placementStore["priorDli"]), [placementStore]);
 
   const results = React.useMemo(() => {
     if (!hasAnswers) return null;
-    const placement = toPlacement(placementStore["priorDli"]);
     return computeResults(answers, placement);
-  }, [hasAnswers, answers, placementStore]);
+  }, [hasAnswers, answers, placement]);
 
   if (!mounted) {
     return (
@@ -118,7 +160,7 @@ export default function ResultsPage() {
   }
 
   const { dimensionScores, band, recommendation } = results;
-  const narrative = bandNarrative[band];
+  const narrative = bandNarrative[band][placement];
   const characterScore = dimensionScores.character;
 
   return (

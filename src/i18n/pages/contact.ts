@@ -1,0 +1,423 @@
+import type { Locale } from "@/i18n/config";
+
+/** Per-page translation module for the Contact page. */
+export interface ContactCopy {
+  responsePromise: string;
+  heroTitlePre: string;
+  heroTitleAccent: string;
+  heroTitlePost: string;
+  heroSubtitle: string;
+  trustSecure: string;
+  trustResponse: string;
+  trustLives: string;
+  getInTouch: string;
+  getInTouchSubtitle: string;
+  successMessage: string;
+  messageTypeLabel: string;
+  messageTypeHelper: string;
+  selectOption: string;
+  messageTypes: {
+    testimony: { label: string; placeholder: string; helper: string };
+    prayer: { label: string; placeholder: string; helper: string };
+    partnership: { label: string; placeholder: string; helper: string };
+    general: { label: string; placeholder: string; helper: string };
+  };
+  firstName: string;
+  firstNamePlaceholder: string;
+  lastName: string;
+  lastNamePlaceholder: string;
+  emailAddress: string;
+  emailHelper: string;
+  phoneNumber: string;
+  phoneHelper: string;
+  yourMessage: string;
+  defaultMessageHelper: string;
+  sendMessage: string;
+  privacyNote: string;
+  whatHappensNext: string;
+  nextStepsIntro: string;
+  steps: { instantTitle: string; instantBody: string; reviewTitle: string; reviewBody: string; followupTitle: string; followupBody: string };
+  testimonialQuote: string;
+  testimonialName: string;
+  testimonialRole: string;
+  preferAnotherChannel: string;
+  whatsapp: string;
+  whatsappDesc: string;
+  email: string;
+  phone: string;
+  phoneDesc: string;
+  bookACall: string;
+  bookACallDesc: string;
+  officesHeading: string;
+  officesSubtitle: string;
+  offices: { us: string; uk: string; abuja: string; lagos: string };
+  faqHeading: string;
+  faqSubtitle: string;
+  faqs: { q1: string; a1: string; q2: string; a2: string; q3: string; a3: string; q4: string; a4: string; q5: string; a5: string };
+  ctaHeading: string;
+  ctaBody: string;
+  ctaButton: string;
+}
+
+export const contactCopy: Record<Locale, ContactCopy> = {
+  en: {
+    responsePromise: "Response Time Promise: Under 24 Hours",
+    heroTitlePre: "Let's Start a ",
+    heroTitleAccent: "Conversation",
+    heroTitlePost: " That Transforms",
+    heroSubtitle: "Whether you're sharing a testimony, submitting a prayer request, or reaching out for any reason — our team is here to serve you with care and excellence.",
+    trustSecure: "Your information is secure & private",
+    trustResponse: "Average response: 6 hours",
+    trustLives: "1.2M+ lives impacted globally",
+    getInTouch: "Get in Touch",
+    getInTouchSubtitle: "We'd love to hear from you. Select the nature of your message below and share the details.",
+    successMessage: "Opening your email client with this message pre-filled — just hit send.",
+    messageTypeLabel: "Nature of Your Message",
+    messageTypeHelper: "Choose the option that best describes why you're reaching out.",
+    selectOption: "Select an option...",
+    messageTypes: {
+      testimony: { label: "Share a Testimony", placeholder: "Share your testimony with us. How has God moved in your life? We'd love to celebrate with you.", helper: "Tip: Include what happened, when, and how it has impacted your life." },
+      prayer: { label: "Prayer Request", placeholder: "Share your prayer request with us. Our prayer team is standing with you.", helper: "Tip: You can share as much or as little detail as you're comfortable with." },
+      partnership: { label: "Partnership Inquiry", placeholder: "Tell us about your organization and how you'd like to partner with the ministry.", helper: "Tip: Include your organization's mission, location, and proposed collaboration." },
+      general: { label: "General Correspondence", placeholder: "Share your message, question, or feedback here...", helper: "Tip: Be as detailed as you feel comfortable sharing." },
+    },
+    firstName: "First Name",
+    firstNamePlaceholder: "e.g. John",
+    lastName: "Last Name",
+    lastNamePlaceholder: "e.g. Smith",
+    emailAddress: "Email Address",
+    emailHelper: "We'll never share your email with third parties.",
+    phoneNumber: "Phone Number",
+    phoneHelper: "Optional — helps us reach you faster if needed.",
+    yourMessage: "Your Message",
+    defaultMessageHelper: "Tip: Be as detailed as you feel comfortable sharing.",
+    sendMessage: "Send My Message",
+    privacyNote: "Your information is encrypted and protected. We respect your privacy and will only use your details to respond to your inquiry. No spam, ever.",
+    whatHappensNext: "What Happens Next?",
+    nextStepsIntro: "We value your time. Here's exactly what to expect after you reach out:",
+    steps: {
+      instantTitle: "Instant confirmation", instantBody: "You'll receive an email acknowledging your message within minutes.",
+      reviewTitle: "Personal review", reviewBody: "Our team reviews your message and prepares a tailored response.",
+      followupTitle: "Direct follow-up", followupBody: "You'll hear back from us within 24 hours with clear next steps.",
+    },
+    testimonialQuote: "Dr. Ogbueli's message at our conference was transformational. The team's professionalism from first contact to the event day was exceptional.",
+    testimonialName: "Pastor Emmanuel K.",
+    testimonialRole: "Conference Organizer, Lagos",
+    preferAnotherChannel: "Prefer Another Channel?",
+    whatsapp: "WhatsApp",
+    whatsappDesc: "Request a callback via WhatsApp",
+    email: "Email",
+    phone: "Phone",
+    phoneDesc: "Call your nearest office",
+    bookACall: "Book a Call",
+    bookACallDesc: "Request a 15-min discovery call",
+    officesHeading: "Our Global Offices",
+    officesSubtitle: "With presence across four continents, we're never far from where you need us.",
+    offices: { us: "United States", uk: "United Kingdom", abuja: "Abuja, Nigeria", lagos: "Lagos, Nigeria" },
+    faqHeading: "Frequently Asked Questions",
+    faqSubtitle: "Quick answers to common questions before you reach out.",
+    faqs: {
+      q1: "How quickly will I receive a response?",
+      a1: "We commit to responding to all inquiries within 24 hours. For urgent prayer requests, our team often replies within 4-6 hours during business days.",
+      q2: "Can I share a testimony through this form?",
+      a2: "Absolutely! Select \"Share a Testimony\" from the dropdown and tell us your story. We love hearing how God is moving in your life.",
+      q3: "How do I submit a prayer request?",
+      a3: "Select \"Prayer Request\" from the dropdown and share as much detail as you're comfortable with. Our prayer team reviews every submission and will follow up if you request it.",
+      q4: "How do I partner with the ministry?",
+      a4: "Select \"Partnership Inquiry\" from the dropdown. Our partnerships team will reach out to discuss alignment and collaboration opportunities.",
+      q5: "Is my information kept private?",
+      a5: "Yes, completely. Your information is encrypted and protected. We never share your details with third parties and will only use them to respond to your message.",
+    },
+    ctaHeading: "Not Sure Where to Start?",
+    ctaBody: "Our team is happy to guide you. Send a quick message and we'll point you in the right direction.",
+    ctaButton: "Send a Quick Message",
+  },
+  fr: {
+    responsePromise: "Promesse de Délai de Réponse : Moins de 24 Heures",
+    heroTitlePre: "Commençons une ",
+    heroTitleAccent: "Conversation",
+    heroTitlePost: " qui Transforme",
+    heroSubtitle: "Que vous partagiez un témoignage, souhaitiez soumettre une demande de prière ou nous contactiez pour toute autre raison — notre équipe est là pour vous servir avec soin et excellence.",
+    trustSecure: "Vos informations sont sécurisées et privées",
+    trustResponse: "Réponse moyenne : 6 heures",
+    trustLives: "Plus de 1,2M de vies impactées dans le monde",
+    getInTouch: "Contactez-nous",
+    getInTouchSubtitle: "Nous serions ravis de vous entendre. Sélectionnez la nature de votre message ci-dessous et partagez les détails.",
+    successMessage: "Ouverture de votre client de messagerie avec ce message pré-rempli — il vous suffit d'envoyer.",
+    messageTypeLabel: "Nature de Votre Message",
+    messageTypeHelper: "Choisissez l'option qui décrit le mieux la raison de votre contact.",
+    selectOption: "Sélectionnez une option...",
+    messageTypes: {
+      testimony: { label: "Partager un Témoignage", placeholder: "Partagez votre témoignage avec nous. Comment Dieu a-t-il agi dans votre vie ? Nous serions ravis de célébrer avec vous.", helper: "Astuce : Précisez ce qui s'est passé, quand, et comment cela a impacté votre vie." },
+      prayer: { label: "Demande de Prière", placeholder: "Partagez votre demande de prière avec nous. Notre équipe de prière se tient à vos côtés.", helper: "Astuce : Vous pouvez partager autant ou aussi peu de détails que vous le souhaitez." },
+      partnership: { label: "Demande de Partenariat", placeholder: "Parlez-nous de votre organisation et de la manière dont vous souhaiteriez collaborer avec le ministère.", helper: "Astuce : Précisez la mission de votre organisation, son emplacement, et la collaboration proposée." },
+      general: { label: "Correspondance Générale", placeholder: "Partagez votre message, question ou commentaire ici...", helper: "Astuce : Soyez aussi détaillé que vous le souhaitez." },
+    },
+    firstName: "Prénom",
+    firstNamePlaceholder: "ex. Jean",
+    lastName: "Nom",
+    lastNamePlaceholder: "ex. Dupont",
+    emailAddress: "Adresse E-mail",
+    emailHelper: "Nous ne partagerons jamais votre e-mail avec des tiers.",
+    phoneNumber: "Numéro de Téléphone",
+    phoneHelper: "Facultatif — nous aide à vous joindre plus rapidement si nécessaire.",
+    yourMessage: "Votre Message",
+    defaultMessageHelper: "Astuce : Soyez aussi détaillé que vous le souhaitez.",
+    sendMessage: "Envoyer Mon Message",
+    privacyNote: "Vos informations sont cryptées et protégées. Nous respectons votre vie privée et n'utiliserons vos données que pour répondre à votre demande. Jamais de spam.",
+    whatHappensNext: "Que Se Passe-t-il Ensuite ?",
+    nextStepsIntro: "Nous valorisons votre temps. Voici exactement ce à quoi vous attendre après nous avoir contactés :",
+    steps: {
+      instantTitle: "Confirmation instantanée", instantBody: "Vous recevrez un e-mail confirmant la réception de votre message en quelques minutes.",
+      reviewTitle: "Examen personnalisé", reviewBody: "Notre équipe examine votre message et prépare une réponse adaptée.",
+      followupTitle: "Suivi direct", followupBody: "Vous aurez de nos nouvelles sous 24 heures avec des prochaines étapes claires.",
+    },
+    testimonialQuote: "Le message du Dr Ogbueli lors de notre conférence a été transformateur. Le professionnalisme de l'équipe, du premier contact au jour de l'événement, a été exceptionnel.",
+    testimonialName: "Pasteur Emmanuel K.",
+    testimonialRole: "Organisateur de Conférence, Lagos",
+    preferAnotherChannel: "Vous Préférez un Autre Canal ?",
+    whatsapp: "WhatsApp",
+    whatsappDesc: "Demander un rappel via WhatsApp",
+    email: "E-mail",
+    phone: "Téléphone",
+    phoneDesc: "Appelez le bureau le plus proche",
+    bookACall: "Réserver un Appel",
+    bookACallDesc: "Demander un appel découverte de 15 minutes",
+    officesHeading: "Nos Bureaux dans le Monde",
+    officesSubtitle: "Présents sur quatre continents, nous ne sommes jamais loin de vous.",
+    offices: { us: "États-Unis", uk: "Royaume-Uni", abuja: "Abuja, Nigeria", lagos: "Lagos, Nigeria" },
+    faqHeading: "Questions Fréquemment Posées",
+    faqSubtitle: "Réponses rapides aux questions courantes avant de nous contacter.",
+    faqs: {
+      q1: "À quelle vitesse recevrai-je une réponse ?",
+      a1: "Nous nous engageons à répondre à toutes les demandes sous 24 heures. Pour les demandes de prière urgentes, notre équipe répond souvent en 4 à 6 heures les jours ouvrables.",
+      q2: "Puis-je partager un témoignage via ce formulaire ?",
+      a2: "Absolument ! Sélectionnez « Partager un Témoignage » dans le menu déroulant et racontez-nous votre histoire. Nous adorons entendre comment Dieu agit dans votre vie.",
+      q3: "Comment soumettre une demande de prière ?",
+      a3: "Sélectionnez « Demande de Prière » dans le menu déroulant et partagez autant de détails que vous le souhaitez. Notre équipe de prière examine chaque soumission et vous recontactera si vous le demandez.",
+      q4: "Comment devenir partenaire du ministère ?",
+      a4: "Sélectionnez « Demande de Partenariat » dans le menu déroulant. Notre équipe partenariats vous contactera pour discuter des opportunités d'alignement et de collaboration.",
+      q5: "Mes informations restent-elles privées ?",
+      a5: "Oui, totalement. Vos informations sont cryptées et protégées. Nous ne partageons jamais vos données avec des tiers et ne les utilisons que pour répondre à votre message.",
+    },
+    ctaHeading: "Vous Ne Savez Pas Par Où Commencer ?",
+    ctaBody: "Notre équipe se fera un plaisir de vous guider. Envoyez un message rapide et nous vous orienterons dans la bonne direction.",
+    ctaButton: "Envoyer un Message Rapide",
+  },
+  pt: {
+    responsePromise: "Promessa de Tempo de Resposta: Menos de 24 Horas",
+    heroTitlePre: "Vamos Iniciar uma ",
+    heroTitleAccent: "Conversa",
+    heroTitlePost: " que Transforma",
+    heroSubtitle: "Quer esteja a partilhar um testemunho, a submeter um pedido de oração, ou a contactar-nos por qualquer outro motivo — a nossa equipa está aqui para o servir com cuidado e excelência.",
+    trustSecure: "As suas informações estão seguras e privadas",
+    trustResponse: "Resposta média: 6 horas",
+    trustLives: "Mais de 1,2M de vidas impactadas globalmente",
+    getInTouch: "Entre em Contacto",
+    getInTouchSubtitle: "Adoraríamos ouvi-lo. Selecione a natureza da sua mensagem abaixo e partilhe os detalhes.",
+    successMessage: "A abrir o seu cliente de e-mail com esta mensagem pré-preenchida — basta enviar.",
+    messageTypeLabel: "Natureza da Sua Mensagem",
+    messageTypeHelper: "Escolha a opção que melhor descreve o motivo do seu contacto.",
+    selectOption: "Selecione uma opção...",
+    messageTypes: {
+      testimony: { label: "Partilhar um Testemunho", placeholder: "Partilhe o seu testemunho connosco. Como Deus se moveu na sua vida? Adoraríamos celebrar consigo.", helper: "Dica: Inclua o que aconteceu, quando, e como isso impactou a sua vida." },
+      prayer: { label: "Pedido de Oração", placeholder: "Partilhe o seu pedido de oração connosco. A nossa equipa de oração está consigo.", helper: "Dica: Pode partilhar tanto ou tão pouco detalhe quanto se sentir confortável." },
+      partnership: { label: "Consulta de Parceria", placeholder: "Fale-nos sobre a sua organização e como gostaria de fazer parceria com o ministério.", helper: "Dica: Inclua a missão da sua organização, localização, e colaboração proposta." },
+      general: { label: "Correspondência Geral", placeholder: "Partilhe a sua mensagem, pergunta, ou feedback aqui...", helper: "Dica: Seja tão detalhado quanto se sentir confortável." },
+    },
+    firstName: "Primeiro Nome",
+    firstNamePlaceholder: "ex. João",
+    lastName: "Último Nome",
+    lastNamePlaceholder: "ex. Silva",
+    emailAddress: "Endereço de E-mail",
+    emailHelper: "Nunca partilharemos o seu e-mail com terceiros.",
+    phoneNumber: "Número de Telefone",
+    phoneHelper: "Opcional — ajuda-nos a contactá-lo mais rapidamente, se necessário.",
+    yourMessage: "A Sua Mensagem",
+    defaultMessageHelper: "Dica: Seja tão detalhado quanto se sentir confortável.",
+    sendMessage: "Enviar a Minha Mensagem",
+    privacyNote: "As suas informações são encriptadas e protegidas. Respeitamos a sua privacidade e apenas usaremos os seus dados para responder à sua consulta. Sem spam, nunca.",
+    whatHappensNext: "O Que Acontece a Seguir?",
+    nextStepsIntro: "Valorizamos o seu tempo. Aqui está exatamente o que esperar depois de nos contactar:",
+    steps: {
+      instantTitle: "Confirmação instantânea", instantBody: "Receberá um e-mail a confirmar a sua mensagem em poucos minutos.",
+      reviewTitle: "Revisão pessoal", reviewBody: "A nossa equipa revê a sua mensagem e prepara uma resposta personalizada.",
+      followupTitle: "Acompanhamento direto", followupBody: "Ouvirá de nós dentro de 24 horas com próximos passos claros.",
+    },
+    testimonialQuote: "A mensagem do Dr. Ogbueli na nossa conferência foi transformadora. O profissionalismo da equipa, desde o primeiro contacto até ao dia do evento, foi excecional.",
+    testimonialName: "Pastor Emmanuel K.",
+    testimonialRole: "Organizador de Conferência, Lagos",
+    preferAnotherChannel: "Prefere Outro Canal?",
+    whatsapp: "WhatsApp",
+    whatsappDesc: "Solicite uma chamada de retorno via WhatsApp",
+    email: "E-mail",
+    phone: "Telefone",
+    phoneDesc: "Ligue para o escritório mais próximo",
+    bookACall: "Marcar uma Chamada",
+    bookACallDesc: "Solicite uma chamada de descoberta de 15 minutos",
+    officesHeading: "Os Nossos Escritórios Globais",
+    officesSubtitle: "Com presença em quatro continentes, nunca estamos longe de onde precisa de nós.",
+    offices: { us: "Estados Unidos", uk: "Reino Unido", abuja: "Abuja, Nigéria", lagos: "Lagos, Nigéria" },
+    faqHeading: "Perguntas Frequentes",
+    faqSubtitle: "Respostas rápidas a perguntas comuns antes de nos contactar.",
+    faqs: {
+      q1: "Com que rapidez receberei uma resposta?",
+      a1: "Comprometemo-nos a responder a todas as consultas dentro de 24 horas. Para pedidos de oração urgentes, a nossa equipa frequentemente responde dentro de 4-6 horas em dias úteis.",
+      q2: "Posso partilhar um testemunho através deste formulário?",
+      a2: "Certamente! Selecione \"Partilhar um Testemunho\" no menu e conte-nos a sua história. Adoramos ouvir como Deus se está a mover na sua vida.",
+      q3: "Como submeto um pedido de oração?",
+      a3: "Selecione \"Pedido de Oração\" no menu e partilhe tanto detalhe quanto se sentir confortável. A nossa equipa de oração revê cada submissão e fará o acompanhamento, se solicitado.",
+      q4: "Como faço parceria com o ministério?",
+      a4: "Selecione \"Consulta de Parceria\" no menu. A nossa equipa de parcerias entrará em contacto para discutir oportunidades de alinhamento e colaboração.",
+      q5: "As minhas informações são mantidas privadas?",
+      a5: "Sim, completamente. As suas informações são encriptadas e protegidas. Nunca partilhamos os seus dados com terceiros e apenas os usamos para responder à sua mensagem.",
+    },
+    ctaHeading: "Não Sabe Por Onde Começar?",
+    ctaBody: "A nossa equipa terá todo o gosto em guiá-lo. Envie uma mensagem rápida e apontar-lhe-emos a direção certa.",
+    ctaButton: "Enviar uma Mensagem Rápida",
+  },
+  sw: {
+    responsePromise: "Ahadi ya Muda wa Kujibu: Chini ya Masaa 24",
+    heroTitlePre: "Hebu Tuanze ",
+    heroTitleAccent: "Mazungumzo",
+    heroTitlePost: " Yanayobadilisha",
+    heroSubtitle: "Iwe unashiriki ushuhuda, unawasilisha ombi la maombi, au unawasiliana nasi kwa sababu yoyote — timu yetu iko hapa kukuhudumia kwa uangalifu na ubora.",
+    trustSecure: "Taarifa zako ni salama na za faragha",
+    trustResponse: "Wastani wa kujibu: masaa 6",
+    trustLives: "Maisha zaidi ya milioni 1.2 yaliyoguswa duniani kote",
+    getInTouch: "Wasiliana Nasi",
+    getInTouchSubtitle: "Tungependa kusikia kutoka kwako. Chagua aina ya ujumbe wako hapa chini na ushiriki maelezo.",
+    successMessage: "Inafungua programu yako ya barua pepe ikiwa na ujumbe huu tayari umejazwa — bofya tuma tu.",
+    messageTypeLabel: "Aina ya Ujumbe Wako",
+    messageTypeHelper: "Chagua chaguo linaloelezea vyema sababu ya kuwasiliana nasi.",
+    selectOption: "Chagua chaguo...",
+    messageTypes: {
+      testimony: { label: "Shiriki Ushuhuda", placeholder: "Shiriki ushuhuda wako nasi. Mungu amefanyaje kazi katika maisha yako? Tungependa kusherehekea nawe.", helper: "Kidokezo: Jumuisha kilichotokea, lini, na jinsi ilivyoathiri maisha yako." },
+      prayer: { label: "Ombi la Maombi", placeholder: "Shiriki ombi lako la maombi nasi. Timu yetu ya maombi inasimama nawe.", helper: "Kidokezo: Unaweza kushiriki maelezo mengi au machache kadri unavyoona vizuri." },
+      partnership: { label: "Uchunguzi wa Ushirikiano", placeholder: "Tuambie kuhusu shirika lako na jinsi ungependa kushirikiana na huduma.", helper: "Kidokezo: Jumuisha dhamira ya shirika lako, mahali, na ushirikiano unaopendekezwa." },
+      general: { label: "Mawasiliano ya Jumla", placeholder: "Shiriki ujumbe wako, swali, au maoni hapa...", helper: "Kidokezo: Kuwa na maelezo mengi kadri unavyoona vizuri." },
+    },
+    firstName: "Jina la Kwanza",
+    firstNamePlaceholder: "mf. John",
+    lastName: "Jina la Ukoo",
+    lastNamePlaceholder: "mf. Smith",
+    emailAddress: "Anwani ya Barua Pepe",
+    emailHelper: "Hatutashiriki barua pepe yako na wahusika wengine.",
+    phoneNumber: "Nambari ya Simu",
+    phoneHelper: "Si lazima — inatusaidia kukufikia haraka zaidi ikihitajika.",
+    yourMessage: "Ujumbe Wako",
+    defaultMessageHelper: "Kidokezo: Kuwa na maelezo mengi kadri unavyoona vizuri.",
+    sendMessage: "Tuma Ujumbe Wangu",
+    privacyNote: "Taarifa zako zimesimbwa na kulindwa. Tunaheshimu faragha yako na tutatumia maelezo yako tu kujibu ombi lako. Hakuna barua taka, kamwe.",
+    whatHappensNext: "Nini Kinafuata?",
+    nextStepsIntro: "Tunathamini muda wako. Hapa ni hasa cha kutarajia baada ya kuwasiliana nasi:",
+    steps: {
+      instantTitle: "Uthibitisho wa papo hapo", instantBody: "Utapokea barua pepe inayothibitisha ujumbe wako ndani ya dakika chache.",
+      reviewTitle: "Uhakiki wa kibinafsi", reviewBody: "Timu yetu inakagua ujumbe wako na kuandaa jibu maalum.",
+      followupTitle: "Ufuatiliaji wa moja kwa moja", followupBody: "Utasikia kutoka kwetu ndani ya masaa 24 na hatua zilizo wazi zinazofuata.",
+    },
+    testimonialQuote: "Ujumbe wa Dr. Ogbueli katika mkutano wetu ulikuwa wa kubadilisha maisha. Weledi wa timu tangu mawasiliano ya kwanza hadi siku ya tukio ulikuwa wa kipekee.",
+    testimonialName: "Mchungaji Emmanuel K.",
+    testimonialRole: "Mratibu wa Mkutano, Lagos",
+    preferAnotherChannel: "Unapendelea Njia Nyingine?",
+    whatsapp: "WhatsApp",
+    whatsappDesc: "Omba kupigiwa simu kupitia WhatsApp",
+    email: "Barua Pepe",
+    phone: "Simu",
+    phoneDesc: "Piga ofisi iliyo karibu nawe",
+    bookACall: "Panga Simu",
+    bookACallDesc: "Omba simu ya dakika 15 ya utangulizi",
+    officesHeading: "Ofisi Zetu za Kimataifa",
+    officesSubtitle: "Tukiwa na uwepo katika mabara manne, hatuko mbali na mahali unapotuhitaji.",
+    offices: { us: "Marekani", uk: "Uingereza", abuja: "Abuja, Nigeria", lagos: "Lagos, Nigeria" },
+    faqHeading: "Maswali Yanayoulizwa Mara kwa Mara",
+    faqSubtitle: "Majibu ya haraka kwa maswali ya kawaida kabla ya kuwasiliana nasi.",
+    faqs: {
+      q1: "Nitapokea jibu haraka kiasi gani?",
+      a1: "Tunajitolea kujibu maswali yote ndani ya masaa 24. Kwa maombi ya haraka ya maombi, timu yetu mara nyingi hujibu ndani ya masaa 4-6 katika siku za kazi.",
+      q2: "Naweza kushiriki ushuhuda kupitia fomu hii?",
+      a2: "Bila shaka! Chagua \"Shiriki Ushuhuda\" kwenye menyu na utuambie hadithi yako. Tunapenda kusikia jinsi Mungu anavyofanya kazi katika maisha yako.",
+      q3: "Ninawasilishaje ombi la maombi?",
+      a3: "Chagua \"Ombi la Maombi\" kwenye menyu na ushiriki maelezo mengi kadri unavyoona vizuri. Timu yetu ya maombi inakagua kila uwasilishaji na itafuatilia ukiomba.",
+      q4: "Ninashirikianaje na huduma?",
+      a4: "Chagua \"Uchunguzi wa Ushirikiano\" kwenye menyu. Timu yetu ya ushirikiano itawasiliana kujadili fursa za ulinganifu na ushirikiano.",
+      q5: "Je, taarifa zangu zinabaki za faragha?",
+      a5: "Ndiyo, kabisa. Taarifa zako zimesimbwa na kulindwa. Hatushiriki maelezo yako na wahusika wengine na tutayatumia tu kujibu ujumbe wako.",
+    },
+    ctaHeading: "Hujui Pa Kuanzia?",
+    ctaBody: "Timu yetu ina furaha kukuongoza. Tuma ujumbe wa haraka na tutakuelekeza upande sahihi.",
+    ctaButton: "Tuma Ujumbe wa Haraka",
+  },
+  ar: {
+    responsePromise: "وعد وقت الاستجابة: أقل من 24 ساعة",
+    heroTitlePre: "لنبدأ ",
+    heroTitleAccent: "محادثة",
+    heroTitlePost: " تُغيّر",
+    heroSubtitle: "سواء كنت تشارك شهادة، أو تقدّم طلب صلاة، أو تتواصل معنا لأي سبب — فريقنا هنا لخدمتك باهتمام وتميّز.",
+    trustSecure: "معلوماتك آمنة وخاصة",
+    trustResponse: "متوسط وقت الاستجابة: 6 ساعات",
+    trustLives: "أكثر من 1.2 مليون حياة تأثرت عالميًا",
+    getInTouch: "تواصل معنا",
+    getInTouchSubtitle: "يسعدنا أن نسمع منك. اختر طبيعة رسالتك أدناه وشارك التفاصيل.",
+    successMessage: "جارٍ فتح برنامج البريد الإلكتروني لديك مع تعبئة هذه الرسالة مسبقًا — فقط اضغط إرسال.",
+    messageTypeLabel: "طبيعة رسالتك",
+    messageTypeHelper: "اختر الخيار الذي يصف بشكل أفضل سبب تواصلك.",
+    selectOption: "اختر خيارًا...",
+    messageTypes: {
+      testimony: { label: "شارك شهادة", placeholder: "شارك شهادتك معنا. كيف تحرّك الله في حياتك؟ يسعدنا أن نحتفل معك.", helper: "نصيحة: اذكر ما حدث، ومتى، وكيف أثّر ذلك في حياتك." },
+      prayer: { label: "طلب صلاة", placeholder: "شارك طلب صلاتك معنا. فريق الصلاة لدينا يقف معك.", helper: "نصيحة: يمكنك مشاركة أكبر قدر أو أقل قدر من التفاصيل تشعر بالراحة تجاهه." },
+      partnership: { label: "استفسار شراكة", placeholder: "أخبرنا عن مؤسستك وكيف تودّ الشراكة مع الخدمة.", helper: "نصيحة: اذكر رسالة مؤسستك وموقعها والتعاون المقترح." },
+      general: { label: "مراسلات عامة", placeholder: "شارك رسالتك أو سؤالك أو ملاحظاتك هنا...", helper: "نصيحة: كن مفصّلًا بقدر ما تشعر بالراحة تجاهه." },
+    },
+    firstName: "الاسم الأول",
+    firstNamePlaceholder: "مثال: جون",
+    lastName: "اسم العائلة",
+    lastNamePlaceholder: "مثال: سميث",
+    emailAddress: "البريد الإلكتروني",
+    emailHelper: "لن نشارك بريدك الإلكتروني مع أطراف ثالثة أبدًا.",
+    phoneNumber: "رقم الهاتف",
+    phoneHelper: "اختياري — يساعدنا في الوصول إليك بشكل أسرع عند الحاجة.",
+    yourMessage: "رسالتك",
+    defaultMessageHelper: "نصيحة: كن مفصّلًا بقدر ما تشعر بالراحة تجاهه.",
+    sendMessage: "أرسل رسالتي",
+    privacyNote: "معلوماتك مشفّرة ومحمية. نحترم خصوصيتك ولن نستخدم بياناتك إلا للرد على استفسارك. لا رسائل مزعجة أبدًا.",
+    whatHappensNext: "ماذا يحدث بعد ذلك؟",
+    nextStepsIntro: "نقدّر وقتك. إليك بالضبط ما يمكن توقعه بعد تواصلك معنا:",
+    steps: {
+      instantTitle: "تأكيد فوري", instantBody: "ستتلقى بريدًا إلكترونيًا يؤكد استلام رسالتك خلال دقائق.",
+      reviewTitle: "مراجعة شخصية", reviewBody: "يراجع فريقنا رسالتك ويُعدّ ردًا مخصصًا.",
+      followupTitle: "متابعة مباشرة", followupBody: "ستسمع منا خلال 24 ساعة مع خطوات واضحة تالية.",
+    },
+    testimonialQuote: "كانت رسالة الدكتور أوغبويلي في مؤتمرنا تحويلية. كانت احترافية الفريق منذ التواصل الأول وحتى يوم الفعالية استثنائية.",
+    testimonialName: "القس عمانوئيل ك.",
+    testimonialRole: "منظم مؤتمر، لاغوس",
+    preferAnotherChannel: "تفضّل قناة أخرى؟",
+    whatsapp: "واتساب",
+    whatsappDesc: "اطلب معاودة اتصال عبر واتساب",
+    email: "البريد الإلكتروني",
+    phone: "الهاتف",
+    phoneDesc: "اتصل بأقرب مكتب لك",
+    bookACall: "احجز مكالمة",
+    bookACallDesc: "اطلب مكالمة تعارف مدتها 15 دقيقة",
+    officesHeading: "مكاتبنا حول العالم",
+    officesSubtitle: "بحضورنا عبر أربع قارات، لسنا بعيدين أبدًا عن حيث تحتاجنا.",
+    offices: { us: "الولايات المتحدة", uk: "المملكة المتحدة", abuja: "أبوجا، نيجيريا", lagos: "لاغوس، نيجيريا" },
+    faqHeading: "الأسئلة الشائعة",
+    faqSubtitle: "إجابات سريعة على الأسئلة الشائعة قبل تواصلك معنا.",
+    faqs: {
+      q1: "ما مدى سرعة تلقّي رد؟",
+      a1: "نلتزم بالرد على جميع الاستفسارات خلال 24 ساعة. بالنسبة لطلبات الصلاة العاجلة، غالبًا ما يرد فريقنا خلال 4-6 ساعات في أيام العمل.",
+      q2: "هل يمكنني مشاركة شهادة من خلال هذا النموذج؟",
+      a2: "بالتأكيد! اختر \"شارك شهادة\" من القائمة وأخبرنا بقصتك. نحب أن نسمع كيف يتحرك الله في حياتك.",
+      q3: "كيف أقدّم طلب صلاة؟",
+      a3: "اختر \"طلب صلاة\" من القائمة وشارك أكبر قدر من التفاصيل تشعر بالراحة تجاهه. يراجع فريق الصلاة لدينا كل طلب وسيتابع معك إذا طلبت ذلك.",
+      q4: "كيف أتشارك مع الخدمة؟",
+      a4: "اختر \"استفسار شراكة\" من القائمة. سيتواصل فريق الشراكات لدينا لمناقشة فرص التوافق والتعاون.",
+      q5: "هل تبقى معلوماتي خاصة؟",
+      a5: "نعم، تمامًا. معلوماتك مشفّرة ومحمية. لا نشارك بياناتك مع أطراف ثالثة أبدًا ونستخدمها فقط للرد على رسالتك.",
+    },
+    ctaHeading: "لست متأكدًا من أين تبدأ؟",
+    ctaBody: "يسعد فريقنا إرشادك. أرسل رسالة سريعة وسنوجهك في الاتجاه الصحيح.",
+    ctaButton: "أرسل رسالة سريعة",
+  },
+};

@@ -47,7 +47,7 @@ export function Footer({ locale }: { locale: Locale }) {
 
   const cols = [
     {
-      title: "His Story",
+      title: "About",
       links: [
         { label: "Biography", href: p("/his-story") },
         { label: "Timeline", href: p("/his-story#timeline") },
@@ -67,6 +67,7 @@ export function Footer({ locale }: { locale: Locale }) {
     {
       title: "Resources",
       links: [
+        { label: "Start Here", href: p("/start-here") },
         { label: "Books", href: p("/books") },
         { label: "Media", href: p("/media") },
         { label: "Free Assessment", href: p("/leadership/assessment") },
@@ -74,10 +75,8 @@ export function Footer({ locale }: { locale: Locale }) {
       ],
     },
     {
-      title: "Connect",
+      title: "Contact",
       links: [
-        { label: "Speaking Inquiries", href: p("/contact#contact-form") },
-        { label: "Media Requests", href: p("/contact#contact-form") },
         { label: "Prayer Request", href: p("/contact#contact-form") },
         { label: "General Contact", href: p("/contact") },
       ],
@@ -107,19 +106,28 @@ export function Footer({ locale }: { locale: Locale }) {
               />
             </Link>
             <p className="text-sm leading-relaxed text-white/50">
-              Stay connected to the global transformation movement.
+              Transforming lives through the power of God&apos;s Word.
             </p>
 
-            <div className="mt-6 space-y-2.5 text-sm text-white/50">
-              <a href="tel:+14705352006" className="flex items-center gap-2.5 transition-colors hover:text-[#C9A227]">
+            <div className="mt-6 space-y-2.5 text-sm text-white/60">
+              <a
+                href="tel:+14705352006"
+                className="flex items-center gap-2.5 rounded-sm py-0.5 transition-all hover:translate-x-1 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
+              >
                 <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9A227]" aria-hidden />
                 +1-470-535-2006
               </a>
-              <a href="tel:+2348035508230" className="flex items-center gap-2.5 transition-colors hover:text-[#C9A227]">
+              <a
+                href="tel:+2348035508230"
+                className="flex items-center gap-2.5 rounded-sm py-0.5 transition-all hover:translate-x-1 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
+              >
                 <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9A227]" aria-hidden />
                 +234-8035508230
               </a>
-              <a href="mailto:mail@davidogbueli.org" className="flex items-center gap-2.5 transition-colors hover:text-[#C9A227]">
+              <a
+                href="mailto:mail@davidogbueli.org"
+                className="flex items-center gap-2.5 rounded-sm py-0.5 transition-all hover:translate-x-1 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
+              >
                 <Mail className="h-3.5 w-3.5 shrink-0 text-[#C9A227]" aria-hidden />
                 mail@davidogbueli.org
               </a>
@@ -127,27 +135,35 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
 
           <form onSubmit={handleSubscribe} className="flex flex-col gap-3 w-full max-w-md">
-            <label htmlFor="footer-email" className="text-[11px] uppercase tracking-[0.2em] font-semibold text-white/40">
-              Newsletter
-            </label>
+            <div>
+              <h3 className="text-[20px] font-semibold leading-tight text-white">Join the Global Transformation</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-white/50">
+                Weekly insights, event updates, and ministry news delivered to your inbox.
+              </p>
+            </div>
             {subscribed ? (
               <p className="text-[#C9A227] text-sm font-semibold py-3">✓ You're subscribed — welcome to the movement.</p>
             ) : (
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row">
+                <label htmlFor="footer-email" className="sr-only">
+                  Email address
+                </label>
                 <input
                   id="footer-email"
                   type="email"
+                  required
+                  aria-required="true"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="flex-1 bg-white/5 border border-white/10 rounded-[8px] px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#C9A227]/50"
+                  className="flex-1 bg-white/5 border border-white/15 rounded-[8px] px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none transition-colors focus:border-[#C9A227] focus-visible:ring-2 focus-visible:ring-[#C9A227]/30"
                 />
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-[#C9A227] text-[#0A192F] text-sm font-bold rounded-[8px] hover:bg-[#e0b430] transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="px-5 py-2.5 bg-[#C9A227] text-[#0A192F] text-sm font-bold rounded-[8px] transition-all hover:-translate-y-0.5 hover:bg-[#e0b430] active:translate-y-0 cursor-pointer flex items-center justify-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  Subscribe
+                  Join Now
                 </button>
               </div>
             )}
@@ -155,19 +171,27 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
 
         {/* Middle: link columns */}
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-4 mb-14">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-4 mb-14">
           {cols.map((col) => (
             <div key={col.title}>
-              <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-white">{col.title}</h4>
+              <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.08em] text-white">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     {l.href.startsWith("http") ? (
-                      <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-[#C9A227] transition-colors">
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block rounded-sm py-0.5 text-sm text-white/60 transition-all hover:translate-x-1 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
+                      >
                         {l.label}
                       </a>
                     ) : (
-                      <Link href={l.href} className="text-sm text-white/50 hover:text-[#C9A227] transition-colors">
+                      <Link
+                        href={l.href}
+                        className="inline-block rounded-sm py-0.5 text-sm text-white/60 transition-all hover:translate-x-1 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
+                      >
                         {l.label}
                       </Link>
                     )}
@@ -179,7 +203,7 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
 
         {/* Bottom */}
-        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/15 pt-8 md:flex-row">
           <p className="text-xs text-white/30">
             © 2026 Dr. David Ogbueli. All rights reserved.
           </p>
@@ -191,7 +215,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 aria-label={label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition-all hover:bg-white/10 hover:text-[#C9A227]"
+                className="flex h-11 w-11 items-center justify-center rounded-full text-white/50 transition-all hover:scale-110 hover:bg-white/10 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
               >
                 <Icon className="h-4 w-4" aria-hidden />
               </a>
