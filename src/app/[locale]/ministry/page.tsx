@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import MinistryClient from './MinistryClient';
 
 export const metadata: Metadata = {
-  title: 'Ministry & Institutions | Dr. David Ogbueli',
-  description: 'Six interconnected institutions, one mandate — to raise leaders that transform nations.',
+  title: 'Ministries | Dr. David Ogbueli',
+  description: 'Eight interconnected ministries, one mandate — to raise leaders that transform nations.',
 };
 
 type PageProps = {

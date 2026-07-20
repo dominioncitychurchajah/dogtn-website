@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { PlayCircle, Mic2, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { PlayCircle, Mic2, ArrowRight, X, CalendarDays } from "lucide-react";
 import { Container } from "@/components/layout/Section";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { mediaCopy } from "@/i18n/pages/media";
+
+const EVENTS_URL = "https://dcglobal-gules.vercel.app/en/events";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -16,40 +18,95 @@ const fadeUp = {
   viewport: { once: true, amount: 0.2 }
 };
 
-const TAB_KEYS = ["all", "teachings", "tv", "podcast", "conference"] as const;
+const TAB_KEYS = ["all", "teachings", "gmtv", "conference", "podcast"] as const;
 type TabKey = (typeof TAB_KEYS)[number];
 
-// Stable English category keys — data (`videos`) stays keyed on these regardless of UI locale.
-const CATEGORY_MAP: Record<TabKey, string> = {
-  all: "All",
+// Stable English category keys — the `videos` data stays keyed on these
+// regardless of the UI locale.
+const CATEGORY_MAP: Record<Exclude<TabKey, "all" | "podcast">, string> = {
   teachings: "Teachings",
-  tv: "TV Broadcast",
-  podcast: "Podcast",
+  gmtv: "GMTV Studio",
   conference: "Conference Archives",
 };
 
-// Tabs that scroll to a dedicated section below rather than filtering the video grid.
+// Tabs that scroll to a dedicated section rather than filtering the video grid.
 const SECTION_TABS: Partial<Record<TabKey, string>> = {
-  tv: "tv-broadcast",
   podcast: "podcast",
 };
 
-const videos = [
-  { title: "The Laws of Kingdom Governance", duration: "58 min", category: "Teachings" },
-  { title: "How to Pray Through Principalities", duration: "45 min", category: "Teachings" },
-  { title: "Discipleship and National Transformation", duration: "72 min", category: "Teachings" },
-  { title: "The Apostolic Mandate for This Generation", duration: "63 min", category: "Conference Archives" },
-  { title: "Building Institutions That Outlast Leaders", duration: "51 min", category: "Teachings" },
-  { title: "Night of Glory: Lagos 2024 Highlights", duration: "120 min", category: "Conference Archives" }
+type Video = { title: string; event: string; youtubeId: string; category: string };
+
+// Real messages from the official "Pastor David Ogbueli" YouTube channel
+// (youtube.com/@DominionCity), sourced from the VOD library at
+// davidogbueli.org. IDs verified via YouTube's oEmbed endpoint.
+const videos: Video[] = [
+  // ── Teachings ─────────────────────────────────────────────
+  { title: "Kingdom-Centric Christianity, Part 1", event: "Sunday Message", youtubeId: "o_sOd1B8ZT4", category: "Teachings" },
+  { title: "Love: The Greatest Moral Virtue", event: "Sunday Message", youtubeId: "GvO5ijXQrQg", category: "Teachings" },
+  { title: "Energy Frequencies", event: "Sunday Message", youtubeId: "JY6dZu4XU1Q", category: "Teachings" },
+  { title: "The Tabernacle of David, Part 1", event: "Sunday Message", youtubeId: "Y-_45IuoUCM", category: "Teachings" },
+  { title: "The Tabernacle of David, Part 2", event: "Sunday Message", youtubeId: "x_CG5KHe2So", category: "Teachings" },
+  { title: "The 7 Tests of True Love, Part 1", event: "Sunday Message", youtubeId: "A1gtXKMffQM", category: "Teachings" },
+  { title: "The 7 Tests of True Love, Part 2", event: "Sunday Message", youtubeId: "evcUPYeQPpU", category: "Teachings" },
+  { title: "The Laws of Reflection in Ministry, Part 1", event: "Teaching Series", youtubeId: "P0Nr77vqdHA", category: "Teachings" },
+  { title: "Human Development & Transformation, Part 1", event: "Teaching Series", youtubeId: "YvnE5LY-tNA", category: "Teachings" },
+  { title: "Human Development & Transformation, Part 2", event: "Teaching Series", youtubeId: "1gWUF8aemjc", category: "Teachings" },
+  { title: "Never Again (I Won't Settle For Less)", event: "Sunday Message", youtubeId: "1jwFERVjOhA", category: "Teachings" },
+  { title: "The Secret of Sustainability in Ministry, Part 1", event: "Teaching Series", youtubeId: "_saMtZTP-g0", category: "Teachings" },
+  { title: "March Super Sunday 3.0", event: "Sunday Message", youtubeId: "-mQo7W_EvvA", category: "Teachings" },
+  { title: "March Super Sunday 1.0", event: "Sunday Message", youtubeId: "oJMHsoSb-jA", category: "Teachings" },
+
+  // ── GMTV Studio ───────────────────────────────────────────
+  { title: "GMTV Studio Session — with Grace Idowu", event: "Global Camp Meeting 2026", youtubeId: "pX7OwLNDyGk", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Min. Oncemore Six", event: "Global Camp Meeting 2026", youtubeId: "osIULybjtUc", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Pst. Daniel Olawande", event: "Global Camp Meeting 2026", youtubeId: "CygENoG4LLY", category: "GMTV Studio" },
+  { title: "GMTV Studio Session, Ep. 2 — with Dr Charles Ndifon", event: "Global Camp Meeting 2026", youtubeId: "VBIXYBvh0c8", category: "GMTV Studio" },
+  { title: "GMTV Studio Session, Ep. 1 — with Dr Charles Ndifon", event: "Global Camp Meeting 2026", youtubeId: "PoQUNilKyh8", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Evang. Christian Chukwuka", event: "Camp Meeting 2025", youtubeId: "efN1hNetjGU", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Pst (Dr) Ugonna Emechebe", event: "Camp Meeting 2025", youtubeId: "SbBWmWqCKnU", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Stan Nze", event: "Camp Meeting 2025", youtubeId: "IjTYIAwP-pQ", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Pst (Dr) Norbert Onaga", event: "Camp Meeting 2025", youtubeId: "MIKdR7b_4tI", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Evang. Ikechukwu Nnajiofor", event: "Camp Meeting 2025", youtubeId: "xJJhZN_cEOQ", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with Rev. Peter Bright", event: "Camp Meeting 2025", youtubeId: "DOtCxX3bZrA", category: "GMTV Studio" },
+  { title: "GMTV Studio Session — with ESV (Dr) Iroy Orji", event: "Camp Meeting 2025", youtubeId: "dMvKf0aSZjM", category: "GMTV Studio" },
+
+  // ── Conference Archives ───────────────────────────────────
+  { title: "Jewish Secrets of Wealth Creation", event: "Global Camp Meeting 2026", youtubeId: "XzZt3_citMM", category: "Conference Archives" },
+  { title: "Living with Eternity in Perspective", event: "Global Camp Meeting 2026", youtubeId: "iZzSoW4G83g", category: "Conference Archives" },
+  { title: "Experiencing the Tangible Presence of God", event: "Global Camp Meeting 2026", youtubeId: "LI4cNgik9Fw", category: "Conference Archives" },
+  { title: "Enforcing the Power of the Cross", event: "Global Camp Meeting 2026", youtubeId: "iLvVEteQAKQ", category: "Conference Archives" },
+  { title: "Two Prayers That Can Transform Your Life", event: "Global Camp Meeting 2026", youtubeId: "GPoaECmBZJQ", category: "Conference Archives" },
+  { title: "How to Host God's Presence", event: "Asaba Post-Encounter 2026", youtubeId: "nCRsE9GfxTA", category: "Conference Archives" },
+  { title: "Leading Culture Change", event: "Asaba Post-Encounter 2026", youtubeId: "yznUhbmTK8I", category: "Conference Archives" },
+  { title: "The Power of Honour", event: "Lagos Post-Encounter 2026", youtubeId: "L1koJCywvV0", category: "Conference Archives" },
+  { title: "The Classes of Judgement, Part 1", event: "Lagos Post-Encounter 2026", youtubeId: "b2x0a-6zmrs", category: "Conference Archives" },
+  { title: "The Five Ds of Satan", event: "Lagos Post-Encounter 2026", youtubeId: "Lh1QJ8c88dU", category: "Conference Archives" },
+  { title: "WOFBEC 2026 — 1st Session", event: "Word of Faith Bible Explosion", youtubeId: "D66xT5RlvT8", category: "Conference Archives" },
+  { title: "Be Wise as Serpent, Part 1", event: "Prayer & Prophetic Conference", youtubeId: "EniP0eCnYo8", category: "Conference Archives" },
+  { title: "The Five Realms of the Prophetic, Part 1", event: "Prayer & Prophetic Conference", youtubeId: "8FBnkz0Whf0", category: "Conference Archives" },
+  { title: "Soaring as Eagles", event: "DC Prayer & Prophetic Conf. 2025", youtubeId: "gZrIWJs0pAs", category: "Conference Archives" },
+  { title: "The Gospel of the Kingdom & the Future of Africa", event: "Conference Session", youtubeId: "2QyxzDExYfs", category: "Conference Archives" },
+  { title: "Financial Management, Part 1", event: "FMS Wealth Conference 2025", youtubeId: "6rOE_BzDryw", category: "Conference Archives" },
 ];
 
 export default function MediaClient({ locale }: { locale: string }) {
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const c = mediaCopy[loc];
-  const [activeTab, setActiveTab] = useState<TabKey>("all");
+  const [activeTab, setActiveTab] = React.useState<TabKey>("all");
+  const [activeVideo, setActiveVideo] = React.useState<Video | null>(null);
+  const iframeRef = React.useRef<HTMLIFrameElement>(null);
 
-  const activeCategory = CATEGORY_MAP[activeTab];
-  const filteredVideos = activeTab === "all" ? videos : videos.filter((v) => v.category === activeCategory);
+  /** Blank the iframe before unmounting so audio stops the instant the user
+   *  closes — the exit animation keeps the node mounted for ~300ms otherwise. */
+  const closeLightbox = React.useCallback(() => {
+    if (iframeRef.current) iframeRef.current.src = "about:blank";
+    setActiveVideo(null);
+  }, []);
+
+  const filteredVideos = React.useMemo(() => {
+    if (activeTab === "all" || activeTab === "podcast") return videos;
+    return videos.filter((v) => v.category === CATEGORY_MAP[activeTab]);
+  }, [activeTab]);
 
   const handleTabClick = (tab: TabKey) => {
     setActiveTab(tab);
@@ -58,6 +115,20 @@ export default function MediaClient({ locale }: { locale: string }) {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // Close the lightbox on Escape and lock body scroll while it is open.
+  React.useEffect(() => {
+    if (!activeVideo) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [activeVideo]);
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -119,15 +190,31 @@ export default function MediaClient({ locale }: { locale: string }) {
               animate="whileInView"
               variants={{
                 initial: {},
-                whileInView: { transition: { staggerChildren: 0.1 } }
+                whileInView: { transition: { staggerChildren: 0.05 } }
               }}
             >
-              {filteredVideos.map((video, idx) => (
-                <motion.div key={idx} variants={fadeUp} className="group cursor-pointer">
+              {filteredVideos.map((video) => (
+                <motion.button
+                  key={video.youtubeId}
+                  type="button"
+                  onClick={() => setActiveVideo(video)}
+                  aria-label={`${c.playVideo}: ${video.title}`}
+                  variants={fadeUp}
+                  className="group cursor-pointer block text-left"
+                >
                   <div className="bg-[#0A192F]/10 aspect-video rounded-[8px] overflow-hidden relative flex items-center justify-center mb-3">
-                    <PlayCircle className="text-white/60 w-12 h-12 transition-transform group-hover:scale-110" />
+                    <Image
+                      src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                      alt=""
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-[#0A192F]/30 transition-colors group-hover:bg-[#0A192F]/10" />
+                    <PlayCircle className="relative text-white w-12 h-12 transition-transform group-hover:scale-110" />
                     <div className="absolute top-3 left-3">
-                      <span className="text-[10px] uppercase tracking-wider bg-[#C9A227]/15 text-[#C9A227] px-2 py-0.5 rounded-full font-semibold">
+                      <span className="text-[10px] uppercase tracking-wider bg-[#C9A227]/90 text-[#0A192F] px-2 py-0.5 rounded-full font-semibold">
                         {video.category}
                       </span>
                     </div>
@@ -135,8 +222,8 @@ export default function MediaClient({ locale }: { locale: string }) {
                   <h3 className="font-serif text-[18px] text-[#0A192F] group-hover:text-[#C9A227] transition-colors">
                     {video.title}
                   </h3>
-                  <p className="text-[#6B7280] text-xs mt-1">{video.duration}</p>
-                </motion.div>
+                  <p className="text-[#6B7280] text-xs mt-1">{video.event}</p>
+                </motion.button>
               ))}
             </motion.div>
           ) : (
@@ -147,44 +234,39 @@ export default function MediaClient({ locale }: { locale: string }) {
         </Container>
       </section>
 
-      {/* SECTION 4 - TV BROADCAST */}
-      <section id="tv-broadcast" className="bg-[#F5F1E8] py-16">
+      {/* SECTION 4 - EVENT DISCOVERY CTA */}
+      <section className="bg-[#0A192F] py-20">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeUp}>
-              <h2 className="font-serif text-[40px] text-[#0A192F] leading-tight mb-4">
-                {c.tvHeading}
-              </h2>
-              <p className="text-[#6B7280] mb-6 text-lg">
-                {c.tvBody}
-              </p>
-              <div className="space-y-4">
-                <div className="border-l-2 border-[#C9A227] pl-4">
-                  <p className="font-bold text-[#0A192F]">Dominion Network</p>
-                  <p className="text-[#6B7280] text-sm">Mon-Fri, 7:00 AM WAT</p>
-                </div>
-                <div className="border-l-2 border-[#C9A227] pl-4">
-                  <p className="font-bold text-[#0A192F]">TBN Africa</p>
-                  <p className="text-[#6B7280] text-sm">Sun, 10:00 PM WAT</p>
-                </div>
-              </div>
-            </motion.div>
-            <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.2 }}>
-              <div className="bg-[#0A192F] rounded-[12px] aspect-video flex items-center justify-center shadow-lg relative overflow-hidden">
-                <span className="text-[#C9A227] font-bold tracking-widest text-xl relative z-10">
-                  {c.liveBroadcast}
-                </span>
-                <div className="absolute inset-0 bg-[#C9A227]/5 animate-pulse"></div>
-              </div>
-            </motion.div>
-          </div>
+          <motion.div {...fadeUp} className="mx-auto max-w-3xl text-center flex flex-col items-center">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.3em] text-[#C9A227]">
+              {c.eventsCtaEyebrow}
+            </span>
+            <h2 className="font-serif text-[36px] md:text-[44px] text-white leading-tight">
+              {c.eventsCtaHeading}
+            </h2>
+            <p className="mt-5 text-white/70 text-lg leading-relaxed">
+              {c.eventsCtaBody}
+            </p>
+            <a
+              href={EVENTS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-[8px] bg-[#C9A227] px-8 py-4 text-sm font-bold uppercase tracking-widest text-[#0A192F] transition-colors hover:bg-[#e0b430]"
+            >
+              <CalendarDays className="w-4 h-4" />
+              {c.eventsCtaButton}
+            </a>
+          </motion.div>
         </Container>
       </section>
 
-      {/* SECTION 5 - PODCAST */}
+      {/* SECTION 5 - PODCAST (structured so future episodes can be added without a refactor) */}
       <section id="podcast" className="bg-white py-16 text-center">
         <Container>
           <motion.div {...fadeUp} className="max-w-2xl mx-auto flex flex-col items-center">
+            <span className="mb-4 inline-block rounded-full bg-[#C9A227]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#C9A227]">
+              {c.podcastComingSoon}
+            </span>
             <h2 className="font-serif text-[40px] text-[#0A192F] mb-4">
               {c.podcastHeading}
             </h2>
@@ -269,6 +351,51 @@ export default function MediaClient({ locale }: { locale: string }) {
           </motion.div>
         </Container>
       </section>
+
+      {/* VIDEO LIGHTBOX — plays on-site, never redirects to YouTube */}
+      <AnimatePresence>
+        {activeVideo && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0A192F]/90 p-4 backdrop-blur-sm"
+            onClick={closeLightbox}
+            role="dialog"
+            aria-modal="true"
+            aria-label={activeVideo.title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <button
+              type="button"
+              onClick={closeLightbox}
+              aria-label={c.closeVideo}
+              className="absolute top-5 right-5 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-colors hover:bg-white/20"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <motion.div
+              className="relative w-full max-w-4xl overflow-hidden rounded-[12px] bg-black shadow-2xl"
+              style={{ aspectRatio: "16 / 9" }}
+              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0, scale: 0.96, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.97, y: 8 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <iframe
+                ref={iframeRef}
+                key={activeVideo.youtubeId}
+                src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1&rel=0`}
+                title={activeVideo.title}
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

@@ -28,11 +28,11 @@ function StatCounter({ value, suffix, label, decimals = 0 }: { value: number; su
   const shown = decimals > 0 ? (display / scale).toFixed(decimals) : display;
   return (
     <div ref={ref}>
-      <div className="font-serif text-[64px] lg:text-[72px] text-[#C9A227] leading-none mb-2">
+      <div className="font-serif text-[44px] sm:text-[56px] lg:text-[72px] text-[#C9A227] leading-none mb-2">
         {shown}
         {suffix}
       </div>
-      <div className="text-white/60 text-base uppercase tracking-wider font-semibold">{label}</div>
+      <div className="text-white/60 text-sm sm:text-base uppercase tracking-wider font-semibold">{label}</div>
     </div>
   );
 }
@@ -157,18 +157,18 @@ export function HomepageClient({ locale }: { locale: string }) {
 
 
       {/* SECTION 3 — GLOBAL IMPACT */}
-      <section className="bg-[#0A192F] py-24">
+      <section className="bg-[#0A192F] py-16 sm:py-24">
         <Container>
-          <motion.div className="text-center mb-16" {...fadeUpVariant}>
-            <span className="text-[#C9A227] uppercase tracking-widest text-sm font-bold mb-4 block">
+          <motion.div className="text-center mb-12 sm:mb-16" {...fadeUpVariant}>
+            <span className="text-[#C9A227] uppercase tracking-widest text-xs sm:text-sm font-bold mb-3 sm:mb-4 block">
               {statsCopy.eyebrow}
             </span>
-            <h2 className="font-serif text-[48px] lg:text-[56px] text-white">
+            <h2 className="mx-auto max-w-3xl font-serif text-[30px] sm:text-[42px] lg:text-[56px] leading-[1.18] text-balance text-white">
               {statsCopy.heading}
             </h2>
           </motion.div>
 
-          <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center mb-16" {...fadeUpVariant}>
+          <motion.div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 sm:gap-12 text-center mb-12 sm:mb-16" {...fadeUpVariant}>
             {[
               { value: 2000, suffix: "+", label: statsCopy.labelChurches },
               { value: 50, suffix: "+", label: statsCopy.labelNations },

@@ -56,7 +56,7 @@ export function Footer({ locale }: { locale: Locale }) {
       ],
     },
     {
-      title: "Ministry",
+      title: "Ministries",
       links: [
         { label: "Dominion City", href: p("/ministry") },
         { label: "Golden Heart Foundation", href: p("/ministry#golden-heart") },

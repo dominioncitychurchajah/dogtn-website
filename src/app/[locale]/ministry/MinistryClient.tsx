@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/layout/Section";
-import { Globe, GraduationCap, Users, Presentation, HeartHandshake, Flame, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { ministryCopy } from "@/i18n/pages/ministry";
 
@@ -23,55 +23,16 @@ export default function MinistryClient({ locale }: MinistryClientProps) {
     viewport: { once: true, amount: 0.2 }
   };
 
-  const institutions = [
-    {
-      id: "dli",
-      Icon: GraduationCap,
-      title: c.institutions.dliTitle,
-      description: c.institutions.dliDesc,
-      href: `/${locale}/leadership`,
-      external: false,
-    },
-    {
-      id: "dominion-city",
-      Icon: Users,
-      title: c.institutions.dcTitle,
-      description: c.institutions.dcDesc,
-      href: "https://www.dominioncity.cc",
-      external: true,
-    },
-    {
-      id: "glf",
-      Icon: Presentation,
-      title: c.institutions.glfTitle,
-      description: c.institutions.glfDesc,
-      href: "https://dcglobal-gules.vercel.app/en/events",
-      external: true,
-    },
-    {
-      id: "golden-heart",
-      Icon: HeartHandshake,
-      title: c.institutions.ghfTitle,
-      description: c.institutions.ghfDesc,
-      href: `/${locale}/partnership`,
-      external: false,
-    },
-    {
-      id: "priesthood",
-      Icon: Flame,
-      title: c.institutions.priesthoodTitle,
-      description: c.institutions.priesthoodDesc,
-      href: `/${locale}/mentorship`,
-      external: false,
-    },
-    {
-      id: "missions",
-      Icon: Globe,
-      title: c.institutions.missionsTitle,
-      description: c.institutions.missionsDesc,
-      href: `/${locale}/partnership`,
-      external: false,
-    },
+  // Intentional display order (highest priority first) — do not reorder.
+  const ministries = [
+    { id: "dominion-city", ...c.ministries.dominionCity, logo: "/images/ministries/dominion-city-global.jpg", href: "https://www.dominioncity.cc", external: true },
+    { id: "golden-heart", ...c.ministries.goldenHeart, logo: "/images/ministries/golden-heart-foundation.jpg", href: `/${locale}/partnership`, external: false },
+    { id: "gmn", ...c.ministries.gmn, logo: "/images/ministries/global-missions-network.jpg", href: `/${locale}/partnership`, external: false },
+    { id: "glf", ...c.ministries.glf, logo: "/images/ministries/global-leadership-forum.jpg", href: `/${locale}/mentorship`, external: false },
+    { id: "dli", ...c.ministries.dli, logo: "/images/ministries/dominion-leadership-institute.jpg", href: `/${locale}/leadership`, external: false },
+    { id: "priesthood", ...c.ministries.priesthood, logo: "/images/ministries/priesthood-institute.jpg", href: `/${locale}/mentorship`, external: false },
+    { id: "huram", ...c.ministries.huram, logo: "/images/ministries/huram-development.jpg", href: `/${locale}/contact`, external: false },
+    { id: "shalom", ...c.ministries.shalom, logo: "/images/ministries/shalom-world.jpg", href: `/${locale}/books`, external: false },
   ];
 
   const events = [
@@ -134,48 +95,60 @@ export default function MinistryClient({ locale }: MinistryClientProps) {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {institutions.map((inst, idx) => {
-              const ExploreLink = inst.external ? (
-                <a href={inst.href} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#C9A227] group-hover:gap-3 transition-all">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {ministries.map((m, idx) => {
+              const exploreClass = "mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#C9A227] group-hover:gap-3 transition-all";
+              const ExploreLink = m.external ? (
+                <a href={m.href} target="_blank" rel="noopener noreferrer" className={exploreClass}>
                   {c.explore} <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               ) : (
-                <Link href={inst.href} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#C9A227] group-hover:gap-3 transition-all">
+                <Link href={m.href} className={exploreClass}>
                   {c.explore} <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               );
               return (
                 <motion.div
-                  key={inst.id}
+                  key={m.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.25, 0.1, 0.25, 1.0] as const }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  className="flex h-full flex-col rounded-[12px] border border-white/10 bg-white/5 p-8 text-white transition-all hover:-translate-y-1 hover:bg-white/10"
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.25, 0.1, 0.25, 1.0] as const }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  className="group flex h-full flex-col overflow-hidden rounded-[12px] border border-white/10 bg-white/5 text-white transition-all hover:-translate-y-1 hover:bg-white/10"
                 >
-                  <inst.Icon className="mb-3 h-7 w-7 text-[#C9A227]" aria-hidden />
-                  <h3 className="font-serif text-[22px] text-white leading-snug">{inst.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">{inst.description}</p>
-                  {ExploreLink}
+                  {/* Logo banner — each logo shown on its own brand background */}
+                  <div className="relative aspect-[16/9] w-full bg-white">
+                    <Image
+                      src={m.logo}
+                      alt={`${m.title} logo`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-serif text-[20px] text-white leading-snug">{m.title}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">{m.desc}</p>
+                    {ExploreLink}
+                  </div>
                 </motion.div>
               );
             })}
 
-            {/* Discover Your Place — spans two columns */}
+            {/* Discover Your Place — full-width band under the ministries */}
             <motion.div
               {...fadeInUp}
-              className="flex h-full flex-col justify-between rounded-[12px] border border-[#C9A227]/30 bg-[#C9A227]/15 p-8 text-white md:col-span-2"
+              className="flex h-full flex-col justify-between gap-6 rounded-[12px] border border-[#C9A227]/30 bg-[#C9A227]/15 p-8 text-white sm:flex-row sm:items-center sm:col-span-2 lg:col-span-4"
             >
               <div>
                 <h3 className="font-serif text-[24px] text-white">{c.discoverTitle}</h3>
-                <p className="mt-3 max-w-sm text-white/70 leading-relaxed">
+                <p className="mt-2 max-w-xl text-white/70 leading-relaxed">
                   {c.discoverBody}
                 </p>
               </div>
               <Link
                 href={`/${locale}/start-here`}
-                className="mt-6 inline-flex items-center gap-2 self-start rounded-[8px] bg-[#C9A227] px-6 py-3 text-sm font-semibold text-[#0A192F] transition-colors hover:bg-[#b08d22]"
+                className="inline-flex shrink-0 items-center gap-2 self-start rounded-[8px] bg-[#C9A227] px-6 py-3 text-sm font-semibold text-[#0A192F] transition-colors hover:bg-[#b08d22] sm:self-auto"
               >
                 {c.discoverCta} <ArrowRight className="w-4 h-4" />
               </Link>

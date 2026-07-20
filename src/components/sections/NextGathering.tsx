@@ -93,7 +93,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
                 <dt className="text-caption uppercase tracking-widest text-ink-300">{copy.phoneSupport}</dt>
                 <dd className="text-body-m font-medium text-paper-0">
                   <a href="mailto:support@davidogbueli.org" className="hover:text-gold-400">
-                    Email Support
+                    {copy.emailSupport}
                   </a>
                 </dd>
               </div>
@@ -108,13 +108,13 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-5 text-body-m font-semibold text-ink-900 hover:bg-gold-hover"
               >
                 <Radio className="h-4 w-4" aria-hidden />
-                Watch Online
+                {copy.watchOnline}
               </a>
               <Link
                 href="https://dcglobal-gules.vercel.app/en/events"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] border border-paper-0/15 px-5 text-body-m font-semibold text-paper-0 hover:bg-paper-0/10"
               >
-                Plan Your Visit
+                {copy.planVisit}
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>

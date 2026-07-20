@@ -1,17 +1,21 @@
 import Link from "next/link";
 import { Sparkles, GraduationCap, Users, BookOpen, Landmark, ArrowRight } from "lucide-react";
-import type { Locale } from "@/i18n/config";
+import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
+import { homeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
 
-const TILES = [
-  { label: "Grow Spiritually", icon: Sparkles, href: "/journeys/grow-spiritually" },
-  { label: "Become a Leader", icon: GraduationCap, href: "/journeys/become-a-leader" },
-  { label: "Join a Community", icon: Users, href: "/start-here" },
-  { label: "Access Teachings", icon: BookOpen, href: "/media" },
-  { label: "Explore the Ministry", icon: Landmark, href: "/ministry" },
-];
-
 export function JourneyStrip({ locale }: { locale: Locale }) {
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale;
+  const c = homeCopy[loc].journeyStrip;
+
+  const TILES = [
+    { label: c.growSpiritually, icon: Sparkles, href: "/journeys/grow-spiritually" },
+    { label: c.becomeLeader, icon: GraduationCap, href: "/journeys/become-a-leader" },
+    { label: c.joinCommunity, icon: Users, href: "/start-here" },
+    { label: c.accessTeachings, icon: BookOpen, href: "/media" },
+    { label: c.exploreMinistry, icon: Landmark, href: "/ministry" },
+  ];
+
   return (
     <section className="border-b border-ink-100/60 bg-paper-0 py-12">
       <Container>

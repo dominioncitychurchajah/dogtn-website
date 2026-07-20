@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
-import { Container } from "@/components/layout/Section";
+import { homeCopy } from "@/i18n/pages/home";
 import { HomepageClient } from "./HomepageClient";
 
-export const metadata: Metadata = {
-  title: "Dr. David Ogbueli | Apostolic Leader & Social Reformer",
-  description: "For over three decades, one man's voice has called a generation to transform society through the power of kingdom principles.",
-};
-
-export default function HomePage({
+export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const loc: Locale = isLocale(locale) ? locale : defaultLocale;
+  const c = homeCopy[loc].heroCurrent;
+  return { title: `Dr. David Ogbueli | ${c.eyebrow}`, description: c.body };
+}
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
 }) {
-  const resolvedLocale = isLocale(params.locale) ? (params.locale as Locale) : defaultLocale;
+  const { locale } = await params;
+  const resolvedLocale: Locale = isLocale(locale) ? locale : defaultLocale;
 
   return <HomepageClient locale={resolvedLocale} />;
 }

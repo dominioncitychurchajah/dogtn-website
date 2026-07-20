@@ -30,6 +30,16 @@ export interface HomeCopy {
     phoneSupport: string;
     parking: string;
     parkingValue: string;
+    emailSupport: string;
+    watchOnline: string;
+    planVisit: string;
+  };
+  journeyStrip: {
+    growSpiritually: string;
+    becomeLeader: string;
+    joinCommunity: string;
+    accessTeachings: string;
+    exploreMinistry: string;
   };
   events: {
     title: string;
@@ -134,6 +144,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       phoneSupport: "Contact",
       parking: "Parking",
       parkingValue: "Free & Secure",
+      emailSupport: "Email Support",
+      watchOnline: "Watch Online",
+      planVisit: "Plan Your Visit",
+    },
+    journeyStrip: {
+      growSpiritually: "Grow Spiritually",
+      becomeLeader: "Become a Leader",
+      joinCommunity: "Join a Community",
+      accessTeachings: "Access Teachings",
+      exploreMinistry: "Explore the Ministries",
     },
     events: {
       title: "Gather, Grow, and Be Transformed",
@@ -180,7 +200,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       labelLives: "Lives Transformed",
       labelYears: "Years of Ministry",
       body: "Today, Dominion City Global spans Nigeria, Africa, Europe, Asia, and the Americas. Dr. Ogbueli has been honoured by the Mayor of Brampton, Canada, for his community impact, and his voice has reached the United Nations and global leadership platforms.",
-      exploreMinistry: "Explore the Ministry",
+      exploreMinistry: "Explore the Ministries",
     },
     testimonialSection: {
       quote: "Dr. Ogbueli's teaching on kingdom governance completely changed how I lead my company and serve my community. His voice is a prophetic compass for our generation.",
@@ -238,6 +258,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       phoneSupport: "Assistance téléphonique",
       parking: "Stationnement",
       parkingValue: "Gratuit et sécurisé",
+      emailSupport: "Assistance par e-mail",
+      watchOnline: "Regarder en ligne",
+      planVisit: "Planifier votre visite",
+    },
+    journeyStrip: {
+      growSpiritually: "Grandir Spirituellement",
+      becomeLeader: "Devenir un Leader",
+      joinCommunity: "Rejoindre une Communauté",
+      accessTeachings: "Accéder aux Enseignements",
+      exploreMinistry: "Découvrir les Ministères",
     },
     events: {
       title: "Rassemblements mondiaux",
@@ -285,7 +315,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       labelLives: "Vies transformées",
       labelYears: "Années de ministère",
       body: "Aujourd'hui, Dominion City Global s'étend sur le Nigeria, l'Afrique, l'Europe, l'Asie et les Amériques. Le Dr Ogbueli a été honoré par le maire de Brampton, au Canada, pour son impact communautaire, et sa voix a atteint les Nations Unies et les plateformes mondiales de leadership.",
-      exploreMinistry: "Découvrir le ministère",
+      exploreMinistry: "Découvrir les ministères",
     },
     testimonialSection: {
       quote: "L'enseignement du Dr Ogbueli sur la gouvernance du royaume a complètement changé ma façon de diriger mon entreprise et de servir ma communauté. Sa voix est une boussole prophétique pour notre génération.",
@@ -343,6 +373,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       phoneSupport: "Apoio telefónico",
       parking: "Estacionamento",
       parkingValue: "Gratuito e seguro",
+      emailSupport: "Suporte por E-mail",
+      watchOnline: "Assistir Online",
+      planVisit: "Planeie a Sua Visita",
+    },
+    journeyStrip: {
+      growSpiritually: "Crescer Espiritualmente",
+      becomeLeader: "Tornar-se Líder",
+      joinCommunity: "Juntar-se a uma Comunidade",
+      accessTeachings: "Aceder aos Ensinamentos",
+      exploreMinistry: "Explorar os Ministérios",
     },
     events: {
       title: "Encontros globais",
@@ -390,7 +430,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       labelLives: "Vidas Transformadas",
       labelYears: "Anos de Ministério",
       body: "Hoje, a Dominion City Global abrange a Nigéria, a África, a Europa, a Ásia e as Américas. O Dr. Ogbueli foi homenageado pelo Prefeito de Brampton, no Canadá, pelo seu impacto comunitário, e a sua voz já alcançou as Nações Unidas e plataformas globais de liderança.",
-      exploreMinistry: "Explorar o Ministério",
+      exploreMinistry: "Explorar os Ministérios",
     },
     testimonialSection: {
       quote: "O ensino do Dr. Ogbueli sobre governança do reino mudou completamente a forma como lidero a minha empresa e sirvo a minha comunidade. A sua voz é uma bússola profética para a nossa geração.",
@@ -448,6 +488,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       phoneSupport: "Msaada wa simu",
       parking: "Maegesho",
       parkingValue: "Bila malipo na salama",
+      emailSupport: "Msaada wa Barua Pepe",
+      watchOnline: "Tazama Mtandaoni",
+      planVisit: "Panga Ziara Yako",
+    },
+    journeyStrip: {
+      growSpiritually: "Kua Kiroho",
+      becomeLeader: "Kuwa Kiongozi",
+      joinCommunity: "Jiunge na Jamii",
+      accessTeachings: "Fikia Mafundisho",
+      exploreMinistry: "Gundua Huduma",
     },
     events: {
       title: "Mikutano ya Kimataifa",
@@ -553,6 +603,16 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       phoneSupport: "الدعم الهاتفي",
       parking: "مواقف السيارات",
       parkingValue: "مجاني وآمن",
+      emailSupport: "الدعم عبر البريد الإلكتروني",
+      watchOnline: "شاهد عبر الإنترنت",
+      planVisit: "خطط لزيارتك",
+    },
+    journeyStrip: {
+      growSpiritually: "انمُ روحيًا",
+      becomeLeader: "كن قائدًا",
+      joinCommunity: "انضم إلى مجتمع",
+      accessTeachings: "الوصول إلى التعاليم",
+      exploreMinistry: "استكشف الخدمات",
     },
     events: {
       title: "اللقاءات العالمية",
@@ -598,7 +658,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       labelLives: "الأرواح التي تغيّرت",
       labelYears: "سنوات الخدمة",
       body: "اليوم، تمتد Dominion City Global عبر نيجيريا وأفريقيا وأوروبا وآسيا والأمريكتين. تكرّم الدكتور أوغبويلي من قبل عمدة برامبتون في كندا لأثره المجتمعي، ووصل صوته إلى الأمم المتحدة ومنصات القيادة العالمية.",
-      exploreMinistry: "استكشف الخدمة",
+      exploreMinistry: "استكشف الخدمات",
     },
     testimonialSection: {
       quote: "غيّرت تعاليم الدكتور أوغبويلي حول حوكمة الملكوت طريقة قيادتي لشركتي وخدمتي لمجتمعي تمامًا. صوته بوصلة نبوية لجيلنا.",

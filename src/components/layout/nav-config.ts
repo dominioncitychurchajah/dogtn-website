@@ -3,6 +3,7 @@ import type { Locale } from "@/i18n/config";
 export interface NavStrings {
   startHere: string;
   teachings: string;
+  media: string;
   leadership: string;
   mentorship: string;
   ministry: string;
@@ -37,11 +38,11 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
       href: p("/his-story"),
       mega: [
         { label: "His Story", href: p("/his-story"), desc: "The man, the mandate, the mission" },
-        { label: "The Ministry", href: p("/ministry"), desc: "Global network overview" },
-        { label: "Mentorship Track", href: p("/mentorship"), desc: "4 tracks, with a mentor for the journey" },
+        { label: "The Ministries", href: p("/ministry"), desc: "Global network overview" },
         { label: "Take the Leadership Assessment", href: p("/leadership/assessment"), desc: "7-minute free assessment" },
       ],
     },
+    { label: s.mentorship, href: p("/mentorship") },
     {
       label: "Books",
       href: p("/books"),
@@ -52,8 +53,7 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
         { label: "The Laws of Proper Speech", href: p("/books/the-laws-of-proper-speech"), desc: "The power of words" },
       ],
     },
-    { label: s.teachings, href: p("/media") },
-    { label: s.events, href: "https://dcglobal-gules.vercel.app/en/events" },
+    { label: s.media, href: p("/media") },
     { label: s.partnership, href: p("/partnership") },
     { label: "Contact", href: p("/contact") },
   ];

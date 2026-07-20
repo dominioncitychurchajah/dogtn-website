@@ -43,9 +43,10 @@ export default async function LocaleLayout({
   const navStrings: NavStrings = {
     startHere: t(dict, "nav.startHere"),
     teachings: t(dict, "nav.teachings"),
+    media: t(dict, "nav.media"),
     leadership: t(dict, "nav.leadership"),
     mentorship: t(dict, "nav.mentorship"),
-    ministry: "Ministry",
+    ministry: "Ministries",
     events: t(dict, "nav.events"),
     library: t(dict, "nav.library"),
     partnership: t(dict, "nav.partnership"),

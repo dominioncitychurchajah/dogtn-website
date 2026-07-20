@@ -1,20 +1,24 @@
 import type { Locale } from "@/i18n/config";
 
 /**
- * Per-page translation module for the Media page. Individual video titles,
- * press headlines, and TV schedule programme names stay in English —
- * translating that long-tail content is a separate project.
+ * Per-page translation module for the Media page. Individual video titles and
+ * press headlines stay in English — translating that long-tail content is a
+ * separate project. "GMTV Studio" is a brand name, kept the same across locales.
  */
 export interface MediaCopy {
   heroTitle: string;
   heroSubtitle: string;
-  tabs: { all: string; teachings: string; tv: string; podcast: string; conference: string };
+  tabs: { all: string; teachings: string; gmtv: string; conference: string; podcast: string };
   noVideos: string;
-  tvHeading: string;
-  tvBody: string;
-  liveBroadcast: string;
+  playVideo: string;
+  closeVideo: string;
   podcastHeading: string;
   podcastBody: string;
+  podcastComingSoon: string;
+  eventsCtaEyebrow: string;
+  eventsCtaHeading: string;
+  eventsCtaBody: string;
+  eventsCtaButton: string;
   pressHeading: string;
   pressCta: string;
 }
@@ -23,65 +27,85 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
   en: {
     heroTitle: "Watch. Listen. Grow.",
     heroSubtitle: "Decades of transformative teaching, now available wherever you are.",
-    tabs: { all: "All", teachings: "Teachings", tv: "TV Broadcast", podcast: "Podcast", conference: "Conference Archives" },
-    noVideos: "No videos in this category yet — see the section below.",
-    tvHeading: "Expand Your World",
-    tvBody: "Join thousands globally who tune in to the weekly TV broadcast. Experience life-transforming messages right from your living room.",
-    liveBroadcast: "LIVE BROADCAST",
+    tabs: { all: "All", teachings: "Teachings", gmtv: "GMTV Studio", conference: "Conference Archives", podcast: "Podcast" },
+    noVideos: "No videos in this category yet.",
+    playVideo: "Play video",
+    closeVideo: "Close video",
     podcastHeading: "The Transformation Podcast",
     podcastBody: "Subscribe on your favourite platform and never miss an episode.",
+    podcastComingSoon: "More on the way",
+    eventsCtaEyebrow: "Gather With Us",
+    eventsCtaHeading: "Experience It Live",
+    eventsCtaBody: "Watching is powerful — being in the room is transformational. Find the next conference, camp meeting, or gathering near you.",
+    eventsCtaButton: "See Upcoming Events",
     pressHeading: "Press & Media Appearances",
     pressCta: "For media enquiries",
   },
   fr: {
     heroTitle: "Regardez. Écoutez. Grandissez.",
     heroSubtitle: "Des décennies d'enseignement transformateur, désormais disponibles où que vous soyez.",
-    tabs: { all: "Tout", teachings: "Enseignements", tv: "Diffusion TV", podcast: "Podcast", conference: "Archives de conférences" },
-    noVideos: "Aucune vidéo dans cette catégorie pour l'instant — voir la section ci-dessous.",
-    tvHeading: "Élargissez votre monde",
-    tvBody: "Rejoignez des milliers de personnes à travers le monde qui suivent la diffusion TV hebdomadaire. Vivez des messages qui transforment la vie, depuis votre salon.",
-    liveBroadcast: "DIFFUSION EN DIRECT",
+    tabs: { all: "Tout", teachings: "Enseignements", gmtv: "GMTV Studio", conference: "Archives de conférences", podcast: "Podcast" },
+    noVideos: "Aucune vidéo dans cette catégorie pour l'instant.",
+    playVideo: "Lire la vidéo",
+    closeVideo: "Fermer la vidéo",
     podcastHeading: "Le Podcast de la Transformation",
     podcastBody: "Abonnez-vous sur votre plateforme préférée et ne manquez plus aucun épisode.",
+    podcastComingSoon: "D'autres à venir",
+    eventsCtaEyebrow: "Rejoignez-nous",
+    eventsCtaHeading: "Vivez-le en direct",
+    eventsCtaBody: "Regarder est puissant — être dans la salle est transformateur. Trouvez la prochaine conférence, retraite ou rassemblement près de chez vous.",
+    eventsCtaButton: "Voir les événements à venir",
     pressHeading: "Presse et Apparitions Médiatiques",
     pressCta: "Pour les demandes médias",
   },
   pt: {
     heroTitle: "Assista. Ouça. Cresça.",
     heroSubtitle: "Décadas de ensino transformador, agora disponíveis onde quer que você esteja.",
-    tabs: { all: "Todos", teachings: "Ensinamentos", tv: "Transmissão TV", podcast: "Podcast", conference: "Arquivos de Conferências" },
-    noVideos: "Ainda não há vídeos nesta categoria — veja a secção abaixo.",
-    tvHeading: "Expanda o Seu Mundo",
-    tvBody: "Junte-se a milhares de pessoas em todo o mundo que sintonizam a transmissão semanal na TV. Viva mensagens transformadoras direto da sua sala.",
-    liveBroadcast: "TRANSMISSÃO AO VIVO",
+    tabs: { all: "Todos", teachings: "Ensinamentos", gmtv: "GMTV Studio", conference: "Arquivos de Conferências", podcast: "Podcast" },
+    noVideos: "Ainda não há vídeos nesta categoria.",
+    playVideo: "Reproduzir vídeo",
+    closeVideo: "Fechar vídeo",
     podcastHeading: "O Podcast da Transformação",
     podcastBody: "Subscreva na sua plataforma favorita e nunca perca um episódio.",
+    podcastComingSoon: "Mais a caminho",
+    eventsCtaEyebrow: "Reúna-se Connosco",
+    eventsCtaHeading: "Viva ao Vivo",
+    eventsCtaBody: "Assistir é poderoso — estar na sala é transformador. Encontre a próxima conferência, acampamento ou encontro perto de si.",
+    eventsCtaButton: "Ver Próximos Eventos",
     pressHeading: "Imprensa e Aparições na Mídia",
     pressCta: "Para consultas de imprensa",
   },
   sw: {
     heroTitle: "Tazama. Sikiliza. Kua.",
     heroSubtitle: "Miongo ya mafundisho ya kubadilisha maisha, sasa yanapatikana popote ulipo.",
-    tabs: { all: "Vyote", teachings: "Mafundisho", tv: "Matangazo ya TV", podcast: "Podikasti", conference: "Kumbukumbu za Mikutano" },
-    noVideos: "Hakuna video katika kategoria hii bado — angalia sehemu iliyo hapa chini.",
-    tvHeading: "Panua Dunia Yako",
-    tvBody: "Jiunge na maelfu duniani kote wanaofuatilia matangazo ya kila wiki ya TV. Pata ujumbe wa kubadilisha maisha moja kwa moja kutoka sebuleni mwako.",
-    liveBroadcast: "MATANGAZO YA MOJA KWA MOJA",
+    tabs: { all: "Vyote", teachings: "Mafundisho", gmtv: "GMTV Studio", conference: "Kumbukumbu za Mikutano", podcast: "Podikasti" },
+    noVideos: "Hakuna video katika kategoria hii bado.",
+    playVideo: "Cheza video",
+    closeVideo: "Funga video",
     podcastHeading: "Podikasti ya Mabadiliko",
     podcastBody: "Jisajili kwenye jukwaa lako unalopenda na usikose kipindi chochote.",
+    podcastComingSoon: "Zaidi zinakuja",
+    eventsCtaEyebrow: "Kutana Nasi",
+    eventsCtaHeading: "Ipate Moja kwa Moja",
+    eventsCtaBody: "Kutazama ni nguvu — kuwepo ndani ya chumba kunabadilisha maisha. Pata mkutano, kambi au tukio linalofuata karibu nawe.",
+    eventsCtaButton: "Ona Matukio Yajayo",
     pressHeading: "Vyombo vya Habari na Matukio",
     pressCta: "Kwa maswali ya vyombo vya habari",
   },
   ar: {
     heroTitle: "شاهد. استمع. انمُ.",
     heroSubtitle: "عقود من التعاليم التحويلية، متاحة الآن أينما كنت.",
-    tabs: { all: "الكل", teachings: "التعاليم", tv: "البث التلفزيوني", podcast: "بودكاست", conference: "أرشيف المؤتمرات" },
-    noVideos: "لا توجد مقاطع فيديو في هذه الفئة بعد — انظر القسم أدناه.",
-    tvHeading: "وسّع عالمك",
-    tvBody: "انضم إلى آلاف الأشخاص حول العالم الذين يتابعون البث التلفزيوني الأسبوعي. عِش رسائل تغيّر الحياة من غرفة معيشتك مباشرة.",
-    liveBroadcast: "بث مباشر",
+    tabs: { all: "الكل", teachings: "التعاليم", gmtv: "GMTV Studio", conference: "أرشيف المؤتمرات", podcast: "بودكاست" },
+    noVideos: "لا توجد مقاطع فيديو في هذه الفئة بعد.",
+    playVideo: "تشغيل الفيديو",
+    closeVideo: "إغلاق الفيديو",
     podcastHeading: "بودكاست التحول",
     podcastBody: "اشترك على منصتك المفضلة ولا تفوّت أي حلقة.",
+    podcastComingSoon: "المزيد قادم",
+    eventsCtaEyebrow: "انضم إلينا",
+    eventsCtaHeading: "عِشها مباشرة",
+    eventsCtaBody: "المشاهدة قوية — لكن التواجد في القاعة يُحدث تحولاً. اعثر على المؤتمر أو المخيم أو التجمع القادم بالقرب منك.",
+    eventsCtaButton: "شاهد الفعاليات القادمة",
     pressHeading: "الصحافة والظهور الإعلامي",
     pressCta: "للاستفسارات الإعلامية",
   },
