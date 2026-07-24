@@ -29,6 +29,11 @@ export interface BooksCopy {
   carouselHeading: string;
   getTheBook: string;
   browseLibrary: string;
+  prevBook: string;
+  nextBook: string;
+  goToBook: string;
+  save: string;
+  saved: string;
 }
 
 export const booksCopy: Record<Locale, BooksCopy> = {
@@ -55,6 +60,11 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     carouselHeading: "Books That Redefine a Generation",
     getTheBook: "Get the Book",
     browseLibrary: "Browse the Complete Library →",
+    prevBook: "Previous book",
+    nextBook: "Next book",
+    goToBook: "Go to",
+    save: "Save",
+    saved: "Saved",
   },
   fr: {
     heroTitle: "La Bibliothèque d'un Réformateur",
@@ -79,6 +89,11 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     carouselHeading: "Des livres qui redéfinissent une génération",
     getTheBook: "Obtenir le livre",
     browseLibrary: "Parcourir la bibliothèque complète →",
+    prevBook: "Livre précédent",
+    nextBook: "Livre suivant",
+    goToBook: "Aller à",
+    save: "Enregistrer",
+    saved: "Enregistré",
   },
   pt: {
     heroTitle: "A Biblioteca de um Reformador",
@@ -103,6 +118,11 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     carouselHeading: "Livros Que Redefinem uma Geração",
     getTheBook: "Obter o Livro",
     browseLibrary: "Explorar a Biblioteca Completa →",
+    prevBook: "Livro anterior",
+    nextBook: "Livro seguinte",
+    goToBook: "Ir para",
+    save: "Guardar",
+    saved: "Guardado",
   },
   sw: {
     heroTitle: "Maktaba ya Mrekebishaji",
@@ -127,6 +147,11 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     carouselHeading: "Vitabu Vinavyofafanua Upya Kizazi",
     getTheBook: "Pata Kitabu",
     browseLibrary: "Vinjari Maktaba Kamili →",
+    prevBook: "Kitabu kilichopita",
+    nextBook: "Kitabu kinachofuata",
+    goToBook: "Nenda kwa",
+    save: "Hifadhi",
+    saved: "Imehifadhiwa",
   },
   ar: {
     heroTitle: "مكتبة مُصلح",
@@ -151,5 +176,10 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     carouselHeading: "كتب تُعيد تعريف جيل",
     getTheBook: "احصل على الكتاب",
     browseLibrary: "تصفّح المكتبة الكاملة ←",
+    prevBook: "الكتاب السابق",
+    nextBook: "الكتاب التالي",
+    goToBook: "الانتقال إلى",
+    save: "حفظ",
+    saved: "محفوظ",
   },
 };
