@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import {
-  DEBBIE_NODES,
+  GABE_NODES,
   ROOT_ID,
   ROOT_RETURN_TEXT,
   FREE_TEXT_HANDOFF_TEXT,
-  type DebbieChip,
-} from "@/data/debbie-flows";
+  type GabeChip,
+} from "@/data/gabe-flows";
 import { trackEvent } from "@/lib/analytics";
 
-export interface DebbieMessage {
+export interface GabeMessage {
   id: string;
   sender: "bot" | "user";
   text: string;
@@ -22,20 +22,20 @@ interface ChatState {
   isOpen: boolean;
   hasOpenedOnce: boolean;
   isTyping: boolean;
-  messages: DebbieMessage[];
-  currentChips: DebbieChip[];
+  messages: GabeMessage[];
+  currentChips: GabeChip[];
   hasProactiveMessage: boolean;
   proactiveText: string | null;
-  proactiveChips: DebbieChip[] | null;
+  proactiveChips: GabeChip[] | null;
   toggle: () => void;
   close: () => void;
-  selectChip: (chip: DebbieChip) => NavigateResult;
+  selectChip: (chip: GabeChip) => NavigateResult;
   sendFreeText: (text: string) => void;
-  triggerProactive: (text: string, chips?: DebbieChip[]) => void;
+  triggerProactive: (text: string, chips?: GabeChip[]) => void;
 }
 
 let seq = 0;
-const nextId = () => `debbie-${++seq}`;
+const nextId = () => `gabe-${++seq}`;
 
 export const useChatStore = create<ChatState>()((set, get) => ({
   isOpen: false,
@@ -62,7 +62,7 @@ export const useChatStore = create<ChatState>()((set, get) => ({
         messages: hasOpenedOnce
           ? [...s.messages, { id: nextId(), sender: "bot", text: proactiveText }]
           : [{ id: nextId(), sender: "bot", text: proactiveText }],
-        currentChips: proactiveChips ?? DEBBIE_NODES[ROOT_ID].chips,
+        currentChips: proactiveChips ?? GABE_NODES[ROOT_ID].chips,
         hasProactiveMessage: false,
         proactiveText: null,
         proactiveChips: null,
@@ -95,7 +95,7 @@ export const useChatStore = create<ChatState>()((set, get) => ({
       return { navigate: { href: chip.href, external: chip.external } };
     }
 
-    const node = DEBBIE_NODES[chip.to];
+    const node = GABE_NODES[chip.to];
     const text = chip.to === ROOT_ID ? ROOT_RETURN_TEXT : node.bot;
     setTimeout(() => {
       set((s) => ({
@@ -120,7 +120,7 @@ export const useChatStore = create<ChatState>()((set, get) => ({
       set((s) => ({
         messages: [...s.messages, { id: nextId(), sender: "bot", text: FREE_TEXT_HANDOFF_TEXT }],
         isTyping: false,
-        currentChips: DEBBIE_NODES[ROOT_ID].chips,
+        currentChips: GABE_NODES[ROOT_ID].chips,
       }));
     }, 500);
   },

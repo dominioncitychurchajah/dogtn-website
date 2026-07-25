@@ -6,11 +6,11 @@ import { useRouter, usePathname } from "next/navigation";
 import { X, Mail, Send } from "lucide-react";
 import { useChatStore } from "@/lib/chat-store";
 import { useAudioPlayer } from "@/lib/audio-store";
-import { useDebbieProactiveTriggers } from "@/lib/use-debbie-proactive";
-import { DebbieFace, type DebbieFaceState } from "@/components/chat/DebbieFace";
-import { DebbieLanding } from "@/components/chat/DebbieLanding";
-import { TEAM_EMAIL } from "@/data/debbie-flows";
-import type { DebbieChip } from "@/data/debbie-flows";
+import { useGabeProactiveTriggers } from "@/lib/use-gabe-proactive";
+import { GabeFace, type GabeFaceState } from "@/components/chat/GabeFace";
+import { GabeLanding } from "@/components/chat/GabeLanding";
+import { TEAM_EMAIL } from "@/data/gabe-flows";
+import type { GabeChip } from "@/data/gabe-flows";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 
@@ -31,12 +31,12 @@ export function ChatWidget({ locale }: { locale: Locale }) {
   const hasTrack = Boolean(track);
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [draft, setDraft] = React.useState("");
-  const [faceState, setFaceState] = React.useState<DebbieFaceState>("idle");
+  const [faceState, setFaceState] = React.useState<GabeFaceState>("idle");
 
   const pathname = usePathname();
   const isStartHere = pathname === `/${locale}/start-here` || pathname === `/${locale}/start-here/`;
 
-  useDebbieProactiveTriggers(locale);
+  useGabeProactiveTriggers(locale);
 
   React.useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -61,7 +61,7 @@ export function ChatWidget({ locale }: { locale: Locale }) {
     setDraft("");
   }
 
-  function handleChip(chip: DebbieChip) {
+  function handleChip(chip: GabeChip) {
     const { navigate } = selectChip(chip);
     if (!navigate) return;
     setTimeout(() => {
@@ -92,13 +92,13 @@ export function ChatWidget({ locale }: { locale: Locale }) {
         ) : (
           <>
             <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center">
-              <DebbieFace state="idle" className="h-8 w-8" />
+              <GabeFace state="idle" className="h-8 w-8" />
               <span
                 role="status"
                 aria-live="polite"
                 className={cn(
                   "absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full ring-2 ring-ink-900",
-                  hasProactiveMessage ? "bg-flame-600 debbie-bell-bounce" : "bg-gold-600 pulse-live",
+                  hasProactiveMessage ? "bg-flame-600 gabe-bell-bounce" : "bg-gold-600 pulse-live",
                 )}
               >
                 {hasProactiveMessage && <span className="sr-only">New message from Gabe</span>}
@@ -123,7 +123,7 @@ export function ChatWidget({ locale }: { locale: Locale }) {
           >
             <div className="flex items-center gap-3 border-b border-ink-100 bg-paper-50 px-4 py-3">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink-900 text-gold-400">
-                <DebbieFace state={faceState} animated={false} className="h-6 w-6" />
+                <GabeFace state={faceState} animated={false} className="h-6 w-6" />
               </span>
               <div className="min-w-0 flex-1">
                 <Dialog.Title className="text-body-s font-semibold text-ink-900">Gabe</Dialog.Title>
@@ -145,7 +145,7 @@ export function ChatWidget({ locale }: { locale: Locale }) {
               className="flex-1 overflow-y-auto px-4 py-4"
             >
               {messages.length === 0 ? (
-                <DebbieLanding onSelect={handleChip} />
+                <GabeLanding onSelect={handleChip} />
               ) : (
                 <div className="space-y-3">
                   {messages.map((m) => (

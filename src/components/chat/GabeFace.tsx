@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
-export type DebbieFaceState = "idle" | "thinking" | "active";
+export type GabeFaceState = "idle" | "thinking" | "active";
 
-const MOUTH_PATHS: Record<DebbieFaceState, string> = {
+const MOUTH_PATHS: Record<GabeFaceState, string> = {
   idle: "M11 20Q16 23 21 20",
   thinking: "M12 21Q16 21.6 20 21",
   active: "M10 19.2Q16 25 22 19.2",
@@ -13,12 +13,12 @@ const MOUTH_PATHS: Record<DebbieFaceState, string> = {
  * `animated` adds the ambient blink + head-tilt loop (FAB only; the header
  * copy inside the open window stays static per the avatar spec).
  */
-export function DebbieFace({
+export function GabeFace({
   state = "idle",
   animated = true,
   className,
 }: {
-  state?: DebbieFaceState;
+  state?: GabeFaceState;
   animated?: boolean;
   className?: string;
 }) {
@@ -27,9 +27,9 @@ export function DebbieFace({
 
   return (
     <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden>
-      <g className={cn(animated && "debbie-idle-tilt")} style={{ transformOrigin: "16px 30px" }}>
+      <g className={cn(animated && "gabe-idle-tilt")} style={{ transformOrigin: "16px 30px" }}>
         <g
-          className={cn(animated && "debbie-blink")}
+          className={cn(animated && "gabe-blink")}
           style={{ transformOrigin: "16px 14px", transition: "transform 300ms ease" }}
         >
           <ellipse

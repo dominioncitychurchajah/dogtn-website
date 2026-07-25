@@ -5,14 +5,14 @@ import { usePathname } from "next/navigation";
 import { useChatStore } from "@/lib/chat-store";
 import { useQuizStore } from "@/lib/quiz-store";
 import { questions } from "@/data/assessment";
-import { DEBBIE_NODES, ROOT_ID } from "@/data/debbie-flows";
+import { GABE_NODES, ROOT_ID } from "@/data/gabe-flows";
 
 const HIGH_INTENT_MESSAGES: Record<string, string> = {
   "/partnership": "Would you like to set up a monthly partnership? It takes 60 seconds.",
   "/start-here": "Still deciding where to begin? I can help you find your first step.",
 };
 
-const LAST_VISIT_KEY = "debbie-last-visit";
+const LAST_VISIT_KEY = "gabe-last-visit";
 const RETURN_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 
 /** Mirrors the homepage countdown's own "Sunday 08:00 local time" assumption, so this
@@ -27,7 +27,7 @@ function isLiveServiceWindow() {
 
 /** Proactive re-engagement triggers for Gabe's bell badge. Fires at most once per
  *  session per trigger; never interrupts an already-open chat. */
-export function useDebbieProactiveTriggers(locale: string) {
+export function useGabeProactiveTriggers(locale: string) {
   const pathname = usePathname();
   const isOpen = useChatStore((s) => s.isOpen);
   const triggerProactive = useChatStore((s) => s.triggerProactive);
@@ -40,7 +40,7 @@ export function useDebbieProactiveTriggers(locale: string) {
     if (!message || isOpen || firedRef.current.has(`idle:${path}`)) return;
     const timer = setTimeout(() => {
       firedRef.current.add(`idle:${path}`);
-      triggerProactive(message, DEBBIE_NODES.giving.chips);
+      triggerProactive(message, GABE_NODES.giving.chips);
     }, 60_000);
     return () => clearTimeout(timer);
   }, [path, isOpen, triggerProactive]);

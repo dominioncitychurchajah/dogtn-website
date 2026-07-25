@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { DebbieFace } from "@/components/chat/DebbieFace";
+import { GabeFace } from "@/components/chat/GabeFace";
 import { Check } from "lucide-react";
 
 interface ThinkingIndicatorProps {
@@ -35,7 +35,7 @@ export function ThinkingIndicator({ steps }: ThinkingIndicatorProps) {
       {/* Header */}
       <div className="flex items-center gap-3">
         <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 bg-white/10 text-gold-400 border border-white/5">
-          <DebbieFace state="thinking" className="w-4 h-4" />
+          <GabeFace state="thinking" className="w-4 h-4" />
         </div>
         <span className="text-body-s font-semibold text-paper-0">Gabe is thinking</span>
         <span className="flex items-center gap-1" aria-hidden>

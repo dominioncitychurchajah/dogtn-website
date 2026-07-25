@@ -157,20 +157,20 @@
   .animate-fade-up { animation: fade-up 320ms var(--ease-enter) both; }
 
   /* Gabe avatar — idle blink + gentle head tilt (ambient, FAB only). */
-  .debbie-blink { animation: debbie-blink 4.5s ease-in-out infinite; }
-  @keyframes debbie-blink {
+  .gabe-blink { animation: gabe-blink 4.5s ease-in-out infinite; }
+  @keyframes gabe-blink {
     0%, 92%, 100% { transform: scaleY(1); }
     96% { transform: scaleY(0.12); }
   }
-  .debbie-idle-tilt { animation: debbie-tilt 6s ease-in-out infinite; }
-  @keyframes debbie-tilt {
+  .gabe-idle-tilt { animation: gabe-tilt 6s ease-in-out infinite; }
+  @keyframes gabe-tilt {
     0%, 100% { transform: rotate(0deg); }
     50% { transform: rotate(3deg); }
   }
 
   /* Gabe bell badge — bounces twice on a new proactive message, then settles. */
-  .debbie-bell-bounce { animation: debbie-bell-bounce 0.5s ease-in-out 2; }
-  @keyframes debbie-bell-bounce {
+  .gabe-bell-bounce { animation: gabe-bell-bounce 0.5s ease-in-out 2; }
+  @keyframes gabe-bell-bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-3px); }
   }

@@ -1,8 +1,8 @@
-import { type DebbieChip } from "@/data/debbie-flows";
+import { type GabeChip } from "@/data/gabe-flows";
 
 /** Kodee-style landing screen — the very first thing shown, before any conversation starts. */
 
-export const LANDING_PRIMARY_CHIP: DebbieChip = {
+export const LANDING_PRIMARY_CHIP: GabeChip = {
   kind: "link",
   label: "Start a guided journey",
   href: "/start-here",
@@ -12,7 +12,7 @@ export const LANDING_PRIMARY_CHIP: DebbieChip = {
 
 export type LandingIconKey = "chapter" | "assessment" | "teachings" | "giving";
 
-export const LANDING_SECONDARY: { icon: LandingIconKey; label: string; chip: DebbieChip }[] = [
+export const LANDING_SECONDARY: { icon: LandingIconKey; label: string; chip: GabeChip }[] = [
   {
     icon: "chapter",
     label: "Find a chapter",

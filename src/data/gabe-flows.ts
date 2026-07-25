@@ -1,6 +1,6 @@
 /** Conversation tree for "Gabe", the DOGTN chat guide. Phase 1 MVP: quick-reply chips only, no free text. */
 
-export type DebbieChip =
+export type GabeChip =
   | { kind: "advance"; label: string; to: string; event?: string }
   | {
       kind: "link";
@@ -11,10 +11,10 @@ export type DebbieChip =
       event?: string;
     };
 
-export interface DebbieNode {
+export interface GabeNode {
   id: string;
   bot: string;
-  chips: DebbieChip[];
+  chips: GabeChip[];
 }
 
 export const ROOT_ID = "root";
@@ -29,9 +29,9 @@ export const FREE_TEXT_HANDOFF_TEXT =
 
 export const TEAM_EMAIL = "support@davidogbueli.org";
 
-const BACK_TO_MENU: DebbieChip = { kind: "advance", label: "Back to menu", to: ROOT_ID };
+const BACK_TO_MENU: GabeChip = { kind: "advance", label: "Back to menu", to: ROOT_ID };
 
-export const DEBBIE_NODES: Record<string, DebbieNode> = {
+export const GABE_NODES: Record<string, GabeNode> = {
   [ROOT_ID]: {
     id: ROOT_ID,
     bot: ROOT_GREETING,

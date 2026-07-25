@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Message } from "../types";
 import { RoutingCard } from "./RoutingCard";
-import { DebbieFace } from "@/components/chat/DebbieFace";
+import { GabeFace } from "@/components/chat/GabeFace";
 
 interface ChatMessageProps {
   message: Message;
@@ -28,7 +28,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
       {/* Avatar */}
       {!isUser && (
         <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-white/10 text-gold-400 border border-white/5">
-          <DebbieFace state="idle" className="w-5 h-5" />
+          <GabeFace state="idle" className="w-5 h-5" />
         </div>
       )}
 
