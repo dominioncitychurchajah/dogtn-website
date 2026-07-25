@@ -79,7 +79,7 @@ export function ChatWidget({ locale }: { locale: Locale }) {
       <button
         type="button"
         onClick={toggle}
-        aria-label={hasProactiveMessage ? "Debbie has a message for you" : isOpen ? "Close chat" : "Ask Debbie"}
+        aria-label={hasProactiveMessage ? "Gabe has a message for you" : isOpen ? "Close chat" : "Ask Gabe"}
         aria-expanded={isOpen}
         className={cn(
           "fixed right-4 z-[90] flex h-[60px] items-center justify-center gap-2 rounded-full bg-ink-900 text-gold-400 shadow-elev-3 transition-transform hover:scale-105 active:scale-95 md:right-6",
@@ -101,10 +101,10 @@ export function ChatWidget({ locale }: { locale: Locale }) {
                   hasProactiveMessage ? "bg-flame-600 debbie-bell-bounce" : "bg-gold-600 pulse-live",
                 )}
               >
-                {hasProactiveMessage && <span className="sr-only">New message from Debbie</span>}
+                {hasProactiveMessage && <span className="sr-only">New message from Gabe</span>}
               </span>
             </span>
-            <span className="hidden text-body-s font-semibold md:inline">Ask Debbie</span>
+            <span className="hidden text-body-s font-semibold md:inline">Ask Gabe</span>
           </>
         )}
       </button>
@@ -126,7 +126,7 @@ export function ChatWidget({ locale }: { locale: Locale }) {
                 <DebbieFace state={faceState} animated={false} className="h-6 w-6" />
               </span>
               <div className="min-w-0 flex-1">
-                <Dialog.Title className="text-body-s font-semibold text-ink-900">Debbie</Dialog.Title>
+                <Dialog.Title className="text-body-s font-semibold text-ink-900">Gabe</Dialog.Title>
                 <Dialog.Description className="text-caption text-ink-500">
                   Guiding your next step
                 </Dialog.Description>
@@ -196,7 +196,7 @@ export function ChatWidget({ locale }: { locale: Locale }) {
               )}
               {messages.length > 0 && (
                 <a
-                  href={`mailto:${TEAM_EMAIL}?subject=${encodeURIComponent("Chat with Debbie — I need help")}`}
+                  href={`mailto:${TEAM_EMAIL}?subject=${encodeURIComponent("Chat with Gabe — I need help")}`}
                   className="mt-3 inline-flex items-center gap-1.5 text-caption font-semibold text-ink-500 underline hover:text-gold-hover"
                 >
                   <Mail className="h-3.5 w-3.5" aria-hidden />
@@ -209,8 +209,8 @@ export function ChatWidget({ locale }: { locale: Locale }) {
                   value={draft}
                   onChange={(e) => setDraft(e.target.value)}
                   disabled={isTyping}
-                  placeholder="Chat with Debbie"
-                  aria-label="Message Debbie"
+                  placeholder="Chat with Gabe"
+                  aria-label="Message Gabe"
                   className="flex-1 rounded-full border border-ink-100 bg-paper-0 px-4 py-2.5 text-body-s text-ink-900 placeholder:text-ink-300 focus:border-gold-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-600 disabled:opacity-50"
                 />
                 <button

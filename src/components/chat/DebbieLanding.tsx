@@ -18,9 +18,9 @@ export function DebbieLanding({ onSelect }: { onSelect: (chip: DebbieChip) => vo
           <DebbieFace state="idle" className="h-9 w-9" />
         </span>
         <div>
-          <p className="text-body-l font-semibold text-ink-900">Debbie</p>
+          <p className="text-body-l font-semibold text-ink-900">Gabe</p>
           <p className="mt-1 text-body-s text-ink-500">
-            I&apos;m Debbie. Let me help you find your place in the network.
+            I&apos;m Gabe. Let me help you find your place in the network.
           </p>
         </div>
       </div>

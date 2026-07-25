@@ -37,7 +37,7 @@ export function ThinkingIndicator({ steps }: ThinkingIndicatorProps) {
         <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 bg-white/10 text-gold-400 border border-white/5">
           <DebbieFace state="thinking" className="w-4 h-4" />
         </div>
-        <span className="text-body-s font-semibold text-paper-0">Debbie is thinking</span>
+        <span className="text-body-s font-semibold text-paper-0">Gabe is thinking</span>
         <span className="flex items-center gap-1" aria-hidden>
           <span className="thinking-dot h-1 w-1 rounded-full bg-gold-400" style={{ animationDelay: "0ms" }} />
           <span className="thinking-dot h-1 w-1 rounded-full bg-gold-400" style={{ animationDelay: "150ms" }} />

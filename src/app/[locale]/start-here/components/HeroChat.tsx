@@ -128,7 +128,7 @@ export function HeroChat({
             className="mt-6 flex-1 max-h-[60vh] overflow-y-auto flex flex-col gap-4 pr-1 scrollbar-thin"
             role="log"
             aria-live="polite"
-            aria-label="Conversation with Debbie"
+            aria-label="Conversation with Gabe"
           >
             <style dangerouslySetInnerHTML={{ __html: `
               .scrollbar-thin::-webkit-scrollbar { width: 4px; }

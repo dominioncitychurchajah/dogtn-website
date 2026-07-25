@@ -12,7 +12,7 @@ interface StartHereAIProps {
 /**
  * Client-side orchestrator that wires the AI chat hook to
  * the inline conversation hero. No side panels, no floating
- * buttons — Debbie lives directly on the page.
+ * buttons — Gabe lives directly on the page.
  */
 export function StartHereAI({ locale }: StartHereAIProps) {
   const {

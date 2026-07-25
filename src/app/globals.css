@@ -156,7 +156,7 @@
   @keyframes fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   .animate-fade-up { animation: fade-up 320ms var(--ease-enter) both; }
 
-  /* Debbie avatar — idle blink + gentle head tilt (ambient, FAB only). */
+  /* Gabe avatar — idle blink + gentle head tilt (ambient, FAB only). */
   .debbie-blink { animation: debbie-blink 4.5s ease-in-out infinite; }
   @keyframes debbie-blink {
     0%, 92%, 100% { transform: scaleY(1); }
@@ -168,7 +168,7 @@
     50% { transform: rotate(3deg); }
   }
 
-  /* Debbie bell badge — bounces twice on a new proactive message, then settles. */
+  /* Gabe bell badge — bounces twice on a new proactive message, then settles. */
   .debbie-bell-bounce { animation: debbie-bell-bounce 0.5s ease-in-out 2; }
   @keyframes debbie-bell-bounce {
     0%, 100% { transform: translateY(0); }

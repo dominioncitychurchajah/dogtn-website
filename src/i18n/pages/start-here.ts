@@ -64,7 +64,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     chatHero: {
       greetingPre: "Hi, ",
       greetingPost: "! Where do you want to get started?",
-      inputPlaceholder: "Ask Debbie anything about your journey...",
+      inputPlaceholder: "Ask Gabe anything about your journey...",
     },
     pills: {
       discoverPurpose: "Discover Purpose", discoverPurposeQ: "I want to discover my purpose and calling. Where should I start?",
@@ -85,7 +85,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
       mentorCta: "Get matched",
     },
     thinking: {
-      headline: "Debbie is thinking",
+      headline: "Gabe is thinking",
       step1: "Understanding your question...",
       step2: "Finding the best path...",
       step3: "Preparing your direction...",
@@ -111,7 +111,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     chatHero: {
       greetingPre: "Bonjour, ",
       greetingPost: " ! Par où voulez-vous commencer ?",
-      inputPlaceholder: "Demandez n'importe quoi à Debbie sur votre parcours...",
+      inputPlaceholder: "Demandez n'importe quoi à Gabe sur votre parcours...",
     },
     pills: {
       discoverPurpose: "Découvrir mon But", discoverPurposeQ: "Je veux découvrir mon but et ma vocation. Par où devrais-je commencer ?",
@@ -132,7 +132,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
       mentorCta: "Être jumelé",
     },
     thinking: {
-      headline: "Debbie réfléchit",
+      headline: "Gabe réfléchit",
       step1: "Compréhension de votre question...",
       step2: "Recherche du meilleur chemin...",
       step3: "Préparation de votre orientation...",
@@ -158,7 +158,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     chatHero: {
       greetingPre: "Olá, ",
       greetingPost: "! Onde deseja começar?",
-      inputPlaceholder: "Pergunte à Debbie qualquer coisa sobre a sua jornada...",
+      inputPlaceholder: "Pergunte à Gabe qualquer coisa sobre a sua jornada...",
     },
     pills: {
       discoverPurpose: "Descobrir Propósito", discoverPurposeQ: "Quero descobrir o meu propósito e vocação. Por onde devo começar?",
@@ -179,7 +179,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
       mentorCta: "Ser associado",
     },
     thinking: {
-      headline: "A Debbie está a pensar",
+      headline: "A Gabe está a pensar",
       step1: "A compreender a sua pergunta...",
       step2: "A encontrar o melhor caminho...",
       step3: "A preparar a sua direção...",
@@ -205,7 +205,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     chatHero: {
       greetingPre: "Habari, ",
       greetingPost: "! Unataka kuanzia wapi?",
-      inputPlaceholder: "Muulize Debbie chochote kuhusu safari yako...",
+      inputPlaceholder: "Muulize Gabe chochote kuhusu safari yako...",
     },
     pills: {
       discoverPurpose: "Gundua Kusudi", discoverPurposeQ: "Nataka kugundua kusudi na wito wangu. Nianzie wapi?",
@@ -226,7 +226,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
       mentorCta: "Pata mshauri",
     },
     thinking: {
-      headline: "Debbie anafikiri",
+      headline: "Gabe anafikiri",
       step1: "Kuelewa swali lako...",
       step2: "Kutafuta njia bora...",
       step3: "Kuandaa uelekeo wako...",

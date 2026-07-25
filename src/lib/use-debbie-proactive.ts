@@ -25,7 +25,7 @@ function isLiveServiceWindow() {
   return minutesSinceMidnight >= 8 * 60 && minutesSinceMidnight <= 9 * 60 + 30;
 }
 
-/** Proactive re-engagement triggers for Debbie's bell badge. Fires at most once per
+/** Proactive re-engagement triggers for Gabe's bell badge. Fires at most once per
  *  session per trigger; never interrupts an already-open chat. */
 export function useDebbieProactiveTriggers(locale: string) {
   const pathname = usePathname();
