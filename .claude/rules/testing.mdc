@@ -1,0 +1,33 @@
+---
+description: How changes are verified today (no automated suite yet) and how to add tests if you do.
+alwaysApply: true
+---
+
+# Testing & Verification
+
+## Current reality
+
+There is **no automated test suite** in this project. Verification is:
+
+1. `npx tsc --noEmit` — must be type-clean.
+2. `npm run build` — must compile and generate all static pages (currently 339/339).
+3. Manual / browser verification of the affected UI (locally via `npm run dev`, or
+   against the deployed preview).
+
+Both commands must pass before committing. Treat a red build as a blocker, not a warning.
+
+## Browser verification notes
+
+- The headless preview pane can become **hidden/throttled** (`visibilityState: "hidden"`),
+  which freezes `requestAnimationFrame` and page scrolling. When that happens, prefer
+  **DOM / computed-style assertions** over screenshots, and remember that unfinished
+  Framer `AnimatePresence` exits are a throttle artifact, not a bug.
+- Synthetic `PointerEvent`s do **not** reliably trigger Framer Motion's pan/drag
+  recognizer (it wants trusted pointer capture). Verify touch gestures on a real device
+  or with real input injection — a "no movement" result from synthetic events is inconclusive.
+
+## If you add tests
+
+Match the stack: Vitest + React Testing Library for units/components, Playwright for
+e2e. Put them under `tests/`. Wire a `test` script and record the decision in
+`docs/decisions.md`.

@@ -1,0 +1,36 @@
+---
+description: How code should read and how changes should be scoped in this repo.
+alwaysApply: true
+---
+
+# Coding Style
+
+## Language & components
+
+- **TypeScript, strict.** No `any` unless genuinely unavoidable; prefer precise types.
+- **Functional React components.** Client components get `"use client"` at the top;
+  default to Server Components otherwise.
+- **Tailwind CSS** for styling. Use the brand tokens (navy `#0A192F`, gold `#C9A227`,
+  cream `#F5F1E8`) — see `docs/design-system.md`. Use `cn()` from `src/lib/utils` to
+  compose conditional classes.
+
+## Scope discipline
+
+- **Match the surrounding code** — its naming, comment density, and idioms. New code
+  should be indistinguishable from what's already there.
+- **Surgical edits only.** Change what's asked; don't refactor or restyle adjacent
+  sections opportunistically. Locate existing patterns with `rg` before adding new ones.
+- Don't modify shared data sources (`src/data/*`) to achieve a component-local effect —
+  use a local map/derivation in the component (as the Books carousel does for renders).
+
+## Conventions
+
+- Files/dirs: kebab-case for routes, PascalCase for component files.
+- i18n: never hardcode user-facing English in a component that has a copy module —
+  add a key to the relevant `src/i18n/pages/*.ts` for all five locales.
+- Accessibility is not optional: `focus-visible` rings on interactive elements,
+  `aria-*` where semantics need it, respect `prefers-reduced-motion`.
+
+## Before you finish
+
+Run `npx tsc --noEmit` and `npm run build`. Both must be clean. See [testing](testing.mdc).

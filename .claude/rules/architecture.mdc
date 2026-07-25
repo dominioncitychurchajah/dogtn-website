@@ -1,0 +1,51 @@
+---
+description: System shape — static export, routing, i18n, the single server function, and the data layer.
+alwaysApply: true
+---
+
+# Architecture
+
+## Runtime model
+
+- **Next.js 16 App Router, exported as a fully static site** (`next.config.ts` →
+  `output: "export"`, `trailingSlash: true`, `images.unoptimized: true`). The build
+  emits plain HTML/CSS/JS to `out/`.
+- **No Node server at runtime.** No API routes, no middleware, no Server Actions,
+  no ISR. Anything that looks dynamic is either client-side JS or a build-time render.
+- Hosted on **Cloudflare Pages** (static assets). This was a deliberate move away
+  from an earlier OpenNext/Workers setup — see `docs/decisions.md`.
+
+## The one piece of server code
+
+`functions/api/paystack-verify.js` — a **Cloudflare Pages Function** that verifies
+a Paystack transaction server-side using `PAYSTACK_SECRET_KEY` (env var, never
+committed). This is the ONLY server-side code in the project. See [api](api.mdc).
+
+## Routing & i18n
+
+- Locale-prefixed routes: `src/app/[locale]/...`. Locales: `en, fr, pt, sw, ar`
+  (`ar` is RTL). Config in `src/i18n/config.ts`.
+- `params` is a **Promise** in Next 16 — always `await` it. (A past bug silently
+  forced English because the homepage read `params.locale` synchronously.)
+- Per-page copy lives in `src/i18n/pages/*.ts` (e.g. `booksCopy`, `mediaCopy`),
+  keyed by locale. Long-tail content (book descriptions, video titles, AI replies)
+  intentionally stays English.
+
+## Data layer
+
+- **There is no database.** All content is static TypeScript in `src/data/*.ts`
+  (`books.ts`, `events.ts`, etc.). See [database](database.mdc).
+- `/admin/*` renders these static files read-only and has **no auth** (known gap,
+  see `docs/decisions.md`).
+
+## Key directories
+
+```
+src/app/[locale]/   routes (pages)
+src/components/      sections/, layout/, forms/, ui/, admin/, start-here/
+src/data/            static content (the "database")
+src/i18n/            locale config + per-page copy modules
+src/lib/             shared helpers (cn, formatDate, …)
+functions/api/       Cloudflare Pages Functions (server code)
+public/              images, video, fonts
+```

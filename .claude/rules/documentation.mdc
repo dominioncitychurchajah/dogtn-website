@@ -1,0 +1,30 @@
+---
+description: Keep the docs/ knowledge base current — what to update, and when.
+alwaysApply: true
+---
+
+# Documentation
+
+The `/docs` folder is the project's living memory. Keep it true as you work.
+
+## The files and when to touch them
+
+- `docs/handoff.md` — **current status & next tasks.** Update at the end of any
+  session that changed state: latest commit, what shipped, what's still open.
+- `docs/decisions.md` — **ADRs (why).** Add an entry whenever you make a choice that
+  future work shouldn't silently reverse: an architecture change, a rejected approach,
+  a known trade-off. This is the highest-value doc — it stops old, broken approaches
+  from being rebuilt by accident.
+- `docs/architecture.md` — update when the system shape changes (routing, the server
+  surface, the data layer).
+- `docs/design-system.md` — update when tokens or shared component patterns change.
+- `docs/api.md` — update when an endpoint or integration contract changes.
+- `docs/summary.md` — the stable high-level overview; rarely changes.
+
+## Principles
+
+- **Separate the three kinds of knowledge:** rules (always apply → `.claude/rules/`),
+  state (changes often → `handoff.md`), rationale (why → `decisions.md`). Don't mix them.
+- Prefer updating an existing doc over adding a new one.
+- If you discover a doc that contradicts the code, fix the doc (and, if it was a real
+  decision, capture the change as an ADR) rather than leaving the contradiction.

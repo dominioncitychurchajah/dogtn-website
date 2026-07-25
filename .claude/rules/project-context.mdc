@@ -1,0 +1,34 @@
+---
+description: What the DGTN site is, who it serves, and the ground rules that never change.
+alwaysApply: true
+---
+
+# Project Context — DGTN / Dr. David Ogbueli
+
+A faith-based ministry website for **Dr. David Ogbueli** (David Ogbueli Global
+Transformation Network). It presents his teachings, books, media, ministries,
+and partnership/giving, plus a "Start Here" conversational-AI onboarding (Debbie).
+
+## Non-negotiables
+
+- **Static-first.** The whole site is a Next.js **static export** (`output: "export"`).
+  There is no application server at runtime. See [architecture](architecture.mdc).
+- **One deploy path:** push to GitHub `main` → Cloudflare Pages auto-builds and
+  publishes. Never rely on local `wrangler pages deploy`. See [git-workflow](git-workflow.mdc).
+- **Surgical edits.** Don't redesign sections you weren't asked to touch. Match the
+  patterns already in the file. See [coding-style](coding-style.mdc).
+- **Next.js 16 is not the Next.js you know.** Read `node_modules/next/dist/docs/`
+  before changing Next-specific behavior (async `params`, image handling, etc.).
+
+## Coordinates
+
+- Local path: `/Users/thecreativebeacon/dogtn-website`
+- Repo: `github.com/dominioncitychurchajah/dogtn-website` (branch `main`)
+- Production: `https://dogtn-website.pages.dev`
+- Cloudflare Pages project name: `dr-david-ogbueli` (note: differs from the domain)
+
+## Where the real detail lives
+
+Rules here are the always-on guardrails. The living, changeable knowledge is in
+`/docs`: current status (`handoff.md`), the why behind choices (`decisions.md`),
+the visual system (`design-system.md`), and the system shape (`architecture.md`).

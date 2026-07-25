@@ -1,0 +1,33 @@
+---
+description: There is no database — content is static TypeScript. Read before assuming persistence exists.
+globs: src/data/**
+alwaysApply: false
+---
+
+# Database
+
+## Current reality: there is none
+
+The project has **no database and no persistence layer**. All content is
+hand-authored **static TypeScript** in `src/data/*.ts`:
+
+- `books.ts` — the book catalog (titles, slugs, covers, prices, categories, takeaways)
+- `events.ts` — events (surfaced only in `/admin/events`; no public browsing UI)
+- …and similar per-domain data files.
+
+These are imported directly by components and by `/admin/*` pages, which render them
+**read-only**. "Editing content" today means editing the `.ts` file and redeploying.
+
+## Rules
+
+- Don't introduce an ORM, migrations, or a DB client for a change that static data
+  can serve. Add/adjust the relevant `src/data/*.ts` file instead.
+- Don't mutate the shared data shape to solve a single component's need — derive
+  locally in the component.
+
+## If persistence is genuinely required later
+
+Prefer a Cloudflare-native store (D1 for relational, KV for simple key/value) accessed
+from a Pages Function, so the static-first deploy model is preserved. Record the choice
+as an ADR in `docs/decisions.md`. Note: admin CRUD would also need auth — see
+[backend](backend.mdc).

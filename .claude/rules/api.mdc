@@ -1,0 +1,33 @@
+---
+description: External/integration surface — the one server endpoint plus client-side third-party calls.
+globs: functions/api/**,src/components/forms/**
+alwaysApply: false
+---
+
+# API & Integrations
+
+## Server endpoint (the only one)
+
+`POST /api/paystack-verify` → `functions/api/paystack-verify.js`
+
+- Purpose: verify a Paystack transaction server-side after the client-side popup
+  completes, so success can't be spoofed from the browser.
+- Reads `PAYSTACK_SECRET_KEY` from `env` (set in Cloudflare dashboard).
+- Full contract in `docs/api.md`.
+
+## Client-side third-party calls (no server involved)
+
+- **Paystack popup checkout** — `src/components/forms/PartnershipEngine.tsx`. Card
+  entry happens inside Paystack's own iframe (keeps the site PCI-scope-clean). Public
+  key + subaccount code are in client code (safe to expose). Verification is the
+  server function above.
+- **Debbie AI (Start Here)** — calls **Groq** directly from the client using a public
+  key. No server proxy.
+- **Contact** — uses `mailto:`; there is no form-submission backend.
+- **Events CTA** — links out to an external events site; not served here.
+
+## Rule
+
+Don't add a Next.js API route or middleware — the static export can't run them. Any new
+server behavior is a Cloudflare Pages Function under `functions/api/*`. See
+[backend](backend.mdc).

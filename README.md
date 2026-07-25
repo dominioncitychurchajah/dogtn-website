@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DGTN — Dr. David Ogbueli Website
 
-## Getting Started
+Ministry website for **Dr. David Ogbueli** and the David Ogbueli Global Transformation
+Network. Next.js 16 (App Router, TypeScript, Tailwind), built as a **static export** and
+deployed to **Cloudflare Pages**.
 
-First, run the development server:
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Verify before committing:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx tsc --noEmit   # type-clean
+npm run build      # static export to out/  (must be clean)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+Push to `main` → Cloudflare Pages (project `dr-david-ogbueli`) auto-builds and publishes
+to https://dogtn-website.pages.dev. Do **not** deploy via local `wrangler`.
+See [`docs/handoff.md`](docs/handoff.md) for the full pipeline and push-access notes.
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project keeps its knowledge in two places:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Where | What |
+|---|---|
+| [`.claude/rules/*.mdc`](.claude/rules/) | Always-on rules — how we work (never changes silently) |
+| [`docs/summary.md`](docs/summary.md) | High-level overview |
+| [`docs/handoff.md`](docs/handoff.md) | **Current status & next tasks** — start here |
+| [`docs/decisions.md`](docs/decisions.md) | ADRs — **why** things are built this way |
+| [`docs/architecture.md`](docs/architecture.md) | System shape |
+| [`docs/design-system.md`](docs/design-system.md) | Colors, type, spacing, components |
+| [`docs/api.md`](docs/api.md) | The one server endpoint + integrations |
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> **Next.js 16 note:** this version has breaking changes from older Next. Read the
+> relevant guide under `node_modules/next/dist/docs/` before editing Next-specific code,
+> and remember `params`/`searchParams` are Promises (`await` them).

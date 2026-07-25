@@ -1,0 +1,40 @@
+---
+description: Frontend patterns — Next 16 App Router, Framer Motion, images, i18n copy, accessibility.
+globs: src/app/**,src/components/**
+alwaysApply: false
+---
+
+# Frontend
+
+## Next.js 16 App Router
+
+- `params` and `searchParams` are **Promises** — `await` them. Reading them
+  synchronously silently breaks (see the past locale bug in `docs/decisions.md`).
+- Before editing Next-specific behavior, read the local docs:
+  `node_modules/next/dist/docs/`.
+
+## Images
+
+- The static export has **no image optimizer** (`images.unoptimized: true`).
+  `next/image` still works but serves files as-is — size/compress assets yourself.
+- Put assets under `public/`; reference with root-absolute paths (`/images/...`).
+- For cache-busting on Cloudflare Pages, version the filename (the public domain
+  aggressively caches same-name assets).
+
+## Animation
+
+- **Framer Motion** is the animation library. Use spring transitions for physical
+  motion; gate autoplay/looping on `useReducedMotion()` and an in-view check.
+- `AnimatePresence` exit animations are rAF-driven — they won't complete in a
+  hidden/throttled headless browser pane (a testing artifact, not a bug).
+
+## i18n copy
+
+- User-facing strings come from `src/i18n/pages/*.ts`, keyed by locale, accessed as
+  `const c = booksCopy[loc]`. Add every new key to all five locales (`en/fr/pt/sw/ar`).
+- Resolve the locale defensively: `const loc = isLocale(locale) ? locale : defaultLocale`.
+
+## Design system
+
+Colors, type scale, spacing, and component patterns are in `docs/design-system.md`.
+Navy `#0A192F` / gold `#C9A227` / cream `#F5F1E8`, Playfair Display + Inter.

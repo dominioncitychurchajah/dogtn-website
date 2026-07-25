@@ -1,0 +1,32 @@
+---
+description: The (minimal) server side — Cloudflare Pages Functions only, secrets handling, and what a real backend would take.
+globs: functions/**
+alwaysApply: false
+---
+
+# Backend
+
+## What exists
+
+There is **exactly one** piece of server-side code:
+`functions/api/paystack-verify.js`, a Cloudflare Pages Function that verifies a
+Paystack transaction against Paystack's API. That's the entire backend.
+
+- Pages Functions live in `functions/` and are deployed automatically with the
+  static site — no separate service.
+- They receive `env` (bindings/vars) and a standard `Request`, return a `Response`.
+
+## Secrets
+
+- Server secrets (e.g. `PAYSTACK_SECRET_KEY`) are read from `env` and set in the
+  **Cloudflare Pages dashboard** (Settings → Environment Variables, for both
+  Production and Preview). **Never commit a secret** to the repo.
+- Public, safe-to-expose values (Paystack public key, subaccount code) may live in
+  client code.
+
+## If a real backend is ever needed (admin CRUD, auth, a database)
+
+Build it as **more Cloudflare Pages Functions** plus a data store (e.g. Cloudflare
+D1/KV or an external DB) — NOT a traditional standalone Node server. Keep the static
+front end; add functions under `functions/api/*`. See `docs/decisions.md` for why the
+project is static-first, and [database](database.mdc) for the current no-DB reality.

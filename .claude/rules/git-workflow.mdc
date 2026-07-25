@@ -1,0 +1,41 @@
+---
+description: Branching, the push-to-deploy pipeline, the account that can push, and commit hygiene.
+alwaysApply: true
+---
+
+# Git Workflow
+
+## The pipeline
+
+`main` is the production branch. **Pushing to `main` deploys.** Cloudflare Pages
+(project `dr-david-ogbueli`) is connected to the GitHub repo and auto-builds every
+push. There is no separate release step.
+
+- Do **not** use local `wrangler pages deploy out` as the deploy path — sustained
+  local uploads to Cloudflare's asset endpoint time out from this network. Git-connected
+  deploy is the reliable path.
+- Check deploys: `npx wrangler pages deployment list --project-name dr-david-ogbueli`.
+
+## Account
+
+Three GitHub accounts may be logged in; **only `dominioncitychurchajah` has push
+access.** If a push 403s, switch:
+
+```bash
+gh auth switch --hostname github.com --user dominioncitychurchajah
+```
+
+## Commit hygiene
+
+- **Stage only the files you intended to change.** The repo root has untracked spec
+  files (`*-build-spec-*.md`, `start-here-ai.html`, etc.) — never blanket `git add .`.
+- Never commit secrets or personal access tokens.
+- End commit messages with:
+  `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+- Don't run destructive commands (`git reset --hard`, force-push) unless explicitly asked.
+- Don't revert unrelated work.
+
+## Confirm before deploying
+
+Pushing publishes to a live site. Confirm intent with the user before pushing unless
+they've clearly authorized it for the change at hand.
