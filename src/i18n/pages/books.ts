@@ -34,6 +34,7 @@ export interface BooksCopy {
   goToBook: string;
   save: string;
   saved: string;
+  swipeHint: string;
 }
 
 export const booksCopy: Record<Locale, BooksCopy> = {
@@ -65,6 +66,7 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     goToBook: "Go to",
     save: "Save",
     saved: "Saved",
+    swipeHint: "Swipe to explore",
   },
   fr: {
     heroTitle: "La Bibliothèque d'un Réformateur",
@@ -94,6 +96,7 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     goToBook: "Aller à",
     save: "Enregistrer",
     saved: "Enregistré",
+    swipeHint: "Glissez pour explorer",
   },
   pt: {
     heroTitle: "A Biblioteca de um Reformador",
@@ -123,6 +126,7 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     goToBook: "Ir para",
     save: "Guardar",
     saved: "Guardado",
+    swipeHint: "Deslize para explorar",
   },
   sw: {
     heroTitle: "Maktaba ya Mrekebishaji",
@@ -152,6 +156,7 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     goToBook: "Nenda kwa",
     save: "Hifadhi",
     saved: "Imehifadhiwa",
+    swipeHint: "Telezesha kuvinjari",
   },
   ar: {
     heroTitle: "مكتبة مُصلح",
@@ -181,5 +186,6 @@ export const booksCopy: Record<Locale, BooksCopy> = {
     goToBook: "الانتقال إلى",
     save: "حفظ",
     saved: "محفوظ",
+    swipeHint: "اسحب للاستكشاف",
   },
 };

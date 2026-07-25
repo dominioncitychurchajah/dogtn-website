@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   motion,
+  AnimatePresence,
   animate,
   useMotionValue,
   useReducedMotion,
@@ -17,7 +18,7 @@ import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { booksCopy, type BooksCopy } from "@/i18n/pages/books";
 import { cn } from "@/lib/utils";
 
-const GAP = 28; // px between cards in the track
+const GAP = 28; // px between adjacent cards
 
 /**
  * Premium 3D desk renders where they exist (supplied product photography); every
@@ -31,6 +32,20 @@ const RENDERS: Record<string, string> = {
     "/images/books/renders/the-jewish-secrets-of-wealth-creation-desk.webp",
   "the-laws-of-proper-speech":
     "/images/books/renders/the-laws-of-proper-speech-desk.webp",
+  "discipleship-codes":
+    "/images/books/renders/discipleship-codes-desk.webp",
+  "praying-through-the-gates-of-time":
+    "/images/books/renders/praying-through-the-gates-of-time-desk.webp",
+  "the-glory-of-the-eagle":
+    "/images/books/renders/the-glory-of-the-eagle-desk.webp",
+  "building-the-word-foundation":
+    "/images/books/renders/building-the-word-foundation-desk.webp",
+  "the-reflection-principle":
+    "/images/books/renders/the-reflection-principle-desk.webp",
+  "tools-of-prophetic-dominion":
+    "/images/books/renders/tools-of-prophetic-dominion-desk.webp",
+  "the-love-revolution":
+    "/images/books/renders/the-love-revolution-desk.webp",
 };
 
 const fadeUp = {
@@ -46,14 +61,22 @@ function formatPrice(p: { amount: number; currency: string }) {
     : `₦${p.amount.toLocaleString()}`;
 }
 
+/** Shortest signed distance from `active` to `i` around a ring of `count`. */
+function circularDelta(active: number, i: number, count: number) {
+  let d = (((i - active) % count) + count) % count; // 0 … count-1
+  if (d > count / 2) d -= count; // -count/2 … +count/2
+  return d;
+}
+
 type BookItem = (typeof BOOKS)[number];
 
 /**
- * Premium single-card book showcase. One book dominates; neighbours peek on
- * desktop/tablet; exactly one card (no crop) on mobile. Drag / arrows / dots /
- * keyboard, wrap-around loop, and pausable in-view autoplay. Content, links,
- * and prices come straight from the shared BOOKS data — nothing else on the
- * site is touched.
+ * Premium 3-card showcase. The active book sits centre-stage (largest, full
+ * opacity, elevated); its previous and next neighbours flank it (smaller,
+ * dimmer). Each card is positioned by its *circular* distance from the active
+ * index, so the row loops endlessly with no jump — the visible cards never
+ * cross the wrap seam. Desktop shows three cards, tablet ~two, mobile one.
+ * Content, prices, and links come straight from the shared BOOKS data.
  */
 export function BooksCarousel({ locale }: { locale: string }) {
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
@@ -63,25 +86,34 @@ export function BooksCarousel({ locale }: { locale: string }) {
 
   const prefersReduced = useReducedMotion();
   const viewportRef = React.useRef<HTMLDivElement>(null);
-  const [metrics, setMetrics] = React.useState({ viewport: 0, card: 0 });
-  const [index, setIndex] = React.useState(0);
+  const [metrics, setMetrics] = React.useState({ card: 0, step: 0, sides: true });
+  const [active, setActive] = React.useState(0);
   const [liked, setLiked] = React.useState<Set<string>>(new Set());
   const [paused, setPaused] = React.useState(false);
   const [interacted, setInteracted] = React.useState(false);
   const [inView, setInView] = React.useState(false);
-  const x = useMotionValue(0);
+  const dragX = useMotionValue(0);
 
-  // Measure viewport → derive the focused card width per breakpoint.
+  // Measure viewport → card width, stride, and whether side cards show.
   React.useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
     const measure = () => {
-      // `w` is the (capped, max-w-860) viewport width, so a single card always
-      // dominates. Mobile shows exactly one card with no peek; every larger
-      // width shows one dominant card with ~13% of each neighbour peeking.
-      const w = el.clientWidth;
-      const card = w < 640 ? w : Math.round(w * 0.74);
-      setMetrics({ viewport: w, card });
+      const v = el.clientWidth;
+      const w = window.innerWidth;
+      let card: number;
+      let sides: boolean;
+      if (w < 640) {
+        card = v; // mobile: one full-width card
+        sides = false;
+      } else if (w < 1024) {
+        card = Math.round(v * 0.66); // tablet: centre + peeking neighbours
+        sides = true;
+      } else {
+        card = Math.min(520, Math.max(460, Math.round(v * 0.34))); // desktop: three cards
+        sides = true;
+      }
+      setMetrics({ card, step: card + GAP, sides });
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -89,62 +121,33 @@ export function BooksCarousel({ locale }: { locale: string }) {
     return () => ro.disconnect();
   }, []);
 
-  const offsetFor = React.useCallback(
-    (i: number) => {
-      const { viewport, card } = metrics;
-      if (!viewport || !card) return 0;
-      return viewport / 2 - card / 2 - i * (card + GAP);
-    },
-    [metrics],
-  );
-
-  // Slide to the active card whenever the index or measurements change.
-  React.useEffect(() => {
-    const target = offsetFor(index);
-    if (prefersReduced) {
-      x.set(target);
-      return;
-    }
-    const controls = animate(x, target, {
-      type: "spring",
-      stiffness: 260,
-      damping: 34,
-      mass: 0.9,
-    });
-    return controls.stop;
-  }, [index, offsetFor, prefersReduced, x]);
-
   const markInteracted = React.useCallback(() => setInteracted(true), []);
   const go = React.useCallback(
-    (dir: 1 | -1) => setIndex((i) => (i + dir + count) % count),
+    (dir: 1 | -1) => setActive((a) => (a + dir + count) % count),
     [count],
   );
-  const goTo = React.useCallback(
-    (i: number) => setIndex(((i % count) + count) % count),
-    [count],
-  );
+  const goTo = React.useCallback((i: number) => setActive(((i % count) + count) % count), [count]);
 
-  const handleDragEnd = (_e: unknown, info: PanInfo) => {
-    const { card } = metrics;
-    if (!card) return;
-    const stride = card + GAP;
-    let next = index - Math.round(info.offset.x / stride);
-    if (Math.abs(info.velocity.x) > 450) {
-      next = index + (info.velocity.x < 0 ? 1 : -1); // honour a flick
-    }
-    next = Math.max(0, Math.min(count - 1, next)); // clamp (loop stays on buttons)
-    if (next === index) {
-      animate(x, offsetFor(index), { type: "spring", stiffness: 260, damping: 34 });
-    } else {
-      setIndex(next);
-    }
+  // Drag / swipe: finger-follow via dragX, snap to the nearest book on release.
+  const onPanStart = () => {
+    markInteracted();
+    setPaused(true);
+  };
+  const onPan = (_e: unknown, info: PanInfo) => dragX.set(info.offset.x);
+  const onPanEnd = (_e: unknown, info: PanInfo) => {
+    // Forgiving on touch: a short drag OR a quick flick both advance.
+    const threshold = Math.max(36, metrics.step * 0.14);
+    if (info.offset.x <= -threshold || info.velocity.x < -300) go(1);
+    else if (info.offset.x >= threshold || info.velocity.x > 300) go(-1);
+    if (prefersReduced) dragX.set(0);
+    else animate(dragX, 0, { type: "spring", stiffness: 300, damping: 34 });
+    setPaused(false);
   };
 
-  // Autoplay: only while in view, not hovered/focused, and not after the user
-  // has taken control. Disabled entirely under reduced-motion.
+  // Autoplay — only in view, not hovered/focused, and not after a manual move.
   React.useEffect(() => {
     if (prefersReduced || paused || interacted || !inView || count <= 1) return;
-    const t = window.setInterval(() => setIndex((i) => (i + 1) % count), 6500);
+    const t = window.setInterval(() => setActive((a) => (a + 1) % count), 6500);
     return () => window.clearInterval(t);
   }, [prefersReduced, paused, interacted, inView, count]);
 
@@ -152,7 +155,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
     const el = viewportRef.current;
     if (!el) return;
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), {
-      threshold: 0.35,
+      threshold: 0.3,
     });
     io.observe(el);
     return () => io.disconnect();
@@ -180,6 +183,10 @@ export function BooksCarousel({ locale }: { locale: string }) {
 
   if (count === 0) return null;
 
+  const springy = prefersReduced
+    ? { duration: 0 }
+    : { type: "spring" as const, stiffness: 260, damping: 32, mass: 0.9 };
+
   return (
     <section className="overflow-hidden bg-[#F5F1E8] py-20 sm:py-24">
       <Container>
@@ -193,9 +200,9 @@ export function BooksCarousel({ locale }: { locale: string }) {
         </motion.div>
       </Container>
 
-      {/* Carousel */}
-      <div
-        className="relative mx-auto w-full max-w-[860px] px-4 sm:px-6"
+      {/* Showcase */}
+      <motion.div
+        className="relative mx-auto w-full max-w-[1400px] px-4 sm:px-6"
         role="region"
         aria-roledescription="carousel"
         aria-label={c.carouselHeading}
@@ -205,44 +212,43 @@ export function BooksCarousel({ locale }: { locale: string }) {
         onMouseLeave={() => setPaused(false)}
         onFocus={() => setPaused(true)}
         onBlur={() => setPaused(false)}
+        onPanStart={onPanStart}
+        onPan={onPan}
+        onPanEnd={onPanEnd}
+        style={{ touchAction: "pan-y" }}
       >
         <div ref={viewportRef} className="overflow-hidden">
-          <motion.div
-            className="flex cursor-grab items-stretch active:cursor-grabbing"
-            style={{ x, gap: GAP }}
-            drag="x"
-            dragConstraints={{ left: offsetFor(count - 1), right: offsetFor(0) }}
-            dragElastic={0.12}
-            onDragStart={markInteracted}
-            onDragEnd={handleDragEnd}
-          >
+          <motion.div className="grid" style={{ x: dragX }}>
             {books.map((book, i) => {
-              const active = i === index;
+              const rel = circularDelta(active, i, count);
+              const isCenter = rel === 0;
+              const isSide = Math.abs(rel) === 1 && metrics.sides;
+              const shown = isCenter || isSide;
               return (
                 <motion.div
                   key={book.slug}
-                  className="shrink-0"
-                  style={{ width: metrics.card || "86%" }}
-                  animate={{
-                    scale: active ? 1 : 0.9,
-                    opacity: active ? 1 : 0.55,
-                    filter: active ? "saturate(1)" : "saturate(0.85)",
+                  className="h-full [grid-area:1/1] justify-self-center"
+                  style={{
+                    width: metrics.card || "86%",
+                    zIndex: isCenter ? 20 : isSide ? 10 : 0,
+                    pointerEvents: shown ? "auto" : "none",
                   }}
-                  transition={
-                    prefersReduced
-                      ? { duration: 0 }
-                      : { type: "spring", stiffness: 260, damping: 30 }
-                  }
-                  aria-hidden={!active}
+                  animate={{
+                    x: rel * (metrics.step || 0),
+                    scale: isCenter ? 1 : 0.9,
+                    opacity: isCenter ? 1 : isSide ? 0.88 : 0,
+                  }}
+                  transition={springy}
+                  aria-hidden={!isCenter}
                 >
                   <BookCard
                     book={book}
-                    active={active}
+                    active={isCenter}
                     liked={liked.has(book.slug)}
                     onToggleLike={() => toggleLike(book.slug)}
                     onActivate={() => {
                       markInteracted();
-                      setIndex(i);
+                      setActive(i);
                     }}
                     locale={loc}
                     c={c}
@@ -253,7 +259,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
           </motion.div>
         </div>
 
-        {/* Arrows — overlay the peeks on tablet/desktop, swipe drives mobile */}
+        {/* Arrows — glass controls flanking the showcase; swipe drives mobile */}
         <button
           type="button"
           onClick={() => {
@@ -261,9 +267,9 @@ export function BooksCarousel({ locale }: { locale: string }) {
             go(-1);
           }}
           aria-label={c.prevBook}
-          className="absolute left-0 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-[#0A192F]/10 bg-white/90 text-[#0A192F] shadow-lg backdrop-blur transition-all hover:scale-105 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] sm:grid lg:-left-4"
+          className="group/nav absolute left-1 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/70 text-[#0A192F] shadow-[0_10px_30px_-8px_rgba(10,25,47,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] active:scale-95 sm:grid lg:left-2"
         >
-          <ChevronLeft className="h-5 w-5" />
+          <ChevronLeft className="h-6 w-6 transition-transform duration-300 group-hover/nav:-translate-x-0.5" />
         </button>
         <button
           type="button"
@@ -272,11 +278,36 @@ export function BooksCarousel({ locale }: { locale: string }) {
             go(1);
           }}
           aria-label={c.nextBook}
-          className="absolute right-0 top-1/2 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-[#0A192F]/10 bg-white/90 text-[#0A192F] shadow-lg backdrop-blur transition-all hover:scale-105 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] sm:grid lg:-right-4"
+          className="group/nav absolute right-1 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/70 text-[#0A192F] shadow-[0_10px_30px_-8px_rgba(10,25,47,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] active:scale-95 sm:grid lg:right-2"
         >
-          <ChevronRight className="h-5 w-5" />
+          <ChevronRight className="h-6 w-6 transition-transform duration-300 group-hover/nav:translate-x-0.5" />
         </button>
-      </div>
+      </motion.div>
+
+      {/* Mobile swipe hint — mobile has no arrows, so nudge users to swipe.
+          Fades out for good once they interact. */}
+      <AnimatePresence>
+        {!interacted && (
+          <motion.div
+            className="mt-6 flex justify-center sm:hidden"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, transition: { duration: 0.25 } }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            aria-hidden
+          >
+            <motion.span
+              className="flex items-center gap-2 rounded-full bg-[#0A192F]/[0.06] px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-[#0A192F]/55"
+              animate={prefersReduced ? {} : { x: [-4, 4, -4] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ChevronLeft className="h-3.5 w-3.5" />
+              {c.swipeHint}
+              <ChevronRight className="h-3.5 w-3.5" />
+            </motion.span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Dots */}
       <div className="mt-8 flex items-center justify-center gap-2.5">
@@ -289,10 +320,10 @@ export function BooksCarousel({ locale }: { locale: string }) {
               goTo(i);
             }}
             aria-label={`${c.goToBook} ${book.title}`}
-            aria-current={i === index}
+            aria-current={i === active}
             className={cn(
               "h-2.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227]",
-              i === index ? "w-7 bg-[#0A192F]" : "w-2.5 bg-[#0A192F]/25 hover:bg-[#0A192F]/45",
+              i === active ? "w-7 bg-[#0A192F]" : "w-2.5 bg-[#0A192F]/25 hover:bg-[#0A192F]/45",
             )}
           />
         ))}
@@ -336,7 +367,7 @@ function BookCard({
         if (!active) onActivate();
       }}
       className={cn(
-        "group relative flex select-none flex-col overflow-hidden rounded-[28px] bg-white transition-shadow duration-500",
+        "group relative flex h-full select-none flex-col overflow-hidden rounded-[28px] bg-white transition-shadow duration-500",
         active
           ? "shadow-[0_30px_70px_-24px_rgba(10,25,47,0.45)]"
           : "shadow-[0_12px_30px_-18px_rgba(10,25,47,0.35)]",
@@ -360,7 +391,7 @@ function BookCard({
             src={render}
             alt={`${book.title} — book cover`}
             fill
-            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 74vw, 600px"
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 62vw, 520px"
             className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
           />
         ) : (
@@ -418,11 +449,11 @@ function BookCard({
           {book.category}
         </span>
 
-        <h3 className="mt-4 line-clamp-2 text-[22px] font-bold leading-snug text-[#0A192F] sm:text-2xl">
+        <h3 className="mt-4 line-clamp-2 min-h-[3.4rem] text-[22px] font-bold leading-snug text-[#0A192F] sm:text-2xl">
           {book.title}
         </h3>
 
-        <p className="mt-2.5 line-clamp-3 text-[15px] leading-relaxed text-[#5b6472]">
+        <p className="mt-2.5 line-clamp-3 min-h-[4rem] text-[15px] leading-relaxed text-[#5b6472]">
           {book.desc ?? book.subtitle}
         </p>
 
@@ -431,8 +462,9 @@ function BookCard({
           href={`/${locale}/books/${book.slug}`}
           tabIndex={active ? 0 : -1}
           aria-hidden={!active}
+          onClick={(e) => e.stopPropagation()}
           className={cn(
-            "group/cta mt-6 flex items-center justify-between gap-3 rounded-2xl bg-[#0A192F] p-2.5 transition-colors duration-300 hover:bg-[#112a4f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227]",
+            "group/cta mt-auto flex items-center justify-between gap-3 rounded-2xl bg-[#0A192F] p-2.5 transition-colors duration-300 hover:bg-[#112a4f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227]",
             !active && "pointer-events-none",
           )}
         >
