@@ -29,7 +29,7 @@ const JOIN_HREF = "#join";
 
 const IMG = {
   hero: "/images/ministries/global-missions-network.jpg",
-  about: "/images/ministries/global-leadership-forum.jpg",
+  about: "/images/pastor/whiteboard-5-laws-bw.jpg",
 };
 
 // Who the Network is for.
@@ -135,7 +135,7 @@ export default async function GlobalMissionsNetworkPage({
               <div className="absolute -right-4 -top-4 hidden h-full w-full border border-gold-600/20 md:block" />
               <img
                 src={IMG.about}
-                alt="Leaders gathered at a global ministry forum."
+                alt="Dr. David Ogbueli teaching at a leadership session."
                 className="relative aspect-[4/5] w-full rounded-[var(--radius-l)] object-cover shadow-elev-4"
               />
             </div>
