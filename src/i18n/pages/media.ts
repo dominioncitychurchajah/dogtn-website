@@ -6,10 +6,16 @@ import type { Locale } from "@/i18n/config";
  * separate project. "GMTV Studio" is a brand name, kept the same across locales.
  */
 export interface MediaCopy {
+  /** Section name shown above the hero title — the Media Center identity. */
+  eyebrow: string;
   heroTitle: string;
   heroSubtitle: string;
   tabs: { all: string; teachings: string; gmtv: string; conference: string; podcast: string };
   noVideos: string;
+  featuredLabel: string;
+  watchNow: string;
+  browseAll: string;
+  videoCount: string;
   playVideo: string;
   closeVideo: string;
   podcastHeading: string;
@@ -25,10 +31,15 @@ export interface MediaCopy {
 
 export const mediaCopy: Record<Locale, MediaCopy> = {
   en: {
-    heroTitle: "Watch. Listen. Grow.",
+    eyebrow: "Media Center",
+    heroTitle: "Expand Your World",
     heroSubtitle: "Decades of transformative teaching, now available wherever you are.",
     tabs: { all: "All", teachings: "Teachings", gmtv: "GMTV Studio", conference: "Conference Archives", podcast: "Podcast" },
     noVideos: "No videos in this category yet.",
+    featuredLabel: "Featured",
+    watchNow: "Watch now",
+    browseAll: "Browse everything",
+    videoCount: "messages",
     playVideo: "Play video",
     closeVideo: "Close video",
     podcastHeading: "The Transformation Podcast",
@@ -42,10 +53,15 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     pressCta: "For media enquiries",
   },
   fr: {
-    heroTitle: "Regardez. Écoutez. Grandissez.",
+    eyebrow: "Centre Média",
+    heroTitle: "Élargissez Votre Monde",
     heroSubtitle: "Des décennies d'enseignement transformateur, désormais disponibles où que vous soyez.",
     tabs: { all: "Tout", teachings: "Enseignements", gmtv: "GMTV Studio", conference: "Archives de conférences", podcast: "Podcast" },
     noVideos: "Aucune vidéo dans cette catégorie pour l'instant.",
+    featuredLabel: "À la une",
+    watchNow: "Regarder",
+    browseAll: "Tout parcourir",
+    videoCount: "messages",
     playVideo: "Lire la vidéo",
     closeVideo: "Fermer la vidéo",
     podcastHeading: "Le Podcast de la Transformation",
@@ -59,10 +75,15 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     pressCta: "Pour les demandes médias",
   },
   pt: {
-    heroTitle: "Assista. Ouça. Cresça.",
+    eyebrow: "Centro de Mídia",
+    heroTitle: "Expanda o Seu Mundo",
     heroSubtitle: "Décadas de ensino transformador, agora disponíveis onde quer que você esteja.",
     tabs: { all: "Todos", teachings: "Ensinamentos", gmtv: "GMTV Studio", conference: "Arquivos de Conferências", podcast: "Podcast" },
     noVideos: "Ainda não há vídeos nesta categoria.",
+    featuredLabel: "Destaque",
+    watchNow: "Assistir agora",
+    browseAll: "Ver tudo",
+    videoCount: "mensagens",
     playVideo: "Reproduzir vídeo",
     closeVideo: "Fechar vídeo",
     podcastHeading: "O Podcast da Transformação",
@@ -76,10 +97,15 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     pressCta: "Para consultas de imprensa",
   },
   sw: {
-    heroTitle: "Tazama. Sikiliza. Kua.",
+    eyebrow: "Kituo cha Habari",
+    heroTitle: "Panua Ulimwengu Wako",
     heroSubtitle: "Miongo ya mafundisho ya kubadilisha maisha, sasa yanapatikana popote ulipo.",
     tabs: { all: "Vyote", teachings: "Mafundisho", gmtv: "GMTV Studio", conference: "Kumbukumbu za Mikutano", podcast: "Podikasti" },
     noVideos: "Hakuna video katika kategoria hii bado.",
+    featuredLabel: "Iliyoangaziwa",
+    watchNow: "Tazama sasa",
+    browseAll: "Vinjari vyote",
+    videoCount: "mahubiri",
     playVideo: "Cheza video",
     closeVideo: "Funga video",
     podcastHeading: "Podikasti ya Mabadiliko",
@@ -93,10 +119,15 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     pressCta: "Kwa maswali ya vyombo vya habari",
   },
   ar: {
-    heroTitle: "شاهد. استمع. انمُ.",
+    eyebrow: "مركز الإعلام",
+    heroTitle: "وسّع عالمك",
     heroSubtitle: "عقود من التعاليم التحويلية، متاحة الآن أينما كنت.",
     tabs: { all: "الكل", teachings: "التعاليم", gmtv: "GMTV Studio", conference: "أرشيف المؤتمرات", podcast: "بودكاست" },
     noVideos: "لا توجد مقاطع فيديو في هذه الفئة بعد.",
+    featuredLabel: "مميّز",
+    watchNow: "شاهد الآن",
+    browseAll: "تصفّح الكل",
+    videoCount: "رسالة",
     playVideo: "تشغيل الفيديو",
     closeVideo: "إغلاق الفيديو",
     podcastHeading: "بودكاست التحول",

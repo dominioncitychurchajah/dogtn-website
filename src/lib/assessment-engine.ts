@@ -1,36 +1,29 @@
-/* Pure scoring engine for the Leadership Assessment. */
+/* Pure scoring engine for the Leadership Assessment.
+ *
+ * Ten four-option questions, each ascending 1 → 4 in scope of leadership
+ * responsibility. The mean across all ten places the visitor on one of the
+ * three Global Leadership Executive levels. Per-dimension scores are kept for
+ * the results readout, but the level is driven by the whole set — every
+ * question moves it.
+ */
 
 import {
   questions,
-  recommendationMatrix,
-  type Band,
+  levels,
   type DimensionKey,
-  type Placement,
-  type Recommendation,
+  type LevelKey,
+  type LevelResult,
 } from "@/data/assessment";
 
 export type Answers = Record<string, number>;
 
-/**
- * Normalise a single raw answer value to a 0-100 contribution.
- * - Likert: raw 1-5 (reverse-coded as 6 - value), mapped so 1 -> 0, 5 -> 100.
- * - Scenario: raw 1-4 (reverse-coded as 5 - value), mapped so 1 -> 0, 4 -> 100.
- */
-function normalizeAnswer(
-  value: number,
-  type: "likert" | "scenario",
-  reverse: boolean | undefined
-): number {
-  if (type === "scenario") {
-    const v = reverse ? 5 - value : value;
-    return ((v - 1) / 3) * 100;
-  }
-  // likert
-  const v = reverse ? 6 - value : value;
-  return ((v - 1) / 4) * 100;
+/** Map a raw 1–4 answer to a 0–100 contribution. */
+function normalizeAnswer(value: number): number {
+  const clamped = Math.min(4, Math.max(1, value));
+  return ((clamped - 1) / 3) * 100;
 }
 
-/** Score a single dimension on a 0-100 scale from the provided answers. */
+/** Score a single dimension on a 0–100 scale from the provided answers. */
 export function scoreDimension(
   answers: Answers,
   dimensionKey: DimensionKey
@@ -43,53 +36,39 @@ export function scoreDimension(
   for (const q of items) {
     const raw = answers[q.id];
     if (raw == null || Number.isNaN(raw)) continue;
-    sum += normalizeAnswer(raw, q.type, q.reverse);
+    sum += normalizeAnswer(raw);
     counted += 1;
   }
   if (counted === 0) return 0;
   return Math.round(sum / counted);
 }
 
-/** Derive the overall band from the per-dimension scores. */
-export function overallBand(
-  dimensionScores: Record<DimensionKey, number>
-): Band {
-  const values = Object.values(dimensionScores);
-  const overall =
-    values.length === 0
-      ? 0
-      : Math.round(values.reduce((a, b) => a + b, 0) / values.length);
-  return bandForScore(overall);
+/**
+ * Map an overall 0–100 score to a Global Leadership Executive level.
+ * Thresholds split the scale into three roughly equal spans, nudged so that a
+ * leader who answers mostly "carries responsibility for others" lands on 2.
+ */
+export function levelForScore(score: number): LevelKey {
+  if (score <= 40) return 1;
+  if (score <= 72) return 2;
+  return 3;
 }
 
-/** Map a 0-100 score to a band. */
-export function bandForScore(score: number): Band {
-  if (score <= 39) return "Emerging";
-  if (score <= 64) return "Developing";
-  if (score <= 84) return "Established";
-  return "Advanced";
-}
-
-/** Look up the recommendation for a band + self-placement. */
-export function getRecommendation(
-  band: Band,
-  placement: Placement
-): Recommendation {
-  return recommendationMatrix[band][placement];
+export function getLevel(level: LevelKey): LevelResult {
+  return levels[level];
 }
 
 export interface AssessmentResults {
   dimensionScores: Record<DimensionKey, number>;
   overall: number;
-  band: Band;
-  recommendation: Recommendation;
+  level: LevelKey;
+  result: LevelResult;
+  /** How many of the 10 questions were actually answered. */
+  answered: number;
 }
 
-/** Compute the full results from raw answers and a self-placement value. */
-export function computeResults(
-  answers: Answers,
-  placement: Placement
-): AssessmentResults {
+/** Compute the full results from raw answers. */
+export function computeResults(answers: Answers): AssessmentResults {
   const keys: DimensionKey[] = [
     "character",
     "vision",
@@ -106,14 +85,19 @@ export function computeResults(
     {} as Record<DimensionKey, number>
   );
 
-  const scoreValues = Object.values(dimensionScores);
-  const overall =
-    scoreValues.length === 0
-      ? 0
-      : Math.round(scoreValues.reduce((a, b) => a + b, 0) / scoreValues.length);
+  // Overall is the mean across answered questions, not the mean of dimension
+  // means, so a partially answered dimension cannot skew the level.
+  let sum = 0;
+  let answered = 0;
+  for (const q of questions) {
+    const raw = answers[q.id];
+    if (raw == null || Number.isNaN(raw)) continue;
+    sum += normalizeAnswer(raw);
+    answered += 1;
+  }
+  const overall = answered === 0 ? 0 : Math.round(sum / answered);
 
-  const band = bandForScore(overall);
-  const recommendation = getRecommendation(band, placement);
+  const level = levelForScore(overall);
 
-  return { dimensionScores, overall, band, recommendation };
+  return { dimensionScores, overall, level, result: levels[level], answered };
 }

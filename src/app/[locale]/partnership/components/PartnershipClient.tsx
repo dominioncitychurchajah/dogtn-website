@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { CheckCircle2, Star, ShieldCheck, Heart, ArrowRight, ChevronDown, ChevronLeft, ChevronRight, BookOpen, Quote, Shield, Play, X } from "lucide-react";
+import { CheckCircle2, Star, ShieldCheck, Heart, ChevronLeft, ChevronRight, BookOpen, Quote, Shield, Play, X } from "lucide-react";
 import { Container, Section } from "@/components/layout/Section";
 import { PartnershipEngine } from "@/components/forms/PartnershipEngine";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
@@ -22,16 +22,8 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
     { quote: c.testimonials.t3Quote, name: c.testimonials.t3Name, location: c.testimonials.t3Location, tier: c.testimonials.t3Tier, image: "/images/pastor/leadership-hand-raised.jpg" },
   ];
 
-  const FAQS = [
-    { q: c.faqs.q1, a: c.faqs.a1 },
-    { q: c.faqs.q2, a: c.faqs.a2 },
-    { q: c.faqs.q3, a: c.faqs.a3 },
-    { q: c.faqs.q4, a: c.faqs.a4 },
-    { q: c.faqs.q5, a: c.faqs.a5 },
-  ];
 
   const [activeTestimonial, setActiveTestimonial] = React.useState(0);
-  const [openFaqIdx, setOpenFaqIdx] = React.useState<number | null>(null);
   const [videoOpen, setVideoOpen] = React.useState(false);
 
   // Close the video lightbox on Escape and lock body scroll while it's open.
@@ -166,6 +158,9 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
                 <p className="text-body-s italic text-ink-500 mt-2 leading-relaxed">
                   {c.tiers.seedTagline}
                 </p>
+                <p className="mt-3 text-caption font-semibold uppercase tracking-wider text-gold-hover">
+                  {c.tiers.seedFor}
+                </p>
               </div>
 
               <div className="h-px bg-ink-100 w-full mb-6" />
@@ -210,6 +205,9 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
                 <p className="text-body-s italic text-white/60 mt-2 leading-relaxed">
                   {c.tiers.harvestTagline}
                 </p>
+                <p className="mt-3 text-caption font-semibold uppercase tracking-wider text-gold-400">
+                  {c.tiers.harvestFor}
+                </p>
               </div>
 
               <div className="h-px bg-white/10 w-full mb-6" />
@@ -251,6 +249,9 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
                 <p className="text-body-s italic text-ink-500 mt-2 leading-relaxed">
                   {c.tiers.kingdomTagline}
                 </p>
+                <p className="mt-3 text-caption font-semibold uppercase tracking-wider text-gold-hover">
+                  {c.tiers.kingdomFor}
+                </p>
               </div>
 
               <div className="h-px bg-ink-100 w-full mb-6" />
@@ -276,6 +277,27 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
               >
                 {c.tiers.kingdomCta}
               </button>
+            </div>
+          </div>
+
+          {/* Legacy Partners — higher-level strategic partnership category */}
+          <div className="mb-16 overflow-hidden rounded-[12px] border border-gold-600/40 bg-ink-900 p-8 lg:p-10">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-gold-600/15 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-gold-400">
+                  {c.tiers.legacyLevel}
+                </span>
+                <h3 className="text-heading-2 text-paper-0">{c.tiers.legacyName}</h3>
+                <div className="mt-1 font-display text-display-l font-bold text-gold-400">{c.tiers.legacyAmount}</div>
+                <p className="mt-2 text-caption font-semibold uppercase tracking-wider text-gold-400/90">{c.tiers.legacyFor}</p>
+                <p className="mt-4 text-body-m text-white/70">{c.tiers.legacyTagline}</p>
+              </div>
+              <a
+                href="#stewardship-briefing"
+                className="inline-flex shrink-0 items-center justify-center rounded-[var(--radius-s)] bg-gold-600 px-8 py-4 text-caption font-bold uppercase tracking-wider text-ink-900 transition-all hover:bg-gold-hover"
+              >
+                {c.tiers.legacyCta}
+              </a>
             </div>
           </div>
 
@@ -378,48 +400,6 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ACCORDION FAQ SECTION */}
-      <Section surface="paper">
-        <Container className="max-w-4xl">
-          <div className="text-center mb-16">
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.4em] text-gold-hover">
-              {c.questionsEyebrow}
-            </span>
-            <h2 className="text-heading-1 text-ink-900">{c.faqHeading}</h2>
-            <p className="mt-4 text-body-m text-ink-500">
-              {c.faqSubtitle}
-            </p>
-          </div>
-
-          <div className="divide-y divide-ink-100 border-t border-b border-ink-100">
-            {FAQS.map((faq, idx) => {
-              const isOpen = openFaqIdx === idx;
-              return (
-                <div key={idx} className="py-4.5">
-                  <button
-                    onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                    className="w-full flex items-center justify-between text-left py-2 font-semibold text-body-m text-ink-900 hover:text-gold-hover transition-colors cursor-pointer"
-                    aria-expanded={isOpen}
-                  >
-                    <span>{faq.q}</span>
-                    <ChevronDown className={`w-5 h-5 text-ink-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
-                  </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? "max-h-[200px] mt-3 opacity-100" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <p className="text-body-s text-ink-500 leading-relaxed pb-2">
-                      {faq.a}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </Container>
       </Section>

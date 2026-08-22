@@ -103,6 +103,19 @@ export default function MediaClient({ locale }: { locale: string }) {
     setActiveVideo(null);
   }, []);
 
+  /** The featured message headlining the library — first Conference Archive entry. */
+  const featured = React.useMemo(
+    () => videos.find((v) => v.category === "Conference Archives") ?? videos[0],
+    []
+  );
+
+  /** Count shown on each category pill; null for tabs that are not a filter. */
+  const countFor = React.useCallback((tab: TabKey): number | null => {
+    if (tab === "podcast") return null;
+    if (tab === "all") return videos.length;
+    return videos.filter((v) => v.category === CATEGORY_MAP[tab]).length;
+  }, []);
+
   const filteredVideos = React.useMemo(() => {
     if (activeTab === "all" || activeTab === "podcast") return videos;
     return videos.filter((v) => v.category === CATEGORY_MAP[activeTab]);
@@ -128,7 +141,7 @@ export default function MediaClient({ locale }: { locale: string }) {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [activeVideo]);
+  }, [activeVideo, closeLightbox]);
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -142,6 +155,12 @@ export default function MediaClient({ locale }: { locale: string }) {
           priority
         />
         <Container className="relative z-10 py-20 flex flex-col items-center">
+          <motion.span
+            {...fadeUp}
+            className="mb-5 block text-[11px] font-bold uppercase tracking-[0.35em] text-[#C9A227]"
+          >
+            {c.eyebrow}
+          </motion.span>
           <motion.h1
             {...fadeUp}
             className="font-serif text-[56px] lg:text-[72px] text-white leading-tight"
@@ -158,30 +177,98 @@ export default function MediaClient({ locale }: { locale: string }) {
         </Container>
       </section>
 
-      {/* SECTION 2 - TABS NAVIGATION */}
-      <div className="sticky top-20 z-10 bg-white border-b border-[#E5E7EB]">
+      {/* SECTION 2 - CATEGORY NAVIGATION (sticky segmented control) */}
+      <div className="sticky top-20 z-10 border-b border-[#E5E7EB] bg-white/95 backdrop-blur-md">
         <Container>
-          <div className="flex overflow-x-auto hide-scrollbar space-x-8">
-            {TAB_KEYS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => handleTabClick(tab)}
-                className={`py-4 whitespace-nowrap text-sm font-medium transition-colors ${
-                  activeTab === tab
-                    ? "border-b-2 border-[#C9A227] text-[#0A192F]"
-                    : "text-[#6B7280] hover:text-[#0A192F]"
-                }`}
-              >
-                {c.tabs[tab]}
-              </button>
-            ))}
+          <div className="hide-scrollbar flex gap-2 overflow-x-auto py-3">
+            {TAB_KEYS.map((tab) => {
+              const count = countFor(tab);
+              const isActive = activeTab === tab;
+              return (
+                <button
+                  key={tab}
+                  onClick={() => handleTabClick(tab)}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] ${
+                    isActive
+                      ? "bg-[#0A192F] text-white"
+                      : "bg-[#F5F1E8] text-[#6B7280] hover:bg-[#C9A227]/20 hover:text-[#0A192F]"
+                  }`}
+                >
+                  {c.tabs[tab]}
+                  {count !== null && (
+                    <span
+                      className={`text-[11px] font-bold tabular-nums ${
+                        isActive ? "text-[#C9A227]" : "text-[#0A192F]/40"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </Container>
       </div>
 
-      {/* SECTION 3 - VIDEO GRID */}
-      <section className="bg-white py-16">
+      {/* SECTION 2.5 - FEATURED MESSAGE (strongest content, top of the hierarchy) */}
+      <section className="bg-white pt-12 sm:pt-16">
         <Container>
+          <motion.button
+            {...fadeUp}
+            type="button"
+            onClick={() => setActiveVideo(featured)}
+            aria-label={`${c.playVideo}: ${featured.title}`}
+            className="group grid w-full gap-8 text-left lg:grid-cols-[1.4fr_1fr] lg:items-center"
+          >
+            <div className="relative aspect-video w-full overflow-hidden rounded-[16px] bg-[#0A192F]">
+              <Image
+                src={`https://i.ytimg.com/vi/${featured.youtubeId}/maxresdefault.jpg`}
+                alt=""
+                fill
+                unoptimized
+                priority
+                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+              <span className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/70 via-transparent to-transparent" />
+              <span className="absolute inset-0 grid place-items-center">
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-[#C9A227] text-[#0A192F] shadow-lg transition-transform duration-300 group-hover:scale-110 sm:h-20 sm:w-20">
+                  <PlayCircle className="h-8 w-8 sm:h-10 sm:w-10" aria-hidden />
+                </span>
+              </span>
+            </div>
+            <div>
+              <span className="inline-block rounded-full bg-[#C9A227]/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#927016]">
+                {c.featuredLabel}
+              </span>
+              <h2 className="mt-4 font-serif text-[28px] leading-tight text-[#0A192F] transition-colors group-hover:text-[#927016] sm:text-[36px]">
+                {featured.title}
+              </h2>
+              <p className="mt-3 text-sm text-[#6B7280]">
+                {featured.event} · {featured.category}
+              </p>
+              <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#927016]">
+                {c.watchNow}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 rtl:rotate-180" aria-hidden />
+              </span>
+            </div>
+          </motion.button>
+        </Container>
+      </section>
+
+      {/* SECTION 3 - VIDEO LIBRARY */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <div className="mb-10 flex flex-wrap items-baseline justify-between gap-3 border-b border-[#E5E7EB] pb-5">
+            <h2 className="font-serif text-[26px] text-[#0A192F] sm:text-[32px]">
+              {activeTab === "all" ? c.browseAll : c.tabs[activeTab]}
+            </h2>
+            <p className="text-sm text-[#6B7280] tabular-nums">
+              {filteredVideos.length} {c.videoCount}
+            </p>
+          </div>
           {filteredVideos.length > 0 ? (
             <motion.div
               key={activeTab}
@@ -202,7 +289,7 @@ export default function MediaClient({ locale }: { locale: string }) {
                   variants={fadeUp}
                   className="group cursor-pointer block text-left"
                 >
-                  <div className="bg-[#0A192F]/10 aspect-video rounded-[8px] overflow-hidden relative flex items-center justify-center mb-3">
+                  <div className="relative mb-4 flex aspect-video items-center justify-center overflow-hidden rounded-[12px] bg-[#0A192F]/10 transition-shadow duration-300 group-hover:shadow-[0_18px_40px_-18px_rgba(10,25,47,0.5)]">
                     <Image
                       src={`https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`}
                       alt=""

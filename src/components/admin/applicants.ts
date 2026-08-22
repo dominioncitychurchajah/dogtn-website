@@ -39,18 +39,18 @@ const SEED: Array<{
   role: string;
 }> = [
   { first: "Elena", last: "Rossi", location: "Milan", country: "Italy", track: "emerging-leaders", stage: "submitted", score: 8.4, cohort: "Aug 2026", ago: "2h ago", role: "University Student, Politecnico" },
-  { first: "Kofi", last: "Mensah", location: "Accra", country: "Ghana", track: "young-professionals", stage: "submitted", score: 9.1, cohort: "Sep 2026", ago: "5h ago", role: "Product Analyst, MTN" },
+  { first: "Kofi", last: "Mensah", location: "Accra", country: "Ghana", track: "emerging-leaders", stage: "submitted", score: 9.1, cohort: "Sep 2026", ago: "5h ago", role: "Product Analyst, MTN" },
   { first: "Amara", last: "Okonkwo", location: "Lagos", country: "Nigeria", track: "emerging-leaders", stage: "submitted", score: 7.6, cohort: "Aug 2026", ago: "8h ago", role: "Graduate Trainee" },
-  { first: "Sarah", last: "Jenkins", location: "Houston", country: "United States", track: "young-professionals", stage: "review", score: 7.8, cohort: "Sep 2026", ago: "1d ago", role: "Operations Lead" },
+  { first: "Sarah", last: "Jenkins", location: "Houston", country: "United States", track: "emerging-leaders", stage: "review", score: 7.8, cohort: "Sep 2026", ago: "1d ago", role: "Operations Lead" },
   { first: "David", last: "Mwangi", location: "Nairobi", country: "Kenya", track: "ministry-leaders", stage: "review", score: 8.9, cohort: "Aug 2026", ago: "1d ago", role: "Associate Pastor" },
   { first: "Li", last: "Wei", location: "Shanghai", country: "China", track: "nation-builders", stage: "interview", score: 9.5, cohort: "Oct 2026", ago: "2d ago", role: "Managing Director" },
   { first: "Grace", last: "Adeyemi", location: "Abuja", country: "Nigeria", track: "ministry-leaders", stage: "interview", score: 8.7, cohort: "Aug 2026", ago: "2d ago", role: "Ministry Coordinator" },
   { first: "Thabo", last: "Nkosi", location: "Johannesburg", country: "South Africa", track: "nation-builders", stage: "accepted", score: 9.3, cohort: "Oct 2026", ago: "4d ago", role: "Regional Director" },
-  { first: "Fatima", last: "Bello", location: "Kano", country: "Nigeria", track: "young-professionals", stage: "accepted", score: 8.8, cohort: "Sep 2026", ago: "5d ago", role: "Civil Engineer" },
+  { first: "Fatima", last: "Bello", location: "Kano", country: "Nigeria", track: "emerging-leaders", stage: "accepted", score: 8.8, cohort: "Sep 2026", ago: "5d ago", role: "Civil Engineer" },
   { first: "James", last: "Carter", location: "London", country: "United Kingdom", track: "emerging-leaders", stage: "waitlist", score: 6.9, cohort: "Aug 2026", ago: "6d ago", role: "Recent Graduate" },
   { first: "Chidinma", last: "Eze", location: "Enugu", country: "Nigeria", track: "ministry-leaders", stage: "waitlist", score: 7.2, cohort: "Aug 2026", ago: "6d ago", role: "Youth Pastor" },
   { first: "Marcus", last: "Silva", location: "São Paulo", country: "Brazil", track: "nation-builders", stage: "declined", score: 5.4, cohort: "Oct 2026", ago: "1w ago", role: "Entrepreneur" },
-  { first: "Aisha", last: "Diallo", location: "Dakar", country: "Senegal", track: "young-professionals", stage: "declined", score: 5.8, cohort: "Sep 2026", ago: "1w ago", role: "Marketing Officer" },
+  { first: "Aisha", last: "Diallo", location: "Dakar", country: "Senegal", track: "emerging-leaders", stage: "declined", score: 5.8, cohort: "Sep 2026", ago: "1w ago", role: "Marketing Officer" },
 ];
 
 export const applicants: Applicant[] = SEED.map((s, i) => {

@@ -22,14 +22,16 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const c = hisStoryCopy[loc];
 
+  // Impact/legacy timeline. Keys are legacy positional names (year1968… etc.);
+  // the displayed `year` labels below are the source of truth for the era shown.
   const timelineEvents = [
-    { year: "1968", title: c.timeline.year1968Title, desc: c.timeline.year1968Desc },
-    { year: "1980", title: c.timeline.year1980Title, desc: c.timeline.year1980Desc },
-    { year: "1991", title: c.timeline.year1991Title, desc: c.timeline.year1991Desc },
-    { year: "1996", title: c.timeline.year1996Title, desc: c.timeline.year1996Desc },
-    { year: "2000s", title: c.timeline.year2000sTitle, desc: c.timeline.year2000sDesc },
-    { year: "2010s", title: c.timeline.year2010sTitle, desc: c.timeline.year2010sDesc },
-    { year: "2020s", title: c.timeline.year2020sTitle, desc: c.timeline.year2020sDesc },
+    { year: "1980s", title: c.timeline.year1968Title, desc: c.timeline.year1968Desc },
+    { year: "1991", title: c.timeline.year1980Title, desc: c.timeline.year1980Desc },
+    { year: "1996", title: c.timeline.year1991Title, desc: c.timeline.year1991Desc },
+    { year: "2000s", title: c.timeline.year1996Title, desc: c.timeline.year1996Desc },
+    { year: "2010s", title: c.timeline.year2000sTitle, desc: c.timeline.year2000sDesc },
+    { year: "2020s", title: c.timeline.year2010sTitle, desc: c.timeline.year2010sDesc },
+    { year: "Today", title: c.timeline.year2020sTitle, desc: c.timeline.year2020sDesc },
   ];
 
   const educationCards = [

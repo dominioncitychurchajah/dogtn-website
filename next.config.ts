@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Pin the workspace root to this project so Turbopack ignores the stray
+  // ~/package-lock.json (it otherwise infers the home dir as root).
+  turbopack: { root: __dirname },
   // Fully static site — exported as plain HTML/CSS/JS to `out/`.
   // Deployed to Cloudflare Pages (static assets → no Worker CPU limits, no 1102 errors).
   output: "export",

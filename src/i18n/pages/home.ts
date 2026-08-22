@@ -40,6 +40,8 @@ export interface HomeCopy {
     joinCommunity: string;
     accessTeachings: string;
     exploreMinistry: string;
+    partner: string;
+    volunteer: string;
   };
   events: {
     title: string;
@@ -70,12 +72,23 @@ export interface HomeCopy {
     body: string;
     cta: string;
   };
+  /** Mentorship trailer / course-preview section. */
+  trailer: {
+    eyebrow: string;
+    play: string;
+    duration: string;
+    endEyebrow: string;
+    endBody: string;
+    endCta: string;
+    replay: string;
+  };
   /** Current hero (replaces the unused legacy `hero` block above for the live homepage). */
   heroCurrent: {
     eyebrow: string;
     body: string;
     ctaStartHere: string;
     ctaAssessment: string;
+    ctaMissions: string;
   };
   statsSection: {
     eyebrow: string;
@@ -128,7 +141,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       subtitle:
         "For over three decades, Dr. David Ogbueli has equipped leaders, ministries, and nations through transformative discipleship and purposeful mentorship.",
       ctaJourney: "Choose Your Journey",
-      ctaAssessment: "Take Free Assessment",
+      ctaAssessment: "Take Leadership Assessment",
     },
     nextGathering: {
       titlePre: "Next Global ",
@@ -151,9 +164,11 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     journeyStrip: {
       growSpiritually: "Grow Spiritually",
       becomeLeader: "Become a Leader",
-      joinCommunity: "Join a Community",
+      joinCommunity: "Join Community",
       accessTeachings: "Access Teachings",
       exploreMinistry: "Explore the Ministries",
+      partner: "Partner",
+      volunteer: "Volunteer",
     },
     events: {
       title: "Gather, Grow, and Be Transformed",
@@ -183,14 +198,24 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     assessment: {
       title: "Where Are You as a Leader?",
-      body: "Discover your leadership profile and sphere of impact in seven minutes. Get honest questions, a clear picture of where you stand, and a recommended next step.",
-      cta: "Take Free Assessment",
+      body: "Discover your leadership profile and sphere of impact in 10 questions. Get honest questions, a clear picture of where you stand, and a recommended next step.",
+      cta: "Take Leadership Assessment",
+    },
+    trailer: {
+      eyebrow: "Mentorship Preview",
+      play: "Play the mentorship trailer",
+      duration: "Mentorship trailer",
+      endEyebrow: "You have seen the invitation",
+      endBody: "Now find out which of the three tracks is built for where you are right now.",
+      endCta: "Unlock Your Next Level",
+      replay: "Watch again",
     },
     heroCurrent: {
       eyebrow: "Apostolic Leader · Social Reformer · Global Voice",
       body: "For over three decades, one man's voice has called a generation to transform society through the power of kingdom principles.",
       ctaStartHere: "Start Here",
-      ctaAssessment: "Take Free Assessment",
+      ctaAssessment: "Take Leadership Assessment",
+      ctaMissions: "Join Global Missions Network",
     },
     statsSection: {
       eyebrow: "Global Impact",
@@ -241,7 +266,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       subtitle:
         "Un réseau mondial de transformation dédié à la vocation, au discipulat, au leadership, au mentorat et à la construction stratégique d'institutions et de nations.",
       ctaJourney: "Choisissez votre parcours",
-      ctaAssessment: "Faire l'évaluation",
+      ctaAssessment: "Faire l'évaluation de leadership",
     },
     nextGathering: {
       titlePre: "Prochain ",
@@ -265,9 +290,11 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     journeyStrip: {
       growSpiritually: "Grandir Spirituellement",
       becomeLeader: "Devenir un Leader",
-      joinCommunity: "Rejoindre une Communauté",
+      joinCommunity: "Rejoindre la Communauté",
       accessTeachings: "Accéder aux Enseignements",
       exploreMinistry: "Découvrir les Ministères",
+      partner: "Devenir Partenaire",
+      volunteer: "Devenir Bénévole",
     },
     events: {
       title: "Rassemblements mondiaux",
@@ -298,14 +325,24 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     assessment: {
       title: "Où en êtes-vous en tant que leader ?",
-      body: "Découvrez votre profil de leadership et votre sphère d'impact grâce à notre diagnostic institutionnel de 7 minutes. Des questions honnêtes, une image claire et une prochaine étape recommandée.",
-      cta: "Faire l'évaluation",
+      body: "Découvrez votre profil de leadership et votre sphère d'impact grâce à notre diagnostic institutionnel de 10 questions. Des questions honnêtes, une image claire et une prochaine étape recommandée.",
+      cta: "Faire l'évaluation de leadership",
+    },
+    trailer: {
+      eyebrow: "Aperçu du mentorat",
+      play: "Lancer la bande-annonce du mentorat",
+      duration: "Bande-annonce du mentorat",
+      endEyebrow: "Vous avez vu l'invitation",
+      endBody: "Découvrez maintenant lequel des trois parcours correspond à votre situation actuelle.",
+      endCta: "Débloquez votre prochain niveau",
+      replay: "Revoir",
     },
     heroCurrent: {
       eyebrow: "Leader apostolique · Réformateur social · Voix mondiale",
       body: "Depuis plus de trois décennies, la voix d'un seul homme a appelé une génération à transformer la société par le pouvoir des principes du royaume.",
       ctaStartHere: "Commencer ici",
-      ctaAssessment: "Faire l'évaluation gratuite",
+      ctaAssessment: "Faire l'évaluation de leadership",
+      ctaMissions: "Rejoindre le Réseau des Missions Mondiales",
     },
     statsSection: {
       eyebrow: "Impact mondial",
@@ -356,7 +393,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       subtitle:
         "Uma rede global de transformação dedicada ao propósito, ao discipulado, à liderança, à mentoria e à construção estratégica de instituições e nações.",
       ctaJourney: "Escolha o seu percurso",
-      ctaAssessment: "Fazer a avaliação",
+      ctaAssessment: "Fazer a Avaliação de Liderança",
     },
     nextGathering: {
       titlePre: "Próximo ",
@@ -379,10 +416,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     journeyStrip: {
       growSpiritually: "Crescer Espiritualmente",
-      becomeLeader: "Tornar-se Líder",
-      joinCommunity: "Juntar-se a uma Comunidade",
+      becomeLeader: "Torne-se um Líder",
+      joinCommunity: "Juntar-se à Comunidade",
       accessTeachings: "Aceder aos Ensinamentos",
       exploreMinistry: "Explorar os Ministérios",
+      partner: "Seja Parceiro",
+      volunteer: "Seja Voluntário",
     },
     events: {
       title: "Encontros globais",
@@ -413,14 +452,24 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     assessment: {
       title: "Onde está como líder?",
-      body: "Descubra o seu perfil de liderança e a sua esfera de impacto através do nosso diagnóstico institucional de 7 minutos. Perguntas honestas, uma imagem clara e um próximo passo recomendado.",
-      cta: "Fazer a avaliação",
+      body: "Descubra o seu perfil de liderança e a sua esfera de impacto através do nosso diagnóstico institucional de 10 perguntas. Perguntas honestas, uma imagem clara e um próximo passo recomendado.",
+      cta: "Fazer a Avaliação de Liderança",
+    },
+    trailer: {
+      eyebrow: "Prévia do Mentorado",
+      play: "Reproduzir o trailer do mentorado",
+      duration: "Trailer do mentorado",
+      endEyebrow: "Você viu o convite",
+      endBody: "Agora descubra qual das três trilhas foi feita para onde você está agora.",
+      endCta: "Desbloqueie o Seu Próximo Nível",
+      replay: "Ver novamente",
     },
     heroCurrent: {
       eyebrow: "Líder Apostólico · Reformador Social · Voz Global",
       body: "Por mais de três décadas, a voz de um homem tem chamado uma geração a transformar a sociedade através do poder dos princípios do reino.",
       ctaStartHere: "Comece Aqui",
-      ctaAssessment: "Fazer Avaliação Gratuita",
+      ctaAssessment: "Fazer a Avaliação de Liderança",
+      ctaMissions: "Juntar-se à Rede Global de Missões",
     },
     statsSection: {
       eyebrow: "Impacto Global",
@@ -471,7 +520,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       subtitle:
         "Mtandao wa kimataifa wa mabadiliko uliojitolea kwa kusudi, ufuasi, uongozi, ushauri, na ujenzi wa kimkakati wa taasisi na mataifa.",
       ctaJourney: "Chagua safari yako",
-      ctaAssessment: "Fanya tathmini",
+      ctaAssessment: "Fanya Tathmini ya Uongozi",
     },
     nextGathering: {
       titlePre: "",
@@ -498,6 +547,8 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       joinCommunity: "Jiunge na Jamii",
       accessTeachings: "Fikia Mafundisho",
       exploreMinistry: "Gundua Huduma",
+      partner: "Kuwa Mshirika",
+      volunteer: "Kujitolea",
     },
     events: {
       title: "Mikutano ya Kimataifa",
@@ -528,14 +579,24 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     assessment: {
       title: "Uko wapi kama kiongozi?",
-      body: "Gundua wasifu wako wa uongozi na nyanja yako ya athari kupitia uchunguzi wetu wa kitaasisi wa dakika 7. Maswali ya kweli, picha iliyo wazi, na hatua inayofuata inayopendekezwa.",
-      cta: "Fanya tathmini",
+      body: "Gundua wasifu wako wa uongozi na nyanja yako ya athari kupitia uchunguzi wetu wa kitaasisi wa maswali 10. Maswali ya kweli, picha iliyo wazi, na hatua inayofuata inayopendekezwa.",
+      cta: "Fanya Tathmini ya Uongozi",
+    },
+    trailer: {
+      eyebrow: "Onyesho la Ushauri",
+      play: "Cheza trela ya ushauri",
+      duration: "Trela ya ushauri",
+      endEyebrow: "Umeona mwaliko",
+      endBody: "Sasa tambua ipi kati ya njia tatu imeundwa kwa hali yako ya sasa.",
+      endCta: "Fungua Kiwango Chako Kinachofuata",
+      replay: "Tazama tena",
     },
     heroCurrent: {
       eyebrow: "Kiongozi wa Kitume · Mrekebishaji wa Jamii · Sauti ya Kimataifa",
       body: "Kwa zaidi ya miongo mitatu, sauti ya mtu mmoja imeita kizazi kubadilisha jamii kupitia nguvu ya kanuni za ufalme.",
       ctaStartHere: "Anza Hapa",
-      ctaAssessment: "Fanya Tathmini ya Bure",
+      ctaAssessment: "Fanya Tathmini ya Uongozi",
+      ctaMissions: "Jiunge na Mtandao wa Misheni za Kimataifa",
     },
     statsSection: {
       eyebrow: "Athari ya Kimataifa",
@@ -586,7 +647,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       subtitle:
         "شبكة تحوّل عالمية مكرّسة للهدف والتلمذة والقيادة والإرشاد والبناء الاستراتيجي للمؤسسات والأمم.",
       ctaJourney: "اختر رحلتك",
-      ctaAssessment: "قم بالتقييم",
+      ctaAssessment: "ابدأ تقييم القيادة",
     },
     nextGathering: {
       titlePre: "",
@@ -609,10 +670,12 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     journeyStrip: {
       growSpiritually: "انمُ روحيًا",
-      becomeLeader: "كن قائدًا",
+      becomeLeader: "كن قائداً",
       joinCommunity: "انضم إلى مجتمع",
       accessTeachings: "الوصول إلى التعاليم",
       exploreMinistry: "استكشف الخدمات",
+      partner: "كن شريكاً",
+      volunteer: "تطوّع",
     },
     events: {
       title: "اللقاءات العالمية",
@@ -641,14 +704,24 @@ export const homeCopy: Record<Locale, HomeCopy> = {
     },
     assessment: {
       title: "أين أنت كقائد؟",
-      body: "اكتشف ملفك القيادي ومجال تأثيرك من خلال تشخيصنا المؤسسي الذي يستغرق 7 دقائق. أسئلة صادقة، وصورة واضحة، وخطوة تالية موصى بها.",
-      cta: "قم بالتقييم",
+      body: "اكتشف ملفك القيادي ومجال تأثيرك من خلال تشخيصنا المؤسسي المكوّن من 10 أسئلة. أسئلة صادقة، وصورة واضحة، وخطوة تالية موصى بها.",
+      cta: "ابدأ تقييم القيادة",
+    },
+    trailer: {
+      eyebrow: "لمحة عن الإرشاد",
+      play: "تشغيل المقطع التعريفي للإرشاد",
+      duration: "المقطع التعريفي للإرشاد",
+      endEyebrow: "لقد رأيت الدعوة",
+      endBody: "اكتشف الآن أي المسارات الثلاثة مُصمَّم لموضعك الحالي.",
+      endCta: "افتح مستواك التالي",
+      replay: "شاهد مرة أخرى",
     },
     heroCurrent: {
       eyebrow: "قائد رسولي · مُصلح اجتماعي · صوت عالمي",
       body: "منذ أكثر من ثلاثة عقود، دعا صوت رجل واحد جيلاً كاملاً لتغيير المجتمع من خلال قوة مبادئ الملكوت.",
       ctaStartHere: "ابدأ هنا",
-      ctaAssessment: "خذ التقييم المجاني",
+      ctaAssessment: "ابدأ تقييم القيادة",
+      ctaMissions: "انضم إلى شبكة الإرساليات العالمية",
     },
     statsSection: {
       eyebrow: "الأثر العالمي",

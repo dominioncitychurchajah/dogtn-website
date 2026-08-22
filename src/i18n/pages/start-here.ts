@@ -58,7 +58,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationEyebrow: "Orientation",
     orientationTitle: "Not sure where to begin?",
     orientationBody:
-      "Our transformation diagnostic identifies your current stage and recommends the journey best suited to your calling — in about seven minutes.",
+      "Our transformation diagnostic identifies your current stage and recommends the journey best suited to your calling — in 10 questions.",
     ctaTakeOrientation: "Take the orientation",
     ctaTalkMentor: "Talk to a mentor",
     chatHero: {
@@ -77,7 +77,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     },
     jumpDivider: "Or jump straight in",
     jumpCards: {
-      assessmentTitle: "Take your 7-minute assessment",
+      assessmentTitle: "Take the 10-question assessment",
       assessmentDesc: "Discover your current leadership level and the best next step.",
       assessmentCta: "Start now",
       mentorTitle: "Get matched with a mentor",
@@ -105,7 +105,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationEyebrow: "Orientation",
     orientationTitle: "Vous ne savez pas par où commencer ?",
     orientationBody:
-      "Notre diagnostic de transformation identifie votre étape actuelle et recommande le parcours le mieux adapté à votre appel — en environ sept minutes.",
+      "Notre diagnostic de transformation identifie votre étape actuelle et recommande le parcours le mieux adapté à votre appel — en 10 questions.",
     ctaTakeOrientation: "Faire l'orientation",
     ctaTalkMentor: "Parler à un mentor",
     chatHero: {
@@ -124,7 +124,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     },
     jumpDivider: "Ou commencez directement",
     jumpCards: {
-      assessmentTitle: "Faites votre évaluation de 7 minutes",
+      assessmentTitle: "Faites l'évaluation en 10 questions",
       assessmentDesc: "Découvrez votre niveau de leadership actuel et la meilleure prochaine étape.",
       assessmentCta: "Commencer maintenant",
       mentorTitle: "Soyez jumelé avec un mentor",
@@ -171,7 +171,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     },
     jumpDivider: "Ou comece já",
     jumpCards: {
-      assessmentTitle: "Faça a sua avaliação de 7 minutos",
+      assessmentTitle: "Faça a avaliação de 10 perguntas",
       assessmentDesc: "Descubra o seu nível de liderança atual e o melhor próximo passo.",
       assessmentCta: "Começar agora",
       mentorTitle: "Seja associado a um mentor",
@@ -218,7 +218,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     },
     jumpDivider: "Au anza moja kwa moja",
     jumpCards: {
-      assessmentTitle: "Fanya tathmini yako ya dakika 7",
+      assessmentTitle: "Fanya tathmini ya maswali 10",
       assessmentDesc: "Gundua kiwango chako cha sasa cha uongozi na hatua bora inayofuata.",
       assessmentCta: "Anza sasa",
       mentorTitle: "Pata mshauri anayekufaa",
@@ -265,7 +265,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     },
     jumpDivider: "أو ابدأ مباشرة",
     jumpCards: {
-      assessmentTitle: "خذ تقييمك لمدة 7 دقائق",
+      assessmentTitle: "أجب عن 10 أسئلة في التقييم",
       assessmentDesc: "اكتشف مستوى قيادتك الحالي وأفضل خطوة تالية.",
       assessmentCta: "ابدأ الآن",
       mentorTitle: "تواصل مع مرشد",

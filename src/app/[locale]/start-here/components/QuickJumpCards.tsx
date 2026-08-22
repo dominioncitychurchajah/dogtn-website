@@ -19,7 +19,7 @@ interface JumpCard {
 const cards = (locale: string): JumpCard[] => [
   {
     id: "assessment",
-    title: "Take your 7-minute assessment",
+    title: "Take the 10-question assessment",
     desc: "Discover your current leadership level and the best next step.",
     icon: ClipboardCheck,
     ctaText: "Start now",

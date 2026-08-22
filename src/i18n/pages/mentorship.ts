@@ -16,6 +16,14 @@ export interface MentorshipCopy {
   title: string;
   subtitle: string;
   exploreTracksCta: string;
+  /** Progression narrative: I -> II -> III. */
+  progressionTitle: string;
+  progressionBody: string;
+  durationLabel: string;
+  commitmentLabel: string;
+  nextCohortLabel: string;
+  monthsUnit: string;
+  hoursPerWeekUnit: string;
   gridTitle: string;
   gridSubtitle: string;
   exploreTrackCta: string;
@@ -52,22 +60,30 @@ export interface MentorshipCopy {
 
 export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   en: {
-    metaTitle: "Mentorship",
+    metaTitle: "Global Leadership Executive",
     metaDescription:
       "Structured mentorship tracks that form leaders from emerging leaders to nation builders through cohorts, personal mentoring, and accountability.",
     eyebrow: "Let Dr David Mentor You",
-    title: "Mentorship Tracks",
+    title: "Global Leadership Executive",
     subtitle:
       "A structured pathway for leaders ready to grow and step into greater responsibility. Choose the track that meets you where you are, and learn from mentors who have walked the road.",
     exploreTracksCta: "Explore the Tracks",
-    gridTitle: "Four Tracks, One Journey of Formation",
+    progressionTitle: "One programme, three levels",
+    progressionBody:
+      "Global Leadership Executive is a single formation path in three levels. You enter where your responsibility actually sits today, and each level prepares you for the next: character before position, sustainability before scale, multiplication before legacy.",
+    durationLabel: "Duration",
+    commitmentLabel: "Commitment",
+    nextCohortLabel: "Next cohort",
+    monthsUnit: "months",
+    hoursPerWeekUnit: "hrs / week",
+    gridTitle: "3 Tracks to 1 Mentorship Transformation",
     gridSubtitle:
       "Each track pairs you with a cohort and a personal mentor, with clear outcomes and a defined rhythm.",
     exploreTrackCta: "Explore Track",
     closingTitle: "Not sure which track fits?",
     closingBody:
       "Take the leadership assessment and discover the track that matches your current season.",
-    takeAssessmentCta: "Take the Assessment",
+    takeAssessmentCta: "Take Leadership Assessment",
     applyNow: "Apply Now",
     viewExpectations: "View Expectations",
     curatedTitle: "Intentionally Curated",
@@ -120,22 +136,30 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     beginApplicationCta: "Begin Application",
   },
   fr: {
-    metaTitle: "Mentorat",
+    metaTitle: "Global Leadership Executive",
     metaDescription:
       "Des parcours de mentorat structurés qui forment des leaders — des leaders émergents aux bâtisseurs de nations — à travers des cohortes, un mentorat personnel et la responsabilité.",
     eyebrow: "Laissez le Dr David vous encadrer",
-    title: "Parcours de mentorat",
+    title: "Global Leadership Executive",
     subtitle:
       "Un cheminement structuré pour les leaders prêts à être formés, corrigés, équipés et envoyés vers de plus grandes responsabilités. Choisissez le parcours qui vous rejoint là où vous êtes — et grandissez auprès de mentors qui ont parcouru le chemin.",
     exploreTracksCta: "Découvrir les parcours",
-    gridTitle: "Quatre parcours, un seul cheminement de formation",
+    progressionTitle: "Un programme, trois niveaux",
+    progressionBody:
+      "Global Leadership Executive est un seul chemin de formation en trois niveaux. Vous entrez là où se situe réellement votre responsabilité aujourd'hui, et chaque niveau prépare le suivant : le caractère avant la position, la durabilité avant l'échelle, la multiplication avant l'héritage.",
+    durationLabel: "Durée",
+    commitmentLabel: "Engagement",
+    nextCohortLabel: "Prochaine cohorte",
+    monthsUnit: "mois",
+    hoursPerWeekUnit: "h / semaine",
+    gridTitle: "3 parcours pour 1 transformation par le mentorat",
     gridSubtitle:
       "Chaque parcours vous associe à une cohorte et à un mentor personnel, avec des résultats clairs et un rythme défini.",
     exploreTrackCta: "Découvrir le parcours",
     closingTitle: "Vous ne savez pas quel parcours vous convient ?",
     closingBody:
       "Passez l'évaluation de leadership — elle vous oriente vers le parcours conçu pour votre saison.",
-    takeAssessmentCta: "Passer l'évaluation",
+    takeAssessmentCta: "Faire l'évaluation de leadership",
     applyNow: "Postuler maintenant",
     viewExpectations: "Voir les attentes",
     curatedTitle: "Soigneusement conçu",
@@ -188,22 +212,30 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     beginApplicationCta: "Commencer la candidature",
   },
   pt: {
-    metaTitle: "Mentoria",
+    metaTitle: "Global Leadership Executive",
     metaDescription:
       "Percursos de mentoria estruturados que formam líderes — desde líderes emergentes a construtores de nações — através de cohortes, mentoria pessoal e responsabilização.",
     eyebrow: "Deixe o Dr. David ser o seu mentor",
-    title: "Percursos de Mentoria",
+    title: "Global Leadership Executive",
     subtitle:
       "Um caminho estruturado para líderes prontos a ser formados, corrigidos, equipados e enviados para maiores responsabilidades. Escolha o percurso que o encontra onde está — e cresça sob mentores que já percorreram o caminho.",
     exploreTracksCta: "Explorar os percursos",
-    gridTitle: "Quatro percursos, uma jornada de formação",
+    progressionTitle: "Um programa, três níveis",
+    progressionBody:
+      "O Global Leadership Executive é um único percurso de formação em três níveis. Você entra onde a sua responsabilidade realmente está hoje, e cada nível prepara o seguinte: carácter antes da posição, sustentabilidade antes da escala, multiplicação antes do legado.",
+    durationLabel: "Duração",
+    commitmentLabel: "Compromisso",
+    nextCohortLabel: "Próxima turma",
+    monthsUnit: "meses",
+    hoursPerWeekUnit: "h / semana",
+    gridTitle: "3 percursos para 1 transformação pelo mentorado",
     gridSubtitle:
       "Cada percurso associa-o a uma cohorte e a um mentor pessoal, com resultados claros e um ritmo definido.",
     exploreTrackCta: "Explorar percurso",
     closingTitle: "Não sabe qual percurso lhe assenta?",
     closingBody:
       "Faça a avaliação de liderança — ela indica-lhe o percurso criado para a sua estação.",
-    takeAssessmentCta: "Fazer a avaliação",
+    takeAssessmentCta: "Fazer a Avaliação de Liderança",
     applyNow: "Candidatar-se agora",
     viewExpectations: "Ver expectativas",
     curatedTitle: "Cuidadosamente concebido",
@@ -256,22 +288,30 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     beginApplicationCta: "Iniciar candidatura",
   },
   sw: {
-    metaTitle: "Uongozaji",
+    metaTitle: "Global Leadership Executive",
     metaDescription:
       "Njia zilizopangwa za uongozaji zinazounda viongozi — kutoka viongozi wanaochipuka hadi wajenzi wa mataifa — kupitia vikundi, uongozaji binafsi na uwajibikaji.",
     eyebrow: "Mruhusu Dkt. David Akuongoze",
-    title: "Njia za Uongozaji",
+    title: "Global Leadership Executive",
     subtitle:
       "Njia iliyopangwa kwa viongozi walio tayari kuundwa, kusahihishwa, kuandaliwa na kutumwa kwenye majukumu makubwa zaidi. Chagua njia inayokukuta ulipo — na ukue chini ya washauri waliopita njia hiyo.",
     exploreTracksCta: "Chunguza Njia",
-    gridTitle: "Njia Nne, Safari Moja ya Kuundwa",
+    progressionTitle: "Programu moja, viwango vitatu",
+    progressionBody:
+      "Global Leadership Executive ni njia moja ya malezi katika viwango vitatu. Unaingia pale ambapo jukumu lako lipo sasa, na kila kiwango kinakutayarisha kwa kinachofuata: tabia kabla ya nafasi, uendelevu kabla ya ukubwa, kuzidisha kabla ya urithi.",
+    durationLabel: "Muda",
+    commitmentLabel: "Ahadi",
+    nextCohortLabel: "Kikundi kijacho",
+    monthsUnit: "miezi",
+    hoursPerWeekUnit: "saa / wiki",
+    gridTitle: "Njia 3 kwa Mabadiliko 1 ya Ushauri",
     gridSubtitle:
       "Kila njia inakuunganisha na kikundi na mshauri binafsi, ikiwa na matokeo wazi na mdundo uliobainishwa.",
     exploreTrackCta: "Chunguza Njia",
     closingTitle: "Huna uhakika ni njia gani inakufaa?",
     closingBody:
       "Fanya tathmini ya uongozi — inakuelekeza kwenye njia iliyoundwa kwa msimu wako.",
-    takeAssessmentCta: "Fanya Tathmini",
+    takeAssessmentCta: "Fanya Tathmini ya Uongozi",
     applyNow: "Omba Sasa",
     viewExpectations: "Angalia Matarajio",
     curatedTitle: "Imeandaliwa kwa Makusudi",
@@ -324,22 +364,30 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     beginApplicationCta: "Anza Maombi",
   },
   ar: {
-    metaTitle: "الإرشاد",
+    metaTitle: "Global Leadership Executive",
     metaDescription:
       "مسارات إرشاد منظَّمة تُشكِّل القادة — من القادة الناشئين إلى بُناة الأمم — من خلال المجموعات والإرشاد الشخصي والمساءلة.",
     eyebrow: "دع الدكتور ديفيد يرشدك",
-    title: "مسارات الإرشاد",
+    title: "Global Leadership Executive",
     subtitle:
       "مسار منظَّم للقادة المستعدين ليُشكَّلوا ويُصحَّحوا ويُجهَّزوا ويُرسَلوا إلى مسؤوليات أعظم. اختر المسار الذي يلتقيك حيث أنت — وانمُ تحت إشراف مرشدين ساروا الطريق.",
     exploreTracksCta: "استكشف المسارات",
-    gridTitle: "أربعة مسارات، رحلة تكوين واحدة",
+    progressionTitle: "برنامج واحد، ثلاثة مستويات",
+    progressionBody:
+      "‏Global Leadership Executive مسار تكوين واحد في ثلاثة مستويات. تبدأ من حيث تقع مسؤوليتك فعليًا اليوم، وكل مستوى يُعِدّك للذي يليه: الشخصية قبل المنصب، والاستدامة قبل التوسّع، والمضاعفة قبل الإرث.",
+    durationLabel: "المدة",
+    commitmentLabel: "الالتزام",
+    nextCohortLabel: "الدفعة القادمة",
+    monthsUnit: "شهرًا",
+    hoursPerWeekUnit: "ساعة / أسبوع",
+    gridTitle: "3 مسارات نحو تحوّل إرشادي واحد",
     gridSubtitle:
       "يربطك كل مسار بمجموعة وبمرشد شخصي، مع نتائج واضحة وإيقاع محدَّد.",
     exploreTrackCta: "استكشف المسار",
     closingTitle: "لست متأكدًا أي مسار يناسبك؟",
     closingBody:
       "أجرِ تقييم القيادة — فهو يوجِّهك إلى المسار المصمَّم لموسمك.",
-    takeAssessmentCta: "ابدأ التقييم",
+    takeAssessmentCta: "ابدأ تقييم القيادة",
     applyNow: "قدِّم الآن",
     viewExpectations: "اطّلع على التوقعات",
     curatedTitle: "مُصمَّم بعناية",

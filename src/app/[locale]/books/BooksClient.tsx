@@ -14,7 +14,10 @@ export default function BooksClient({ locale }: { locale: string }) {
   const c = booksCopy[loc];
   const [filter, setFilter] = useState("all");
 
-  const categories = ["all", "leadership", "prayer", "relationships", "politics"] as const;
+  // Only show a category tab if some book actually has that category.
+  const categories = (["all", "leadership", "prayer", "relationships", "politics"] as const).filter(
+    (cat) => cat === "all" || BOOKS.some((book) => book.category === cat),
+  );
 
   const filteredBooks = filter === "all" ? BOOKS : BOOKS.filter(book => book.category === filter);
 
@@ -75,12 +78,13 @@ export default function BooksClient({ locale }: { locale: string }) {
                 viewport={{ once: true, amount: 0.2 }}
                 className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-black/5 flex flex-col h-full"
               >
-                <div className="bg-[#0A192F] aspect-[3/4] flex items-center justify-center relative overflow-hidden">
+                {/* Covers are ~2:3 (some 1:1) — `contain` shows the whole jacket, never a crop. */}
+                <div className="bg-[#0A192F] aspect-[2/3] flex items-center justify-center relative overflow-hidden">
                   <div className="absolute top-4 right-4 z-10 bg-[#C9A227] text-[#0A192F] text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-full">
                     {c.featured}
                   </div>
                   {book.cover ? (
-                    <Image src={book.cover} alt={`${book.title} cover`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
+                    <Image src={book.cover} alt={`${book.title} cover`} fill sizes="(max-width:768px) 100vw, 33vw" className="object-contain" />
                   ) : (
                     <h3 className="text-3xl font-serif text-[#C9A227] text-center leading-tight p-8">
                       {book.title}
@@ -153,8 +157,8 @@ export default function BooksClient({ locale }: { locale: string }) {
               >
                 <div className="mb-6 flex-grow">
                   {book.cover && (
-                    <div className="relative mb-4 aspect-[3/4] w-24 overflow-hidden rounded-md shadow-sm">
-                      <Image src={book.cover} alt={`${book.title} cover`} fill sizes="96px" className="object-cover" />
+                    <div className="relative mb-4 aspect-[2/3] w-24 overflow-hidden rounded-md bg-white shadow-sm">
+                      <Image src={book.cover} alt={`${book.title} cover`} fill sizes="96px" className="object-contain" />
                     </div>
                   )}
                   <span className="text-xs font-bold text-[#C9A227] uppercase tracking-wider mb-3 block">

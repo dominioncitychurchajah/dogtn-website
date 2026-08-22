@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import {
   ArrowRight,
@@ -12,7 +11,6 @@ import {
   Sparkles,
   FileText,
   Share2,
-  ChevronRight,
   CheckCircle2,
   TrendingUp,
 } from "lucide-react";
@@ -22,87 +20,17 @@ import { Button } from "@/components/ui/Button";
 import { useToast } from "@/components/ui/Toast";
 import { useQuizStore } from "@/lib/quiz-store";
 import { computeResults } from "@/lib/assessment-engine";
-import { dimensions, type Band, type Placement } from "@/data/assessment";
+import { dimensions } from "@/data/assessment";
+import { getTrack, gleLabel } from "@/data/mentorship";
 import { formatDate } from "@/lib/utils";
 
-const VALID_PLACEMENTS: Placement[] = ["none", "basic-alum", "ministry-leader"];
-
-function toPlacement(priorDli: string | undefined): Placement {
-  if (priorDli && (VALID_PLACEMENTS as string[]).includes(priorDli)) {
-    return priorDli as Placement;
-  }
-  return "none";
-}
-
-// Short display labels for the dimension bars (matches the results mockup).
+// Short display labels for the dimension bars.
 const SHORT_LABEL: Record<string, string> = {
   character: "Character",
   vision: "Vision",
   competence: "Competence",
   influence: "Influence",
   kingdom: "Service",
-};
-
-// Band narratives framed as honour, not a grade. Keyed by placement as well as
-// band so the headline never contradicts the Recommended Next Step card below
-// it (e.g. telling a DLI Basic alum that "DLI Basic begins" here).
-const bandNarrative: Record<Band, Record<Placement, { headline: string; body: string }>> = {
-  Emerging: {
-    none: {
-      headline: "You're an Emerging Leader — and every great leader began here.",
-      body: "You carry real hunger and potential. This is the season to lay deep foundations of character and purpose, and there is a clear path forward built for exactly this moment.",
-    },
-    "basic-alum": {
-      headline: "You're an Emerging Leader — even with DLI Basic behind you, the foundations deserve a second pass.",
-      body: "Foundations can loosen over time. This is a season to revisit the core disciplines of character and vision with a refresher built for exactly where you are now.",
-    },
-    "ministry-leader": {
-      headline: "You're an Emerging Leader carrying a ministry — and mentorship will meet you right there.",
-      body: "Leading others while your own foundations are still forming is real weight to carry. The Ministry Leaders mentorship offers the depth and support to grow both together.",
-    },
-  },
-  Developing: {
-    none: {
-      headline: "You're a Developing Leader — and that's exactly where DLI Basic begins.",
-      body: "Your assessment indicates a strong foundational sense of responsibility and service. You possess the raw materials of institutional gravity, yet there is a significant opportunity to refine your strategic vision and core competencies to move from potential to proven global impact.",
-    },
-    "basic-alum": {
-      headline: "You're a Developing Leader — and with DLI Basic behind you, Advanced is your next tier.",
-      body: "Your assessment indicates a strong foundational sense of responsibility and service. With DLI Basic complete and clear momentum already building, the deeper study of strategy and governance in DLI Advanced is your next faithful step.",
-    },
-    "ministry-leader": {
-      headline: "You're a Developing Leader shepherding others — and it's time to deepen.",
-      body: "You carry real responsibility already. The Priesthood Institute will help you steward your calling with greater depth, integrity, and sustainability as you continue to grow.",
-    },
-  },
-  Established: {
-    none: {
-      headline: "You're an Established Leader — and there's a next tier waiting for you.",
-      body: "You already carry weight and deliver results, even without a formal foundation track yet. A DLI Basic fast-track will formalise what you already live out and connect you to the wider network quickly.",
-    },
-    "basic-alum": {
-      headline: "You're an Established Leader — with DLI Basic behind you, it's time to accelerate.",
-      body: "You already carry weight and deliver results. Pairing DLI Advanced with a mentorship track will sharpen your strategy and governance so your impact multiplies through others.",
-    },
-    "ministry-leader": {
-      headline: "You're an Established ministry leader — built to go the distance.",
-      body: "You already carry weight and deliver results. The Ministry Leaders mentorship offers the peer depth and accountability to sustain you for the long haul.",
-    },
-  },
-  Advanced: {
-    none: {
-      headline: "You're an Advanced Leader — called to build what outlasts you.",
-      body: "Your formation places you among mature leaders. We recommend entering DLI Advanced directly via an interview, matched to the scale of calling ahead: institutions, sectors, and nations.",
-    },
-    "basic-alum": {
-      headline: "You're an Advanced Leader — and it's time for the capstone.",
-      body: "Your formation places you among mature leaders, with DLI Basic well behind you. Executive Certification alongside the Nation Builders mentorship will position you to build what outlasts you.",
-    },
-    "ministry-leader": {
-      headline: "You're an Advanced ministry leader — ready to shape what comes next.",
-      body: "Your formation places you among mature leaders carrying real ministry weight. The Nation Builders track invites you to shape institutions, sectors, and nations.",
-    },
-  },
 };
 
 export default function ResultsPage() {
@@ -112,19 +40,17 @@ export default function ResultsPage() {
   const { toast } = useToast();
 
   const answers = useQuizStore((s) => s.answers);
-  const placementStore = useQuizStore((s) => s.placement);
   const reset = useQuizStore((s) => s.reset);
 
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
 
   const hasAnswers = mounted && Object.keys(answers).length > 0;
-  const placement = React.useMemo(() => toPlacement(placementStore["priorDli"]), [placementStore]);
 
   const results = React.useMemo(() => {
     if (!hasAnswers) return null;
-    return computeResults(answers, placement);
-  }, [hasAnswers, answers, placement]);
+    return computeResults(answers);
+  }, [hasAnswers, answers]);
 
   if (!mounted) {
     return (
@@ -146,8 +72,8 @@ export default function ResultsPage() {
             </span>
             <h1 className="text-heading-1 text-ink-900">No results just yet</h1>
             <p className="mt-3 text-body-m text-ink-500">
-              You haven&apos;t taken the assessment yet. It only takes about seven minutes and
-              reveals your next leadership step.
+              You haven&apos;t taken the assessment yet. Ten quick questions reveal which
+              Global Leadership Executive track fits where you are right now.
             </p>
             <Button href={`/${loc}/leadership/assessment`} size="l" className="mt-8">
               Start the Assessment
@@ -159,13 +85,14 @@ export default function ResultsPage() {
     );
   }
 
-  const { dimensionScores, band, recommendation } = results;
-  const narrative = bandNarrative[band][placement];
+  const { dimensionScores, result } = results;
   const characterScore = dimensionScores.character;
+  const track = getTrack(result.trackSlug);
+  const trackLabel = track ? gleLabel(track) : `Global Leadership Executive ${result.level}`;
 
   return (
     <>
-      {/* Results + recommendation */}
+      {/* Results + recommended track */}
       <Section surface="alt">
         <Container>
           {/* Honour narrative header */}
@@ -174,8 +101,8 @@ export default function ResultsPage() {
               <span className="h-px w-12 bg-gold-600" aria-hidden />
               Leadership Assessment Results
             </span>
-            <h1 className="text-display-l leading-tight text-ink-900">{narrative.headline}</h1>
-            <p className="mt-8 max-w-2xl text-body-l leading-relaxed text-ink-500">{narrative.body}</p>
+            <h1 className="text-display-l leading-tight text-ink-900">{result.headline}</h1>
+            <p className="mt-8 max-w-2xl text-body-l leading-relaxed text-ink-500">{result.body}</p>
           </header>
 
           <div className="mt-14 grid grid-cols-1 items-start gap-6 lg:grid-cols-12">
@@ -226,7 +153,7 @@ export default function ResultsPage() {
               </div>
             </section>
 
-            {/* Recommendation + resume journey */}
+            {/* Recommended track */}
             <aside className="space-y-6 lg:col-span-5">
               {/* Gravity card */}
               <div className="relative overflow-hidden rounded-[var(--radius-l)] bg-ink-900 p-8 text-paper-0 shadow-elev-3 md:p-10">
@@ -237,15 +164,25 @@ export default function ResultsPage() {
                 <div className="relative">
                   <span className="mb-8 flex items-center gap-2 text-caption font-semibold uppercase tracking-[0.2em] text-gold-400">
                     <span className="h-2 w-2 animate-pulse rounded-full bg-flame-600" aria-hidden />
-                    Recommended Next Step
+                    Your Recommended Track
                   </span>
-                  <h3 className="text-heading-2 text-paper-0">{recommendation.title}</h3>
-                  <p className="mt-4 text-body-m leading-relaxed text-ink-300">{recommendation.body}</p>
+                  <p className="text-caption font-semibold uppercase tracking-[0.2em] text-gold-400">
+                    {trackLabel}
+                  </p>
+                  <h3 className="mt-2 text-heading-2 text-paper-0">{track?.name ?? trackLabel}</h3>
+                  <p className="mt-4 text-body-m leading-relaxed text-ink-300">{result.why}</p>
+
+                  <div className="mt-8 rounded-[var(--radius-m)] border border-paper-0/15 bg-paper-0/5 p-5">
+                    <span className="mb-2 block text-caption font-semibold uppercase tracking-wider text-gold-400">
+                      Your next step
+                    </span>
+                    <p className="text-body-s leading-relaxed text-paper-0">{result.nextStep}</p>
+                  </div>
 
                   <div className="mt-8 space-y-4">
                     <div className="flex items-center gap-3 text-body-s">
                       <CalendarDays className="h-5 w-5 text-gold-400" aria-hidden />
-                      <span>Next cohort: {formatDate(recommendation.cohortDate)}</span>
+                      <span>Next cohort: {formatDate(result.cohortDate)}</span>
                     </div>
                     <div className="flex items-center gap-3 text-body-s">
                       <Clock className="h-5 w-5 text-gold-400" aria-hidden />
@@ -254,39 +191,27 @@ export default function ResultsPage() {
                   </div>
 
                   <div className="mt-10 flex flex-col gap-4">
+                    {/* Primary: routes dynamically to the recommended GLE track. */}
                     <Button
-                      href={`/${loc}${recommendation.cta.href}`}
+                      href={`/${loc}/mentorship/${result.trackSlug}`}
                       size="l"
-                      className="w-full uppercase tracking-widest"
+                      className="w-full whitespace-normal h-auto min-h-14 px-6 py-4 text-center text-body-m leading-snug uppercase tracking-wider"
                     >
-                      {recommendation.cta.label}
+                      Explore Global Leadership Executive Track
                       <ArrowRight className="h-5 w-5 rtl:rotate-180" aria-hidden />
                     </Button>
+                    {/* Secondary: the Dominion Leadership Institute page. */}
                     <Button
-                      href={`/${loc}/leadership`}
+                      href={`/${loc}/institutions/dli`}
                       size="l"
                       variant="secondary"
-                      className="w-full border-paper-0/30 bg-transparent uppercase tracking-widest text-paper-0 hover:bg-paper-0/5"
+                      className="w-full whitespace-normal h-auto min-h-14 px-6 py-4 text-center text-body-m leading-snug uppercase tracking-wider border-paper-0/30 bg-transparent text-paper-0 hover:bg-paper-0/5"
                     >
-                      View Syllabus
+                      Explore the Dominion Leadership Institute
                     </Button>
                   </div>
                 </div>
               </div>
-
-              {/* Resume journey */}
-              <Link
-                href={`/${loc}/journeys/grow-spiritually`}
-                className="group flex items-center justify-between rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-8 transition-colors hover:border-gold-600/40"
-              >
-                <div>
-                  <span className="mb-2 block text-caption font-semibold uppercase tracking-wider text-ink-500">
-                    Resume Journey
-                  </span>
-                  <h4 className="text-heading-3 text-ink-900">Spiritual Maturity Assessment</h4>
-                </div>
-                <ChevronRight className="h-6 w-6 shrink-0 text-gold-hover transition-transform group-hover:translate-x-1 rtl:rotate-180" aria-hidden />
-              </Link>
 
               <div className="text-center">
                 <Button variant="ghost" size="s" onClick={() => reset()}>
@@ -319,10 +244,9 @@ export default function ResultsPage() {
             <div>
               <h2 className="text-heading-1 text-paper-0">Unlocking Your Leadership Signature</h2>
               <p className="mt-6 text-body-l leading-relaxed text-ink-300">
-                The &ldquo;{band} Leader&rdquo; phase is a critical inflection point in the DOGTN
-                ecosystem. It is where raw talent is forged into institutional authority through the
-                acquisition of the Three Pillars: Visionary Clarity, Tactical Competence, and Ethical
-                Fortitude.
+                {trackLabel} is a deliberate inflection point in the DOGTN ecosystem. It is where
+                raw talent is forged into institutional authority through the acquisition of the
+                Three Pillars: Visionary Clarity, Tactical Competence, and Ethical Fortitude.
               </p>
               <ul className="mt-8 space-y-6">
                 <li className="flex gap-4">

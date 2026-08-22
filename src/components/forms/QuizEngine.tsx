@@ -5,37 +5,18 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { useQuizStore } from "@/lib/quiz-store";
-import { questions, selfPlacementQuestions } from "@/data/assessment";
+import { questions } from "@/data/assessment";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Button } from "@/components/ui/Button";
 
-const LIKERT: { label: string; value: number }[] = [
-  { label: "Strongly Disagree", value: 1 },
-  { label: "Disagree", value: 2 },
-  { label: "Neutral", value: 3 },
-  { label: "Agree", value: 4 },
-  { label: "Strongly Agree", value: 5 },
-];
-
-// The full ordered sequence: 20 questions, then 3 self-placement questions.
-type Step =
-  | { kind: "question"; index: number }
-  | { kind: "placement"; index: number };
-
-const steps: Step[] = [
-  ...questions.map((_, i) => ({ kind: "question" as const, index: i })),
-  ...selfPlacementQuestions.map((_, i) => ({ kind: "placement" as const, index: i })),
-];
-
-const TOTAL = steps.length;
+// The flow is exactly the 10 assessment questions — nothing else is presented.
+const TOTAL = questions.length;
 
 export function QuizEngine({ locale }: { locale: Locale }) {
   const router = useRouter();
   const currentIndex = useQuizStore((s) => s.currentIndex);
   const answers = useQuizStore((s) => s.answers);
-  const placement = useQuizStore((s) => s.placement);
   const setAnswer = useQuizStore((s) => s.setAnswer);
-  const setPlacement = useQuizStore((s) => s.setPlacement);
   const next = useQuizStore((s) => s.next);
   const prev = useQuizStore((s) => s.prev);
 
@@ -53,7 +34,6 @@ export function QuizEngine({ locale }: { locale: Locale }) {
 
   // Clamp index into range.
   const idx = Math.min(Math.max(0, currentIndex), TOTAL - 1);
-  const step = steps[idx];
   const isLast = idx === TOTAL - 1;
 
   function goNext() {
@@ -74,38 +54,14 @@ export function QuizEngine({ locale }: { locale: Locale }) {
     scheduleAdvance();
   }
 
-  function selectPlacement(key: string, value: string) {
-    setPlacement(key, value);
-    scheduleAdvance();
-  }
-
   // Build the current view model.
-  let topic: string;
-  let prompt: string;
-  let options: { label: string; value: number | string }[];
-  let selected: number | string | undefined;
-  let onSelect: (value: number | string) => void;
-  let legendId: string;
-
-  if (step.kind === "question") {
-    const q = questions[step.index];
-    topic =
-      q.type === "scenario" ? "Scenario" : dimensionLabel(q.dimension);
-    prompt = q.prompt;
-    options =
-      q.type === "likert" ? LIKERT : q.options ?? [];
-    selected = answers[q.id];
-    onSelect = (v) => selectQuestion(q.id, v as number);
-    legendId = `q-${q.id}`;
-  } else {
-    const p = selfPlacementQuestions[step.index];
-    topic = "About You";
-    prompt = p.prompt;
-    options = p.options;
-    selected = placement[p.key];
-    onSelect = (v) => selectPlacement(p.key, v as string);
-    legendId = `p-${p.key}`;
-  }
+  const q = questions[idx];
+  const topic = dimensionLabel(q.dimension);
+  const prompt = q.prompt;
+  const options: { label: string; value: number }[] = q.options;
+  const selected: number | undefined = answers[q.id];
+  const onSelect = (v: number) => selectQuestion(q.id, v);
+  const legendId = `q-${q.id}`;
 
   const answered = idx + 1;
   const pct = Math.round((answered / TOTAL) * 100);

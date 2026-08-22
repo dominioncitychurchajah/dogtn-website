@@ -59,9 +59,9 @@ export function Footer({ locale }: { locale: Locale }) {
       title: "Ministries",
       links: [
         { label: "Dominion City", href: p("/ministry") },
-        { label: "Golden Heart Foundation", href: p("/ministry#golden-heart") },
-        { label: "Leadership Institute", href: p("/ministry#dli") },
-        { label: "Global Missions", href: p("/ministry#missions") },
+        { label: "Golden Heart Foundation", href: "https://www.goldenheartplace.org/" },
+        { label: "Leadership Institute", href: p("/institutions/dli") },
+        { label: "Global Missions", href: p("/institutions/global-missions-network") },
       ],
     },
     {
@@ -69,8 +69,8 @@ export function Footer({ locale }: { locale: Locale }) {
       links: [
         { label: "Start Here", href: p("/start-here") },
         { label: "Books", href: p("/books") },
-        { label: "Media", href: p("/media") },
-        { label: "Free Assessment", href: p("/leadership/assessment") },
+        { label: "Media Center", href: p("/media") },
+        { label: "Leadership Assessment", href: p("/leadership/assessment") },
         { label: "Events", href: "https://dcglobal-gules.vercel.app/en/events" },
       ],
     },

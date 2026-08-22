@@ -7,14 +7,14 @@
   "nav": {
     "startHere": "Start Here",
     "teachings": "Teachings",
-    "media": "Media",
+    "media": "Media Center",
     "leadership": "Leadership",
     "mentorship": "Mentorship",
     "institutions": "Institutions",
     "community": "Community",
     "events": "Events",
     "library": "Library",
-    "give": "Take Free Assessment",
+    "give": "Apply for Mentorship",
     "myJourney": "My Journey",
     "search": "Search resources…",
     "account": "Account",
@@ -23,7 +23,7 @@
   },
   "common": {
     "learnMore": "Learn More",
-    "takeAssessment": "Take Free Assessment",
+    "takeAssessment": "Apply for Mentorship",
     "chooseJourney": "Choose Your Journey",
     "watchNow": "Watch Now",
     "listen": "Listen",
@@ -50,7 +50,7 @@
     "heroTitle": "Raising Leaders That Transform Society.",
     "heroSubtitle": "A global network dedicated to purpose, discipleship, leadership, mentorship, and the strategic building of institutions and nations.",
     "assessmentTitle": "Where are you as a leader?",
-    "assessmentBody": "Discover your leadership profile and your sphere of impact through our 7-minute diagnostic.",
+    "assessmentBody": "Discover your leadership profile and your sphere of impact through our 10-question diagnostic.",
     "newsletterTitle": "Stay Connected to the Vision",
     "newsletterBody": "Receive weekly wisdom, institutional updates, and access to the Transformation Network."
   }

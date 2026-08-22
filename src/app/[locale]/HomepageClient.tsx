@@ -14,6 +14,7 @@ import { NextGathering } from "@/components/sections/NextGathering";
 import { JourneyStrip } from "@/components/sections/JourneyStrip";
 import { AssessmentBand } from "@/components/sections/AssessmentBand";
 import { BooksCarousel } from "@/components/sections/BooksCarousel";
+import { TrailerPlayer } from "@/components/sections/MentorshipTrailer";
 
 const fadeUpVariant = {
   initial: { opacity: 0, y: 30 },
@@ -88,7 +89,7 @@ export function HomepageClient({ locale }: { locale: string }) {
   return (
     <main className="w-full flex flex-col min-h-screen">
       {/* SECTION 1 — HERO */}
-      <section className="relative w-full h-screen bg-[#0A192F] overflow-hidden flex items-center">
+      <section className="relative w-full min-h-screen bg-[#0A192F] overflow-hidden flex items-center py-28 lg:py-20">
         <div className="absolute inset-y-0 right-0 w-full md:w-[60%] z-0">
           <Image
             src="/images/pastor/hero-stadium-arms-wide.jpg"
@@ -115,7 +116,8 @@ export function HomepageClient({ locale }: { locale: string }) {
         </div>
 
         <Container className="relative z-10 w-full">
-          <div className="max-w-[480px] w-full lg:w-2/5">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="max-w-[480px] w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -145,7 +147,17 @@ export function HomepageClient({ locale }: { locale: string }) {
                   <ClipboardCheck className="w-4 h-4" /> {heroCopy.ctaAssessment}
                 </Link>
               </div>
+              <Link
+                href={`/${locale}/institutions/global-missions-network`}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition-colors hover:text-[#C9A227]"
+              >
+                {heroCopy.ctaMissions} <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
+            </div>
+
+            {/* Mentorship trailer — the one player on the page */}
+            <TrailerPlayer locale={loc} className="w-full" />
           </div>
         </Container>
 

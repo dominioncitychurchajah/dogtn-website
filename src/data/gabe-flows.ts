@@ -40,7 +40,20 @@ export const GABE_NODES: Record<string, GabeNode> = {
       { kind: "advance", label: "I want to grow as a leader", to: "leader" },
       { kind: "advance", label: "I lead a ministry", to: "ministry" },
       { kind: "advance", label: "I want to transform my nation", to: "nation" },
-      { kind: "advance", label: "I'm a member looking for my chapter", to: "chapter" },
+      {
+        kind: "link",
+        label: "Access Resources",
+        href: "/books",
+        confirm: "Opening the library.",
+        event: "resources_opened_via_chat",
+      },
+      {
+        kind: "link",
+        label: "Sign up for Mentorship",
+        href: "/mentorship",
+        confirm: "Opening the mentorship tracks so you can apply.",
+        event: "mentorship_started_via_chat",
+      },
       { kind: "advance", label: "I want to give or partner", to: "giving" },
     ],
   },
@@ -68,11 +81,11 @@ export const GABE_NODES: Record<string, GabeNode> = {
   leader: {
     id: "leader",
     bot:
-      "We love to see leaders taking initiative. The best way to start is with our seven-minute Leadership Assessment. It evaluates your current strengths and helps us recommend the right training pathway for you.",
+      "We love to see leaders taking initiative. The best way to start is with our 10-question Leadership Assessment. It identifies where you are now and which Global Leadership Executive track is built for your next level.",
     chips: [
       {
         kind: "link",
-        label: "Take the 7-min assessment",
+        label: "Take Leadership Assessment",
         href: "/leadership/assessment",
         confirm: "Let's begin. Opening your Leadership Assessment now.",
         event: "assessment_started_via_chat",
@@ -122,26 +135,6 @@ export const GABE_NODES: Record<string, GabeNode> = {
         label: "See our Ministry",
         href: "/ministry",
         confirm: "Opening our Ministry.",
-      },
-      BACK_TO_MENU,
-    ],
-  },
-  chapter: {
-    id: "chapter",
-    bot: "Are you looking for a Dominion City chapter near you, or would you like to stay connected online?",
-    chips: [
-      {
-        kind: "link",
-        label: "Find a chapter",
-        href: "https://dcglobal-gules.vercel.app/en/locations",
-        external: true,
-        confirm: "Opening Locations.",
-      },
-      {
-        kind: "link",
-        label: "Stay connected online",
-        href: "/ministry",
-        confirm: "Opening Ministry.",
       },
       BACK_TO_MENU,
     ],

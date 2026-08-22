@@ -134,6 +134,21 @@ export default function ContactPage() {
               {c.trustLives}
             </div>
           </div>
+          <p className="mt-6 text-[13px] text-white/55">
+            {c.responseFallback}{" "}
+            <a href="tel:+2348035508230" className="font-semibold text-[#C9A227] hover:text-[#d4b85a]">
+              +234&#8209;8035508230
+            </a>
+            {" · "}
+            <a
+              href="https://wa.me/2348035508230"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-[#C9A227] hover:text-[#d4b85a]"
+            >
+              WhatsApp
+            </a>
+          </p>
         </motion.div>
       </section>
 

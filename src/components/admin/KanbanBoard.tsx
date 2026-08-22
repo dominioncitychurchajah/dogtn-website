@@ -23,7 +23,7 @@ const COLUMNS: { key: string; label: string; tone: string }[] = [
 const APPLICANTS: Record<string, Applicant[]> = {
   submitted: [
     { id: "APP-1042", name: "Chidera Nwosu", track: "Emerging Leaders", country: "Nigeria" },
-    { id: "APP-1043", name: "Grace Mensah", track: "Young Professionals", country: "Ghana" },
+    { id: "APP-1043", name: "Grace Mensah", track: "Emerging Leaders", country: "Ghana" },
     { id: "APP-1044", name: "Samuel Kimani", track: "Ministry Leaders", country: "Kenya" },
   ],
   review: [
@@ -35,7 +35,7 @@ const APPLICANTS: Record<string, Applicant[]> = {
   ],
   accepted: [
     { id: "APP-1030", name: "Ruth Eze", track: "Emerging Leaders", country: "Nigeria", score: 88 },
-    { id: "APP-1031", name: "Peter Mwangi", track: "Young Professionals", country: "Kenya", score: 85 },
+    { id: "APP-1031", name: "Peter Mwangi", track: "Emerging Leaders", country: "Kenya", score: 85 },
   ],
   waitlist: [{ id: "APP-1028", name: "Joy Bello", track: "Emerging Leaders", country: "Nigeria", score: 63 }],
   declined: [{ id: "APP-1021", name: "Anon Applicant", track: "Ministry Leaders", country: "USA", score: 41 }],

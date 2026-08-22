@@ -39,7 +39,8 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
       mega: [
         { label: "His Story", href: p("/his-story"), desc: "The man, the mandate, the mission" },
         { label: "The Ministries", href: p("/ministry"), desc: "Global network overview" },
-        { label: "Take the Leadership Assessment", href: p("/leadership/assessment"), desc: "7-minute free assessment" },
+        { label: "Dominion Leadership Institute", href: p("/institutions/dli"), desc: "Train for character & Kingdom influence" },
+        { label: "Take the Leadership Assessment", href: p("/leadership/assessment"), desc: "10 questions · find your track" },
       ],
     },
     { label: s.mentorship, href: p("/mentorship") },

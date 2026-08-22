@@ -90,7 +90,7 @@ export function MobileNav({
       </div>
       <div className="flex items-center justify-between gap-4 border-t border-paper-0/10 px-5 py-4">
         <LanguageSwitcher locale={locale} />
-        <Button href={`/${locale}/leadership/assessment`} onClick={onClose} className="flex-1">
+        <Button href={`/${locale}/mentorship`} onClick={onClose} className="flex-1">
           {ctaLabel}
         </Button>
       </div>

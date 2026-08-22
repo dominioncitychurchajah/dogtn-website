@@ -71,7 +71,7 @@ export const DECISION_TREE: {
     "take-assessment": {
       keywords: ["assessment", "test", "quiz", "evaluate", "where do i start", "not sure", "confused", "help me decide", "diagnostic", "console", "lost", "unsure", "dont know", "do not know", "begin", "new", "first time"],
       title: "Leadership Assessment",
-      description: "Take our seven-minute assessment to discover your current leadership level.",
+      description: "Take our 10-question assessment to discover your current leadership level.",
       url: "/leadership/assessment",
       cta: "Take Assessment",
       secondaryCta: "Learn More",

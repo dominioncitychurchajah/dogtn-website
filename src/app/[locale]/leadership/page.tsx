@@ -56,7 +56,7 @@ export default async function LeadershipPage({
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const c = leadershipCopy[loc];
 
-  const dliHref = `/${loc}/ministry`;
+  const dliHref = `/${loc}/institutions/dli`;
 
   const modules = [
     {

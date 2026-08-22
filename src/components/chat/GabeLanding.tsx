@@ -1,13 +1,13 @@
-import { ChevronRight, MapPin, ClipboardCheck, BookOpen, HandHeart } from "lucide-react";
+import { ChevronRight, GraduationCap, ClipboardCheck, BookOpen, HandHeart } from "lucide-react";
 import { GabeFace } from "@/components/chat/GabeFace";
 import { LANDING_PRIMARY_CHIP, LANDING_SECONDARY, type LandingIconKey } from "@/data/gabe-landing";
 import type { GabeChip } from "@/data/gabe-flows";
 
-const ICONS: Record<LandingIconKey, typeof MapPin> = {
-  chapter: MapPin,
-  assessment: ClipboardCheck,
-  teachings: BookOpen,
+const ICONS: Record<LandingIconKey, typeof BookOpen> = {
   giving: HandHeart,
+  assessment: ClipboardCheck,
+  resources: BookOpen,
+  mentorship: GraduationCap,
 };
 
 export function GabeLanding({ onSelect }: { onSelect: (chip: GabeChip) => void }) {

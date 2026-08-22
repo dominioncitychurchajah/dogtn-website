@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import MediaClient from "./MediaClient";
 
 export const metadata: Metadata = {
-  title: "Media | Dr. David Ogbueli",
+  title: "Media Center | Dr. David Ogbueli",
   description: "Decades of transformative teaching, now available wherever you are.",
 };
 

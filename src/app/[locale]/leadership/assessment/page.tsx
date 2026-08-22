@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "Leadership Assessment",
   description:
-    "A seven-minute assessment designed to evaluate your current sphere of impact and identify the next step in your leadership journey.",
+    "Ten quick questions that identify where you are in your leadership journey and which Global Leadership Executive mentorship track is designed for your next level.",
 };
 
 const PILLARS = [
@@ -53,8 +53,8 @@ export default async function AssessmentIntroPage({
           </span>
           <h1 className="text-display-l text-ink-900">Find Your Next Leadership Step</h1>
           <p className="mx-auto mt-6 max-w-2xl text-body-l leading-relaxed text-ink-500">
-            A seven-minute assessment designed to evaluate your current sphere of impact and
-            identify the next step in your leadership journey.
+            Ten quick questions that identify where you are in your leadership journey — and
+            which Global Leadership Executive mentorship track is designed for your next level.
           </p>
         </div>
 
@@ -68,16 +68,16 @@ export default async function AssessmentIntroPage({
             <div>
               <h2 className="text-heading-2 text-ink-900">Leadership Assessment</h2>
               <p className="mt-4 text-body-m text-ink-500">
-                This assessment evaluates your leadership across five key areas and provides a
-                clear picture of where you stand and where to go next.
+                Ten questions across five key areas give a clear picture of where you stand and
+                which of the three Global Leadership Executive tracks meets you there.
               </p>
 
               <div className="mt-8 space-y-4">
                 <div className="flex items-start gap-3">
                   <Timer className="mt-1 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
                   <div>
-                    <p className="text-body-m font-semibold text-ink-900">7-Minute Duration</p>
-                    <p className="text-caption text-ink-500">A focused, efficient assessment that respects your time.</p>
+                    <p className="text-body-m font-semibold text-ink-900">10 Questions</p>
+                    <p className="text-caption text-ink-500">Quick and intentional — about three minutes of your time.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

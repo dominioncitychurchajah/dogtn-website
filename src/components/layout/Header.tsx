@@ -140,7 +140,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             </Link>
             <ThemeToggle className="hidden lg:flex" />
             <LanguageSwitcher locale={locale} className="hidden sm:block" />
-            <Button href={`/${locale}/leadership/assessment`} size="s" className="hidden sm:inline-flex">
+            <Button href={`/${locale}/mentorship`} size="s" className="hidden sm:inline-flex">
               {strings.give}
             </Button>
             <button

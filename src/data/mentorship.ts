@@ -3,6 +3,9 @@ import type { MentorshipTrack } from "@/data/types";
 export const tracks: MentorshipTrack[] = [
   {
     slug: "emerging-leaders",
+    level: 1,
+    durationMonths: 6,
+    hoursPerWeek: 3,
     name: "Emerging Leaders",
     audience: "Students and early-career leaders discovering their calling.",
     hero: "Find your footing. Discover the leader you were made to be.",
@@ -25,7 +28,6 @@ export const tracks: MentorshipTrack[] = [
     eligibility: [
       "Aged 16–25",
       "A teachable, committed posture",
-      "Completed the Discover Your Purpose journey (recommended)",
     ],
     faqs: [
       { q: "Is this free?", a: "Yes. Emerging Leaders is offered free to participants." },
@@ -35,40 +37,10 @@ export const tracks: MentorshipTrack[] = [
     ],
   },
   {
-    slug: "young-professionals",
-    name: "Young Professionals",
-    audience: "Working professionals bringing kingdom principles into their careers.",
-    hero: "Lead with integrity where you work. Make your career count.",
-    image: "/images/pastor/hero-stadium-arms-wide.jpg",
-    outcomes: [
-      "A framework for integrity and excellence in the workplace",
-      "Confidence to lead teams and projects",
-      "A network of like-minded professional peers",
-      "A personal development plan for the next three years",
-    ],
-    expectations: [
-      { item: "Time commitment", detail: "4 hours per week for 9 months" },
-      { item: "Cohort sessions", detail: "Fortnightly evening masterclasses" },
-      { item: "Personal mentoring", detail: "Monthly one-to-one with a senior professional" },
-      { item: "Assignments", detail: "Workplace application projects" },
-    ],
-    mentorStructure:
-      "Sector-aligned cohorts led by experienced professionals, with fortnightly masterclasses and monthly one-to-one mentoring.",
-    cohortDates: ["2026-09-01", "2026-12-01", "2027-03-01"],
-    eligibility: [
-      "Aged 25–40 in active employment or business",
-      "At least two years of work experience",
-      "Committed to applying principles in your workplace",
-    ],
-    faqs: [
-      { q: "Can I do this alongside a full-time job?", a: "Yes — sessions are scheduled for evenings and weekends." },
-      { q: "Is it sector-specific?", a: "Cohorts are grouped by sector where numbers allow." },
-      { q: "Is this free?", a: "Yes. Young Professionals is offered free to participants." },
-      { q: "Do I receive a certificate?", a: "Yes, on completion of the programme and capstone project." },
-    ],
-  },
-  {
     slug: "ministry-leaders",
+    level: 2,
+    durationMonths: 12,
+    hoursPerWeek: 5,
     name: "Global Leaders",
     audience: "Ministers and ministry leaders stewarding a work.",
     hero: "Go deeper. Steward your calling for the long haul.",
@@ -83,10 +55,10 @@ export const tracks: MentorshipTrack[] = [
       { item: "Time commitment", detail: "5 hours per week for 12 months" },
       { item: "Cohort sessions", detail: "Monthly intensives with senior faculty" },
       { item: "Personal mentoring", detail: "Fortnightly one-to-one mentoring" },
-      { item: "Retreats", detail: "Two residential retreats per year" },
+      { item: "Intensives", detail: "Two residential intensives per year" },
     ],
     mentorStructure:
-      "Delivered through the Priesthood Institute: cohorts of practising ministers under senior faculty, with fortnightly one-to-one mentoring and biannual retreats.",
+      "Cohorts of practising leaders under senior faculty, with fortnightly one-to-one mentoring and biannual residential intensives.",
     cohortDates: ["2026-08-17", "2027-01-11", "2027-06-07"],
     eligibility: [
       "Currently serving in ministry leadership",
@@ -95,13 +67,16 @@ export const tracks: MentorshipTrack[] = [
     ],
     faqs: [
       { q: "Who is this for?", a: "Pastors, church planters, and ministry leaders already carrying responsibility." },
-      { q: "Is ordination included?", a: "No, but it prepares you for the separate Ordination Track." },
-      { q: "Are retreats mandatory?", a: "Yes — the two annual retreats are a core part of the formation." },
-      { q: "Can international leaders join?", a: "Yes, with a mix of online sessions and travel for retreats." },
+      { q: "How does this differ from Level 1?", a: "Level 2 assumes you already carry responsibility for others, so the work centres on sustaining and multiplying it." },
+      { q: "Are the intensives mandatory?", a: "Yes — the two annual intensives are a core part of the formation." },
+      { q: "Can international leaders join?", a: "Yes, with a mix of online sessions and travel for the intensives." },
     ],
   },
   {
     slug: "nation-builders",
+    level: 3,
+    durationMonths: 12,
+    hoursPerWeek: 6,
     name: "Nation Builders",
     audience: "Senior leaders shaping institutions, sectors, and nations.",
     hero: "Build what outlasts you. Carry transformation to nations.",
@@ -134,6 +109,16 @@ export const tracks: MentorshipTrack[] = [
     ],
   },
 ];
+
+/** Global Leadership Executive level label, e.g. "Global Leadership Executive II". */
+const ROMAN = ["", "I", "II", "III"] as const;
+
+export function gleLabel(track: Pick<MentorshipTrack, "level">): string {
+  return `Global Leadership Executive ${ROMAN[track.level]}`;
+}
+
+/** Tracks ordered by level — the canonical order for the 3-track presentation. */
+export const tracksByLevel = [...tracks].sort((a, b) => a.level - b.level);
 
 export function getTrack(slug: string): MentorshipTrack | undefined {
   return tracks.find((t) => t.slug === slug);

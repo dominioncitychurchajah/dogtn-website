@@ -26,6 +26,8 @@ export interface PartnershipCopy {
     seedName: string; seedLevel: string; seedTagline: string; seedFeature1: string; seedFeature2: string; seedFeature3: string; seedCta: string;
     harvestName: string; harvestLevel: string; harvestTagline: string; harvestFeature1: string; harvestFeature2: string; harvestFeature3: string; harvestCta: string; mostPopular: string;
     kingdomName: string; kingdomLevel: string; kingdomTagline: string; kingdomFeature1: string; kingdomFeature2: string; kingdomFeature3: string; kingdomCta: string;
+    seedFor: string; harvestFor: string; kingdomFor: string;
+    legacyName: string; legacyLevel: string; legacyAmount: string; legacyFor: string; legacyTagline: string; legacyCta: string;
   };
   notSure: string;
   requestBriefing: string;
@@ -41,10 +43,6 @@ export interface PartnershipCopy {
   testimonials: { t1Quote: string; t1Name: string; t1Location: string; t1Tier: string; t2Quote: string; t2Name: string; t2Location: string; t2Tier: string; t3Quote: string; t3Name: string; t3Location: string; t3Tier: string };
   previousStory: string;
   nextStory: string;
-  questionsEyebrow: string;
-  faqHeading: string;
-  faqSubtitle: string;
-  faqs: { q1: string; a1: string; q2: string; a2: string; q3: string; a3: string; q4: string; a4: string; q5: string; a5: string };
 }
 
 export const partnershipCopy: Record<Locale, PartnershipCopy> = {
@@ -80,6 +78,13 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
       harvestFeature1: "Funds 1 hub/quarter", harvestFeature2: "VIP access to Teachings Vault", harvestFeature3: "Quarterly briefing updates", harvestCta: "Select Harvest Level", mostPopular: "Most Popular",
       kingdomName: "Kingdom Partner", kingdomLevel: "Strategic Transformation", kingdomTagline: "\"Transforms nations through investment.\"",
       kingdomFeature1: "Sponsors national conferences", kingdomFeature2: "Direct briefs with Dr. Ogbueli", kingdomFeature3: "Legacy naming opportunities", kingdomCta: "Select Kingdom Level",
+      seedFor: "For emerging leaders, students, and ministry supporters.",
+      harvestFor: "For young professionals and Kingdom-minded givers.",
+      kingdomFor: "For business leaders and established professionals.",
+      legacyName: "Legacy Partners", legacyLevel: "Strategic Partnership", legacyAmount: "$5,000+",
+      legacyFor: "For organizations, institutions, and legacy-minded leaders.",
+      legacyTagline: "A strategic partnership for those investing in long-term, generational impact — advancing the mission across nations.",
+      legacyCta: "Request a Legacy Briefing",
     },
     notSure: "Not sure which partnership level is right for you?",
     requestBriefing: "Let's request a briefing instead",
@@ -102,21 +107,6 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
     },
     previousStory: "Previous story",
     nextStory: "Next story",
-    questionsEyebrow: "Questions",
-    faqHeading: "Frequently Asked Questions",
-    faqSubtitle: "Everything you need to know about partnership, tax benefits, and stewardship.",
-    faqs: {
-      q1: "Is my partnership gift tax-deductible?",
-      a1: "Yes. All contributions to the David Ogbueli Global Transformation Network are tax-deductible to the fullest extent permitted by law under our registered 501(c)(3) nonprofit status.",
-      q2: "How are the partnership funds allocated?",
-      a2: "We operate with strict financial stewardship. 87% of all donations directly fund front-line leadership hubs, curriculum translations, global missions, and vault digitization. Only 13% is allocated to general administration and resource development.",
-      q3: "Can I change or cancel my recurring partnership at any time?",
-      a3: "Absolutely. You can modify, pause, or cancel your monthly giving at any time through our online giving portal, or by contacting our partnership care team directly at partners@ogbueli.org.",
-      q4: "Do you accept non-cash or corporate donations?",
-      a4: "Yes. We accept corporate matches, securities, real estate, and legacy estate planning. Please request a conversation through the strategic briefing portal at the bottom of the page to coordinate details.",
-      q5: "How will I stay updated on the impact of my giving?",
-      a5: "All partners receive quarterly digital impact reports detailing metrics, program growth, and personal stories of leaders raised. Harvest and Kingdom partners also receive invitations to exclusive briefings with Dr. Ogbueli.",
-    },
   },
   fr: {
     heroEyebrow: "Réseau Mondial de Transformation",
@@ -150,6 +140,13 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
       harvestFeature1: "Finance 1 pôle/trimestre", harvestFeature2: "Accès VIP au Coffre des Enseignements", harvestFeature3: "Points trimestriels", harvestCta: "Choisir le Niveau Moisson", mostPopular: "Le Plus Populaire",
       kingdomName: "Partenaire Royaume", kingdomLevel: "Transformation Stratégique", kingdomTagline: "« Transforme les nations par l'investissement. »",
       kingdomFeature1: "Parraine des conférences nationales", kingdomFeature2: "Points directs avec le Dr Ogbueli", kingdomFeature3: "Opportunités de dénomination héritage", kingdomCta: "Choisir le Niveau Royaume",
+      seedFor: "Pour les leaders émergents, étudiants et soutiens du ministère.",
+      harvestFor: "Pour les jeunes professionnels et donateurs animés par le Royaume.",
+      kingdomFor: "Pour les chefs d'entreprise et professionnels établis.",
+      legacyName: "Partenaires Héritage", legacyLevel: "Partenariat Stratégique", legacyAmount: "5 000 $+",
+      legacyFor: "Pour les organisations, institutions et leaders soucieux de l'héritage.",
+      legacyTagline: "Un partenariat stratégique pour ceux qui investissent dans un impact durable et générationnel — faire avancer la mission à travers les nations.",
+      legacyCta: "Demander une Séance Héritage",
     },
     notSure: "Vous ne savez pas quel niveau de partenariat vous convient ?",
     requestBriefing: "Demandons plutôt un entretien",
@@ -172,21 +169,6 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
     },
     previousStory: "Histoire précédente",
     nextStory: "Histoire suivante",
-    questionsEyebrow: "Questions",
-    faqHeading: "Questions Fréquemment Posées",
-    faqSubtitle: "Tout ce que vous devez savoir sur le partenariat, les avantages fiscaux et la gestion responsable.",
-    faqs: {
-      q1: "Mon don de partenariat est-il déductible d'impôt ?",
-      a1: "Oui. Toutes les contributions au David Ogbueli Global Transformation Network sont déductibles d'impôt dans toute la mesure permise par la loi, sous notre statut d'organisation à but non lucratif enregistrée 501(c)(3).",
-      q2: "Comment les fonds du partenariat sont-ils alloués ?",
-      a2: "Nous opérons avec une gestion financière rigoureuse. 87 % de tous les dons financent directement les pôles de leadership de première ligne, les traductions de programmes, les missions mondiales et la numérisation du coffre. Seuls 13 % sont alloués à l'administration générale et au développement des ressources.",
-      q3: "Puis-je modifier ou annuler mon partenariat récurrent à tout moment ?",
-      a3: "Absolument. Vous pouvez modifier, suspendre ou annuler votre don mensuel à tout moment via notre portail de dons en ligne, ou en contactant directement notre équipe de suivi des partenariats à partners@ogbueli.org.",
-      q4: "Acceptez-vous les dons non monétaires ou d'entreprise ?",
-      a4: "Oui. Nous acceptons les correspondances d'entreprise, les titres, l'immobilier et la planification successorale. Veuillez demander un entretien via le portail d'entretien stratégique en bas de page pour coordonner les détails.",
-      q5: "Comment resterai-je informé de l'impact de mon don ?",
-      a5: "Tous les partenaires reçoivent des rapports d'impact numériques trimestriels détaillant les indicateurs, la croissance des programmes et des histoires personnelles de leaders formés. Les partenaires Moisson et Royaume reçoivent également des invitations à des entretiens exclusifs avec le Dr Ogbueli.",
-    },
   },
   pt: {
     heroEyebrow: "Rede Global de Transformação",
@@ -220,6 +202,13 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
       harvestFeature1: "Financia 1 polo/trimestre", harvestFeature2: "Acesso VIP ao Cofre de Ensinamentos", harvestFeature3: "Atualizações trimestrais", harvestCta: "Selecionar Nível Colheita", mostPopular: "Mais Popular",
       kingdomName: "Parceiro Reino", kingdomLevel: "Transformação Estratégica", kingdomTagline: "\"Transforma nações através do investimento.\"",
       kingdomFeature1: "Patrocina conferências nacionais", kingdomFeature2: "Reuniões diretas com o Dr. Ogbueli", kingdomFeature3: "Oportunidades de nomeação de legado", kingdomCta: "Selecionar Nível Reino",
+      seedFor: "Para líderes emergentes, estudantes e apoiadores do ministério.",
+      harvestFor: "Para jovens profissionais e doadores com mentalidade do Reino.",
+      kingdomFor: "Para líderes empresariais e profissionais estabelecidos.",
+      legacyName: "Parceiros de Legado", legacyLevel: "Parceria Estratégica", legacyAmount: "5.000 $+",
+      legacyFor: "Para organizações, instituições e líderes com visão de legado.",
+      legacyTagline: "Uma parceria estratégica para quem investe em impacto duradouro e geracional — avançando a missão através das nações.",
+      legacyCta: "Solicitar uma Sessão de Legado",
     },
     notSure: "Não tem a certeza de qual nível de parceria é o certo para si?",
     requestBriefing: "Vamos antes solicitar uma reunião",
@@ -242,21 +231,6 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
     },
     previousStory: "História anterior",
     nextStory: "Próxima história",
-    questionsEyebrow: "Perguntas",
-    faqHeading: "Perguntas Frequentes",
-    faqSubtitle: "Tudo o que precisa de saber sobre parceria, benefícios fiscais e gestão responsável.",
-    faqs: {
-      q1: "A minha doação de parceria é dedutível de impostos?",
-      a1: "Sim. Todas as contribuições para a David Ogbueli Global Transformation Network são dedutíveis de impostos na máxima extensão permitida por lei, sob o nosso estatuto de organização sem fins lucrativos registada 501(c)(3).",
-      q2: "Como são alocados os fundos de parceria?",
-      a2: "Operamos com uma gestão financeira rigorosa. 87% de todas as doações financiam diretamente os polos de liderança na linha da frente, traduções curriculares, missões globais e digitalização do cofre. Apenas 13% é alocado à administração geral e ao desenvolvimento de recursos.",
-      q3: "Posso alterar ou cancelar a minha parceria recorrente a qualquer momento?",
-      a3: "Certamente. Pode modificar, pausar, ou cancelar a sua doação mensal a qualquer momento através do nosso portal de doações online, ou contactando diretamente a nossa equipa de apoio a parceiros em partners@ogbueli.org.",
-      q4: "Aceitam doações não monetárias ou corporativas?",
-      a4: "Sim. Aceitamos correspondências corporativas, valores mobiliários, imóveis e planeamento de heranças. Solicite uma conversa através do portal de reuniões estratégicas no final da página para coordenar os detalhes.",
-      q5: "Como me manterei atualizado sobre o impacto da minha doação?",
-      a5: "Todos os parceiros recebem relatórios digitais trimestrais de impacto detalhando métricas, crescimento de programas, e histórias pessoais de líderes formados. Parceiros Colheita e Reino também recebem convites para reuniões exclusivas com o Dr. Ogbueli.",
-    },
   },
   sw: {
     heroEyebrow: "Mtandao wa Mabadiliko Kimataifa",
@@ -290,6 +264,13 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
       harvestFeature1: "Hufadhili kituo 1/robo mwaka", harvestFeature2: "Ufikiaji wa VIP wa Hazina ya Mafundisho", harvestFeature3: "Masasisho ya robo mwaka", harvestCta: "Chagua Kiwango cha Mavuno", mostPopular: "Maarufu Zaidi",
       kingdomName: "Mshirika wa Ufalme", kingdomLevel: "Mabadiliko ya Kimkakati", kingdomTagline: "\"Hubadilisha mataifa kupitia uwekezaji.\"",
       kingdomFeature1: "Hufadhili mikutano ya kitaifa", kingdomFeature2: "Mikutano ya moja kwa moja na Dr. Ogbueli", kingdomFeature3: "Fursa za kuitwa jina la urithi", kingdomCta: "Chagua Kiwango cha Ufalme",
+      seedFor: "Kwa viongozi wanaochipuka, wanafunzi na wafuasi wa huduma.",
+      harvestFor: "Kwa wataalamu vijana na watoaji wenye mtazamo wa Ufalme.",
+      kingdomFor: "Kwa viongozi wa biashara na wataalamu waliojiimarisha.",
+      legacyName: "Washirika wa Urithi", legacyLevel: "Ushirikiano wa Kimkakati", legacyAmount: "$5,000+",
+      legacyFor: "Kwa mashirika, taasisi na viongozi wenye mtazamo wa urithi.",
+      legacyTagline: "Ushirikiano wa kimkakati kwa wale wanaowekeza katika athari ya kudumu na ya vizazi — kusonga mbele utume katika mataifa.",
+      legacyCta: "Omba Mkutano wa Urithi",
     },
     notSure: "Hujui ni kiwango gani cha ushirikiano kinakufaa?",
     requestBriefing: "Hebu tuombe ufafanuzi badala yake",
@@ -312,21 +293,6 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
     },
     previousStory: "Hadithi iliyotangulia",
     nextStory: "Hadithi inayofuata",
-    questionsEyebrow: "Maswali",
-    faqHeading: "Maswali Yanayoulizwa Mara kwa Mara",
-    faqSubtitle: "Kila kitu unachohitaji kujua kuhusu ushirikiano, faida za kodi, na usimamizi.",
-    faqs: {
-      q1: "Je, zawadi yangu ya ushirikiano inapunguza kodi?",
-      a1: "Ndiyo. Michango yote kwa David Ogbueli Global Transformation Network inapunguza kodi kwa kiwango kikubwa kinachoruhusiwa na sheria chini ya hadhi yetu ya shirika lisilo la faida la 501(c)(3) lililosajiliwa.",
-      q2: "Fedha za ushirikiano zinagawanywaje?",
-      a2: "Tunafanya kazi kwa usimamizi mkali wa kifedha. 87% ya michango yote inafadhili moja kwa moja vituo vya uongozi wa mstari wa mbele, tafsiri za mtaala, misheni za kimataifa, na udijitali wa hazina. Asilimia 13 tu inatengwa kwa utawala wa jumla na maendeleo ya rasilimali.",
-      q3: "Naweza kubadilisha au kughairi ushirikiano wangu wa mara kwa mara wakati wowote?",
-      a3: "Bila shaka. Unaweza kubadilisha, kusitisha, au kughairi mchango wako wa kila mwezi wakati wowote kupitia lango letu la mtandaoni la kutoa, au kwa kuwasiliana moja kwa moja na timu yetu ya huduma za ushirikiano kupitia partners@ogbueli.org.",
-      q4: "Je, mnakubali michango isiyo ya fedha au ya kampuni?",
-      a4: "Ndiyo. Tunakubali ulinganifu wa kampuni, dhamana, mali isiyohamishika, na upangaji wa urithi. Tafadhali omba mazungumzo kupitia lango la ufafanuzi wa kimkakati chini ya ukurasa kuratibu maelezo.",
-      q5: "Nitaendeleaje kupata masasisho kuhusu athari ya mchango wangu?",
-      a5: "Washirika wote hupokea ripoti za kidijitali za robo mwaka za athari zinazoelezea vipimo, ukuaji wa programu, na hadithi za kibinafsi za viongozi walioleawa. Washirika wa Mavuno na Ufalme pia hupokea mialiko ya mikutano maalum na Dr. Ogbueli.",
-    },
   },
   ar: {
     heroEyebrow: "شبكة التحول العالمية",
@@ -360,6 +326,13 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
       harvestFeature1: "يموّل مركزًا واحدًا/ربع سنوي", harvestFeature2: "وصول VIP لخزينة التعاليم", harvestFeature3: "تحديثات إحاطة ربع سنوية", harvestCta: "اختر مستوى الحصاد", mostPopular: "الأكثر شيوعًا",
       kingdomName: "شريك الملكوت", kingdomLevel: "التحول الاستراتيجي", kingdomTagline: "\"يغيّر الأمم من خلال الاستثمار.\"",
       kingdomFeature1: "يرعى مؤتمرات وطنية", kingdomFeature2: "إحاطات مباشرة مع الدكتور أوغبويلي", kingdomFeature3: "فرص تسمية إرثية", kingdomCta: "اختر مستوى الملكوت",
+      seedFor: "للقادة الناشئين والطلاب وداعمي الخدمة.",
+      harvestFor: "للمهنيين الشباب والمانحين بعقلية الملكوت.",
+      kingdomFor: "لقادة الأعمال والمهنيين الراسخين.",
+      legacyName: "شركاء الإرث", legacyLevel: "شراكة استراتيجية", legacyAmount: "5,000$+",
+      legacyFor: "للمنظمات والمؤسسات والقادة أصحاب رؤية الإرث.",
+      legacyTagline: "شراكة استراتيجية لمن يستثمرون في أثر دائم وعبر الأجيال — للنهوض بالرسالة عبر الأمم.",
+      legacyCta: "اطلب جلسة إرث",
     },
     notSure: "لست متأكدًا من مستوى الشراكة المناسب لك؟",
     requestBriefing: "لنطلب إحاطة بدلاً من ذلك",
@@ -382,20 +355,5 @@ export const partnershipCopy: Record<Locale, PartnershipCopy> = {
     },
     previousStory: "القصة السابقة",
     nextStory: "القصة التالية",
-    questionsEyebrow: "أسئلة",
-    faqHeading: "الأسئلة الشائعة",
-    faqSubtitle: "كل ما تحتاج لمعرفته عن الشراكة والمزايا الضريبية والإدارة الرشيدة.",
-    faqs: {
-      q1: "هل هبة شراكتي معفاة من الضرائب؟",
-      a1: "نعم. جميع المساهمات إلى David Ogbueli Global Transformation Network معفاة من الضرائب إلى أقصى حد يسمح به القانون بموجب وضعنا كمنظمة غير ربحية مسجلة 501(c)(3).",
-      q2: "كيف يتم تخصيص أموال الشراكة؟",
-      a2: "نعمل بإدارة مالية صارمة. 87% من جميع التبرعات تموّل مباشرة مراكز القيادة في الخط الأمامي، وترجمات المناهج، والإرساليات العالمية، ورقمنة الخزينة. يُخصص 13% فقط للإدارة العامة وتطوير الموارد.",
-      q3: "هل يمكنني تغيير أو إلغاء شراكتي المتكررة في أي وقت؟",
-      a3: "بالتأكيد. يمكنك تعديل تبرعك الشهري أو إيقافه مؤقتًا أو إلغاءه في أي وقت من خلال بوابة التبرع عبر الإنترنت، أو بالتواصل المباشر مع فريق رعاية الشراكات على partners@ogbueli.org.",
-      q4: "هل تقبلون التبرعات غير النقدية أو من الشركات؟",
-      a4: "نعم. نقبل مطابقات الشركات والأوراق المالية والعقارات والتخطيط العقاري للإرث. يرجى طلب محادثة عبر بوابة الإحاطة الاستراتيجية أسفل الصفحة لتنسيق التفاصيل.",
-      q5: "كيف سأبقى على اطلاع بأثر تبرعي؟",
-      a5: "يتلقى جميع الشركاء تقارير أثر رقمية ربع سنوية تفصّل المقاييس ونمو البرامج والقصص الشخصية للقادة الذين تم إعدادهم. يتلقى شركاء الحصاد والملكوت أيضًا دعوات لإحاطات حصرية مع الدكتور أوغبويلي.",
-    },
   },
 };

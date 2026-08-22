@@ -1,5 +1,13 @@
-/* Leadership Assessment specification: dimensions, questions, routing, and the
- * recommendation matrix (band × self-placement). */
+/* Leadership Assessment specification.
+ *
+ * Purpose: place a visitor on one of the three Global Leadership Executive
+ * mentorship levels. Exactly 10 questions, each a four-option choice where the
+ * options ascend in scope of leadership responsibility — so every answer moves
+ * the recommendation, and the scale itself is what determines the level.
+ *
+ * Tracks live in `@/data/mentorship`; this module only names the slug so the
+ * result CTA can route to the recommended track.
+ */
 
 export type DimensionKey =
   | "character"
@@ -19,297 +27,188 @@ export const dimensions: { key: DimensionKey; label: string }[] = [
 export interface AssessmentQuestion {
   id: string;
   dimension: DimensionKey;
-  type: "likert" | "scenario";
   prompt: string;
-  reverse?: boolean;
-  options?: { label: string; value: number }[];
+  /** Four options, ascending 1 → 4 in scope of leadership responsibility. */
+  options: { label: string; value: 1 | 2 | 3 | 4 }[];
 }
 
+/** Exactly 10 questions — two per dimension. */
 export const questions: AssessmentQuestion[] = [
-  // Character & Integrity — 3 Likert + 1 Scenario
+  // Character & Integrity
   {
     id: "char-1",
     dimension: "character",
-    type: "likert",
-    prompt: "I keep my commitments even when it is costly or inconvenient.",
+    prompt: "How is your character currently tested?",
+    options: [
+      { label: "Mostly in private decisions no one else sees.", value: 1 },
+      { label: "In keeping commitments to the people close to me.", value: 2 },
+      { label: "In decisions where others carry the cost of my integrity.", value: 3 },
+      { label: "In decisions that set the ethical standard for an institution.", value: 4 },
+    ],
   },
   {
     id: "char-2",
     dimension: "character",
-    type: "likert",
-    prompt: "My private conduct matches my public reputation.",
-  },
-  {
-    id: "char-3",
-    dimension: "character",
-    type: "likert",
-    prompt: "I tend to bend the rules when I am confident no one will find out.",
-    reverse: true,
-  },
-  {
-    id: "char-4",
-    dimension: "character",
-    type: "scenario",
-    prompt:
-      "You discover a reporting error that inflated your team's results. The quarter is already closed. What do you do?",
+    prompt: "Who holds you accountable today?",
     options: [
-      { label: "Say nothing — the quarter is closed and it helps morale.", value: 1 },
-      { label: "Quietly fix it going forward without mentioning the past.", value: 2 },
-      { label: "Tell my manager privately and correct the record.", value: 3 },
-      { label: "Disclose it openly, correct the record, and review our controls.", value: 4 },
+      { label: "No one formally — I am still building that.", value: 1 },
+      { label: "A mentor or leader I report to informally.", value: 2 },
+      { label: "A team and an overseer who both depend on me.", value: 3 },
+      { label: "A board or peer body of senior leaders.", value: 4 },
     ],
   },
 
-  // Vision & Purpose Clarity — 4 Likert
+  // Vision & Purpose Clarity
   {
     id: "vis-1",
     dimension: "vision",
-    type: "likert",
-    prompt: "I can clearly articulate the purpose and direction of my life.",
+    prompt: "How clear is your sense of assignment?",
+    options: [
+      { label: "I am still searching for what I am called to.", value: 1 },
+      { label: "I know the direction, but not yet the shape of it.", value: 2 },
+      { label: "I can state it clearly and I am actively building it.", value: 3 },
+      { label: "It is established, and I am now planning what outlasts me.", value: 4 },
+    ],
   },
   {
     id: "vis-2",
     dimension: "vision",
-    type: "likert",
-    prompt: "I set specific goals and regularly review my progress toward them.",
-  },
-  {
-    id: "vis-3",
-    dimension: "vision",
-    type: "likert",
-    prompt: "I often feel unsure about where I am heading in the long term.",
-    reverse: true,
-  },
-  {
-    id: "vis-4",
-    dimension: "vision",
-    type: "likert",
-    prompt: "I can paint a compelling picture of the future that others want to join.",
+    prompt: "How far ahead do you actively plan?",
+    options: [
+      { label: "Week to week, as things come.", value: 1 },
+      { label: "Across the current season or year.", value: 2 },
+      { label: "Across a three-to-five year horizon for my team or work.", value: 3 },
+      { label: "In generational terms — succession and legacy.", value: 4 },
+    ],
   },
 
-  // Competence & Capacity — 3 Likert + 1 Scenario
+  // Competence & Capacity
   {
     id: "comp-1",
     dimension: "competence",
-    type: "likert",
-    prompt: "I consistently deliver work to a high standard and on time.",
+    prompt: "What scale of responsibility do you carry right now?",
+    options: [
+      { label: "My own work and development.", value: 1 },
+      { label: "A project, or a few people, some of the time.", value: 2 },
+      { label: "A team, department, or congregation I am accountable for.", value: 3 },
+      { label: "An organisation, or several leaders who each lead others.", value: 4 },
+    ],
   },
   {
     id: "comp-2",
     dimension: "competence",
-    type: "likert",
-    prompt: "I actively pursue new skills relevant to my calling.",
-  },
-  {
-    id: "comp-3",
-    dimension: "competence",
-    type: "likert",
-    prompt: "I take on responsibility and handle increasing complexity well.",
-  },
-  {
-    id: "comp-4",
-    dimension: "competence",
-    type: "scenario",
-    prompt:
-      "You are handed a project that stretches beyond your current skill. How do you respond?",
+    prompt: "When something stretches beyond your current skill, what usually happens?",
     options: [
-      { label: "Decline it — it is outside my ability.", value: 1 },
-      { label: "Accept it but hope no one notices the gaps.", value: 2 },
-      { label: "Accept it and quickly build the skills I lack.", value: 3 },
-      { label: "Accept it, build the skills, and bring others up with me.", value: 4 },
+      { label: "I hesitate, and often step back from it.", value: 1 },
+      { label: "I take it on and learn as I go.", value: 2 },
+      { label: "I take it on and build the capability in others too.", value: 3 },
+      { label: "I design systems so the organisation can carry it without me.", value: 4 },
     ],
   },
 
-  // Influence & Relationships — 4 Likert
+  // Influence & Relationships
   {
     id: "infl-1",
     dimension: "influence",
-    type: "likert",
-    prompt: "People readily trust me and follow my lead.",
+    prompt: "How do people currently relate to your leadership?",
+    options: [
+      { label: "I am not yet seen as a leader by those around me.", value: 1 },
+      { label: "A few people look to me for direction.", value: 2 },
+      { label: "A defined group follows my lead and trusts my judgement.", value: 3 },
+      { label: "Other leaders seek my counsel on their own work.", value: 4 },
+    ],
   },
   {
     id: "infl-2",
     dimension: "influence",
-    type: "likert",
-    prompt: "I listen well and genuinely value others' perspectives.",
-  },
-  {
-    id: "infl-3",
-    dimension: "influence",
-    type: "likert",
-    prompt: "I invest in developing and empowering other people.",
-  },
-  {
-    id: "infl-4",
-    dimension: "influence",
-    type: "likert",
-    prompt: "I handle conflict constructively rather than avoiding it.",
+    prompt: "What is your involvement in developing other leaders?",
+    options: [
+      { label: "None yet — I am the one being developed.", value: 1 },
+      { label: "I encourage and help individuals informally.", value: 2 },
+      { label: "I intentionally mentor people in a structured way.", value: 3 },
+      { label: "I raise mentors who go on to raise others.", value: 4 },
+    ],
   },
 
-  // Kingdom/Service Orientation — 3 Likert + 1 Scenario
+  // Kingdom / Service Orientation
   {
     id: "king-1",
     dimension: "kingdom",
-    type: "likert",
-    prompt: "I lead primarily to serve others rather than to advance myself.",
+    prompt: "Where does your sense of impact currently sit?",
+    options: [
+      { label: "I want to matter, but I cannot yet see where.", value: 1 },
+      { label: "In my immediate circle — family, friends, workplace.", value: 2 },
+      { label: "In a community or ministry that I help carry.", value: 3 },
+      { label: "In a sector, city, or nation I am deliberately shaping.", value: 4 },
+    ],
   },
   {
     id: "king-2",
     dimension: "kingdom",
-    type: "likert",
-    prompt: "I see my work as part of a larger purpose to transform society.",
-  },
-  {
-    id: "king-3",
-    dimension: "kingdom",
-    type: "likert",
-    prompt: "I give generously of my time and resources to others.",
-  },
-  {
-    id: "king-4",
-    dimension: "kingdom",
-    type: "scenario",
-    prompt:
-      "You are offered a promotion that increases your status but reduces your impact on the people you serve. What guides your decision?",
+    prompt: "What would make the next twelve months a success?",
     options: [
-      { label: "Take it — status and advancement come first.", value: 1 },
-      { label: "Take it, but feel conflicted about the trade-off.", value: 2 },
-      { label: "Weigh it carefully, prioritising service over status.", value: 3 },
-      { label: "Decline or reshape it so service and impact stay central.", value: 4 },
+      { label: "Finding clarity and firm footing.", value: 1 },
+      { label: "Growing in discipline and capability.", value: 2 },
+      { label: "Leading my work well and sustaining it without burning out.", value: 3 },
+      { label: "Multiplying leaders and institutions beyond myself.", value: 4 },
     ],
   },
 ];
 
-export const selfPlacementQuestions: {
-  key: string;
-  prompt: string;
-  options: { label: string; value: string }[];
-}[] = [
-  {
-    key: "currentRole",
-    prompt: "Which best describes your current role?",
-    options: [
-      { label: "Student or early-career", value: "student" },
-      { label: "Working professional", value: "professional" },
-      { label: "Team or organisational leader", value: "leader" },
-      { label: "Minister or ministry leader", value: "minister" },
-      { label: "Senior / executive leader", value: "executive" },
-    ],
-  },
-  {
-    key: "priorDli",
-    prompt: "What is your prior experience with our training?",
-    options: [
-      { label: "None yet — this is my starting point", value: "none" },
-      { label: "I have completed DLI Basic", value: "basic-alum" },
-      { label: "I am an active ministry leader", value: "ministry-leader" },
-    ],
-  },
-  {
-    key: "journeySource",
-    prompt: "What brought you to this assessment?",
-    options: [
-      { label: "Seeking direction and purpose", value: "purpose" },
-      { label: "Wanting to grow as a leader", value: "leadership" },
-      { label: "Deepening spiritually", value: "spiritual" },
-      { label: "Building a ministry or institution", value: "ministry" },
-    ],
-  },
-];
+/** The three Global Leadership Executive levels a visitor can be placed on. */
+export type LevelKey = 1 | 2 | 3;
 
-export type Band = "Emerging" | "Developing" | "Established" | "Advanced";
-export type Placement = "none" | "basic-alum" | "ministry-leader";
-
-export interface Recommendation {
-  title: string;
+export interface LevelResult {
+  level: LevelKey;
+  /** Track slug in `@/data/mentorship` this level recommends. */
+  trackSlug: string;
+  /** Honour-framed headline — never a grade. */
+  headline: string;
+  /** Where the visitor currently is. */
   body: string;
-  cta: { label: string; href: string };
+  /** Why this track fits them. */
+  why: string;
+  /** The concrete next step to take. */
+  nextStep: string;
   cohortDate: string;
 }
 
-export const recommendationMatrix: Record<
-  Band,
-  Record<Placement, Recommendation>
-> = {
-  Emerging: {
-    none: {
-      title: "Start with the Become a Leader journey",
-      body: "You are at the beginning of a powerful path. The Become a Leader journey will lay the character and vision foundations you need to grow.",
-      cta: { label: "Begin the journey", href: "/journeys/become-a-leader" },
-      cohortDate: "2026-08-01",
-    },
-    "basic-alum": {
-      title: "Revisit the fundamentals with a DLI Basic refresher",
-      body: "You have DLI Basic behind you — a refresher will help you re-establish the foundations before advancing further.",
-      cta: { label: "Explore DLI Basic", href: "/leadership" },
-      cohortDate: "2026-09-07",
-    },
-    "ministry-leader": {
-      title: "Join the Ministry Leaders mentorship",
-      body: "As a ministry leader, the Ministry Leaders mentorship will give you the depth and support to lead well as you grow.",
-      cta: { label: "Apply for mentorship", href: "/mentorship/ministry-leaders" },
-      cohortDate: "2026-08-17",
-    },
+export const levels: Record<LevelKey, LevelResult> = {
+  1: {
+    level: 1,
+    trackSlug: "emerging-leaders",
+    headline: "You are being formed — and this is exactly where great leaders begin.",
+    body:
+      "Your answers describe a leader whose foundations are still being laid: real hunger, real potential, and the season for depth of character before breadth of responsibility.",
+    why:
+      "Global Leadership Executive I is built for this moment. It pairs you with a mentor and a peer cohort to establish character, clarify your assignment, and deliver your first leadership project under guidance.",
+    nextStep:
+      "Begin with the Emerging Leaders cohort, where formation comes before position.",
+    cohortDate: "2026-08-01",
   },
-  Developing: {
-    none: {
-      title: "Enrol in DLI Basic",
-      body: "You are developing steadily. DLI Basic will consolidate your growth and equip you with the core disciplines of leadership.",
-      cta: { label: "Enrol in DLI Basic", href: "/leadership" },
-      cohortDate: "2026-09-07",
-    },
-    "basic-alum": {
-      title: "Step up to DLI Advanced",
-      body: "With DLI Basic complete and clear momentum, you are ready for the deeper study of strategy and governance in DLI Advanced.",
-      cta: { label: "Explore DLI Advanced", href: "/leadership" },
-      cohortDate: "2026-10-19",
-    },
-    "ministry-leader": {
-      title: "Deepen through the Priesthood Institute",
-      body: "The Priesthood Institute will help you steward your calling with greater depth, integrity, and sustainability.",
-      cta: { label: "Apply for mentorship", href: "/mentorship/ministry-leaders" },
-      cohortDate: "2026-08-17",
-    },
+  2: {
+    level: 2,
+    trackSlug: "ministry-leaders",
+    headline: "You already carry responsibility for others — now it needs to be sustainable.",
+    body:
+      "Your answers describe a leader with a defined work and people who depend on you. The task is no longer proving capability; it is deepening the interior life and building what holds.",
+    why:
+      "Global Leadership Executive II is built for leaders already stewarding a work. It gives you senior faculty, fortnightly one-to-one mentoring, and the accountability to lead for the long haul without burning out.",
+    nextStep:
+      "Join the Global Leaders cohort and build the rhythm that sustains what you carry.",
+    cohortDate: "2026-08-17",
   },
-  Established: {
-    none: {
-      title: "Take the DLI Basic fast-track",
-      body: "You are already an established leader. A DLI Basic fast-track will formalise your foundations and connect you to the wider network quickly.",
-      cta: { label: "Explore the fast-track", href: "/leadership" },
-      cohortDate: "2026-09-07",
-    },
-    "basic-alum": {
-      title: "Advance with DLI Advanced and a mentorship track",
-      body: "You have the foundations and the results. Pair DLI Advanced with a mentorship track to accelerate your impact.",
-      cta: { label: "Explore DLI Advanced", href: "/leadership" },
-      cohortDate: "2026-10-19",
-    },
-    "ministry-leader": {
-      title: "Join the Ministry Leaders mentorship",
-      body: "As an established ministry leader, the Ministry Leaders mentorship offers the peer depth and accountability to sustain you for the long haul.",
-      cta: { label: "Apply for mentorship", href: "/mentorship/ministry-leaders" },
-      cohortDate: "2026-08-17",
-    },
-  },
-  Advanced: {
-    none: {
-      title: "Enter DLI Advanced with an interview",
-      body: "Your results place you among advanced leaders. We recommend entering DLI Advanced directly via an interview to match your level.",
-      cta: { label: "Explore DLI Advanced", href: "/leadership" },
-      cohortDate: "2026-10-19",
-    },
-    "basic-alum": {
-      title: "Pursue Certification and senior mentorship",
-      body: "You are ready for the capstone. Executive Certification alongside the Nation Builders mentorship will position you to build what outlasts you.",
-      cta: { label: "Explore Nation Builders", href: "/mentorship/nation-builders" },
-      cohortDate: "2026-11-30",
-    },
-    "ministry-leader": {
-      title: "Join the Nation Builders track",
-      body: "As an advanced ministry leader, the Nation Builders track invites you to shape institutions, sectors, and nations.",
-      cta: { label: "Apply for Nation Builders", href: "/mentorship/nation-builders" },
-      cohortDate: "2026-10-01",
-    },
+  3: {
+    level: 3,
+    trackSlug: "nation-builders",
+    headline: "You are building beyond yourself — the work now is what outlasts you.",
+    body:
+      "Your answers describe a leader operating at institutional scale, whose counsel other leaders already seek. The horizon in view is succession, sectors, and nations.",
+    why:
+      "Global Leadership Executive III convenes senior leaders mentored directly by Dr. Ogbueli and faculty, with roundtables and Global Leadership Forum access, focused on multiplying leaders and institutions.",
+    nextStep:
+      "Apply to the Nation Builders cohort and put a legacy plan behind the work.",
+    cohortDate: "2026-10-01",
   },
 };
 
