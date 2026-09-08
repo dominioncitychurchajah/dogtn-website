@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileNav } from "./MobileNav";
+import { MegaMenu } from "./MegaMenu";
 import { buildNav, type NavStrings } from "./nav-config";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,15 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [openMega, setOpenMega] = React.useState<string | null>(null);
   const groups = React.useMemo(() => buildNav(locale, strings), [locale, strings]);
+  const openPanel = groups.find((g) => g.label === openMega)?.panel;
+
+  React.useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenMega(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -28,7 +38,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
   }, []);
 
   // Transparent (light text) only over the home hero before scroll.
-  const overHero = isHome && !scrolled;
+  const overHero = isHome && !scrolled && !openMega;
   const solid = !overHero;
 
   return (
@@ -37,8 +47,10 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
         className={cn(
           "fixed inset-x-0 top-0 z-[90] transition-all duration-150",
           solid
-            ? "border-b border-ink-100 bg-paper-0/90 text-ink-900 shadow-elev-1 backdrop-blur-md"
+            ? "border-b border-ink-100 text-ink-900 shadow-elev-1"
             : "border-b border-transparent bg-transparent text-paper-0",
+          // backdrop-blur on the bar turns the mega panel translucent, so drop it while one is open
+          solid && (openMega ? "bg-paper-0" : "bg-paper-0/90 backdrop-blur-md"),
         )}
         onMouseLeave={() => setOpenMega(null)}
       >
@@ -79,52 +91,43 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
           <div className="hidden items-center gap-1 lg:flex">
             {groups.map((g) => {
               const groupIsExternal = g.href.startsWith("http");
+              const isOpen = openMega === g.label;
               const groupClassName = cn(
-                "flex items-center gap-1 rounded-[var(--radius-s)] px-3 py-2 text-body-s font-semibold transition-colors",
+                "flex items-center gap-1 rounded-full px-3.5 py-2 text-body-s font-semibold transition-colors",
                 solid ? "hover:text-gold-hover" : "hover:text-gold-400",
+                isOpen && (solid ? "bg-paper-50 text-gold-hover" : "bg-paper-0/10"),
+              );
+              const inner = (
+                <>
+                  {g.label}
+                  {g.panel && (
+                    <ChevronDown
+                      className={cn("h-3.5 w-3.5 opacity-70 transition-transform", isOpen && "rotate-180")}
+                    />
+                  )}
+                </>
               );
               return (
-              <div key={g.href} className="relative" onMouseEnter={() => setOpenMega(g.mega ? g.label : null)}>
-                {groupIsExternal ? (
-                  <a href={g.href} target="_blank" rel="noopener noreferrer" className={groupClassName}>
-                    {g.label}
-                    {g.mega && <ChevronDown className="h-3.5 w-3.5 opacity-70" />}
-                  </a>
-                ) : (
-                  <Link href={g.href} className={groupClassName}>
-                    {g.label}
-                    {g.mega && <ChevronDown className="h-3.5 w-3.5 opacity-70" />}
-                  </Link>
-                )}
-                {g.mega && openMega === g.label && (
-                  <div className="absolute start-0 top-full w-72 pt-2">
-                    <ul className="overflow-hidden rounded-[var(--radius-m)] border border-ink-100 bg-paper-0 py-2 text-ink-900 shadow-elev-3">
-                      {g.mega.map((m) => {
-                        const isExternal = m.href.startsWith("http");
-                        const content = (
-                          <>
-                            <span className="block text-body-m font-semibold">{m.label}</span>
-                            {m.desc && <span className="block text-caption text-ink-500">{m.desc}</span>}
-                          </>
-                        );
-                        return (
-                          <li key={m.href}>
-                            {isExternal ? (
-                              <a href={m.href} target="_blank" rel="noopener noreferrer" className="block px-4 py-2.5 hover:bg-paper-50">
-                                {content}
-                              </a>
-                            ) : (
-                              <Link href={m.href} className="block px-4 py-2.5 hover:bg-paper-50">
-                                {content}
-                              </Link>
-                            )}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                )}
-              </div>
+                <div
+                  key={g.href}
+                  onMouseEnter={() => setOpenMega(g.panel ? g.label : null)}
+                  onFocus={() => setOpenMega(g.panel ? g.label : null)}
+                >
+                  {groupIsExternal ? (
+                    <a href={g.href} target="_blank" rel="noopener noreferrer" className={groupClassName}>
+                      {inner}
+                    </a>
+                  ) : (
+                    <Link
+                      href={g.href}
+                      className={groupClassName}
+                      aria-expanded={g.panel ? isOpen : undefined}
+                      onClick={() => setOpenMega(null)}
+                    >
+                      {inner}
+                    </Link>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -152,6 +155,12 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             </button>
           </div>
         </nav>
+
+        {openPanel && (
+          <div className="hidden lg:block">
+            <MegaMenu panel={openPanel} onNavigate={() => setOpenMega(null)} />
+          </div>
+        )}
       </header>
 
       <MobileNav

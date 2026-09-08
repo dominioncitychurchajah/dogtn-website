@@ -51,32 +51,32 @@ export function MobileNav({
               >
                 {g.label}
               </Link>
-              {g.mega && (
+              {g.panel && (
                 <ul className="ms-3 mb-2 space-y-0.5 border-s border-paper-0/10 ps-4">
-                  {g.mega.map((m) =>
-                    m.href.startsWith("http") ? (
-                      <li key={m.href}>
-                        <a
-                          href={m.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={onClose}
-                          className="block py-2 text-body-m text-ink-300 hover:text-gold-400"
-                        >
-                          {m.label}
-                        </a>
-                      </li>
-                    ) : (
-                      <li key={m.href}>
-                        <Link
-                          href={m.href}
-                          onClick={onClose}
-                          className="block py-2 text-body-m text-ink-300 hover:text-gold-400"
-                        >
-                          {m.label}
-                        </Link>
-                      </li>
-                    ),
+                  {[...g.panel.links, ...(g.panel.columns?.flatMap((c) => c.links) ?? [])].map((m) => (
+                    <li key={m.href}>
+                      <Link
+                        href={m.href}
+                        onClick={onClose}
+                        className="block py-2 text-body-m text-ink-300 hover:text-gold-400"
+                      >
+                        {m.label}
+                      </Link>
+                    </li>
+                  ))}
+                  {g.panel.feature && (
+                    <li>
+                      <Link
+                        href={g.panel.feature.href}
+                        onClick={onClose}
+                        className="mt-2 block rounded-[var(--radius-m)] border border-gold-600/40 px-3 py-2.5"
+                      >
+                        <span className="block text-caption uppercase tracking-[0.14em] text-gold-400">
+                          {g.panel.feature.eyebrow}
+                        </span>
+                        <span className="block text-body-m font-semibold">{g.panel.feature.title}</span>
+                      </Link>
+                    </li>
                   )}
                 </ul>
               )}
