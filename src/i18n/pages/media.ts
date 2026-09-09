@@ -22,6 +22,9 @@ export interface MediaCopy {
   radioBody: string;
   radioNowPlaying: string;
   radioListen: string;
+  radioTagline: string;
+  listenHeading: string;
+  listenBody: string;
   podcastHeading: string;
   podcastBody: string;
   podcastComingSoon: string;
@@ -50,6 +53,9 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     radioBody: "Teaching, worship and the Word — streaming around the clock.",
     radioNowPlaying: "Now playing",
     radioListen: "Listen live",
+    radioTagline: "Raising leaders that transform society.",
+    listenHeading: "Listen to Dr David Ogbueli wherever you are.",
+    listenBody: "Explore decades of transformative teachings, podcasts and sermons.",
     podcastHeading: "The Transformation Podcast",
     podcastBody: "Subscribe on your favourite platform and never miss an episode.",
     podcastComingSoon: "More on the way",
@@ -76,6 +82,9 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     radioBody: "Enseignement, louange et la Parole — en direct 24h/24.",
     radioNowPlaying: "En cours de lecture",
     radioListen: "Écouter en direct",
+    radioTagline: "Former des leaders qui transforment la société.",
+    listenHeading: "Écoutez le Dr David Ogbueli où que vous soyez.",
+    listenBody: "Découvrez des décennies d'enseignements, de podcasts et de messages transformateurs.",
     podcastHeading: "Le Podcast de la Transformation",
     podcastBody: "Abonnez-vous sur votre plateforme préférée et ne manquez plus aucun épisode.",
     podcastComingSoon: "D'autres à venir",
@@ -102,6 +111,9 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     radioBody: "Ensino, adoração e a Palavra — em transmissão contínua.",
     radioNowPlaying: "A tocar agora",
     radioListen: "Ouvir ao vivo",
+    radioTagline: "Formando líderes que transformam a sociedade.",
+    listenHeading: "Ouça o Dr. David Ogbueli onde quer que você esteja.",
+    listenBody: "Explore décadas de ensinos, podcasts e mensagens transformadoras.",
     podcastHeading: "O Podcast da Transformação",
     podcastBody: "Subscreva na sua plataforma favorita e nunca perca um episódio.",
     podcastComingSoon: "Mais a caminho",
@@ -128,6 +140,9 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     radioBody: "Mafundisho, ibada na Neno — mtandaoni saa zote.",
     radioNowPlaying: "Inachezwa sasa",
     radioListen: "Sikiliza moja kwa moja",
+    radioTagline: "Kuwainua viongozi wanaobadilisha jamii.",
+    listenHeading: "Msikilize Dkt. David Ogbueli popote ulipo.",
+    listenBody: "Gundua miongo ya mafundisho, podikasti na mahubiri yanayobadilisha maisha.",
     podcastHeading: "Podikasti ya Mabadiliko",
     podcastBody: "Jisajili kwenye jukwaa lako unalopenda na usikose kipindi chochote.",
     podcastComingSoon: "Zaidi zinakuja",
@@ -154,6 +169,9 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     radioBody: "تعليم وعبادة وكلمة — بث على مدار الساعة.",
     radioNowPlaying: "يُبث الآن",
     radioListen: "استمع مباشرة",
+    radioTagline: "إعداد قادة يُحدثون تحولاً في المجتمع.",
+    listenHeading: "استمع إلى د. ديفيد أوغبويلي أينما كنت.",
+    listenBody: "اكتشف عقودًا من التعاليم والبودكاست والرسائل التي تُحدث تحولاً.",
     podcastHeading: "بودكاست التحول",
     podcastBody: "اشترك على منصتك المفضلة ولا تفوّت أي حلقة.",
     podcastComingSoon: "المزيد قادم",

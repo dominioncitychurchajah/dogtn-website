@@ -107,7 +107,7 @@ export function MegaMenu({ panel, onNavigate }: { panel: MegaPanel; onNavigate: 
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover object-right"
                   />
-                  <span className="absolute inset-0 bg-gradient-to-r from-ink-900 from-40% via-ink-900/85 via-70% to-ink-900/20" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-ink-900 from-45% via-ink-900/60 via-65% to-transparent" />
                 </>
               ) : null}
             </Link>

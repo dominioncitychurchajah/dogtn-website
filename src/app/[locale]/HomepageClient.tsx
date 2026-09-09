@@ -15,6 +15,8 @@ import { JourneyStrip } from "@/components/sections/JourneyStrip";
 import { AssessmentBand } from "@/components/sections/AssessmentBand";
 import { BooksCarousel } from "@/components/sections/BooksCarousel";
 import { TrailerPlayer } from "@/components/sections/MentorshipTrailer";
+import { RadioSection } from "@/components/sections/RadioSection";
+import { ListenAnywhere } from "@/components/sections/ListenAnywhere";
 
 const fadeUpVariant = {
   initial: { opacity: 0, y: 30 },
@@ -207,6 +209,10 @@ export function HomepageClient({ locale }: { locale: string }) {
 
       {/* SECTION 4 — THE TEACHINGS (Books carousel) */}
       <BooksCarousel locale={loc} />
+
+      {/* SECTION 4.5 — LISTEN (radio + platforms; shared with the Media Center) */}
+      <RadioSection locale={loc} />
+      <ListenAnywhere locale={loc} />
 
       {/* SECTION 5 — THE INVITATION (Assessment band) */}
       <AssessmentBand copy={assessmentCopy} locale={loc} />

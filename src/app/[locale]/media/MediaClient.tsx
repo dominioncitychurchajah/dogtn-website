@@ -4,20 +4,14 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { PlayCircle, Mic2, ArrowRight, X, CalendarDays, Radio, Play } from "lucide-react";
+import { PlayCircle, ArrowRight, X, CalendarDays } from "lucide-react";
 import { Container } from "@/components/layout/Section";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { mediaCopy } from "@/i18n/pages/media";
-import { useAudioPlayer } from "@/lib/audio-store";
+import { RadioSection } from "@/components/sections/RadioSection";
+import { ListenAnywhere } from "@/components/sections/ListenAnywhere";
 
 const EVENTS_URL = "https://www.dominioncity.cc/en/events";
-
-// Dominion Mandate Radio (RadioKing). The raw MP3 stream feeds the site's own
-// layout-level mini-player, so audio survives route changes; the widget API
-// supplies what is currently on air. Both send Access-Control-Allow-Origin: *.
-const RADIO_STREAM = "https://play.radioking.io/dominioncityradio";
-const RADIO_NOW_PLAYING = "https://api.radioking.io/widget/radio/dominioncityradio/track/current";
-const RADIO_STATION = "Dominion Mandate Radio";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -105,42 +99,6 @@ export default function MediaClient({ locale }: { locale: string }) {
   const [activeTab, setActiveTab] = React.useState<TabKey>("all");
   const [activeVideo, setActiveVideo] = React.useState<Video | null>(null);
   const iframeRef = React.useRef<HTMLIFrameElement>(null);
-
-  const playAudio = useAudioPlayer((st) => st.play);
-  const [onAir, setOnAir] = React.useState<{ title: string; artist: string } | null>(null);
-
-  // Poll the station's widget API. Failure is non-fatal: the section still
-  // renders and the stream still plays, just without a now-playing line.
-  React.useEffect(() => {
-    let cancelled = false;
-    const load = async () => {
-      try {
-        const res = await fetch(RADIO_NOW_PLAYING, { cache: "no-store" });
-        if (!res.ok) return;
-        const d = await res.json();
-        if (!cancelled && (d?.title || d?.artist)) {
-          setOnAir({ title: d.title ?? "", artist: d.artist ?? "" });
-        }
-      } catch {
-        /* offline or blocked — leave the last known value in place */
-      }
-    };
-    load();
-    const id = setInterval(load, 30_000);
-    return () => {
-      cancelled = true;
-      clearInterval(id);
-    };
-  }, []);
-
-  const listenLive = React.useCallback(() => {
-    playAudio({
-      title: onAir?.title || RADIO_STATION,
-      speaker: onAir?.artist || RADIO_STATION,
-      src: RADIO_STREAM,
-      live: true,
-    });
-  }, [playAudio, onAir]);
 
   /** Blank the iframe before unmounting so audio stops the instant the user
    *  closes — the exit animation keeps the node mounted for ~300ms otherwise. */
@@ -305,7 +263,7 @@ export default function MediaClient({ locale }: { locale: string }) {
       </section>
 
       {/* SECTION 3 - VIDEO LIBRARY */}
-      <section className="bg-white py-16 sm:py-20">
+      <section id="library" className="scroll-mt-32 bg-white py-16 sm:py-20">
         <Container>
           <div className="mb-10 flex flex-wrap items-baseline justify-between gap-3 border-b border-[#E5E7EB] pb-5">
             <h2 className="font-serif text-[26px] text-[#0A192F] sm:text-[32px]">
@@ -393,78 +351,9 @@ export default function MediaClient({ locale }: { locale: string }) {
         </Container>
       </section>
 
-      {/* SECTION 5 - RADIO (live stream; playback runs through the layout-level
-          mini-player so it survives route changes). Colours follow this page's
-          existing hardcoded palette rather than the design tokens — see note in
-          the commit; converting the whole file is a separate job. */}
-      <section id="radio" className="bg-[#0A192F] py-16">
-        <Container>
-          <motion.div {...fadeUp} className="flex flex-col items-start gap-10 md:flex-row md:items-center md:justify-between">
-            <div className="max-w-xl">
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#C9A227]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#C9A227]">
-                <Radio className="h-3.5 w-3.5" />
-                {c.tabs.radio}
-              </span>
-              <h2 className="font-serif text-[40px] leading-tight text-white">{c.radioHeading}</h2>
-              <p className="mt-4 text-lg text-white/70">{c.radioBody}</p>
-            </div>
+      <RadioSection locale={loc} />
 
-            <div className="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-6">
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-[#E25822] animate-[pulse-live_2s_ease-in-out_infinite]" aria-hidden />
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
-                  {c.radioNowPlaying}
-                </span>
-              </div>
-              <p className="mt-3 min-h-[28px] font-serif text-xl leading-snug text-white">
-                {onAir?.title || RADIO_STATION}
-              </p>
-              {onAir?.artist && <p className="mt-1 text-sm text-white/60">{onAir.artist}</p>}
-              <button
-                onClick={listenLive}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#C9A227] px-8 py-3 font-medium text-[#0A192F] transition-colors hover:bg-white"
-              >
-                <Play className="h-4 w-4" />
-                {c.radioListen}
-              </button>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* SECTION 5 - PODCAST (structured so future episodes can be added without a refactor) */}
-      <section id="podcast" className="bg-white py-16 text-center">
-        <Container>
-          <motion.div {...fadeUp} className="max-w-2xl mx-auto flex flex-col items-center">
-            <span className="mb-4 inline-block rounded-full bg-[#C9A227]/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#C9A227]">
-              {c.podcastComingSoon}
-            </span>
-            <h2 className="font-serif text-[40px] text-[#0A192F] mb-4">
-              {c.podcastHeading}
-            </h2>
-            <p className="text-[#6B7280] mb-8 text-lg">
-              {c.podcastBody}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {[
-                { name: "Spotify", href: "https://open.spotify.com/show/2JO3Nr5fVyyuLuq8DiGQDa" },
-                { name: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/david-ogbueli/id1625589899" },
-              ].map((platform) => (
-                <a
-                  key={platform.name}
-                  href={platform.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-[#0A192F] text-white px-8 py-3 rounded-full hover:bg-[#C9A227] transition-colors"
-                >
-                  <Mic2 className="w-4 h-4" />
-                  <span className="text-sm font-medium">{platform.name}</span>
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        </Container>
-      </section>
+      <ListenAnywhere locale={loc} />
 
       {/* SECTION 6 - PRESS */}
       <section className="bg-[#0A192F] py-16">
