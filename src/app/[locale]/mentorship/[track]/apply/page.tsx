@@ -19,6 +19,8 @@ export async function generateMetadata({
   return {
     title: data ? `Apply · ${data.name}` : "Mentorship Application",
     description: "Apply to a DOGTN mentorship track. Your progress is saved automatically.",
+    // Mid-funnel form, one per track per locale — nothing to rank for.
+    robots: { index: false, follow: true },
   };
 }
 

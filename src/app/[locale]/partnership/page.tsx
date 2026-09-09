@@ -6,12 +6,21 @@ import { Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { PartnershipClient } from "./components/PartnershipClient";
 import { partnershipCopy } from "@/i18n/pages/partnership";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Partnership | David Ogbueli Global Transformation Network",
-  description:
-    "Every $50 you give trains one leader for a lifetime of impact. Join 2,400 partners worldwide who are already transforming nations through purpose, mentorship, and community.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    locale: isLocale(locale) ? locale : defaultLocale,
+    path: "partnership",
+    title: "Partnership | David Ogbueli Global Transformation Network",
+    description: "Every $50 you give trains one leader for a lifetime of impact. Join 2,400 partners worldwide who are already transforming nations through purpose, mentorship, and community.",
+  });
+}
 
 export default async function PartnershipPage({
   params,

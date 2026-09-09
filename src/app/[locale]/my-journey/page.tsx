@@ -17,6 +17,7 @@ import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { Section, Container } from "@/components/layout/Section";
 import { myJourneyCopy } from "@/i18n/pages/my-journey";
 import { cn } from "@/lib/utils";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -24,7 +25,8 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return { title: myJourneyCopy[isLocale(locale) ? locale : defaultLocale].metaTitle };
+  const loc = isLocale(locale) ? locale : defaultLocale;
+  return buildMetadata({ locale: loc, path: "my-journey", title: myJourneyCopy[loc].metaTitle });
 }
 
 const LADDER: Stage[] = ["Visitor", "Learner", "Disciple", "Leader", "Mentor", "Nation Builder"];

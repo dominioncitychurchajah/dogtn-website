@@ -7,6 +7,8 @@ import { Footer } from "@/components/layout/Footer";
 import { MiniAudioPlayer } from "@/components/layout/MiniAudioPlayer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 import { ToastProvider } from "@/components/ui/Toast";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { graph, organizationSchema, personSchema, websiteSchema } from "@/lib/schema";
 import type { NavStrings } from "@/components/layout/nav-config";
 import type { Metadata } from "next";
 
@@ -25,7 +27,8 @@ export async function generateMetadata({
   return {
     title: { default: `${t(dict, "brand.name")} · ${t(dict, "brand.network")}`, template: `%s · ${t(dict, "brand.name")}` },
     description: t(dict, "brand.tagline"),
-    alternates: { languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])) },
+    // Per-page canonical + hreflang come from buildMetadata(); a layout-level
+    // value would point every sub-page at the locale root.
   };
 }
 
@@ -60,6 +63,8 @@ export default async function LocaleLayout({
   return (
     <div dir={dirFor(locale)} className="flex min-h-dvh flex-col">
       <HtmlLangDir locale={locale} />
+      {/* Site-wide entities. Book/page-level nodes reference these by @id. */}
+      <JsonLd data={graph(organizationSchema(), personSchema(), websiteSchema(locale))} />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:rounded-[var(--radius-m)] focus:bg-ink-900 focus:px-4 focus:py-2 focus:text-paper-0"

@@ -5,12 +5,21 @@ import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { Section, Container, SectionHeading } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { StatCard } from "@/components/cards/StatCard";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Dominion Leadership Institute",
-  description:
-    "The training and human-development arm of Dominion City — equipping Christian leaders, professionals, and youth with the character, capacity, and competence to transform society.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    locale: isLocale(locale) ? locale : defaultLocale,
+    path: "institutions/dli",
+    title: "Dominion Leadership Institute",
+    description: "The training and human-development arm of Dominion City — equipping Christian leaders, professionals, and youth with the character, capacity, and competence to transform society.",
+  });
+}
 
 // Apply-by-phone (Nigeria line, from site footer).
 const APPLY_PHONE_DISPLAY = "+234 803 550 8230";

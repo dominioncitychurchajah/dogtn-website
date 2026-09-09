@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { homeCopy } from "@/i18n/pages/home";
 import { HomepageClient } from "./HomepageClient";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -11,7 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const c = homeCopy[loc].heroCurrent;
-  return { title: `Dr. David Ogbueli | ${c.eyebrow}`, description: c.body };
+  return buildMetadata({ locale: loc, path: "", title: `Dr. David Ogbueli | ${c.eyebrow}`, description: c.body });
 }
 
 export default async function HomePage({
