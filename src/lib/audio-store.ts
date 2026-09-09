@@ -4,6 +4,8 @@ export interface AudioTrack {
   title: string;
   speaker: string;
   src?: string;
+  /** Live stream (radio) — the player shows an on-air badge and hides seek affordances. */
+  live?: boolean;
 }
 
 interface AudioState {

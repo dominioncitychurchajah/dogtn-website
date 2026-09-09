@@ -33,7 +33,7 @@ export function MobileNav({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[120] flex flex-col bg-ink-900 text-paper-0 lg:hidden">
+    <div className="fixed inset-0 z-[120] flex flex-col bg-ink-900 text-paper-0 min-[1340px]:hidden">
       <div className="flex items-center justify-between px-5 py-4">
         <span className="font-display text-heading-3">Menu</span>
         <button onClick={onClose} aria-label="Close menu" className="rounded-full p-2 hover:bg-paper-0/10">

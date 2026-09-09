@@ -184,7 +184,7 @@ export default function MinistryClient({ locale }: MinistryClientProps) {
 
                 <div className="border-t border-white/10 pt-4 mt-auto">
                   <p className="text-white/60 text-sm mb-4">{event.location}</p>
-                  <a href="https://dcglobal-gules.vercel.app/en/events" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-[#C9A227] flex items-center transition-colors">
+                  <a href="https://www.dominioncity.cc/en/events" target="_blank" rel="noopener noreferrer" className="text-white text-sm font-medium hover:text-[#C9A227] flex items-center transition-colors">
                     {c.register} <ArrowRight className="ml-2 w-4 h-4" />
                   </a>
                 </div>

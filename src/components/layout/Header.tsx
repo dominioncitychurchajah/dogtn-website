@@ -54,7 +54,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
         )}
         onMouseLeave={() => setOpenMega(null)}
       >
-        <nav className="mx-auto flex h-20 max-w-content items-center justify-between gap-6 px-5 lg:px-16">
+        <nav className="mx-auto flex h-20 max-w-content items-center justify-between gap-6 px-5 lg:px-8">
           {/* Brand */}
           <Link href={`/${locale}`} className="flex shrink-0 items-center" aria-label="David Ogbueli — home">
             {solid ? (
@@ -88,12 +88,12 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-1 min-[1340px]:flex">
             {groups.map((g) => {
               const groupIsExternal = g.href.startsWith("http");
               const isOpen = openMega === g.label;
               const groupClassName = cn(
-                "flex items-center gap-1 rounded-full px-3.5 py-2 text-body-s font-semibold transition-colors",
+                "flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-2 text-body-s font-semibold transition-colors",
                 solid ? "hover:text-gold-hover" : "hover:text-gold-400",
                 isOpen && (solid ? "bg-paper-50 text-gold-hover" : "bg-paper-0/10"),
               );
@@ -141,7 +141,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             >
               <Search className="h-5 w-5" />
             </Link>
-            <ThemeToggle className="hidden lg:flex" />
+            <ThemeToggle className="hidden min-[1340px]:flex" />
             <LanguageSwitcher locale={locale} className="hidden sm:block" />
             <Button href={`/${locale}/mentorship`} size="s" className="hidden sm:inline-flex">
               {strings.give}
@@ -149,7 +149,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             <button
               onClick={() => setMobileOpen(true)}
               aria-label={strings.menu}
-              className="rounded-full p-2 hover:bg-current/10 lg:hidden"
+              className="rounded-full p-2 hover:bg-current/10 min-[1340px]:hidden"
             >
               <Menu className="h-6 w-6" />
             </button>
@@ -157,7 +157,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
         </nav>
 
         {openPanel && (
-          <div className="hidden lg:block">
+          <div className="hidden min-[1340px]:block">
             <MegaMenu panel={openPanel} onNavigate={() => setOpenMega(null)} />
           </div>
         )}

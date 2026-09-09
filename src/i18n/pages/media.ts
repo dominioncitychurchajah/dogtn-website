@@ -10,7 +10,7 @@ export interface MediaCopy {
   eyebrow: string;
   heroTitle: string;
   heroSubtitle: string;
-  tabs: { all: string; teachings: string; gmtv: string; conference: string; podcast: string };
+  tabs: { all: string; teachings: string; gmtv: string; conference: string; podcast: string; radio: string };
   noVideos: string;
   featuredLabel: string;
   watchNow: string;
@@ -18,6 +18,10 @@ export interface MediaCopy {
   videoCount: string;
   playVideo: string;
   closeVideo: string;
+  radioHeading: string;
+  radioBody: string;
+  radioNowPlaying: string;
+  radioListen: string;
   podcastHeading: string;
   podcastBody: string;
   podcastComingSoon: string;
@@ -34,7 +38,7 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     eyebrow: "Media Center",
     heroTitle: "Expand Your World",
     heroSubtitle: "Decades of transformative teaching, now available wherever you are.",
-    tabs: { all: "All", teachings: "Teachings", gmtv: "GMTV Studio", conference: "Conference Archives", podcast: "Podcast" },
+    tabs: { all: "All", teachings: "Teachings", gmtv: "GMTV Studio", conference: "Conference Archives", podcast: "Podcast", radio: "Radio" },
     noVideos: "No videos in this category yet.",
     featuredLabel: "Featured",
     watchNow: "Watch now",
@@ -42,6 +46,10 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     videoCount: "messages",
     playVideo: "Play video",
     closeVideo: "Close video",
+    radioHeading: "Dominion Mandate Radio",
+    radioBody: "Teaching, worship and the Word — streaming around the clock.",
+    radioNowPlaying: "Now playing",
+    radioListen: "Listen live",
     podcastHeading: "The Transformation Podcast",
     podcastBody: "Subscribe on your favourite platform and never miss an episode.",
     podcastComingSoon: "More on the way",
@@ -56,7 +64,7 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     eyebrow: "Centre Média",
     heroTitle: "Élargissez Votre Monde",
     heroSubtitle: "Des décennies d'enseignement transformateur, désormais disponibles où que vous soyez.",
-    tabs: { all: "Tout", teachings: "Enseignements", gmtv: "GMTV Studio", conference: "Archives de conférences", podcast: "Podcast" },
+    tabs: { all: "Tout", teachings: "Enseignements", gmtv: "GMTV Studio", conference: "Archives de conférences", podcast: "Podcast", radio: "Radio" },
     noVideos: "Aucune vidéo dans cette catégorie pour l'instant.",
     featuredLabel: "À la une",
     watchNow: "Regarder",
@@ -64,6 +72,10 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     videoCount: "messages",
     playVideo: "Lire la vidéo",
     closeVideo: "Fermer la vidéo",
+    radioHeading: "Dominion Mandate Radio",
+    radioBody: "Enseignement, louange et la Parole — en direct 24h/24.",
+    radioNowPlaying: "En cours de lecture",
+    radioListen: "Écouter en direct",
     podcastHeading: "Le Podcast de la Transformation",
     podcastBody: "Abonnez-vous sur votre plateforme préférée et ne manquez plus aucun épisode.",
     podcastComingSoon: "D'autres à venir",
@@ -78,7 +90,7 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     eyebrow: "Centro de Mídia",
     heroTitle: "Expanda o Seu Mundo",
     heroSubtitle: "Décadas de ensino transformador, agora disponíveis onde quer que você esteja.",
-    tabs: { all: "Todos", teachings: "Ensinamentos", gmtv: "GMTV Studio", conference: "Arquivos de Conferências", podcast: "Podcast" },
+    tabs: { all: "Todos", teachings: "Ensinamentos", gmtv: "GMTV Studio", conference: "Arquivos de Conferências", podcast: "Podcast", radio: "Rádio" },
     noVideos: "Ainda não há vídeos nesta categoria.",
     featuredLabel: "Destaque",
     watchNow: "Assistir agora",
@@ -86,6 +98,10 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     videoCount: "mensagens",
     playVideo: "Reproduzir vídeo",
     closeVideo: "Fechar vídeo",
+    radioHeading: "Dominion Mandate Radio",
+    radioBody: "Ensino, adoração e a Palavra — em transmissão contínua.",
+    radioNowPlaying: "A tocar agora",
+    radioListen: "Ouvir ao vivo",
     podcastHeading: "O Podcast da Transformação",
     podcastBody: "Subscreva na sua plataforma favorita e nunca perca um episódio.",
     podcastComingSoon: "Mais a caminho",
@@ -100,7 +116,7 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     eyebrow: "Kituo cha Habari",
     heroTitle: "Panua Ulimwengu Wako",
     heroSubtitle: "Miongo ya mafundisho ya kubadilisha maisha, sasa yanapatikana popote ulipo.",
-    tabs: { all: "Vyote", teachings: "Mafundisho", gmtv: "GMTV Studio", conference: "Kumbukumbu za Mikutano", podcast: "Podikasti" },
+    tabs: { all: "Vyote", teachings: "Mafundisho", gmtv: "GMTV Studio", conference: "Kumbukumbu za Mikutano", podcast: "Podikasti", radio: "Redio" },
     noVideos: "Hakuna video katika kategoria hii bado.",
     featuredLabel: "Iliyoangaziwa",
     watchNow: "Tazama sasa",
@@ -108,6 +124,10 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     videoCount: "mahubiri",
     playVideo: "Cheza video",
     closeVideo: "Funga video",
+    radioHeading: "Dominion Mandate Radio",
+    radioBody: "Mafundisho, ibada na Neno — mtandaoni saa zote.",
+    radioNowPlaying: "Inachezwa sasa",
+    radioListen: "Sikiliza moja kwa moja",
     podcastHeading: "Podikasti ya Mabadiliko",
     podcastBody: "Jisajili kwenye jukwaa lako unalopenda na usikose kipindi chochote.",
     podcastComingSoon: "Zaidi zinakuja",
@@ -122,7 +142,7 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     eyebrow: "مركز الإعلام",
     heroTitle: "وسّع عالمك",
     heroSubtitle: "عقود من التعاليم التحويلية، متاحة الآن أينما كنت.",
-    tabs: { all: "الكل", teachings: "التعاليم", gmtv: "GMTV Studio", conference: "أرشيف المؤتمرات", podcast: "بودكاست" },
+    tabs: { all: "الكل", teachings: "التعاليم", gmtv: "GMTV Studio", conference: "أرشيف المؤتمرات", podcast: "بودكاست", radio: "راديو" },
     noVideos: "لا توجد مقاطع فيديو في هذه الفئة بعد.",
     featuredLabel: "مميّز",
     watchNow: "شاهد الآن",
@@ -130,6 +150,10 @@ export const mediaCopy: Record<Locale, MediaCopy> = {
     videoCount: "رسالة",
     playVideo: "تشغيل الفيديو",
     closeVideo: "إغلاق الفيديو",
+    radioHeading: "Dominion Mandate Radio",
+    radioBody: "تعليم وعبادة وكلمة — بث على مدار الساعة.",
+    radioNowPlaying: "يُبث الآن",
+    radioListen: "استمع مباشرة",
     podcastHeading: "بودكاست التحول",
     podcastBody: "اشترك على منصتك المفضلة ولا تفوّت أي حلقة.",
     podcastComingSoon: "المزيد قادم",

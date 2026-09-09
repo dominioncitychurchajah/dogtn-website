@@ -99,7 +99,7 @@ export const DECISION_TREE: {
       keywords: ["event", "conference", "summit", "retreat", "meeting", "gathering", "calendar", "when", "where", "attend", "visit", "coming up", "next", "schedule"],
       title: "Upcoming Events",
       description: "Join us for conferences, summits, and gatherings around the world.",
-      url: "https://dcglobal-gules.vercel.app/en/events",
+      url: "https://www.dominioncity.cc/en/events",
       cta: "View Events",
       secondaryCta: "Subscribe",
       response: "We would love to see you at one of our gatherings. Check out what is coming up near you."

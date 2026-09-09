@@ -71,7 +71,7 @@ export function Footer({ locale }: { locale: Locale }) {
         { label: "Books", href: p("/books") },
         { label: "Media Center", href: p("/media") },
         { label: "Leadership Assessment", href: p("/leadership/assessment") },
-        { label: "Events", href: "https://dcglobal-gules.vercel.app/en/events" },
+        { label: "Events", href: "https://www.dominioncity.cc/en/events" },
       ],
     },
     {

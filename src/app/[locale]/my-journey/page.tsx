@@ -72,7 +72,7 @@ export default async function MyJourneyPage({
 
   const utilities = [
     { label: c.utilities[0].label, icon: Award, desc: c.utilities[0].desc, href: `/${loc}/my-journey` },
-    { label: c.utilities[1].label, icon: CalendarDays, desc: c.utilities[1].desc, href: "https://dcglobal-gules.vercel.app/en/events" },
+    { label: c.utilities[1].label, icon: CalendarDays, desc: c.utilities[1].desc, href: "https://www.dominioncity.cc/en/events" },
     { label: c.utilities[2].label, icon: FileText, desc: c.utilities[2].desc, href: `/${loc}/mentorship/ministry-leaders/status` },
     { label: c.utilities[3].label, icon: HandHeart, desc: c.utilities[3].desc, href: `/${loc}/partnership` },
   ];

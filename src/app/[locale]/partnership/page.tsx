@@ -50,7 +50,7 @@ export default async function PartnershipPage({
               {c.becomePartner}
             </Button>
             <Button
-              href="https://dcglobal-gules.vercel.app/en/projects"
+              href="https://www.dominioncity.cc/en/projects"
               target="_blank"
               rel="noopener noreferrer"
               size="l"
