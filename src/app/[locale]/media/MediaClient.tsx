@@ -71,6 +71,7 @@ const videos: Video[] = [
   { title: "GMTV Studio Session — with ESV (Dr) Iroy Orji", event: "Camp Meeting 2025", youtubeId: "dMvKf0aSZjM", category: "GMTV Studio" },
 
   // ── Conference Archives ───────────────────────────────────
+  { title: "Understanding the Human Nature, Part 2", event: "DCC 30th Anniversary", youtubeId: "K5nsVHeZTmI", category: "Conference Archives" },
   { title: "Jewish Secrets of Wealth Creation", event: "Global Camp Meeting 2026", youtubeId: "XzZt3_citMM", category: "Conference Archives" },
   { title: "Living with Eternity in Perspective", event: "Global Camp Meeting 2026", youtubeId: "iZzSoW4G83g", category: "Conference Archives" },
   { title: "Experiencing the Tangible Presence of God", event: "Global Camp Meeting 2026", youtubeId: "LI4cNgik9Fw", category: "Conference Archives" },

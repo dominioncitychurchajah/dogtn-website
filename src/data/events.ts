@@ -50,14 +50,15 @@ export const events: EventItem[] = [
     title: "Next Level Conference",
     type: "Conference",
     institution: "Dominion City",
-    date: "2026-09-24T09:00:00.000Z",
-    endDate: "2026-09-28T18:00:00.000Z",
-    location: "Lagos, Nigeria",
+    // Wed 23 Sep 8AM WAT (GMT+1) through Sun 27 Sep. Opening session Thu 24th, 5PM.
+    date: "2026-09-23T07:00:00.000Z",
+    endDate: "2026-09-27T18:00:00.000Z",
+    location: "Dominion City Lagos HQ, beside Lagos Business School, Ajah, Lagos",
     online: false,
     image: "/images/pastor/dli-conference-whiteboard.jpg",
-    summary: "A multi-day event focused on career growth, leadership, and marketplace apostleship.",
+    summary: "Empowerment for All Round Dominion — five days of teaching on leadership, marketplace dominion, and capacity.",
     description:
-      "A multi-day event focused on career growth, leadership, and marketplace apostleship.",
+      "Empowerment for All Round Dominion. Five days at Dominion City Lagos HQ, 8AM and 5PM daily, with the opening session on Thursday at 5PM. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Rev. Tony Akinyemi, Dr. David Sseppuuya and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity. An exclusive men's session runs Wednesday 23rd morning and evening, and Thursday 24th morning.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
