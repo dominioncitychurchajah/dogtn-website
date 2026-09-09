@@ -56,7 +56,7 @@ export default async function MyJourneyPage({
       pct: 42,
       cta: c.cards[0].cta,
       href: `/${loc}/journeys/become-a-leader`,
-      image: "/images/pastor/leadership-hand-raised.jpg",
+      image: "/images/pastor/leadership-hand-raised.webp",
     },
     {
       badge: c.cards[1].badge,
@@ -66,7 +66,7 @@ export default async function MyJourneyPage({
       pct: 18,
       cta: c.cards[1].cta,
       href: `/${loc}/leadership`,
-      image: "/images/pastor/dli-conference-whiteboard.jpg",
+      image: "/images/pastor/dli-conference-whiteboard.webp",
     },
   ];
 

@@ -83,7 +83,7 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
           meta: "10 questions · free",
           cta: "Take the assessment",
           href: p("/leadership/assessment"),
-          image: "/images/nav/leadership-assessment.png",
+          image: "/images/nav/leadership-assessment.webp",
         },
         columns: [
           {

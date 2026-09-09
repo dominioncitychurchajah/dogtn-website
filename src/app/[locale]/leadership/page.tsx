@@ -63,7 +63,7 @@ export default async function LeadershipPage({
       course: courses[0],
       badge: "Foundation",
       badgeTone: "ink" as const,
-      image: "/images/pastor/whiteboard-5-laws-bw.jpg",
+      image: "/images/pastor/whiteboard-5-laws-bw.webp",
       format: c.formatHybrid,
       formatIcon: Laptop,
       blurb: c.blurbs[0],
@@ -72,7 +72,7 @@ export default async function LeadershipPage({
       course: courses[1],
       badge: "Strategic",
       badgeTone: "gold" as const,
-      image: "/images/pastor/dli-conference-whiteboard.jpg",
+      image: "/images/pastor/dli-conference-whiteboard.webp",
       format: c.formatIntensive,
       formatIcon: Users,
       blurb: c.blurbs[1],
@@ -87,7 +87,7 @@ export default async function LeadershipPage({
       <header className="relative flex min-h-[85vh] items-center overflow-hidden bg-ink-900">
         <div className="absolute inset-0">
           <Image
-            src="/images/pastor/sermon-blue-backdrop.jpg"
+            src="/images/pastor/sermon-blue-backdrop.webp"
             alt=""
             fill
             priority

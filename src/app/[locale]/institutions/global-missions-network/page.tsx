@@ -29,7 +29,7 @@ const JOIN_HREF = "#join";
 
 const IMG = {
   hero: "/images/ministries/global-missions-network.jpg",
-  about: "/images/pastor/whiteboard-5-laws-bw.jpg",
+  about: "/images/pastor/whiteboard-5-laws-bw.webp",
 };
 
 // Who the Network is for.

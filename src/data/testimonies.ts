@@ -8,7 +8,7 @@ export const testimonies: Testimony[] = [
     name: "Chidinma Okeke",
     role: "University Graduate, Enugu",
     stage: "Learner",
-    portrait: "/images/pastor/testimony-throne-chair.jpg",
+    portrait: "/images/pastor/testimony-throne-chair.webp",
   },
   {
     id: "t-2",
@@ -17,7 +17,7 @@ export const testimonies: Testimony[] = [
     name: "Samuel Adeyemi",
     role: "Small Group Member, Lagos",
     stage: "Disciple",
-    portrait: "/images/pastor/leadership-hand-raised.jpg",
+    portrait: "/images/pastor/leadership-hand-raised.webp",
   },
   {
     id: "t-3",
@@ -26,7 +26,7 @@ export const testimonies: Testimony[] = [
     name: "Grace Mwangi",
     role: "DLI Advanced Graduate, Nairobi",
     stage: "Leader",
-    portrait: "/images/pastor/testimony-throne-chair.jpg",
+    portrait: "/images/pastor/testimony-throne-chair.webp",
   },
   {
     id: "t-4",
@@ -35,7 +35,7 @@ export const testimonies: Testimony[] = [
     name: "Pastor Emeka Nwosu",
     role: "Ministry Leader, Port Harcourt",
     stage: "Mentor",
-    portrait: "/images/pastor/leadership-hand-raised.jpg",
+    portrait: "/images/pastor/leadership-hand-raised.webp",
   },
   {
     id: "t-5",
@@ -44,7 +44,7 @@ export const testimonies: Testimony[] = [
     name: "Dr. Tunde Bakare",
     role: "CEO & Nation Builder, Abuja",
     stage: "Nation Builder",
-    portrait: "/images/pastor/testimony-throne-chair.jpg",
+    portrait: "/images/pastor/testimony-throne-chair.webp",
   },
   {
     id: "t-6",
@@ -53,7 +53,7 @@ export const testimonies: Testimony[] = [
     name: "Aisha Bello",
     role: "First-time Visitor, Abuja",
     stage: "Visitor",
-    portrait: "/images/pastor/leadership-hand-raised.jpg",
+    portrait: "/images/pastor/leadership-hand-raised.webp",
   },
 ];
 

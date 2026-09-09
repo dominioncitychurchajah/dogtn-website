@@ -7,8 +7,8 @@ import { ForumCountdown } from "./ForumCountdown";
 import { ForumRegistration } from "./ForumRegistration";
 
 const SPEAKERS = [
-  { name: "Dr. David Ogbueli", role: "Founder & Host, DOGTN", image: "/images/pastor/leadership-hand-raised.jpg" },
-  { name: "Pastor Nobert Onaga", role: "Global Policy Advisor", image: "/images/pastor/nobert-onaga.jpg" },
+  { name: "Dr. David Ogbueli", role: "Founder & Host, DOGTN", image: "/images/pastor/leadership-hand-raised.webp" },
+  { name: "Pastor Nobert Onaga", role: "Global Policy Advisor", image: "/images/pastor/nobert-onaga.webp" },
 ];
 
 const DAY_ONE = [
@@ -36,7 +36,7 @@ export function GlobalLeadershipForum({ locale }: { locale: Locale }) {
       {/* Hero */}
       <header className="relative flex min-h-[70vh] items-end overflow-hidden bg-ink-900 text-paper-0">
         <Image
-          src="/images/pastor/hero-night-of-glory.jpg"
+          src="/images/pastor/hero-night-of-glory.webp"
           alt=""
           fill
           priority

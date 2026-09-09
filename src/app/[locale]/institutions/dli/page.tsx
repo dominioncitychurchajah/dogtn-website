@@ -23,12 +23,12 @@ const WAITLIST_HREF = "#waitlist";
 // text is English for every locale. Campus images are real DLI graduation photos;
 // add Pastor Oke's portrait when supplied.
 const IMG = {
-  hero: "/images/dli/graduation-hall.jpg",
-  story: "/images/pastor/dli-conference-whiteboard.jpg",
-  campusMain: "/images/dli/graduation-group.jpg",
-  campusTile1: "/images/dli/graduation-hall.jpg",
+  hero: "/images/dli/graduation-hall.webp",
+  story: "/images/pastor/dli-conference-whiteboard.webp",
+  campusMain: "/images/dli/graduation-group.webp",
+  campusTile1: "/images/dli/graduation-hall.webp",
   campusTile2: "/images/ministries/dominion-leadership-institute.jpg",
-  president: "/images/pastor/sermon-blue-backdrop.jpg",
+  president: "/images/pastor/sermon-blue-backdrop.webp",
 };
 
 const STATS = [

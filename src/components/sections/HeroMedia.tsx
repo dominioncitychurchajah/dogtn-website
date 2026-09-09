@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 
-const poster = "/images/pastor/hero-preaching-stage.png";
+const poster = "/images/pastor/hero-preaching-stage.webp";
 
 type NavigatorConnection = {
   effectiveType?: string;

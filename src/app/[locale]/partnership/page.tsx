@@ -27,7 +27,7 @@ export default async function PartnershipPage({
       {/* PERSUASIVE HERO */}
       <section className="relative flex min-h-[85vh] flex-col justify-center overflow-hidden bg-ink-900 text-paper-0">
         <Image
-          src="/images/pastor/community-vestments-auditorium.jpg"
+          src="/images/pastor/community-vestments-auditorium.webp"
           alt="Dr. David Ogbueli addressing leadership auditorium"
           fill
           priority

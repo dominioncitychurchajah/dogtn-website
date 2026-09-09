@@ -152,7 +152,7 @@ export default function MediaClient({ locale }: { locale: string }) {
       {/* SECTION 1 - HERO */}
       <section className="relative min-h-[50vh] bg-[#0A192F] flex items-center justify-center text-center overflow-hidden">
         <Image
-          src="/images/pastor/preaching-purple-lit.jpg"
+          src="/images/pastor/preaching-purple-lit.webp"
           alt="Dr. David Ogbueli Preaching"
           fill
           className="object-cover opacity-25"
