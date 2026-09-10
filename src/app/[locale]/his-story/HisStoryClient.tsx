@@ -47,10 +47,11 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
     abbr: string;
     logo?: string;
   }[] = [
-    { institution: "University of Nigeria, Nsukka", abbr: "UNN" },
-    { institution: "Harvard Business School", programme: c.education.harvardProgramme, abbr: "HBS" },
-    { institution: "IESE Business School", abbr: "IESE" },
-    { institution: "Lagos Business School, Pan-Atlantic University", programme: c.education.lbsProgramme, abbr: "LBS" },
+    { institution: "University of Nigeria, Nsukka", abbr: "UNN", logo: "/images/institutions/unn.webp" },
+    { institution: "Harvard Business School", programme: c.education.harvardProgramme, abbr: "HBS", logo: "/images/institutions/harvard-business-school.webp" },
+    { institution: "IESE Business School", abbr: "IESE", logo: "/images/institutions/iese.webp" },
+    { institution: "Lagos Business School, Pan-Atlantic University", programme: c.education.lbsProgramme, abbr: "LBS", logo: "/images/institutions/lagos-business-school.webp" },
+    // No logo obtainable for these two; they keep the monogram until supplied.
     { institution: "NIPSS", programme: c.education.nipssProgramme, abbr: "NIPSS" },
     { institution: "Trinity University of Ambassadors", abbr: "TUA" },
   ];
@@ -163,20 +164,20 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
                 viewport={{ once: true, amount: 0.2 }}
                 className="bg-white rounded-[8px] p-8 shadow-sm border border-[#E5E7EB] text-center md:text-left"
               >
-                <div className="mb-5 flex justify-center md:justify-start">
+                <div className="mb-5 flex h-10 items-center justify-center md:justify-start">
                   {card.logo ? (
                     <Image
                       src={card.logo}
                       alt={`${card.institution} logo`}
-                      width={56}
-                      height={56}
+                      width={200}
+                      height={80}
                       unoptimized
-                      className="h-14 w-14 object-contain"
+                      className="h-10 w-auto max-w-[170px] object-contain object-center md:object-left"
                     />
                   ) : (
                     <span
                       aria-hidden="true"
-                      className="flex h-14 w-14 items-center justify-center rounded-[6px] bg-[#0A192F] px-1 font-serif text-sm tracking-wide text-[#C9A227]"
+                      className="flex h-10 items-center justify-center rounded-[6px] bg-[#0A192F] px-3 font-serif text-sm tracking-wide text-[#C9A227]"
                     >
                       {card.abbr}
                     </span>
