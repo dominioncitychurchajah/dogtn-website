@@ -23,6 +23,10 @@ export function nextUpcomingEvent(now = new Date()): EventItem | null {
   return upcoming[0] ?? null;
 }
 
+/** The line the site actually answers. Used by tel: links site-wide. */
+export const CONTACT_PHONE = "+2348035508230";
+export const CONTACT_PHONE_DISPLAY = "+234 803 550 8230";
+
 export interface Registration {
   fullName: string;
   email: string;

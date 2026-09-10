@@ -3,7 +3,6 @@ import type { Locale } from "@/i18n/config";
 /**
  * Per-page translation module for the Start Here page.
  * `en` is the source copy extracted from the page; other locales are translations.
- * The five JourneyCards come from data and are NOT translated here.
  */
 export interface StartHereCopy {
   metaTitle: string;

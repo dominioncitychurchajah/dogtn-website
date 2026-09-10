@@ -1,5 +1,7 @@
 /**
- * Event registration endpoint for dogtn-website.
+ * Form endpoint for dogtn-website. Handles two kinds of submission, told
+ * apart by the `type` field: "registration" (an event) and "waitlist" (the
+ * mentorship app). Each writes to its own tab and sends its own emails.
  *
  * Setup (about two minutes):
  *   1. Open your Google Sheet -> Extensions -> Apps Script.
@@ -18,11 +20,16 @@
  */
 
 var NOTIFY_EMAIL = 'dominioncitychurchajah1@gmail.com';
-var TAB_NAME = 'Registrations';
+var TAB_REGISTRATIONS = 'Registrations';
+var TAB_WAITLIST = 'Mentorship waitlist';
 
-var HEADERS = [
+var HEADERS_REGISTRATIONS = [
   'Submitted at', 'Event', 'Full name', 'Email', 'Phone',
   'Country', 'Seats', 'Volunteer', 'Volunteer areas'
+];
+
+var HEADERS_WAITLIST = [
+  'Submitted at', 'Track', 'Full name', 'Email', 'Phone', 'Country', 'Current role'
 ];
 
 function doPost(e) {
@@ -36,7 +43,9 @@ function doPost(e) {
     var seats = parseInt(d.seats, 10);
     if (!(seats >= 1 && seats <= 20)) seats = 1;
 
-    var sheet = getSheet_();
+    if (d.type === 'waitlist') return handleWaitlist_(d);
+
+    var sheet = getSheet_(TAB_REGISTRATIONS, HEADERS_REGISTRATIONS);
     sheet.appendRow([
       new Date(),
       d.eventTitle || '',
@@ -63,15 +72,53 @@ function doGet() {
   return json({ ok: true, status: 'Registration endpoint is running' });
 }
 
-function getSheet_() {
+/** Mentorship-app waitlist: no seats, no event, a track preference instead. */
+function handleWaitlist_(d) {
+  var sheet = getSheet_(TAB_WAITLIST, HEADERS_WAITLIST);
+  sheet.appendRow([
+    new Date(),
+    d.trackName || 'No preference',
+    d.fullName,
+    d.email,
+    "'" + String(d.phone),
+    d.country,
+    d.currentRole || ''
+  ]);
+
+  MailApp.sendEmail({
+    to: NOTIFY_EMAIL,
+    subject: 'Mentorship waitlist: ' + d.fullName + ' - ' + (d.trackName || 'No preference'),
+    body: d.fullName + ' joined the mentorship waitlist.\n\n' +
+          'Track:   ' + (d.trackName || 'No preference') + '\n' +
+          'Email:   ' + d.email + '\n' +
+          'Phone:   ' + d.phone + '\n' +
+          'Country: ' + d.country + '\n' +
+          (d.currentRole ? 'Role:    ' + d.currentRole + '\n' : ''),
+    replyTo: d.email
+  });
+
+  MailApp.sendEmail({
+    to: d.email,
+    subject: 'You are on the mentorship waitlist',
+    body: 'Hello ' + d.fullName + ',\n\n' +
+          'You are on the waitlist for the ' + (d.trackName || 'mentorship') + ' track.\n\n' +
+          'When the mentorship app opens we will send your invitation to this ' +
+          'address, so nothing further is needed from you now.\n\n' +
+          'Dominion City\n'
+  });
+
+  return json({ ok: true });
+}
+
+function getSheet_(tabName, headers) {
   // Bound script: resolves to the Sheet this script was created from.
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   if (!ss) throw new Error('Not bound to a Sheet. Create the script via Extensions -> Apps Script from inside your Sheet.');
-  var sheet = ss.getSheetByName(TAB_NAME);
+  var sheet = ss.getSheetByName(tabName);
   if (!sheet) {
-    sheet = ss.insertSheet(TAB_NAME);
-    sheet.appendRow(HEADERS);
-    sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
+    sheet = ss.insertSheet(tabName);
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
   return sheet;

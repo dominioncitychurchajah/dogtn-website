@@ -121,7 +121,7 @@ function VerifyContent() {
                 )}
                 . Please check the identifier and try again, or contact the registrar.
               </p>
-              <Link href="/en/my-journey" className="mt-6 inline-flex text-body-s font-semibold text-gold-hover underline">
+              <Link href="/en/mentorship" className="mt-6 inline-flex text-body-s font-semibold text-gold-hover underline">
                 Return to your journey
               </Link>
             </div>

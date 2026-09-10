@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Route, Phone } from "lucide-react";
 import type { Locale } from "@/i18n/config";
+import { CONTACT_PHONE } from "@/lib/registration";
 
 interface Props {
   locale: Locale;
@@ -77,13 +78,13 @@ export function OrientationBand({ locale, title, body, ctaPrimary, ctaSecondary 
                 <Route className="h-[18px] w-[18px]" aria-hidden />
                 {ctaPrimary}
               </Link>
-              <Link
-                href={`/${locale}/contact`}
+              <a
+                href={`tel:${CONTACT_PHONE}`}
                 className="inline-flex h-[52px] items-center justify-center gap-2.5 rounded-[10px] border-2 border-white/90 px-7 text-base font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <Phone className="h-[18px] w-[18px]" aria-hidden />
                 {ctaSecondary}
-              </Link>
+              </a>
             </div>
           </div>
 
