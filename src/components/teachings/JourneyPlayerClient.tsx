@@ -25,7 +25,7 @@ export function JourneyPlayerClient({ journey, poster }: { journey: Journey; pos
   function markComplete() {
     if (!active) return;
     setCompleted((prev) => new Set(prev).add(active.id));
-    toast("Module complete — keep going!");
+    toast("Module complete. Keep going!");
   }
 
   return (

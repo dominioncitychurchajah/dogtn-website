@@ -59,7 +59,7 @@ export function VideoPlayer({
           <div className="absolute inset-0 bg-ink-900/25" />
           {dataSaver && (
             <span className="absolute start-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-paper-0/20 bg-ink-900/80 px-3 py-1 text-caption font-semibold uppercase tracking-wider text-paper-0 backdrop-blur">
-              <Rss className="h-3 w-3" /> Data Saver — low quality
+              <Rss className="h-3 w-3" /> Data Saver, low quality
             </span>
           )}
           <button
@@ -87,7 +87,7 @@ export function VideoPlayer({
           <span className="flex h-16 w-16 items-center justify-center rounded-full border border-paper-0/20 bg-paper-0/5">
             <Play className="h-7 w-7 fill-paper-0" />
           </span>
-          <p className="text-body-s text-ink-300">Prototype player — video stream not connected</p>
+          <p className="text-body-s text-ink-300">Prototype player, video stream not connected</p>
         </div>
       )}
 

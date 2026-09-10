@@ -51,7 +51,7 @@ export const questions: AssessmentQuestion[] = [
     dimension: "character",
     prompt: "Who holds you accountable today?",
     options: [
-      { label: "No one formally — I am still building that.", value: 1 },
+      { label: "No one formally. I am still building that.", value: 1 },
       { label: "A mentor or leader I report to informally.", value: 2 },
       { label: "A team and an overseer who both depend on me.", value: 3 },
       { label: "A board or peer body of senior leaders.", value: 4 },
@@ -78,7 +78,7 @@ export const questions: AssessmentQuestion[] = [
       { label: "Week to week, as things come.", value: 1 },
       { label: "Across the current season or year.", value: 2 },
       { label: "Across a three-to-five year horizon for my team or work.", value: 3 },
-      { label: "In generational terms — succession and legacy.", value: 4 },
+      { label: "In generational terms: succession and legacy.", value: 4 },
     ],
   },
 
@@ -123,7 +123,7 @@ export const questions: AssessmentQuestion[] = [
     dimension: "influence",
     prompt: "What is your involvement in developing other leaders?",
     options: [
-      { label: "None yet — I am the one being developed.", value: 1 },
+      { label: "None yet. I am the one being developed.", value: 1 },
       { label: "I encourage and help individuals informally.", value: 2 },
       { label: "I intentionally mentor people in a structured way.", value: 3 },
       { label: "I raise mentors who go on to raise others.", value: 4 },
@@ -137,7 +137,7 @@ export const questions: AssessmentQuestion[] = [
     prompt: "Where does your sense of impact currently sit?",
     options: [
       { label: "I want to matter, but I cannot yet see where.", value: 1 },
-      { label: "In my immediate circle — family, friends, workplace.", value: 2 },
+      { label: "In my immediate circle: family, friends, workplace.", value: 2 },
       { label: "In a community or ministry that I help carry.", value: 3 },
       { label: "In a sector, city, or nation I am deliberately shaping.", value: 4 },
     ],
@@ -177,7 +177,7 @@ export const levels: Record<LevelKey, LevelResult> = {
   1: {
     level: 1,
     trackSlug: "emerging-leaders",
-    headline: "You are being formed — and this is exactly where great leaders begin.",
+    headline: "You are being formed, and this is exactly where great leaders begin.",
     body:
       "Your answers describe a leader whose foundations are still being laid: real hunger, real potential, and the season for depth of character before breadth of responsibility.",
     why:
@@ -189,7 +189,7 @@ export const levels: Record<LevelKey, LevelResult> = {
   2: {
     level: 2,
     trackSlug: "ministry-leaders",
-    headline: "You already carry responsibility for others — now it needs to be sustainable.",
+    headline: "You already carry responsibility for others. Now it needs to be sustainable.",
     body:
       "Your answers describe a leader with a defined work and people who depend on you. The task is no longer proving capability; it is deepening the interior life and building what holds.",
     why:
@@ -201,7 +201,7 @@ export const levels: Record<LevelKey, LevelResult> = {
   3: {
     level: 3,
     trackSlug: "nation-builders",
-    headline: "You are building beyond yourself — the work now is what outlasts you.",
+    headline: "You are building beyond yourself, the work now is what outlasts you.",
     body:
       "Your answers describe a leader operating at institutional scale, whose counsel other leaders already seek. The horizon in view is succession, sectors, and nations.",
     why:

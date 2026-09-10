@@ -16,9 +16,9 @@ function mockCredential(id: string) {
   const HOLDERS = ["Grace Adeyemi", "Emmanuel Okonkwo", "Ruth Balogun", "Samuel Chukwu", "Deborah Nwosu"];
   const CREDENTIALS = [
     "Executive Leadership Certification",
-    "DLI Advanced — Strategy & Governance",
-    "DLI Basic — Leadership Foundations",
-    "Priesthood Institute — Ministry Leaders Formation",
+    "DLI Advanced: Strategy & Governance",
+    "DLI Basic: Leadership Foundations",
+    "Priesthood Institute: Ministry Leaders Formation",
   ];
   let sum = 0;
   for (let i = 0; i < id.length; i++) sum += id.charCodeAt(i);

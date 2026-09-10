@@ -33,7 +33,7 @@ export const courses: Course[] = [
   },
   {
     id: "priesthood-ministry-leaders-2026-q3",
-    title: "Priesthood Institute — Ministry Leaders Formation",
+    title: "Priesthood Institute: Ministry Leaders Formation",
     institution: "Priesthood Institute",
     cohortDate: "2026-08-17T00:00:00.000Z",
     durationWeeks: 12,
@@ -43,7 +43,7 @@ export const courses: Course[] = [
   },
   {
     id: "priesthood-ordination-2026",
-    title: "Priesthood Institute — Ordination Track",
+    title: "Priesthood Institute: Ordination Track",
     institution: "Priesthood Institute",
     cohortDate: "2026-12-07T00:00:00.000Z",
     durationWeeks: 16,

@@ -9,7 +9,7 @@ export default function AdminAssessmentPage() {
   return (
     <div className="space-y-8">
       <p className="text-body-m text-ink-500">
-        Manage the leadership diagnostic — {questions.length} questions across {dimensions.length} dimensions and the
+        Manage the leadership diagnostic, {questions.length} questions across {dimensions.length} dimensions and the
         recommendation matrix.
       </p>
 

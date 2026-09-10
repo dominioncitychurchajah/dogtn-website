@@ -25,7 +25,7 @@ export const ROOT_GREETING =
 export const ROOT_RETURN_TEXT = "What else can I help you with?";
 
 export const FREE_TEXT_HANDOFF_TEXT =
-  "Thank you for sharing that. Questions like this deserve a real conversation, so let me connect you with someone from our team — or pick up below where you left off.";
+  "Thank you for sharing that. Questions like this deserve a real conversation, so let me connect you with someone from our team, or pick up below where you left off.";
 
 export const TEAM_EMAIL = "support@davidogbueli.org";
 
@@ -73,7 +73,7 @@ export const GABE_NODES: Record<string, GabeNode> = {
         kind: "link",
         label: "Watch a message first",
         href: "/media",
-        confirm: "Great choice — opening Media.",
+        confirm: "Great choice. Opening Media.",
       },
       BACK_TO_MENU,
     ],

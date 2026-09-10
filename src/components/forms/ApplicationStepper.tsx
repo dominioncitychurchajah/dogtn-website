@@ -319,7 +319,7 @@ export function ApplicationStepper({
                 id="storyFormation"
                 name="storyFormation"
                 label="What specific area needs formation? (optional)"
-                hint="Identify your growth edges — where do you most want to be stretched?"
+                hint="Identify your growth edges, where do you most want to be stretched?"
                 rows={4}
                 value={form.storyFormation}
                 error={errors.storyFormation}
@@ -467,7 +467,7 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
     <div className="flex flex-col gap-1 p-4 sm:flex-row sm:gap-6">
       <dt className="w-full text-body-s font-semibold text-ink-500 sm:w-1/3">{label}</dt>
       <dd className="w-full text-body-m text-ink-900 sm:w-2/3">
-        {value.trim() ? value : <span className="text-ink-300">—</span>}
+        {value.trim() ? value : <span className="text-ink-300">-</span>}
       </dd>
     </div>
   );

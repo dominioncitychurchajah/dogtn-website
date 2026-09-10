@@ -15,7 +15,7 @@ const ACTIVITY = [
   { who: "System", what: "published “The Laws of Kingdom Governance”", when: "1h ago" },
   { who: "Ada O.", what: "moved 3 applicants to Interview", when: "2h ago" },
   { who: "Golden Heart Foundation", what: "received a ₦250,000 monthly gift", when: "5h ago" },
-  { who: "Emeka U.", what: "completed DLI Basic — certificate issued", when: "Yesterday" },
+  { who: "Emeka U.", what: "completed DLI Basic, certificate issued", when: "Yesterday" },
 ];
 
 export default function AdminDashboard() {
@@ -60,7 +60,7 @@ export default function AdminDashboard() {
           <div className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6">
             <h2 className="mb-4 text-heading-3 text-ink-900">Giving by fund</h2>
             <div className="flex h-32 items-center justify-center rounded-[var(--radius-m)] bg-paper-50 text-body-s text-ink-300">
-              Chart placeholder — donut by fund
+              Chart placeholder, donut by fund
             </div>
           </div>
         </div>

@@ -39,8 +39,8 @@ export function Footer({ locale }: { locale: Locale }) {
   const [subscribed, setSubscribed] = React.useState(false);
 
   const socials = [
-    { label: "YouTube", href: "https://www.youtube.com/@DominionCity", icon: YoutubeIcon },
-    { label: "Instagram", href: "https://www.instagram.com/dominioncitylagos/", icon: InstagramIcon },
+    { label: "YouTube", href: "https://www.youtube.com/channel/UCEwpTUF-FDHQwzcDx3eZ3hQ", icon: YoutubeIcon },
+    { label: "Instagram", href: "https://www.instagram.com/pastordavidogbueli/", icon: InstagramIcon },
     { label: "Facebook", href: "https://www.facebook.com/DominionCity", icon: FacebookIcon },
     { label: "Podcast", href: "https://open.spotify.com/", icon: Mic2 },
   ];
@@ -96,7 +96,7 @@ export function Footer({ locale }: { locale: Locale }) {
         {/* Top: Logo + Newsletter */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between border-b border-white/10 pb-14 mb-14">
           <div className="max-w-xs">
-            <Link href={`/${locale}`} className="inline-flex items-center mb-5" aria-label="Dr. David Ogbueli — home">
+            <Link href={`/${locale}`} className="inline-flex items-center mb-5" aria-label="Dr. David Ogbueli home">
               <Image
                 src="/images/logo/dr-david-ogbueli-brand-white.webp"
                 alt="Dr. David Ogbueli"
@@ -142,7 +142,7 @@ export function Footer({ locale }: { locale: Locale }) {
               </p>
             </div>
             {subscribed ? (
-              <p className="text-[#C9A227] text-sm font-semibold py-3">✓ You're subscribed — welcome to the movement.</p>
+              <p className="text-[#C9A227] text-sm font-semibold py-3">✓ You're subscribed. Welcome to the movement.</p>
             ) : (
               <div className="flex flex-col gap-2 sm:flex-row">
                 <label htmlFor="footer-email" className="sr-only">

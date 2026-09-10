@@ -112,7 +112,7 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
             >
               <Image
                 src="/images/partnership/mission-video-thumb.webp"
-                alt="Partnership Solves All Problems — Dr. David Ogbueli"
+                alt="Partnership Solves All Problems, Dr. David Ogbueli"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -428,7 +428,7 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
           >
             <iframe
               src="https://www.youtube.com/embed/6ODrqCfl_b4?autoplay=1&rel=0"
-              title="Partnership Solves All Problems — Dr. David Ogbueli"
+              title="Partnership Solves All Problems, Dr. David Ogbueli"
               className="absolute inset-0 h-full w-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen

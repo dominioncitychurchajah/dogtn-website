@@ -52,7 +52,7 @@ export function useGabeProactiveTriggers(locale: string) {
     const now = Date.now();
     if (last && now - Number(last) >= RETURN_WINDOW_MS) {
       triggerProactive(
-        "Welcome back. It's good to see you again — would you like to continue where you left off?",
+        "Welcome back. It's good to see you again. Would you like to continue where you left off?",
       );
     }
     window.localStorage.setItem(LAST_VISIT_KEY, String(now));
@@ -65,7 +65,7 @@ export function useGabeProactiveTriggers(locale: string) {
     const timer = setTimeout(() => {
       firedRef.current.add("assessment");
       triggerProactive(
-        "You're almost there on your Leadership Assessment — want to pick back up where you left off?",
+        "You're almost there on your Leadership Assessment. Want to pick back up where you left off?",
         [
           {
             kind: "link",

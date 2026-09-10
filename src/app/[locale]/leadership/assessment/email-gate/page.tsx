@@ -38,7 +38,7 @@ export default function EmailGatePage() {
             </h1>
             <p className="mt-4 text-body-l text-ink-300">
               Your leadership profile is ready. Leave an email and we&apos;ll send
-              your full roadmap — or skip straight to your results.
+              your full roadmap, or skip straight to your results.
             </p>
           </div>
 

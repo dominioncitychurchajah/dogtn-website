@@ -260,7 +260,7 @@ export function ContactClient() {
                     {step.n}
                   </span>
                   <p className="text-[13px] leading-relaxed text-white/70">
-                    <strong className="font-semibold text-white">{step.title}</strong> — {step.text}
+                    <strong className="font-semibold text-white">{step.title}</strong>, {step.text}
                   </p>
                 </div>
               ))}

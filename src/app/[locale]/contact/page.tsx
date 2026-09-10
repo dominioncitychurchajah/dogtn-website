@@ -17,7 +17,7 @@ export async function generateMetadata({
     path: "contact",
     title: "Contact | Dr. David Ogbueli",
     description:
-      "Reach the office of Dr. David Ogbueli — for speaking invitations, partnership, mentorship enquiries, and media requests.",
+      "Reach the office of Dr. David Ogbueli, for speaking invitations, partnership, mentorship enquiries, and media requests.",
   });
 }
 

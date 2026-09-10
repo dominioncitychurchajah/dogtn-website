@@ -12,8 +12,18 @@ export const SITE_URL = (
 
 export const SITE_NAME = "David Ogbueli · Global Transformation Network";
 
-/** Social profiles we actually control, for schema.org `sameAs`. */
-export const SOCIAL_PROFILES = [
+/**
+ * schema.org `sameAs`. Split deliberately: these resolve two different
+ * entities, and giving the Person the ministry's accounts would merge them.
+ */
+export const PERSON_PROFILES = [
+  "https://www.instagram.com/pastordavidogbueli/",
+  "https://www.youtube.com/channel/UCEwpTUF-FDHQwzcDx3eZ3hQ",
+  // Canonical form; ng.linkedin.com is a country redirect to the same profile.
+  "https://www.linkedin.com/in/drdavidogbueli",
+];
+
+export const ORG_PROFILES = [
   "https://www.facebook.com/DominionCity",
   "https://www.instagram.com/dominioncitylagos/",
 ];

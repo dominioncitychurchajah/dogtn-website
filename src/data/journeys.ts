@@ -73,7 +73,7 @@ export const journeys: Journey[] = [
     promise: "Carry kingdom influence into every sphere of nations.",
     icon: "landmark",
     description:
-      "The Nation Builder path. Take principled leadership into business, government, media, and culture — and raise leaders who transform society.",
+      "The Nation Builder path. Take principled leadership into business, government, media, and culture, and raise leaders who transform society.",
     accent: "gold",
     modules: [
       { id: "ts-1", title: "The Mandate to Disciple Nations", durationMin: 26, type: "video" },

@@ -244,7 +244,7 @@ function TestimonialSection({ copy }: { copy: { quote: string; attribution: stri
           <p key={t.id} className="font-serif italic text-[28px] lg:text-[32px] text-white max-w-[800px] mx-auto leading-snug">
             {t.quote}
           </p>
-          <div className="text-[#C9A227] text-base mt-8 font-medium">— {t.attribution}</div>
+          <div className="text-[#C9A227] text-base mt-8 font-medium">{t.attribution}</div>
 
           <div className="mt-10 flex items-center justify-center gap-2">
             {testimonials.map((item, i) => (
