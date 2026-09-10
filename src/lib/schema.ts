@@ -20,7 +20,7 @@ export function organizationSchema() {
     url: absoluteUrl("/"),
     logo: {
       "@type": "ImageObject",
-      url: absoluteUrl("/images/logo/dr-david-ogbueli-brand-white.png"),
+      url: absoluteUrl("/images/logo/dr-david-ogbueli-brand-white.webp"),
     },
     founder: { "@id": PERSON_ID },
     sameAs: SOCIAL_PROFILES,
