@@ -11,6 +11,7 @@ import { testimonies } from "@/data/testimonies";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { homeCopy } from "@/i18n/pages/home";
 import { NextGathering } from "@/components/sections/NextGathering";
+import { JourneyStrip } from "@/components/sections/JourneyStrip";
 import { AssessmentBand } from "@/components/sections/AssessmentBand";
 import { BooksCarousel } from "@/components/sections/BooksCarousel";
 import { TrailerPlayer } from "@/components/sections/MentorshipTrailer";
@@ -166,6 +167,7 @@ export function HomepageClient({ locale }: { locale: string }) {
 
       {/* SECTION 1.5 — NEXT GATHERING (overlaps hero) + JOURNEY STRIP */}
       <NextGathering copy={gatheringCopy} locale={loc} />
+      <JourneyStrip locale={loc} />
 
 
       {/* SECTION 3 — GLOBAL IMPACT */}

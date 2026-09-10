@@ -89,7 +89,7 @@ export default async function StartHerePage({
       </Section>
 
       {/* Quick routes for visitors who know what they want. */}
-      <JourneyStrip locale={loc} />
+      <JourneyStrip locale={loc} exclude={["growSpiritually", "becomeLeader"]} />
 
       <OrientationBand
         locale={loc}

@@ -1,28 +1,44 @@
 import Link from "next/link";
-import { Users, BookOpen, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
+import { Sparkles, GraduationCap, Users, BookOpen, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { homeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
 
-export function JourneyStrip({ locale }: { locale: Locale }) {
+/**
+ * Quick routes. The homepage shows all seven; Start Here passes `exclude`
+ * to drop the two whose labels would repeat cards on that page.
+ */
+export function JourneyStrip({
+  locale,
+  exclude = [],
+}: {
+  locale: Locale;
+  exclude?: ("growSpiritually" | "becomeLeader")[];
+}) {
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const c = homeCopy[loc].journeyStrip;
 
-  const TILES = [
+  const ALL = [
+    // Was /journeys/grow-spiritually, a route that no longer exists.
+    { key: "growSpiritually", label: c.growSpiritually, icon: Sparkles, href: "/start-here" },
+    { key: "becomeLeader", label: c.becomeLeader, icon: GraduationCap, href: "/mentorship" },
     // No community/chapters page exists yet; contact is the nearest real destination.
-    { label: c.joinCommunity, icon: Users, href: "/contact" },
-    { label: c.accessTeachings, icon: BookOpen, href: "/media" },
-    { label: c.exploreMinistry, icon: Landmark, href: "/ministry" },
-    { label: c.partner, icon: Handshake, href: "/partnership" },
-    { label: c.volunteer, icon: Heart, href: "/contact" },
-  ];
+    { key: "joinCommunity", label: c.joinCommunity, icon: Users, href: "/contact" },
+    { key: "accessTeachings", label: c.accessTeachings, icon: BookOpen, href: "/media" },
+    { key: "exploreMinistry", label: c.exploreMinistry, icon: Landmark, href: "/ministry" },
+    { key: "partner", label: c.partner, icon: Handshake, href: "/partnership" },
+    { key: "volunteer", label: c.volunteer, icon: Heart, href: "/contact" },
+  ] as const;
+
+  const TILES = ALL.filter((t) => !exclude.includes(t.key as never));
+  // 7 tiles sit 4+3; 5 tiles fit one row of five. Literal classes so Tailwind
+  // sees them.
+  const cols = TILES.length > 5 ? "lg:grid-cols-4" : "lg:grid-cols-5";
 
   return (
     <section className="border-b border-ink-100/60 bg-paper-0 py-12">
       <Container>
-        {/* Five tiles in a four-column grid left one stranded on its own row.
-            Five columns on desktop puts them in a single line. */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
+        <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 ${cols}`}>
           {TILES.map(({ label, icon: Icon, href }) => (
             <Link
               key={label}
