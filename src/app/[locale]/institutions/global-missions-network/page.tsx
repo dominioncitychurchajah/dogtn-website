@@ -28,7 +28,7 @@ export async function generateMetadata({
     locale: isLocale(locale) ? locale : defaultLocale,
     path: "institutions/global-missions-network",
     title: "Global Missions Network",
-    description: "A Kingdom relationship network for pastors, founders, and heads of ministries and organizations — to serve, collaborate, receive mentorship, and engage directly with Dr. David Ogbueli.",
+    description: "A Kingdom relationship network for pastors, founders, and heads of ministries and organizations, to serve, collaborate, receive mentorship, and engage directly with Dr. David Ogbueli.",
   });
 }
 
@@ -100,7 +100,7 @@ export default async function GlobalMissionsNetworkPage({
           <h1 className="mx-auto max-w-4xl text-display-l md:text-display-xl gravity-text">Global Missions Network</h1>
           <p className="mx-auto mt-6 max-w-2xl text-body-l text-ink-100">
             A Kingdom relationship network for pastors, founders, and heads of ministries and
-            organizations — to serve, collaborate, receive mentorship, and engage directly with Dr.
+            organizations, to serve, collaborate, receive mentorship, and engage directly with Dr.
             David Ogbueli.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -127,16 +127,16 @@ export default async function GlobalMissionsNetworkPage({
               <span className="block text-caption font-semibold uppercase tracking-[0.2em] text-gold-hover">
                 What It Is
               </span>
-              <h2 className="text-heading-1">More Than Membership — A Kingdom Relationship Network</h2>
+              <h2 className="text-heading-1">More Than Membership: A Kingdom Relationship Network</h2>
               <div className="h-1 w-16 bg-gold-600" />
               <p className="text-body-l text-ink-500">
                 The Global Missions Network is not a course to complete or a subscription to buy. It
-                is a network of leaders — pastors, church and ministry leaders, founders, and heads
-                of organizations — who carry Kingdom responsibility and want to build together.
+                is a network of leaders: pastors, church and ministry leaders, founders, and heads
+                of organizations, who carry Kingdom responsibility and want to build together.
               </p>
               <p className="text-body-m text-ink-500">
                 Inside the Network you gain access to mentorship, global ministry relationships, and
-                leadership development — and the opportunity to serve and collaborate directly with
+                leadership development, and the opportunity to serve and collaborate directly with
                 Dr. David Ogbueli in advancing God&rsquo;s Kingdom.
               </p>
             </div>
@@ -191,7 +191,7 @@ export default async function GlobalMissionsNetworkPage({
             align="center"
             dark
             eyebrow="How the Training Works"
-            title="An Ongoing Mentorship Experience — Not a Cohort"
+            title="An Ongoing Mentorship Experience, Not a Cohort"
             intro="There is no single scheduled cohort to wait for. As part of the Network you gain access to a growing library and a living calendar of mentorship."
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -213,7 +213,7 @@ export default async function GlobalMissionsNetworkPage({
             align="center"
             eyebrow="The Pathway"
             title="Global Executive Training"
-            intro="The mentorship pathway unfolds in three progressive levels — not three separate cohorts, but three stages of one journey."
+            intro="The mentorship pathway unfolds in three progressive levels, not three separate cohorts, but three stages of one journey."
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {TRAINING.map((t) => (

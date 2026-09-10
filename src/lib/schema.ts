@@ -1,6 +1,6 @@
 import type { Book } from "@/data/types";
 import { locales, type Locale } from "@/i18n/config";
-import { SITE_NAME, SOCIAL_PROFILES, absoluteUrl } from "./site";
+import { SITE_NAME, PERSON_PROFILES, absoluteUrl } from "./site";
 import { localePath } from "./seo";
 
 /**
@@ -20,10 +20,9 @@ export function organizationSchema() {
     url: absoluteUrl("/"),
     logo: {
       "@type": "ImageObject",
-      url: absoluteUrl("/images/logo/dr-david-ogbueli-brand-white.png"),
+      url: absoluteUrl("/images/logo/dr-david-ogbueli-brand-white.webp"),
     },
     founder: { "@id": PERSON_ID },
-    sameAs: SOCIAL_PROFILES,
   };
 }
 
@@ -39,7 +38,7 @@ export function personSchema() {
     url: absoluteUrl(localePath("en", "his-story")),
     image: absoluteUrl("/images/pastor/hero-stadium-arms-wide.jpg"),
     worksFor: { "@id": ORG_ID },
-    sameAs: SOCIAL_PROFILES,
+    sameAs: PERSON_PROFILES,
   };
 }
 

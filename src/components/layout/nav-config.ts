@@ -120,7 +120,7 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
         feature: {
           eyebrow: "Flagship titles",
           title: "Where most readers begin",
-          desc: "Wealth, covenant, and the discipline of words — the three books that carry the core of the teaching.",
+          desc: "Wealth, covenant, and the discipline of words, the three books that carry the core of the teaching.",
           meta: "Three books · one foundation",
           cta: "Browse the library",
           href: p("/books"),

@@ -196,7 +196,7 @@ export function ChatWidget({ locale }: { locale: Locale }) {
               )}
               {messages.length > 0 && (
                 <a
-                  href={`mailto:${TEAM_EMAIL}?subject=${encodeURIComponent("Chat with Gabe — I need help")}`}
+                  href={`mailto:${TEAM_EMAIL}?subject=${encodeURIComponent("Chat with Gabe. I need help")}`}
                   className="mt-3 inline-flex items-center gap-1.5 text-caption font-semibold text-ink-500 underline hover:text-gold-hover"
                 >
                   <Mail className="h-3.5 w-3.5" aria-hidden />

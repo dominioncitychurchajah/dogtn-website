@@ -135,7 +135,7 @@ export function GlobalLeadershipForum({ locale }: { locale: Locale }) {
                     <ArrowRight className="h-5 w-5 rotate-90 text-ink-500 transition-transform group-open:-rotate-90" aria-hidden />
                   </summary>
                   <div className="mt-8 ps-8 text-body-m italic text-ink-500 sm:ps-20">
-                    Full agenda for Day Two is being finalised — check back soon.
+                    Full agenda for Day Two is being finalised. Check back soon.
                   </div>
                 </details>
               </div>

@@ -131,7 +131,7 @@ export default async function BookDetailPage({ params }: PageProps) {
                   {book.reviews.map((review, index) => (
                     <li key={index}>
                       <p className="text-[#6B7280] italic">&ldquo;{review.quote}&rdquo;</p>
-                      <p className="mt-2 text-sm font-semibold text-[#0A192F]">— {review.name}</p>
+                      <p className="mt-2 text-sm font-semibold text-[#0A192F]">{review.name}</p>
                     </li>
                   ))}
                 </ul>

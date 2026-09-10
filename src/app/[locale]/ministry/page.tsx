@@ -13,7 +13,7 @@ export async function generateMetadata({
     locale: isLocale(locale) ? locale : defaultLocale,
     path: "ministry",
     title: 'Ministries | Dr. David Ogbueli',
-    description: 'Eight interconnected ministries, one mandate — to raise leaders that transform nations.',
+    description: 'Eight interconnected ministries, one mandate, to raise leaders that transform nations.',
   });
 }
 

@@ -50,7 +50,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     heroEyebrow: "Start Here",
     heroTitle: "Choose the path that fits where you are",
     heroBody:
-      "Don't just browse — begin. Five guided journeys take you from wherever you are today toward raising leaders who transform society. Pick the one that meets your current season.",
+      "Don't just browse. Begin. Five guided journeys take you from wherever you are today toward raising leaders who transform society. Pick the one that meets your current season.",
     journeysEyebrow: "I want to…",
     journeysTitle: "The five journeys",
     journeysIntro:
@@ -58,7 +58,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationEyebrow: "Orientation",
     orientationTitle: "Not sure where to begin?",
     orientationBody:
-      "Our transformation diagnostic identifies your current stage and recommends the journey best suited to your calling — in 10 questions.",
+      "Our transformation diagnostic identifies your current stage and recommends the journey best suited to your calling, in 10 questions.",
     ctaTakeOrientation: "Take the orientation",
     ctaTalkMentor: "Talk to a mentor",
     chatHero: {
@@ -97,7 +97,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     heroEyebrow: "Commencez ici",
     heroTitle: "Choisissez le chemin qui correspond à là où vous en êtes",
     heroBody:
-      "Ne vous contentez pas de parcourir — commencez. Cinq parcours guidés vous mènent de là où vous êtes aujourd'hui vers la formation de leaders qui transforment la société. Choisissez celui qui correspond à votre saison actuelle.",
+      "Ne vous contentez pas de parcourir, commencez. Cinq parcours guidés vous mènent de là où vous êtes aujourd'hui vers la formation de leaders qui transforment la société. Choisissez celui qui correspond à votre saison actuelle.",
     journeysEyebrow: "Je veux…",
     journeysTitle: "Les cinq parcours",
     journeysIntro:
@@ -105,7 +105,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationEyebrow: "Orientation",
     orientationTitle: "Vous ne savez pas par où commencer ?",
     orientationBody:
-      "Notre diagnostic de transformation identifie votre étape actuelle et recommande le parcours le mieux adapté à votre appel — en 10 questions.",
+      "Notre diagnostic de transformation identifie votre étape actuelle et recommande le parcours le mieux adapté à votre appel, en 10 questions.",
     ctaTakeOrientation: "Faire l'orientation",
     ctaTalkMentor: "Parler à un mentor",
     chatHero: {
@@ -144,7 +144,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     heroEyebrow: "Comece aqui",
     heroTitle: "Escolha o caminho que se adequa a onde você está",
     heroBody:
-      "Não se limite a explorar — comece. Cinco jornadas guiadas levam-no de onde está hoje até formar líderes que transformam a sociedade. Escolha a que corresponde à sua estação atual.",
+      "Não se limite a explorar, comece. Cinco jornadas guiadas levam-no de onde está hoje até formar líderes que transformam a sociedade. Escolha a que corresponde à sua estação atual.",
     journeysEyebrow: "Eu quero…",
     journeysTitle: "As cinco jornadas",
     journeysIntro:
@@ -152,7 +152,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationEyebrow: "Orientação",
     orientationTitle: "Não sabe por onde começar?",
     orientationBody:
-      "O nosso diagnóstico de transformação identifica a sua etapa atual e recomenda a jornada mais adequada ao seu chamado — em cerca de sete minutos.",
+      "O nosso diagnóstico de transformação identifica a sua etapa atual e recomenda a jornada mais adequada ao seu chamado, em cerca de sete minutos.",
     ctaTakeOrientation: "Fazer a orientação",
     ctaTalkMentor: "Falar com um mentor",
     chatHero: {
@@ -191,7 +191,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     heroEyebrow: "Anza Hapa",
     heroTitle: "Chagua njia inayolingana na ulipo",
     heroBody:
-      "Usiishie kutazama tu — anza. Safari tano zilizoongozwa zinakupeleka kutoka ulipo leo hadi kulea viongozi wanaobadilisha jamii. Chagua ile inayolingana na msimu wako wa sasa.",
+      "Usiishie kutazama tu, anza. Safari tano zilizoongozwa zinakupeleka kutoka ulipo leo hadi kulea viongozi wanaobadilisha jamii. Chagua ile inayolingana na msimu wako wa sasa.",
     journeysEyebrow: "Nataka…",
     journeysTitle: "Safari tano",
     journeysIntro:
@@ -199,7 +199,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationEyebrow: "Mwongozo",
     orientationTitle: "Huna uhakika pa kuanzia?",
     orientationBody:
-      "Uchunguzi wetu wa mabadiliko hutambua hatua yako ya sasa na kupendekeza safari inayofaa zaidi kwa wito wako — kwa takriban dakika saba.",
+      "Uchunguzi wetu wa mabadiliko hutambua hatua yako ya sasa na kupendekeza safari inayofaa zaidi kwa wito wako, kwa takriban dakika saba.",
     ctaTakeOrientation: "Fanya mwongozo",
     ctaTalkMentor: "Zungumza na mshauri",
     chatHero: {
@@ -238,7 +238,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     heroEyebrow: "ابدأ هنا",
     heroTitle: "اختر المسار الذي يناسب موضعك الحالي",
     heroBody:
-      "لا تكتفِ بالتصفح — ابدأ. خمس رحلات موجَّهة تأخذك من حيث أنت اليوم نحو إعداد قادة يحوّلون المجتمع. اختر الرحلة التي تناسب موسمك الحالي.",
+      "لا تكتفِ بالتصفح، ابدأ. خمس رحلات موجَّهة تأخذك من حيث أنت اليوم نحو إعداد قادة يحوّلون المجتمع. اختر الرحلة التي تناسب موسمك الحالي.",
     journeysEyebrow: "أريد أن…",
     journeysTitle: "الرحلات الخمس",
     journeysIntro:
@@ -246,7 +246,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationEyebrow: "التوجيه",
     orientationTitle: "لست متأكدًا من أين تبدأ؟",
     orientationBody:
-      "يحدد تشخيص التحوّل لدينا مرحلتك الحالية ويوصي بالرحلة الأنسب لدعوتك — في نحو سبع دقائق.",
+      "يحدد تشخيص التحوّل لدينا مرحلتك الحالية ويوصي بالرحلة الأنسب لدعوتك، في نحو سبع دقائق.",
     ctaTakeOrientation: "ابدأ التوجيه",
     ctaTalkMentor: "تحدث إلى مرشد",
     chatHero: {

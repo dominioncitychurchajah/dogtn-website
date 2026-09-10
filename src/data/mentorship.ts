@@ -32,7 +32,7 @@ export const tracks: MentorshipTrack[] = [
     faqs: [
       { q: "Is this free?", a: "Yes. Emerging Leaders is offered free to participants." },
       { q: "Do I need prior leadership experience?", a: "No. This track is designed for those just beginning." },
-      { q: "Is it available online?", a: "Yes — cohorts run online and in-person across our chapters." },
+      { q: "Is it available online?", a: "Yes, cohorts run online and in-person across our chapters." },
       { q: "What if I miss a session?", a: "Sessions are recorded, and your mentor will help you catch up." },
     ],
   },
@@ -68,7 +68,7 @@ export const tracks: MentorshipTrack[] = [
     faqs: [
       { q: "Who is this for?", a: "Pastors, church planters, and ministry leaders already carrying responsibility." },
       { q: "How does this differ from Level 1?", a: "Level 2 assumes you already carry responsibility for others, so the work centres on sustaining and multiplying it." },
-      { q: "Are the intensives mandatory?", a: "Yes — the two annual intensives are a core part of the formation." },
+      { q: "Are the intensives mandatory?", a: "Yes, the two annual intensives are a core part of the formation." },
       { q: "Can international leaders join?", a: "Yes, with a mix of online sessions and travel for the intensives." },
     ],
   },
@@ -82,7 +82,7 @@ export const tracks: MentorshipTrack[] = [
     hero: "Build what outlasts you. Carry transformation to nations.",
     image: "/images/pastor/dli-conference-whiteboard.webp",
     outcomes: [
-      "A strategy to disciple your sphere — business, government, media, or culture",
+      "A strategy to disciple your sphere: business, government, media, or culture",
       "Peer relationships with other senior leaders and nation builders",
       "Mentorship from those who have built enduring institutions",
       "A legacy plan for multiplying leaders beyond yourself",
@@ -103,7 +103,7 @@ export const tracks: MentorshipTrack[] = [
     ],
     faqs: [
       { q: "How do I join?", a: "By application and interview, or by referral from existing Nation Builders." },
-      { q: "Is this only for ministers?", a: "No — it is for leaders across business, government, media, and culture." },
+      { q: "Is this only for ministers?", a: "No. It is for leaders across business, government, media, and culture." },
       { q: "What is expected afterwards?", a: "Nation Builders commit to mentoring the next generation of leaders." },
       { q: "Is this free?", a: "Yes. Nation Builders is offered free to participants." },
     ],

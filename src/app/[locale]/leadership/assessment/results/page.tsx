@@ -186,7 +186,7 @@ export default function ResultsPage() {
                     </div>
                     <div className="flex items-center gap-3 text-body-s">
                       <Clock className="h-5 w-5 text-gold-400" aria-hidden />
-                      <span>Saturdays, 9:00 AM — 12:00 PM</span>
+                      <span>Saturdays, 9:00 AM to 12:00 PM</span>
                     </div>
                   </div>
 

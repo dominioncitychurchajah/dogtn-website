@@ -307,7 +307,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       titleAccent: "transformation",
       titlePost: "",
       intro:
-        "À travers nos diverses institutions, nous équipons les individus pour exceller dans toutes les sphères de la société — de la gouvernance et des affaires à la construction communautaire et à la maturité spirituelle.",
+        "À travers nos diverses institutions, nous équipons les individus pour exceller dans toutes les sphères de la société, de la gouvernance et des affaires à la construction communautaire et à la maturité spirituelle.",
       statReach: "Portée mondiale",
       statNations: "Nations",
       explore: "Explorer",
@@ -363,7 +363,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       eyebrow: "Témoignages",
       title: "Des vies transformées",
       intro:
-        "De vraies personnes à chaque étape du parcours — du premier visiteur au bâtisseur de nations.",
+        "De vraies personnes à chaque étape du parcours, du premier visiteur au bâtisseur de nations.",
       prev: "Témoignage précédent",
       next: "Témoignage suivant",
     },
@@ -380,7 +380,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       whatsappCta: "Rejoignez notre diffusion WhatsApp",
       emailPlaceholder: "Adresse e-mail",
       subscribe: "S'abonner",
-      successToast: "Inscription réussie — bienvenue dans la vision",
+      successToast: "Inscription réussie, bienvenue dans la vision",
     },
   },
 
@@ -434,7 +434,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       titleAccent: "transformação",
       titlePost: "",
       intro:
-        "Através das nossas diversas instituições, capacitamos as pessoas para se destacarem em todas as esferas da sociedade — da governação e dos negócios à construção comunitária e à maturidade espiritual.",
+        "Através das nossas diversas instituições, capacitamos as pessoas para se destacarem em todas as esferas da sociedade, da governação e dos negócios à construção comunitária e à maturidade espiritual.",
       statReach: "Alcance global",
       statNations: "Nações",
       explore: "Explorar",
@@ -490,7 +490,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       eyebrow: "Testemunhos",
       title: "Vidas a serem transformadas",
       intro:
-        "Pessoas reais em cada etapa da jornada — do visitante de primeira vez ao construtor de nações.",
+        "Pessoas reais em cada etapa da jornada, do visitante de primeira vez ao construtor de nações.",
       prev: "Testemunho anterior",
       next: "Testemunho seguinte",
     },
@@ -507,7 +507,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       whatsappCta: "Junte-se à nossa transmissão no WhatsApp",
       emailPlaceholder: "Endereço de e-mail",
       subscribe: "Subscrever",
-      successToast: "Subscrição feita — bem-vindo à visão",
+      successToast: "Subscrição feita, bem-vindo à visão",
     },
   },
 
@@ -561,7 +561,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       titleAccent: "mabadiliko",
       titlePost: "",
       intro:
-        "Kupitia taasisi zetu mbalimbali, tunawawezesha watu kufanya vyema katika kila nyanja ya jamii — kutoka utawala na biashara hadi ujenzi wa jamii na ukomavu wa kiroho.",
+        "Kupitia taasisi zetu mbalimbali, tunawawezesha watu kufanya vyema katika kila nyanja ya jamii, kutoka utawala na biashara hadi ujenzi wa jamii na ukomavu wa kiroho.",
       statReach: "Ufikiaji wa Kimataifa",
       statNations: "Mataifa",
       explore: "Chunguza",
@@ -617,7 +617,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       eyebrow: "Ushuhuda",
       title: "Maisha Yanabadilishwa",
       intro:
-        "Watu halisi katika kila hatua ya safari — kutoka mgeni wa mara ya kwanza hadi mjenzi wa mataifa.",
+        "Watu halisi katika kila hatua ya safari, kutoka mgeni wa mara ya kwanza hadi mjenzi wa mataifa.",
       prev: "Ushuhuda uliopita",
       next: "Ushuhuda unaofuata",
     },
@@ -634,7 +634,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       whatsappCta: "Jiunge na Matangazo yetu ya WhatsApp",
       emailPlaceholder: "Anwani ya barua pepe",
       subscribe: "Jisajili",
-      successToast: "Umejisajili — karibu kwenye maono",
+      successToast: "Umejisajili, karibu kwenye maono",
     },
   },
 
@@ -687,7 +687,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       titleAccent: "التحوّل",
       titlePost: "",
       intro:
-        "من خلال مؤسساتنا المتنوعة، نُعدّ الأفراد للتميّز في كل مجال من مجالات المجتمع — من الحوكمة والأعمال إلى بناء المجتمع والنضج الروحي.",
+        "من خلال مؤسساتنا المتنوعة، نُعدّ الأفراد للتميّز في كل مجال من مجالات المجتمع، من الحوكمة والأعمال إلى بناء المجتمع والنضج الروحي.",
       statReach: "الانتشار العالمي",
       statNations: "الأمم",
       explore: "استكشف",
@@ -742,7 +742,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       eyebrow: "الشهادات",
       title: "حياة تتحوّل",
       intro:
-        "أشخاص حقيقيون في كل مرحلة من مراحل الرحلة — من الزائر لأول مرة إلى باني الأمم.",
+        "أشخاص حقيقيون في كل مرحلة من مراحل الرحلة، من الزائر لأول مرة إلى باني الأمم.",
       prev: "الشهادة السابقة",
       next: "الشهادة التالية",
     },
@@ -759,7 +759,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       whatsappCta: "انضم إلى بثّنا على واتساب",
       emailPlaceholder: "عنوان البريد الإلكتروني",
       subscribe: "اشترك",
-      successToast: "تم الاشتراك — مرحبًا بك في الرؤية",
+      successToast: "تم الاشتراك، مرحبًا بك في الرؤية",
     },
   },
 };

@@ -12,13 +12,13 @@ export const BOOKS: Book[] = [
     formats: ["ebook", "paperback", "audiobook"],
     price: { amount: 12000, currency: "NGN" },
     synopsis:
-      "Solomon became the wealthiest man of his age not by accident but by principle. This book unpacks the timeless pillars of wisdom that produced his wealth — and shows how any leader can build a life of lasting prosperity on the same foundation.",
+      "Solomon became the wealthiest man of his age not by accident but by principle. This book unpacks the timeless pillars of wisdom that produced his wealth, and shows how any leader can build a life of lasting prosperity on the same foundation.",
     sample:
       "Wealth without wisdom is a burden waiting to happen. Before Solomon ever counted his gold, he had already secured the one thing that made all the rest possible...",
     relatedTeachings: ["solomons-secret-of-wisdom", "the-jewish-mindset-of-increase"],
     featured: true,
     desc: "Timeless Secrets of Generational Abundance",
-    fullDesc: "Solomon became the wealthiest man of his age not by accident but by principle. This book unpacks the timeless pillars of wisdom that produced his wealth — and shows how any leader can build a life of lasting prosperity on the same foundation.",
+    fullDesc: "Solomon became the wealthiest man of his age not by accident but by principle. This book unpacks the timeless pillars of wisdom that produced his wealth, and shows how any leader can build a life of lasting prosperity on the same foundation.",
     takeaways: [
       "How wisdom produces wealth",
       "The pillars of generational increase",
@@ -37,13 +37,13 @@ export const BOOKS: Book[] = [
     formats: ["ebook", "paperback"],
     price: { amount: 10000, currency: "NGN" },
     synopsis:
-      "Why have a people so few in number produced so much of the world's wealth and innovation? This book reveals the covenant mindset, disciplines, and family principles behind generational increase — and how to apply them.",
+      "Why have a people so few in number produced so much of the world's wealth and innovation? This book reveals the covenant mindset, disciplines, and family principles behind generational increase, and how to apply them.",
     sample:
-      "Increase is not luck; it is a mindset passed from generation to generation. The secret was never hidden — it was simply practised...",
+      "Increase is not luck; it is a mindset passed from generation to generation. The secret was never hidden. It was simply practised...",
     relatedTeachings: ["the-jewish-mindset-of-increase", "kingdom-principles-in-business"],
     featured: true,
     desc: "Covenant Principles for Generational Increase",
-    fullDesc: "Why have a people so few in number produced so much of the world's wealth and innovation? This book reveals the covenant mindset, disciplines, and family principles behind generational increase — and how to apply them.",
+    fullDesc: "Why have a people so few in number produced so much of the world's wealth and innovation? This book reveals the covenant mindset, disciplines, and family principles behind generational increase, and how to apply them.",
     takeaways: [
       "The covenant mindset for wealth",
       "Disciplines of generational increase",
@@ -64,7 +64,7 @@ export const BOOKS: Book[] = [
     synopsis:
       "Words frame worlds. In this book, Dr. Ogbueli lays out the five laws of proper speech and shows how the disciplined use of language shapes relationships, reputation, and destiny.",
     sample:
-      "You will never rise above the quality of your words. The tongue is the steering wheel of a life — small, but it sets the direction...",
+      "You will never rise above the quality of your words. The tongue is the steering wheel of a life, small, but it sets the direction...",
     relatedTeachings: ["the-power-of-words", "the-tongue-and-your-testimony"],
     featured: true,
     desc: "How Disciplined Language Builds a Leader's Future",
@@ -91,7 +91,7 @@ export const BOOKS: Book[] = [
     relatedTeachings: [],
     featured: true,
     desc: "The blueprint for raising leaders who transform society.",
-    fullDesc: "A comprehensive guide to raising disciples who go beyond personal salvation into transforming every sphere of society — from business to government.",
+    fullDesc: "A comprehensive guide to raising disciples who go beyond personal salvation into transforming every sphere of society, from business to government.",
     takeaways: [
       "How to identify and develop discipleship potential",
       "The 7 codes of transformational leadership",
@@ -155,10 +155,10 @@ export const BOOKS: Book[] = [
     formats: ["ebook", "paperback"],
     price: { amount: 8000, currency: "NGN" },
     synopsis:
-      "An examination of the Bible's impact on lives and societies throughout recorded history — establishing its authority, its unity across many authors and centuries, and why it is the word of God.",
+      "An examination of the Bible's impact on lives and societies throughout recorded history, establishing its authority, its unity across many authors and centuries, and why it is the word of God.",
     relatedTeachings: [],
     desc: "The authority and unifying inspiration of Scripture",
-    fullDesc: "An examination of the Bible's impact on lives and societies throughout recorded history — establishing its authority, its unity across many authors and centuries, and why it is the word of God."
+    fullDesc: "An examination of the Bible's impact on lives and societies throughout recorded history, establishing its authority, its unity across many authors and centuries, and why it is the word of God."
   },
   {
     slug: "the-reflection-principle",

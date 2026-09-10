@@ -28,7 +28,7 @@ export function GabeLanding({ onSelect }: { onSelect: (chip: GabeChip) => void }
       <button
         type="button"
         onClick={() => onSelect(LANDING_PRIMARY_CHIP)}
-        aria-label="Start a guided journey — where most visitors begin"
+        aria-label="Start a guided journey, where most visitors begin"
         className="flex w-full items-center gap-3 rounded-[var(--radius-l)] border border-gold-600/30 bg-gold-600/10 p-4 text-start transition-colors hover:bg-gold-600/15"
       >
         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[var(--radius-m)] bg-ink-900 text-gold-400">

@@ -65,7 +65,7 @@ export function QuizEngine({ locale }: { locale: Locale }) {
 
   const answered = idx + 1;
   const pct = Math.round((answered / TOTAL) * 100);
-  const progressText = `Question ${answered} of ${TOTAL} — ${pct}% complete`;
+  const progressText = `Question ${answered} of ${TOTAL}, ${pct}% complete`;
 
   return (
     <div className="mx-auto max-w-3xl">

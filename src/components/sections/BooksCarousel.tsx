@@ -389,7 +389,7 @@ function BookCard({
         {render ? (
           <Image
             src={render}
-            alt={`${book.title} — book cover`}
+            alt={`${book.title} book cover`}
             fill
             sizes="(max-width: 640px) 92vw, (max-width: 1024px) 62vw, 520px"
             className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.05]"
@@ -433,7 +433,7 @@ function BookCard({
             >
               <Image
                 src={book.cover as string}
-                alt={`${book.title} — book cover`}
+                alt={`${book.title} book cover`}
                 fill
                 sizes="(max-width: 640px) 70vw, (max-width: 1024px) 45vw, 340px"
                 className="rounded-md object-contain drop-shadow-[0_26px_34px_rgba(0,0,0,0.55)]"

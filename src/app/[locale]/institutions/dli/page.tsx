@@ -17,7 +17,7 @@ export async function generateMetadata({
     locale: isLocale(locale) ? locale : defaultLocale,
     path: "institutions/dli",
     title: "Dominion Leadership Institute",
-    description: "The training and human-development arm of Dominion City — equipping Christian leaders, professionals, and youth with the character, capacity, and competence to transform society.",
+    description: "The training and human-development arm of Dominion City, equipping Christian leaders, professionals, and youth with the character, capacity, and competence to transform society.",
   });
 }
 
@@ -57,7 +57,7 @@ const PROGRAMS = [
   {
     tier: "Marketplace & Ministry",
     name: "Advanced Certificate Course",
-    body: "Marketplace and ministry effectiveness — strategy for leadership, career success, wealth creation, team building, and branding.",
+    body: "Marketplace and ministry effectiveness, strategy for leadership, career success, wealth creation, team building, and branding.",
     featured: true,
   },
 ];
@@ -67,7 +67,7 @@ const FOCUS = [
   {
     icon: Compass,
     title: "Transformational Leadership",
-    body: "Equipping individuals to lead in diverse sectors — business, politics, ministry, and governance.",
+    body: "Equipping individuals to lead in diverse sectors: business, politics, ministry, and governance.",
   },
   {
     icon: Globe,
@@ -86,7 +86,7 @@ const FOCUS = [
 const TESTIMONIES = [
   {
     quote:
-      "DLI didn't just train me — it re-formed my sense of responsibility. I lead now to serve my community, not to be seen.",
+      "DLI didn't just train me. It re-formed my sense of responsibility. I lead now to serve my community, not to be seen.",
     name: "Chidi Okafor",
     role: "Lead Pastor · Lagos, Nigeria",
     badge: "Leader Stage Graduate",
@@ -192,8 +192,8 @@ export default async function DLIPage({
                 spiritual, and organizational skills to impact every sphere of society.
               </p>
               <p className="text-body-m text-ink-500">
-                Through a practical curriculum — from the authority of the believer to strategic
-                planning, health management, and financial stewardship — DLI has raised tens of
+                Through a practical curriculum, from the authority of the believer to strategic
+                planning, health management, and financial stewardship, DLI has raised tens of
                 thousands of graduates across local and international chapters, leaders who transform
                 business, politics, ministry, and governance for the common good of nations.
               </p>
@@ -381,7 +381,7 @@ export default async function DLIPage({
             <div>
               <h2 className="text-heading-1 text-paper-0">Ready to begin your journey?</h2>
               <p className="mt-2 text-body-m text-ink-300">
-                Enrollment for the next DLI cohort opens soon — join the waitlist to be the first to
+                Enrollment for the next DLI cohort opens soon. Join the waitlist to be the first to
                 know.
               </p>
             </div>

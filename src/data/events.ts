@@ -40,9 +40,9 @@ export const events: EventItem[] = [
     location: "Canada",
     online: false,
     image: "/images/pastor/sermon-blue-backdrop.webp",
-    summary: "The annual Dominion City gathering for Canada — worship, the Word, and fellowship across the Canadian chapters.",
+    summary: "The annual Dominion City gathering for Canada, worship, the Word, and fellowship across the Canadian chapters.",
     description:
-      "The annual Dominion City gathering for Canada — worship, the Word, and fellowship across the Canadian chapters.",
+      "The annual Dominion City gathering for Canada, worship, the Word, and fellowship across the Canadian chapters.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -56,7 +56,7 @@ export const events: EventItem[] = [
     location: "Dominion City Lagos HQ, beside Lagos Business School, Ajah, Lagos",
     online: false,
     image: "/images/pastor/dli-conference-whiteboard.webp",
-    summary: "Empowerment for All Round Dominion — five days of teaching on leadership, marketplace dominion, and capacity.",
+    summary: "Empowerment for All Round Dominion, five days of teaching on leadership, marketplace dominion, and capacity.",
     description:
       "Empowerment for All Round Dominion. Five days at Dominion City Lagos HQ, 8AM and 5PM daily, with the opening session on Thursday at 5PM. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Rev. Tony Akinyemi, Dr. David Sseppuuya and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity. An exclusive men's session runs Wednesday 23rd morning and evening, and Thursday 24th morning.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
@@ -71,9 +71,9 @@ export const events: EventItem[] = [
     location: "London, UK",
     online: false,
     image: "/images/pastor/preaching-purple-lit.webp",
-    summary: "\"Leading in Babylon\" — equipping leaders to serve faithfully in culture.",
+    summary: "\"Leading in Babylon\", equipping leaders to serve faithfully in culture.",
     description:
-      "\"Leading in Babylon\" — equipping marketplace and ministry leaders to stand out and serve faithfully in culture, in person in London and streamed worldwide.",
+      "\"Leading in Babylon\", equipping marketplace and ministry leaders to stand out and serve faithfully in culture, in person in London and streamed worldwide.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -146,9 +146,9 @@ export const events: EventItem[] = [
     location: "Lagos, Nigeria",
     online: false,
     image: "/images/pastor/community-vestments-auditorium.webp",
-    summary: "The annual Global Camp Meeting — worship, the Word, and fellowship for chapters worldwide.",
+    summary: "The annual Global Camp Meeting, worship, the Word, and fellowship for chapters worldwide.",
     description:
-      "The annual Global Camp Meeting — worship, the Word, and fellowship for chapters worldwide.",
+      "The annual Global Camp Meeting, worship, the Word, and fellowship for chapters worldwide.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -161,9 +161,9 @@ export const events: EventItem[] = [
     location: "Enugu, Nigeria",
     online: false,
     image: "/images/pastor/whiteboard-5-laws-bw.webp",
-    summary: "Three nights of prayer for the sick — testimonies of healing from across the city and beyond.",
+    summary: "Three nights of prayer for the sick, testimonies of healing from across the city and beyond.",
     description:
-      "Three nights of prayer for the sick — testimonies of healing from across the city and beyond.",
+      "Three nights of prayer for the sick, testimonies of healing from across the city and beyond.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -191,9 +191,9 @@ export const events: EventItem[] = [
     location: "Enugu, Nigeria",
     online: false,
     image: "/images/pastor/sermon-blue-backdrop.webp",
-    summary: "The whole family home for five days — worship, the Word and impartation to close the year in the presence of God.",
+    summary: "The whole family home for five days, worship, the Word and impartation to close the year in the presence of God.",
     description:
-      "The whole family home for five days — worship, the Word and impartation to close the year in the presence of God.",
+      "The whole family home for five days, worship, the Word and impartation to close the year in the presence of God.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -251,9 +251,9 @@ export const events: EventItem[] = [
     location: "Lagos, Nigeria",
     online: false,
     image: "/images/pastor/testimony-throne-chair.webp",
-    summary: "A four-day feast of teaching and study — growing believers deep in the Word before the year's final quarter.",
+    summary: "A four-day feast of teaching and study, growing believers deep in the Word before the year's final quarter.",
     description:
-      "A four-day feast of teaching and study — growing believers deep in the Word before the year's final quarter.",
+      "A four-day feast of teaching and study, growing believers deep in the Word before the year's final quarter.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -296,9 +296,9 @@ export const events: EventItem[] = [
     location: "Enugu, Nigeria",
     online: false,
     image: "/images/pastor/community-vestments-auditorium.webp",
-    summary: "Chapters from four continents camping together — four days of prayer, fellowship and the Word under one roof.",
+    summary: "Chapters from four continents camping together, four days of prayer, fellowship and the Word under one roof.",
     description:
-      "Chapters from four continents camping together — four days of prayer, fellowship and the Word under one roof.",
+      "Chapters from four continents camping together, four days of prayer, fellowship and the Word under one roof.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -311,9 +311,9 @@ export const events: EventItem[] = [
     location: "Port Harcourt, Nigeria",
     online: false,
     image: "/images/pastor/whiteboard-5-laws-bw.webp",
-    summary: "Three high-energy days raising a new breed of young people — worship, real talk and commissioning for campus and care...",
+    summary: "Three high-energy days raising a new breed of young people, worship, real talk and commissioning for campus and care...",
     description:
-      "Three high-energy days raising a new breed of young people — worship, real talk and commissioning for campus and career.",
+      "Three high-energy days raising a new breed of young people, worship, real talk and commissioning for campus and career.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {
@@ -356,9 +356,9 @@ export const events: EventItem[] = [
     location: "Lagos, Nigeria",
     online: false,
     image: "/images/pastor/dli-conference-whiteboard.webp",
-    summary: "\"Global Trends\" — seeing and owning the future.",
+    summary: "\"Global Trends\", seeing and owning the future.",
     description:
-      "\"Global Trends\" — seeing and owning the future.",
+      "\"Global Trends\", seeing and owning the future.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
 ];

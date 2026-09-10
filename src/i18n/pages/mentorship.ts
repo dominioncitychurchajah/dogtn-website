@@ -138,11 +138,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   fr: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "Des parcours de mentorat structurés qui forment des leaders — des leaders émergents aux bâtisseurs de nations — à travers des cohortes, un mentorat personnel et la responsabilité.",
+      "Des parcours de mentorat structurés qui forment des leaders, des leaders émergents aux bâtisseurs de nations, à travers des cohortes, un mentorat personnel et la responsabilité.",
     eyebrow: "Laissez le Dr David vous encadrer",
     title: "Global Leadership Executive",
     subtitle:
-      "Un cheminement structuré pour les leaders prêts à être formés, corrigés, équipés et envoyés vers de plus grandes responsabilités. Choisissez le parcours qui vous rejoint là où vous êtes — et grandissez auprès de mentors qui ont parcouru le chemin.",
+      "Un cheminement structuré pour les leaders prêts à être formés, corrigés, équipés et envoyés vers de plus grandes responsabilités. Choisissez le parcours qui vous rejoint là où vous êtes, et grandissez auprès de mentors qui ont parcouru le chemin.",
     exploreTracksCta: "Découvrir les parcours",
     progressionTitle: "Un programme, trois niveaux",
     progressionBody:
@@ -158,7 +158,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     exploreTrackCta: "Découvrir le parcours",
     closingTitle: "Vous ne savez pas quel parcours vous convient ?",
     closingBody:
-      "Passez l'évaluation de leadership — elle vous oriente vers le parcours conçu pour votre saison.",
+      "Passez l'évaluation de leadership, elle vous oriente vers le parcours conçu pour votre saison.",
     takeAssessmentCta: "Faire l'évaluation de leadership",
     applyNow: "Postuler maintenant",
     viewExpectations: "Voir les attentes",
@@ -214,11 +214,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   pt: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "Percursos de mentoria estruturados que formam líderes — desde líderes emergentes a construtores de nações — através de cohortes, mentoria pessoal e responsabilização.",
+      "Percursos de mentoria estruturados que formam líderes, desde líderes emergentes a construtores de nações, através de cohortes, mentoria pessoal e responsabilização.",
     eyebrow: "Deixe o Dr. David ser o seu mentor",
     title: "Global Leadership Executive",
     subtitle:
-      "Um caminho estruturado para líderes prontos a ser formados, corrigidos, equipados e enviados para maiores responsabilidades. Escolha o percurso que o encontra onde está — e cresça sob mentores que já percorreram o caminho.",
+      "Um caminho estruturado para líderes prontos a ser formados, corrigidos, equipados e enviados para maiores responsabilidades. Escolha o percurso que o encontra onde está, e cresça sob mentores que já percorreram o caminho.",
     exploreTracksCta: "Explorar os percursos",
     progressionTitle: "Um programa, três níveis",
     progressionBody:
@@ -234,7 +234,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     exploreTrackCta: "Explorar percurso",
     closingTitle: "Não sabe qual percurso lhe assenta?",
     closingBody:
-      "Faça a avaliação de liderança — ela indica-lhe o percurso criado para a sua estação.",
+      "Faça a avaliação de liderança, ela indica-lhe o percurso criado para a sua estação.",
     takeAssessmentCta: "Fazer a Avaliação de Liderança",
     applyNow: "Candidatar-se agora",
     viewExpectations: "Ver expectativas",
@@ -290,11 +290,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   sw: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "Njia zilizopangwa za uongozaji zinazounda viongozi — kutoka viongozi wanaochipuka hadi wajenzi wa mataifa — kupitia vikundi, uongozaji binafsi na uwajibikaji.",
+      "Njia zilizopangwa za uongozaji zinazounda viongozi, kutoka viongozi wanaochipuka hadi wajenzi wa mataifa, kupitia vikundi, uongozaji binafsi na uwajibikaji.",
     eyebrow: "Mruhusu Dkt. David Akuongoze",
     title: "Global Leadership Executive",
     subtitle:
-      "Njia iliyopangwa kwa viongozi walio tayari kuundwa, kusahihishwa, kuandaliwa na kutumwa kwenye majukumu makubwa zaidi. Chagua njia inayokukuta ulipo — na ukue chini ya washauri waliopita njia hiyo.",
+      "Njia iliyopangwa kwa viongozi walio tayari kuundwa, kusahihishwa, kuandaliwa na kutumwa kwenye majukumu makubwa zaidi. Chagua njia inayokukuta ulipo, na ukue chini ya washauri waliopita njia hiyo.",
     exploreTracksCta: "Chunguza Njia",
     progressionTitle: "Programu moja, viwango vitatu",
     progressionBody:
@@ -310,7 +310,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     exploreTrackCta: "Chunguza Njia",
     closingTitle: "Huna uhakika ni njia gani inakufaa?",
     closingBody:
-      "Fanya tathmini ya uongozi — inakuelekeza kwenye njia iliyoundwa kwa msimu wako.",
+      "Fanya tathmini ya uongozi, inakuelekeza kwenye njia iliyoundwa kwa msimu wako.",
     takeAssessmentCta: "Fanya Tathmini ya Uongozi",
     applyNow: "Omba Sasa",
     viewExpectations: "Angalia Matarajio",
@@ -366,11 +366,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   ar: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "مسارات إرشاد منظَّمة تُشكِّل القادة — من القادة الناشئين إلى بُناة الأمم — من خلال المجموعات والإرشاد الشخصي والمساءلة.",
+      "مسارات إرشاد منظَّمة تُشكِّل القادة، من القادة الناشئين إلى بُناة الأمم، من خلال المجموعات والإرشاد الشخصي والمساءلة.",
     eyebrow: "دع الدكتور ديفيد يرشدك",
     title: "Global Leadership Executive",
     subtitle:
-      "مسار منظَّم للقادة المستعدين ليُشكَّلوا ويُصحَّحوا ويُجهَّزوا ويُرسَلوا إلى مسؤوليات أعظم. اختر المسار الذي يلتقيك حيث أنت — وانمُ تحت إشراف مرشدين ساروا الطريق.",
+      "مسار منظَّم للقادة المستعدين ليُشكَّلوا ويُصحَّحوا ويُجهَّزوا ويُرسَلوا إلى مسؤوليات أعظم. اختر المسار الذي يلتقيك حيث أنت، وانمُ تحت إشراف مرشدين ساروا الطريق.",
     exploreTracksCta: "استكشف المسارات",
     progressionTitle: "برنامج واحد، ثلاثة مستويات",
     progressionBody:
@@ -386,7 +386,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     exploreTrackCta: "استكشف المسار",
     closingTitle: "لست متأكدًا أي مسار يناسبك؟",
     closingBody:
-      "أجرِ تقييم القيادة — فهو يوجِّهك إلى المسار المصمَّم لموسمك.",
+      "أجرِ تقييم القيادة، فهو يوجِّهك إلى المسار المصمَّم لموسمك.",
     takeAssessmentCta: "ابدأ تقييم القيادة",
     applyNow: "قدِّم الآن",
     viewExpectations: "اطّلع على التوقعات",

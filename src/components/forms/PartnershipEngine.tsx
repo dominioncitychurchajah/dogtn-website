@@ -146,7 +146,7 @@ export function PartnershipEngine() {
 
   const handlePaystackPay = () => {
     if (!paystackReady || !window.PaystackPop) {
-      setValidationError("Payment system is still loading — please try again in a moment.");
+      setValidationError("Payment system is still loading. Please try again in a moment.");
       return;
     }
     setValidationError("");
