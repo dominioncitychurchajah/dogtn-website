@@ -34,10 +34,16 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
     { year: "Today", title: c.timeline.year2020sTitle, desc: c.timeline.year2020sDesc },
   ];
 
-  const educationCards = [
+  // Institution names are proper nouns and stay untranslated. Programme names
+  // are translated, and only exist for three of the six; the rest render as
+  // the institution alone rather than inventing a programme line.
+  const educationCards: { institution: string; programme?: string }[] = [
+    { institution: "University of Nigeria, Nsukka" },
     { institution: "Harvard Business School", programme: c.education.harvardProgramme },
-    { institution: "Lagos Business School", programme: c.education.lbsProgramme },
+    { institution: "IESE Business School" },
+    { institution: "Lagos Business School, Pan-Atlantic University", programme: c.education.lbsProgramme },
     { institution: "NIPSS", programme: c.education.nipssProgramme },
+    { institution: "Trinity University of Ambassadors" },
   ];
 
   return (
@@ -151,9 +157,11 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
                 <h3 className="font-serif text-xl text-[#0A192F] mb-3">
                   {card.institution}
                 </h3>
-                <p className="text-[#6B7280] text-sm leading-relaxed">
-                  {card.programme}
-                </p>
+                {card.programme && (
+                  <p className="text-[#6B7280] text-sm leading-relaxed">
+                    {card.programme}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
