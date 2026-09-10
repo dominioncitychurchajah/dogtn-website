@@ -266,7 +266,7 @@ export default function MediaClient({ locale }: { locale: string }) {
       <section id="library" className="scroll-mt-32 bg-white py-16 sm:py-20">
         <Container>
           <div className="mb-10 flex flex-wrap items-baseline justify-between gap-3 border-b border-[#E5E7EB] pb-5">
-            <h2 className="font-serif text-[26px] text-[#0A192F] sm:text-[32px]">
+            <h2 className="font-serif text-[26px] leading-tight text-[#0A192F] sm:text-[32px]">
               {activeTab === "all" ? c.browseAll : c.tabs[activeTab]}
             </h2>
             <p className="text-sm text-[#6B7280] tabular-nums">
@@ -359,7 +359,7 @@ export default function MediaClient({ locale }: { locale: string }) {
       <section className="bg-[#0A192F] py-16">
         <Container>
           <motion.div {...fadeUp} className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <h2 className="font-serif text-[40px] text-white">{c.pressHeading}</h2>
+            <h2 className="font-serif text-[28px] leading-tight text-white sm:text-[40px]">{c.pressHeading}</h2>
             <Link href={`/${locale}/contact`} className="group flex items-center gap-2 text-[#C9A227] hover:text-white transition-colors mt-4 md:mt-0">
               <span className="font-medium">{c.pressCta}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

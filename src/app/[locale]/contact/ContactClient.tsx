@@ -350,7 +350,7 @@ export function ContactClient() {
       <section id="offices" className="bg-[#0A192F] px-6 py-20">
         <Container>
           <motion.div {...fadeUp} className="mb-12 text-center">
-            <h2 className="font-serif text-[28px] text-white sm:text-4xl">{c.officesHeading}</h2>
+            <h2 className="font-serif text-[28px] leading-tight text-white sm:text-4xl">{c.officesHeading}</h2>
             <p className="mx-auto mt-3 max-w-md text-white/50">{c.officesSubtitle}</p>
           </motion.div>
 
@@ -399,7 +399,7 @@ export function ContactClient() {
       {/* FAQ */}
       <section className="mx-auto max-w-[800px] px-6 py-20">
         <motion.div {...fadeUp} className="mb-12 text-center">
-          <h2 className="font-serif text-[28px] text-[#0A192F] sm:text-4xl">{c.faqHeading}</h2>
+          <h2 className="font-serif text-[28px] leading-tight text-[#0A192F] sm:text-4xl">{c.faqHeading}</h2>
           <p className="mt-3 text-base text-[#718096]">{c.faqSubtitle}</p>
         </motion.div>
 
@@ -435,7 +435,7 @@ export function ContactClient() {
       {/* CTA BANNER */}
       <section className="bg-[#F5F1E8] px-6 py-16 text-center">
         <motion.div {...fadeUp} className="mx-auto max-w-xl">
-          <h2 className="font-serif text-2xl text-[#0A192F] sm:text-[32px]">{c.ctaHeading}</h2>
+          <h2 className="font-serif text-2xl leading-tight text-[#0A192F] sm:text-[32px]">{c.ctaHeading}</h2>
           <p className="mt-3 mb-7 text-base text-[#718096]">{c.ctaBody}</p>
           <a
             href="#contact-form"

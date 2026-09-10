@@ -34,10 +34,26 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
     { year: "Today", title: c.timeline.year2020sTitle, desc: c.timeline.year2020sDesc },
   ];
 
-  const educationCards = [
-    { institution: "Harvard Business School", programme: c.education.harvardProgramme },
-    { institution: "Lagos Business School", programme: c.education.lbsProgramme },
-    { institution: "NIPSS", programme: c.education.nipssProgramme },
+  // Institution names are proper nouns and stay untranslated. Programme names
+  // are translated, and only exist for three of the six; the rest render as
+  // the institution alone rather than inventing a programme line.
+  //
+  // `logo` is optional: drop a file at the given path and the card uses it,
+  // otherwise the card falls back to a monogram. Institution logos are
+  // third-party trademarks, so only add ones you have the right to display.
+  const educationCards: {
+    institution: string;
+    programme?: string;
+    abbr: string;
+    logo?: string;
+  }[] = [
+    { institution: "University of Nigeria, Nsukka", abbr: "UNN", logo: "/images/institutions/unn.webp" },
+    { institution: "Harvard Business School", programme: c.education.harvardProgramme, abbr: "HBS", logo: "/images/institutions/harvard-business-school.webp" },
+    { institution: "IESE Business School", abbr: "IESE", logo: "/images/institutions/iese.webp" },
+    { institution: "Lagos Business School, Pan-Atlantic University", programme: c.education.lbsProgramme, abbr: "LBS", logo: "/images/institutions/lagos-business-school.webp" },
+    // No logo obtainable for these two; they keep the monogram until supplied.
+    { institution: "NIPSS", programme: c.education.nipssProgramme, abbr: "NIPSS" },
+    { institution: "Trinity University of Ambassadors", abbr: "TUA" },
   ];
 
   return (
@@ -87,7 +103,7 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             {...fadeUpVariant}
-            className="font-serif text-[48px] text-[#0A192F] mb-20 text-center"
+            className="font-serif text-[32px] sm:text-[40px] md:text-[48px] leading-tight text-[#0A192F] mb-20 text-center"
           >
             {c.timelineHeading}
           </motion.h2>
@@ -107,7 +123,7 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
                   className="relative flex flex-col md:flex-row items-start justify-between group md:even:flex-row-reverse"
                 >
                   <div className="md:w-[45%] pl-14 md:pl-0 md:group-even:pl-14 md:group-even:text-left text-left md:group-odd:text-right">
-                    <span className="font-serif text-[32px] text-[#C9A227] font-bold block mb-2">
+                    <span className="font-serif text-[32px] leading-tight text-[#C9A227] font-bold block mb-2">
                       {item.year}
                     </span>
                     <h3 className="font-serif text-[22px] text-[#0A192F] mb-3">
@@ -133,7 +149,7 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
             <span className="text-[#C9A227] uppercase tracking-[0.15em] text-sm font-semibold mb-4 block">
               {c.educationEyebrow}
             </span>
-            <h2 className="font-serif text-[48px] text-[#0A192F]">
+            <h2 className="font-serif text-[32px] sm:text-[40px] md:text-[48px] leading-tight text-[#0A192F]">
               {c.educationHeading}
             </h2>
           </motion.div>
@@ -148,12 +164,33 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
                 viewport={{ once: true, amount: 0.2 }}
                 className="bg-white rounded-[8px] p-8 shadow-sm border border-[#E5E7EB] text-center md:text-left"
               >
+                <div className="mb-5 flex h-10 items-center justify-center md:justify-start">
+                  {card.logo ? (
+                    <Image
+                      src={card.logo}
+                      alt={`${card.institution} logo`}
+                      width={200}
+                      height={80}
+                      unoptimized
+                      className="h-10 w-auto max-w-[170px] object-contain object-center md:object-left"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="flex h-10 items-center justify-center rounded-[6px] bg-[#0A192F] px-3 font-serif text-sm tracking-wide text-[#C9A227]"
+                    >
+                      {card.abbr}
+                    </span>
+                  )}
+                </div>
                 <h3 className="font-serif text-xl text-[#0A192F] mb-3">
                   {card.institution}
                 </h3>
-                <p className="text-[#6B7280] text-sm leading-relaxed">
-                  {card.programme}
-                </p>
+                {card.programme && (
+                  <p className="text-[#6B7280] text-sm leading-relaxed">
+                    {card.programme}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
@@ -180,7 +217,7 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
       <section className="bg-[#0A192F] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div {...fadeUpVariant}>
-            <h2 className="font-serif text-[40px] md:text-[48px] text-white mb-10">
+            <h2 className="font-serif text-[32px] sm:text-[40px] md:text-[48px] leading-tight text-white mb-10">
               {c.ctaHeading}
             </h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
