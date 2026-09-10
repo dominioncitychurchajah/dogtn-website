@@ -141,7 +141,7 @@ export default function MinistryClient({ locale }: MinistryClientProps) {
               className="flex h-full flex-col justify-between gap-6 rounded-[12px] border border-[#C9A227]/30 bg-[#C9A227]/15 p-8 text-white sm:flex-row sm:items-center sm:col-span-2 lg:col-span-4"
             >
               <div>
-                <h3 className="font-serif text-[24px] text-white">{c.discoverTitle}</h3>
+                <h3 className="font-serif text-[24px] leading-tight text-white">{c.discoverTitle}</h3>
                 <p className="mt-2 max-w-xl text-white/70 leading-relaxed">
                   {c.discoverBody}
                 </p>
