@@ -17,6 +17,7 @@ export const SITE_NAME = "David Ogbueli · Global Transformation Network";
  * entities, and giving the Person the ministry's accounts would merge them.
  */
 export const PERSON_PROFILES = [
+  "https://www.facebook.com/pastordavidogbueli/",
   "https://www.instagram.com/pastordavidogbueli/",
   "https://www.youtube.com/channel/UCEwpTUF-FDHQwzcDx3eZ3hQ",
   // Canonical form; ng.linkedin.com is a country redirect to the same profile.
