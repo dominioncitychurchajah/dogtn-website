@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import HisStoryClient from "./HisStoryClient";
 import { buildMetadata } from "@/lib/seo";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { graph, profilePageSchema } from "@/lib/schema";
 
 export async function generateMetadata({
   params,
@@ -23,5 +25,15 @@ export default async function HisStoryPage({
   params: Promise<{ locale: string }> | { locale: string };
 }) {
   const resolvedParams = await Promise.resolve(params);
-  return <HisStoryClient locale={resolvedParams.locale} />;
+  const loc: Locale = isLocale(resolvedParams.locale)
+    ? resolvedParams.locale
+    : defaultLocale;
+  return (
+    <>
+      {/* Declares this page as the one about him; the Person node it points
+          at is emitted site-wide from the locale layout. */}
+      <JsonLd data={graph(profilePageSchema(loc))} />
+      <HisStoryClient locale={resolvedParams.locale} />
+    </>
+  );
 }
