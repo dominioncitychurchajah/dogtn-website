@@ -25,7 +25,9 @@ var NOTIFY_EMAIL = 'dominioncitychurchajah1@gmail.com';
 var SENDER_NAME = 'Gabe';
 var SITE_URL = 'https://dogtn-website.pages.dev';
 // PNG, not the site's WebP logo: Outlook still will not render WebP.
-var LOGO_URL = SITE_URL + '/images/logo/dr-david-ogbueli-brand-dark.png';
+// Logo with its paper background baked in. Mail clients invert backgrounds in
+// dark mode but never image pixels, so the navy wordmark stays legible on both.
+var LOGO_URL = SITE_URL + '/images/email/logo-email.png';
 var REPLY_PHONE = '+234 803 550 8230';
 var TAB_REGISTRATIONS = 'Registrations';
 var TAB_WAITLIST = 'Mentorship waitlist';
@@ -59,13 +61,17 @@ function emailHtml_(opts) {
   }).join('');
 
   return '' +
-  '<!doctype html><html><body style="margin:0;padding:0;background:' + paper + ';">' +
-  '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:' + paper + ';padding:28px 12px;">' +
+  '<!doctype html><html><head>' +
+  '<meta name="color-scheme" content="light">' +
+  '<meta name="supported-color-schemes" content="light">' +
+  '<style>:root{color-scheme:light;supported-color-schemes:light}</style>' +
+  '</head><body style="margin:0;padding:0;background:' + paper + ';">' +
+  '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="' + paper + '" style="background:' + paper + ';padding:28px 12px;">' +
   '<tr><td align="center">' +
     '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;font-family:Helvetica,Arial,sans-serif;">' +
 
-      '<tr><td align="center" style="background:' + paper + ';padding:26px 24px;">' +
-        '<img src="' + LOGO_URL + '" alt="Dr. David Ogbueli" width="170" style="display:block;border:0;width:170px;max-width:60%;height:auto;">' +
+      '<tr><td align="center" bgcolor="' + paper + '" style="background:' + paper + ';padding:22px 24px;">' +
+        '<img src="' + LOGO_URL + '" alt="Dr. David Ogbueli Ministries" width="210" style="display:block;border:0;width:210px;max-width:70%;height:auto;border-radius:8px;">' +
       '</td></tr>' +
 
       '<tr><td style="padding:34px 32px 8px 32px;">' +
@@ -83,7 +89,7 @@ function emailHtml_(opts) {
       '</td></tr>' +
 
       (opts.ctaUrl ? '<tr><td style="padding:24px 32px 8px 32px;">' +
-        '<a href="' + opts.ctaUrl + '" style="display:inline-block;background:' + gold + ';color:' + navy +
+        '<a href="' + opts.ctaUrl + '" bgcolor="' + gold + '" style="display:inline-block;background:' + gold + ';color:' + navy +
         ';text-decoration:none;font-weight:700;font-size:15px;padding:14px 26px;border-radius:10px;">' +
         opts.ctaLabel + '</a>' +
       '</td></tr>' : '') +
@@ -93,7 +99,7 @@ function emailHtml_(opts) {
         '<span style="color:#9CA3AF;font-size:13px;">Dr. David Ogbueli Ministries</span></p>' +
       '</td></tr>' +
 
-      '<tr><td style="background:' + navy + ';padding:20px 32px;">' +
+      '<tr><td bgcolor="' + navy + '" style="background:' + navy + ';padding:20px 32px;">' +
         '<p style="margin:0;font-size:13px;line-height:1.6;color:#94A3B8;">' +
           'Questions? Call <a href="tel:+2348035508230" style="color:' + gold + ';text-decoration:none;">' + REPLY_PHONE + '</a>' +
           ' or just reply to this email.' +

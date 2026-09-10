@@ -20,7 +20,9 @@ export function JourneyStrip({ locale }: { locale: Locale }) {
   return (
     <section className="border-b border-ink-100/60 bg-paper-0 py-12">
       <Container>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+        {/* Five tiles in a four-column grid left one stranded on its own row.
+            Five columns on desktop puts them in a single line. */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
           {TILES.map(({ label, icon: Icon, href }) => (
             <Link
               key={label}
