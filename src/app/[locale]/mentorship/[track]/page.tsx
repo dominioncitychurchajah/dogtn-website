@@ -9,7 +9,10 @@ import { formatDate } from "@/lib/utils";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { mentorshipCopy } from "@/i18n/pages/mentorship";
 import { tracks, getTrack } from "@/data/mentorship";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, localePath } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { faqPageSchema, graph } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return tracks.map((t) => ({ track: t.slug }));
@@ -57,6 +60,16 @@ export default async function TrackPage({
 
   return (
     <>
+      {/* Mirrors the FAQ accordion rendered further down this page. */}
+      <JsonLd
+        data={graph(
+          faqPageSchema(
+            data.faqs.map((f) => ({ question: f.q, answer: f.a })),
+            absoluteUrl(localePath(loc, `mentorship/${track}`)),
+          ),
+        )}
+      />
+      <>
       {/* Hero — deep navy, centered */}
       <section className="bg-ink-900 px-5 py-28 text-paper-0 lg:px-16 lg:py-40">
         <div className="mx-auto max-w-3xl text-center">
@@ -253,6 +266,7 @@ export default async function TrackPage({
           </div>
         </div>
       </section>
+    </>
     </>
   );
 }

@@ -85,6 +85,26 @@ export function bookSchema(book: Book, locale: Locale) {
   };
 }
 
+/**
+ * FAQPage over Q&A that is already visible on the page — which is the only
+ * form search and answer engines accept. Nothing here is written for the
+ * markup; it mirrors copy the page already renders.
+ */
+export function faqPageSchema(
+  items: { question: string; answer: string }[],
+  pageUrl: string,
+) {
+  return {
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    mainEntity: items.map((i) => ({
+      "@type": "Question",
+      name: i.question,
+      acceptedAnswer: { "@type": "Answer", text: i.answer },
+    })),
+  };
+}
+
 /** Wrap one or more entities in a single @graph document. */
 export function graph(...nodes: object[]) {
   return { "@context": "https://schema.org", "@graph": nodes };
