@@ -94,13 +94,16 @@ export default async function RegisterPage({
                 </div>
               </dl>
 
-              <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl">
+              {/* Event artwork is a flyer, not a banner: show it whole rather
+                  than cropping the speakers and dates out of a 16/9 box. */}
+              <div className="mt-8 overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white">
                 <Image
                   src={event.image}
-                  alt={event.title}
-                  fill
+                  alt={`${event.title} flyer`}
+                  width={1100}
+                  height={1161}
                   unoptimized
-                  className="object-cover"
+                  className="h-auto w-full object-contain"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>

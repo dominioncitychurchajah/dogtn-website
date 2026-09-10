@@ -9,8 +9,11 @@ import type { EventItem } from "@/data/types";
  * action. The notification address and the Sheet id live inside the script,
  * server-side, so changing who gets notified needs no site rebuild.
  */
+const DEFAULT_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbzxCM75M2n5raIzNRolj5SdaX_-ht37GCEnAQSTZDVyjTeXlaQgIqWeYXiSOEa0fWM/exec";
+
 export const REGISTRATION_ENDPOINT =
-  process.env.NEXT_PUBLIC_REGISTRATION_ENDPOINT ?? "";
+  process.env.NEXT_PUBLIC_REGISTRATION_ENDPOINT ?? DEFAULT_ENDPOINT;
 
 /** The next event that has not finished yet, or null once none remain. */
 export function nextUpcomingEvent(now = new Date()): EventItem | null {
