@@ -11,7 +11,8 @@ export function JourneyStrip({ locale }: { locale: Locale }) {
   const TILES = [
     { label: c.growSpiritually, icon: Sparkles, href: "/journeys/grow-spiritually" },
     { label: c.becomeLeader, icon: GraduationCap, href: "/mentorship" },
-    { label: c.joinCommunity, icon: Users, href: "/start-here" },
+    // No community/chapters page exists yet; contact is the nearest real destination.
+    { label: c.joinCommunity, icon: Users, href: "/contact" },
     { label: c.accessTeachings, icon: BookOpen, href: "/media" },
     { label: c.exploreMinistry, icon: Landmark, href: "/ministry" },
     { label: c.partner, icon: Handshake, href: "/partnership" },

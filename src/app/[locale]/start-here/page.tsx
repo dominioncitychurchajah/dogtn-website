@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ClipboardCheck, MessagesSquare } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { startHereCopy } from "@/i18n/pages/start-here";
 import { Section, Container } from "@/components/layout/Section";
+import { JourneyStrip } from "@/components/sections/JourneyStrip";
+import { OrientationBand } from "@/components/sections/OrientationBand";
 import { journeys, journeyPosters, JOURNEY_POSTER_FALLBACK } from "@/data/journeys";
 import { buildMetadata } from "@/lib/seo";
 
@@ -44,6 +46,9 @@ export default async function StartHerePage({
           <h1 className="mx-auto max-w-3xl font-serif text-[32px] leading-tight text-white sm:text-[44px] md:text-[56px]">
             {c.heroTitle}
           </h1>
+          <p className="mx-auto mt-6 max-w-[54ch] text-[17px] leading-relaxed text-[#CBD5E1]">
+            {c.heroBody}
+          </p>
         </Container>
       </section>
 
@@ -57,6 +62,9 @@ export default async function StartHerePage({
             <h2 className="font-serif text-[28px] leading-tight text-[#0A192F] sm:text-[36px]">
               {c.journeysTitle}
             </h2>
+            <p className="mx-auto mt-4 max-w-[60ch] text-[16px] leading-relaxed text-[#6B7280]">
+              {c.journeysIntro}
+            </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -111,57 +119,16 @@ export default async function StartHerePage({
         </Container>
       </Section>
 
-      {/* For anyone who cannot pick. */}
-      <Section className="bg-white">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-3 block text-[13px] font-semibold uppercase tracking-[0.18em] text-[#C9A227]">
-              {c.orientationEyebrow}
-            </span>
-            <h2 className="font-serif text-[28px] leading-tight text-[#0A192F] sm:text-[36px]">
-              {c.orientationTitle}
-            </h2>
-          </div>
+      {/* Quick routes for visitors who know what they want. */}
+      <JourneyStrip locale={loc} />
 
-          <div className="mx-auto mt-10 grid max-w-3xl gap-5 sm:grid-cols-2">
-            <Link
-              href={`/${loc}/leadership/assessment`}
-              className="group flex items-start gap-4 rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227]"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#C9A227]/15 text-[#C9A227]">
-                <ClipboardCheck className="h-5 w-5" aria-hidden />
-              </span>
-              <span>
-                <span className="block font-serif text-[18px] leading-tight text-[#0A192F]">
-                  {c.ctaTakeOrientation}
-                </span>
-                <span className="mt-1.5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#C9A227]">
-                  10 questions
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden />
-                </span>
-              </span>
-            </Link>
-
-            <Link
-              href={`/${loc}/mentorship`}
-              className="group flex items-start gap-4 rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227]"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#C9A227]/15 text-[#C9A227]">
-                <MessagesSquare className="h-5 w-5" aria-hidden />
-              </span>
-              <span>
-                <span className="block font-serif text-[18px] leading-tight text-[#0A192F]">
-                  {c.ctaTalkMentor}
-                </span>
-                <span className="mt-1.5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#C9A227]">
-                  Three tracks
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" aria-hidden />
-                </span>
-              </span>
-            </Link>
-          </div>
-        </Container>
-      </Section>
+      <OrientationBand
+        locale={loc}
+        title={c.orientationTitle}
+        body={c.orientationBody}
+        ctaPrimary={c.ctaTakeOrientation}
+        ctaSecondary={c.ctaTalkMentor}
+      />
     </>
   );
 }
