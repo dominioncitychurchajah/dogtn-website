@@ -55,7 +55,7 @@ export default async function PartnershipPage({
             {c.heroSubtitle}
           </p>
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href="#giving-engine" size="l" className="uppercase tracking-widest font-bold">
+            <Button href="#giving-engine" size="l" className="font-bold">
               {c.becomePartner}
             </Button>
             <Button
@@ -64,7 +64,7 @@ export default async function PartnershipPage({
               rel="noopener noreferrer"
               size="l"
               variant="secondary"
-              className="border-paper-0/30 bg-transparent uppercase tracking-widest text-paper-0 hover:bg-paper-0/10"
+              className="border-paper-0/30 bg-transparent text-paper-0 hover:bg-paper-0/10"
             >
               {c.seeImpact}
             </Button>

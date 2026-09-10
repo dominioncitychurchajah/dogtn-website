@@ -136,7 +136,7 @@ export function ContactClient() {
           </div>
           <p className="mt-6 text-[13px] text-white/55">
             {c.responseFallback}{" "}
-            <a href="tel:+2348035508230" className="font-semibold text-[#C9A227] hover:text-[#d4b85a]">
+            <a href="tel:+2348035508230" className="font-semibold text-[#C9A227] hover:text-[#dfbe59]">
               +234&#8209;8035508230
             </a>
             {" · "}
@@ -144,7 +144,7 @@ export function ContactClient() {
               href="https://wa.me/2348035508230"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-[#C9A227] hover:text-[#d4b85a]"
+              className="font-semibold text-[#C9A227] hover:text-[#dfbe59]"
             >
               WhatsApp
             </a>
@@ -225,7 +225,7 @@ export function ContactClient() {
 
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#C9A227] py-4 text-[15px] font-bold text-[#0A192F] transition-all hover:-translate-y-px hover:bg-[#d4b85a] hover:shadow-[0_4px_20px_rgba(201,162,39,0.2)]"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#C9A227] py-4 text-[15px] font-bold text-[#0A192F] transition-all hover:-translate-y-px hover:bg-[#dfbe59] hover:shadow-[0_4px_20px_rgba(201,162,39,0.2)]"
               >
                 <Send className="h-[18px] w-[18px]" />
                 {c.sendMessage}
@@ -371,7 +371,7 @@ export function ContactClient() {
                 </p>
                 <div className="flex flex-col gap-1.5">
                   {office.phones.map((phone) => (
-                    <a key={phone} href={`tel:${phone.replace(/[^\d+]/g, "")}`} className="text-sm font-medium text-[#C9A227] hover:text-[#d4b85a]">
+                    <a key={phone} href={`tel:${phone.replace(/[^\d+]/g, "")}`} className="text-sm font-medium text-[#C9A227] hover:text-[#dfbe59]">
                       {phone}
                     </a>
                   ))}
@@ -439,7 +439,7 @@ export function ContactClient() {
           <p className="mt-3 mb-7 text-base text-[#718096]">{c.ctaBody}</p>
           <a
             href="#contact-form"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#C9A227] px-9 py-4 text-[15px] font-bold text-[#0A192F] transition-all hover:-translate-y-px hover:bg-[#d4b85a] hover:shadow-[0_4px_20px_rgba(201,162,39,0.2)]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#C9A227] px-9 py-4 text-[15px] font-bold text-[#0A192F] transition-all hover:-translate-y-px hover:bg-[#dfbe59] hover:shadow-[0_4px_20px_rgba(201,162,39,0.2)]"
           >
             <MessageCircle className="h-[18px] w-[18px]" />
             {c.ctaButton}

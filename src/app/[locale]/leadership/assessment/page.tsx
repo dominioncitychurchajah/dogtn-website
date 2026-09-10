@@ -101,7 +101,7 @@ export default async function AssessmentIntroPage({
               <Button
                 href={`/${loc}/leadership/assessment/question`}
                 size="l"
-                className="cta-pulse mt-10 w-full uppercase tracking-widest sm:w-auto"
+                className="cta-pulse mt-10 w-full sm:w-auto"
               >
                 Start Assessment
                 <ArrowRight className="h-5 w-5 rtl:rotate-180" aria-hidden />

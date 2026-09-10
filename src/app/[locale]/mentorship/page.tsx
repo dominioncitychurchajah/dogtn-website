@@ -109,35 +109,9 @@ export default async function MentorshipPage({
                     {track.audience}
                   </p>
 
-                  {/* Course facts */}
-                  <dl className="mt-6 grid grid-cols-2 gap-4 border-y border-ink-100 py-5">
-                    <div>
-                      <dt className="text-caption font-semibold uppercase tracking-wider text-ink-500">
-                        {c.durationLabel}
-                      </dt>
-                      <dd className="mt-1 flex items-baseline gap-1.5 text-body-m font-semibold text-ink-900">
-                        <Clock className="h-4 w-4 text-gold-hover" aria-hidden />
-                        {track.durationMonths} {c.monthsUnit}
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-caption font-semibold uppercase tracking-wider text-ink-500">
-                        {c.commitmentLabel}
-                      </dt>
-                      <dd className="mt-1 text-body-m font-semibold text-ink-900">
-                        {track.hoursPerWeek} {c.hoursPerWeekUnit}
-                      </dd>
-                    </div>
-                    <div className="col-span-2">
-                      <dt className="text-caption font-semibold uppercase tracking-wider text-ink-500">
-                        {c.nextCohortLabel}
-                      </dt>
-                      <dd className="mt-1 flex items-center gap-1.5 text-body-m font-semibold text-ink-900">
-                        <CalendarDays className="h-4 w-4 text-gold-hover" aria-hidden />
-                        {formatDate(track.cohortDates[0])}
-                      </dd>
-                    </div>
-                  </dl>
+                  {/* Course facts removed: duration, weekly hours and cohort
+                      dates described a programme shape that is not published.
+                      What a track involves is shared on joining. */}
 
                   <ul className="mt-6 space-y-2.5">
                     {track.outcomes.slice(0, 3).map((outcome) => (
@@ -148,9 +122,15 @@ export default async function MentorshipPage({
                     ))}
                   </ul>
 
-                  <div className="mt-auto flex items-center justify-between pt-8">
-                    <Badge tone="neutral">{track.cohortDates.length} cohorts / year</Badge>
-                    <span className="inline-flex items-center gap-1.5 text-caption font-bold uppercase tracking-widest text-gold-hover">
+                  {/* "Global Leadership Executive I" in a pill beside an
+                      uppercase, wide-tracked CTA left both wrapping in a
+                      narrow card. The label now sits on its own line as an
+                      eyebrow, and the CTA keeps one line. */}
+                  <div className="mt-auto pt-8">
+                    <span className="block text-caption font-semibold uppercase tracking-[0.14em] text-ink-500">
+                      {gleLabel(track)}
+                    </span>
+                    <span className="mt-2.5 inline-flex items-center gap-1.5 whitespace-nowrap text-body-s font-bold text-gold-hover">
                       {c.exploreTrackCta}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" aria-hidden />
                     </span>

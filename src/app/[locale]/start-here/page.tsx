@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { startHereCopy } from "@/i18n/pages/start-here";
-import { Container } from "@/components/layout/Section";
-import { StartHereAI } from "./components/StartHereAI";
+import { Section, Container } from "@/components/layout/Section";
+import { JourneyStrip } from "@/components/sections/JourneyStrip";
+import { OrientationBand } from "@/components/sections/OrientationBand";
+import { tracks } from "@/data/mentorship";
+import { waitlistCopy } from "@/i18n/pages/waitlist";
+import { WaitlistForm } from "@/components/mentorship/WaitlistForm";
 import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -13,26 +19,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const loc = isLocale(locale) ? locale : defaultLocale;
   const c = startHereCopy[loc];
+  const w = waitlistCopy[loc];
   return buildMetadata({ locale: loc, path: "start-here", title: c.metaTitle });
 }
-
-const methodology = [
-  {
-    number: "01",
-    title: "Choose Your Path",
-    body: "Select the journey that matches your current season and your vision for the future. This is where we align your goals with the right resources.",
-  },
-  {
-    number: "02",
-    title: "Engage and Grow",
-    body: "Work through world-class curriculum designed to be applied immediately in your life, ministry, and career.",
-  },
-  {
-    number: "03",
-    title: "Receive Mentorship",
-    body: "Connect with a mentor, gain accountability, and get clear direction on your next step.",
-  },
-];
 
 export default async function StartHerePage({
   params,
@@ -41,40 +30,74 @@ export default async function StartHerePage({
 }) {
   const { locale } = await params;
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
-
-  const p = (path: string) => `/${loc}${path}`;
+  const c = startHereCopy[loc];
+  const w = waitlistCopy[loc];
 
   return (
-    <main className="overflow-hidden bg-[#faf9ff] text-ink-900">
-      <StartHereAI locale={loc} />
-
-      <section className="relative overflow-hidden bg-ink-900 px-5 py-20 text-paper-0 sm:py-24 lg:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_25%,rgba(197,160,89,0.16),transparent_38%)]" aria-hidden />
-        <Container className="relative px-0">
-          <div className="mb-16">
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-[0.45em] text-gold-400">
-              Methodology
-            </span>
-            <h2 className="text-heading-1 text-paper-0 sm:text-[4rem] sm:leading-tight">How Your Journey Works</h2>
-            <div className="mt-6 h-px w-28 bg-gold-600" />
-          </div>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 lg:gap-20">
-            {methodology.map((step) => (
-              <article key={step.number} className="group relative min-h-[18rem]">
-                <span className="pointer-events-none absolute -left-5 -top-10 font-serif text-[8rem] font-bold leading-none text-gold-600/10 sm:text-[11rem]">
-                  {step.number}
-                </span>
-                <div className="relative pt-10">
-                  <h3 className="text-heading-2 text-paper-0 transition-colors duration-300 group-hover:text-gold-400">
-                    {step.title}
-                  </h3>
-                  <p className="mt-5 max-w-sm text-body-m italic leading-relaxed text-ink-300">{step.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+    <>
+      {/* Hero: solid ground, no ghost photo behind the type. */}
+      <section className="bg-[#0A192F] pt-32 pb-20 text-center">
+        <Container>
+          <span className="mb-6 inline-flex items-center rounded-full border border-[#C9A227]/30 bg-[#C9A227]/10 px-5 py-2 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#C9A227]">
+            {c.heroEyebrow}
+          </span>
+          <h1 className="mx-auto max-w-3xl font-serif text-[32px] leading-tight text-white sm:text-[44px] md:text-[56px]">
+            {c.heroTitle}
+          </h1>
+          <p className="mx-auto mt-6 max-w-[54ch] text-[17px] leading-relaxed text-[#CBD5E1]">
+            {c.heroBody}
+          </p>
         </Container>
       </section>
-    </main>
+
+      {/* The three mentorship tracks and the waitlist. The site does not
+          deliver the mentorship: the app does, and this is the way in. */}
+      <Section className="bg-[#F5F1E8]">
+        <Container>
+          <div className="mb-10 text-center">
+            <span className="mb-3 block text-[13px] font-semibold uppercase tracking-[0.18em] text-[#C9A227]">
+              {w.eyebrow}
+            </span>
+            <h2 className="font-serif text-[28px] leading-tight text-[#0A192F] sm:text-[36px]">
+              {w.title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-[60ch] text-[16px] leading-relaxed text-[#6B7280]">
+              {w.body}
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start">
+            <div className="space-y-4">
+              {tracks.map((t) => (
+                <div key={t.slug} className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
+                  <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#C9A227]">
+                    Level {t.level}
+                  </span>
+                  <h3 className="mt-2 font-serif text-[20px] leading-tight text-[#0A192F]">
+                    {t.name}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-[#6B7280]">{t.audience}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm sm:p-8">
+              <WaitlistForm c={w} tracks={tracks.map((t) => ({ slug: t.slug, name: t.name }))} />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Quick routes for visitors who know what they want. */}
+      <JourneyStrip locale={loc} />
+
+      <OrientationBand
+        locale={loc}
+        title={c.orientationTitle}
+        body={c.orientationBody}
+        ctaPrimary={c.ctaTakeOrientation}
+        ctaSecondary={w.speakToSomeone}
+      />
+    </>
   );
 }

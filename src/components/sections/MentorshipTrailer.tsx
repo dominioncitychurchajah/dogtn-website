@@ -227,7 +227,7 @@ export function TrailerPlayer({
             <Link
               href={`/${loc}/leadership/assessment`}
               onClick={() => trackEvent("assessment_started_via_trailer", { locale: loc })}
-              className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#C9A227] px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-[#0A192F] transition-colors hover:bg-[#e0b430] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A192F] sm:px-8 sm:py-4 sm:text-sm"
+              className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#C9A227] px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-[#0A192F] transition-colors hover:bg-[#dfbe59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A227] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A192F] sm:px-8 sm:py-4 sm:text-sm"
             >
               {c.endCta}
               <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />

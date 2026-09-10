@@ -62,7 +62,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   en: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "Structured mentorship tracks that form leaders from emerging leaders to nation builders through cohorts, personal mentoring, and accountability.",
+      "Three mentorship tracks with Dr. David Ogbueli, from emerging leaders to nation builders. Join the waitlist for the mentorship app.",
     eyebrow: "Let Dr David Mentor You",
     title: "Global Leadership Executive",
     subtitle:
@@ -73,12 +73,12 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
       "Global Leadership Executive is a single formation path in three levels. You enter where your responsibility actually sits today, and each level prepares you for the next: character before position, sustainability before scale, multiplication before legacy.",
     durationLabel: "Duration",
     commitmentLabel: "Commitment",
-    nextCohortLabel: "Next cohort",
+    nextCohortLabel: "Invitation",
     monthsUnit: "months",
     hoursPerWeekUnit: "hrs / week",
     gridTitle: "3 Tracks to 1 Mentorship Transformation",
     gridSubtitle:
-      "Each track pairs you with a cohort and a personal mentor, with clear outcomes and a defined rhythm.",
+      "Each track is shaped for a different season of leadership, with mentorship from Dr. David Ogbueli.",
     exploreTrackCta: "Explore Track",
     closingTitle: "Not sure which track fits?",
     closingBody:
@@ -108,8 +108,8 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     oversightTitle: "Oversight Structure",
     oversightRoles: [
       {
-        title: "The Cohort Mentor",
-        desc: "Primary guide overseeing the weekly rhythm and strategic development of the cohort.",
+        title: "Your Mentor",
+        desc: "Dr. David Ogbueli mentors every track personally.",
       },
       {
         title: "The Reviewer",
@@ -127,18 +127,18 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineReviewValue: "Nov 1 – Nov 10",
     timelineInterviewLabel: "Interview Week",
     timelineInterviewValue: "Nov 15 – Nov 22",
-    timelineCohortStartLabel: "Cohort Start",
+    timelineCohortStartLabel: "Invitation",
     eligibilityTitle: "Eligibility Checklist",
     faqTitle: "Frequent Enquiries",
     readyTitle: "Ready to apply?",
     readyBody:
-      "Join the next cohort of leaders dedicated to institutional excellence and personal transformation.",
+      "Join the waitlist and we will send your invitation when the mentorship app opens.",
     beginApplicationCta: "Begin Application",
   },
   fr: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "Des parcours de mentorat structurés qui forment des leaders, des leaders émergents aux bâtisseurs de nations, à travers des cohortes, un mentorat personnel et la responsabilité.",
+      "Trois parcours de mentorat avec le Dr David Ogbueli, des leaders émergents aux bâtisseurs de nations. Rejoignez la liste d'attente de l'application.",
     eyebrow: "Laissez le Dr David vous encadrer",
     title: "Global Leadership Executive",
     subtitle:
@@ -149,12 +149,12 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
       "Global Leadership Executive est un seul chemin de formation en trois niveaux. Vous entrez là où se situe réellement votre responsabilité aujourd'hui, et chaque niveau prépare le suivant : le caractère avant la position, la durabilité avant l'échelle, la multiplication avant l'héritage.",
     durationLabel: "Durée",
     commitmentLabel: "Engagement",
-    nextCohortLabel: "Prochaine cohorte",
+    nextCohortLabel: "Invitation",
     monthsUnit: "mois",
     hoursPerWeekUnit: "h / semaine",
     gridTitle: "3 parcours pour 1 transformation par le mentorat",
     gridSubtitle:
-      "Chaque parcours vous associe à une cohorte et à un mentor personnel, avec des résultats clairs et un rythme défini.",
+      "Chaque parcours est conçu pour une saison de leadership différente, avec le mentorat du Dr David Ogbueli.",
     exploreTrackCta: "Découvrir le parcours",
     closingTitle: "Vous ne savez pas quel parcours vous convient ?",
     closingBody:
@@ -184,8 +184,8 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     oversightTitle: "Structure de supervision",
     oversightRoles: [
       {
-        title: "Le mentor de cohorte",
-        desc: "Guide principal supervisant le rythme hebdomadaire et le développement stratégique de la cohorte.",
+        title: "Votre mentor",
+        desc: "Le Dr David Ogbueli assure personnellement le mentorat de chaque parcours.",
       },
       {
         title: "L'évaluateur",
@@ -203,18 +203,18 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineReviewValue: "1 nov. – 10 nov.",
     timelineInterviewLabel: "Semaine d'entretiens",
     timelineInterviewValue: "15 nov. – 22 nov.",
-    timelineCohortStartLabel: "Début de la cohorte",
+    timelineCohortStartLabel: "Invitation",
     eligibilityTitle: "Liste d'éligibilité",
     faqTitle: "Questions fréquentes",
     readyTitle: "Prêt à postuler ?",
     readyBody:
-      "Rejoignez la prochaine cohorte de leaders dédiés à l'excellence institutionnelle et à la transformation personnelle.",
+      "Rejoignez la liste d'attente et nous vous enverrons votre invitation à l'ouverture de l'application.",
     beginApplicationCta: "Commencer la candidature",
   },
   pt: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "Percursos de mentoria estruturados que formam líderes, desde líderes emergentes a construtores de nações, através de cohortes, mentoria pessoal e responsabilização.",
+      "Três percursos de mentoria com o Dr. David Ogbueli, de líderes emergentes a construtores de nações. Entre na lista de espera da aplicação.",
     eyebrow: "Deixe o Dr. David ser o seu mentor",
     title: "Global Leadership Executive",
     subtitle:
@@ -230,7 +230,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     hoursPerWeekUnit: "h / semana",
     gridTitle: "3 percursos para 1 transformação pelo mentorado",
     gridSubtitle:
-      "Cada percurso associa-o a uma cohorte e a um mentor pessoal, com resultados claros e um ritmo definido.",
+      "Cada percurso é moldado para uma estação diferente de liderança, com a mentoria do Dr. David Ogbueli.",
     exploreTrackCta: "Explorar percurso",
     closingTitle: "Não sabe qual percurso lhe assenta?",
     closingBody:
@@ -260,8 +260,8 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     oversightTitle: "Estrutura de Supervisão",
     oversightRoles: [
       {
-        title: "O Mentor da Cohorte",
-        desc: "Guia principal que supervisiona o ritmo semanal e o desenvolvimento estratégico da cohorte.",
+        title: "O seu mentor",
+        desc: "O Dr. David Ogbueli acompanha pessoalmente cada percurso.",
       },
       {
         title: "O Avaliador",
@@ -279,18 +279,18 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineReviewValue: "1 nov. – 10 nov.",
     timelineInterviewLabel: "Semana de entrevistas",
     timelineInterviewValue: "15 nov. – 22 nov.",
-    timelineCohortStartLabel: "Início da cohorte",
+    timelineCohortStartLabel: "Convite",
     eligibilityTitle: "Lista de Elegibilidade",
     faqTitle: "Perguntas Frequentes",
     readyTitle: "Pronto para se candidatar?",
     readyBody:
-      "Junte-se à próxima cohorte de líderes dedicados à excelência institucional e à transformação pessoal.",
+      "Entre na lista de espera e enviaremos o seu convite quando a aplicação abrir.",
     beginApplicationCta: "Iniciar candidatura",
   },
   sw: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "Njia zilizopangwa za uongozaji zinazounda viongozi, kutoka viongozi wanaochipuka hadi wajenzi wa mataifa, kupitia vikundi, uongozaji binafsi na uwajibikaji.",
+      "Njia tatu za ushauri na Dkt. David Ogbueli, kutoka viongozi wanaochipuka hadi wajenzi wa mataifa. Jiunge na orodha ya kusubiri ya programu.",
     eyebrow: "Mruhusu Dkt. David Akuongoze",
     title: "Global Leadership Executive",
     subtitle:
@@ -366,7 +366,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
   ar: {
     metaTitle: "Global Leadership Executive",
     metaDescription:
-      "مسارات إرشاد منظَّمة تُشكِّل القادة، من القادة الناشئين إلى بُناة الأمم، من خلال المجموعات والإرشاد الشخصي والمساءلة.",
+      "ثلاثة مسارات للإرشاد مع د. ديفيد أوغبويلي، من القادة الناشئين إلى بُناة الأمم. انضم إلى قائمة انتظار التطبيق.",
     eyebrow: "دع الدكتور ديفيد يرشدك",
     title: "Global Leadership Executive",
     subtitle:

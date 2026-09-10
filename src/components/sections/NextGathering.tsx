@@ -47,7 +47,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
   ];
 
   return (
-    <section className="relative z-30 -mt-16 lg:-mt-24">
+    <section className="relative z-30 -mt-16 pb-16 sm:pb-20 lg:-mt-24 lg:pb-24">
       <Container>
         <div className="flex flex-col gap-12 overflow-hidden rounded-[2rem] border border-paper-0/10 bg-ink-900 p-10 shadow-elev-4 backdrop-blur-md lg:flex-row lg:gap-16 lg:p-16">
           {/* Countdown */}
@@ -110,8 +110,10 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
                 <Radio className="h-4 w-4" aria-hidden />
                 {copy.watchOnline}
               </a>
+              {/* Was pointing at dominioncity.cc, sending the homepage's event
+                  traffic to another site. Now goes to our own registration. */}
               <Link
-                href="https://www.dominioncity.cc/en/events"
+                href={`/${locale}/register`}
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] border border-paper-0/15 px-5 text-body-m font-semibold text-paper-0 hover:bg-paper-0/10"
               >
                 {copy.planVisit}

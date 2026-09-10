@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles, GraduationCap, Users, BookOpen, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
+import { Users, BookOpen, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { homeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
@@ -9,9 +9,8 @@ export function JourneyStrip({ locale }: { locale: Locale }) {
   const c = homeCopy[loc].journeyStrip;
 
   const TILES = [
-    { label: c.growSpiritually, icon: Sparkles, href: "/journeys/grow-spiritually" },
-    { label: c.becomeLeader, icon: GraduationCap, href: "/mentorship" },
-    { label: c.joinCommunity, icon: Users, href: "/start-here" },
+    // No community/chapters page exists yet; contact is the nearest real destination.
+    { label: c.joinCommunity, icon: Users, href: "/contact" },
     { label: c.accessTeachings, icon: BookOpen, href: "/media" },
     { label: c.exploreMinistry, icon: Landmark, href: "/ministry" },
     { label: c.partner, icon: Handshake, href: "/partnership" },
@@ -21,7 +20,9 @@ export function JourneyStrip({ locale }: { locale: Locale }) {
   return (
     <section className="border-b border-ink-100/60 bg-paper-0 py-12">
       <Container>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+        {/* Five tiles in a four-column grid left one stranded on its own row.
+            Five columns on desktop puts them in a single line. */}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
           {TILES.map(({ label, icon: Icon, href }) => (
             <Link
               key={label}

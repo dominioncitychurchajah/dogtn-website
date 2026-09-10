@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
 import { BOOKS } from "@/data/books";
-import { journeys } from "@/data/journeys";
 import { tracks } from "@/data/mentorship";
 import { absoluteUrl } from "@/lib/site";
 import { localePath } from "@/lib/seo";
@@ -24,6 +23,7 @@ const STATIC_PATHS = [
   { path: "institutions/dli", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "institutions/global-missions-network", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "partnership", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "register", priority: 0.9, changeFrequency: "weekly" as const },
   { path: "contact", priority: 0.6, changeFrequency: "yearly" as const },
 ];
 
@@ -33,7 +33,6 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const dynamicPaths = [
     ...BOOKS.map((b) => ({ path: `books/${b.slug}`, priority: 0.8, changeFrequency: "yearly" as const })),
-    ...journeys.map((j) => ({ path: `journeys/${j.slug}`, priority: 0.6, changeFrequency: "yearly" as const })),
     ...tracks.map((t) => ({ path: `mentorship/${t.slug}`, priority: 0.7, changeFrequency: "monthly" as const })),
   ];
 

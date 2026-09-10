@@ -1,4 +1,4 @@
-import type { Book } from "@/data/types";
+import type { Book, EventItem } from "@/data/types";
 import { locales, type Locale } from "@/i18n/config";
 import { SITE_NAME, PERSON_PROFILES, absoluteUrl } from "./site";
 import { localePath } from "./seo";
@@ -157,6 +157,34 @@ export function faqPageSchema(
       name: i.question,
       acceptedAnswer: { "@type": "Answer", text: i.answer },
     })),
+  };
+}
+
+/** Event, built from the real entry in src/data/events.ts. */
+export function eventSchema(event: EventItem, pageUrl: string) {
+  const free = event.tiers.every((t) => t.price === 0);
+  return {
+    "@type": "Event",
+    "@id": `${pageUrl}#event`,
+    name: event.title,
+    description: event.description,
+    startDate: event.date,
+    ...(event.endDate && { endDate: event.endDate }),
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: event.online
+      ? "https://schema.org/OnlineEventAttendanceMode"
+      : "https://schema.org/OfflineEventAttendanceMode",
+    location: { "@type": "Place", name: event.location, address: event.location },
+    image: absoluteUrl(event.image),
+    organizer: { "@id": ORG_ID },
+    performer: { "@id": PERSON_ID },
+    offers: {
+      "@type": "Offer",
+      url: pageUrl,
+      price: free ? 0 : event.tiers[0].price,
+      priceCurrency: event.tiers[0].currency,
+      availability: "https://schema.org/InStock",
+    },
   };
 }
 
