@@ -2,10 +2,11 @@
  * Event registration endpoint for dogtn-website.
  *
  * Setup (about two minutes):
- *   1. Create a Google Sheet. Note its id from the URL:
- *      docs.google.com/spreadsheets/d/<THIS_PART>/edit
- *   2. Extensions -> Apps Script. Paste this file over Code.gs.
- *   3. Set SHEET_ID and NOTIFY_EMAIL below.
+ *   1. Open your Google Sheet -> Extensions -> Apps Script.
+ *      Opening it from inside the Sheet binds the script to that Sheet, so
+ *      there is no id to configure here and none to leak into a public repo.
+ *   2. Paste this file over Code.gs.
+ *   3. Check NOTIFY_EMAIL below.
  *   4. Deploy -> New deployment -> type "Web app".
  *        Execute as:      Me
  *        Who has access:  Anyone            <- required; the site posts anonymously
@@ -16,7 +17,6 @@
  * script. It needs no rebuild of the website.
  */
 
-var SHEET_ID = 'PASTE_YOUR_SHEET_ID_HERE';
 var NOTIFY_EMAIL = 'dominioncitychurchajah1@gmail.com';
 var TAB_NAME = 'Registrations';
 
@@ -64,7 +64,9 @@ function doGet() {
 }
 
 function getSheet_() {
-  var ss = SpreadsheetApp.openById(SHEET_ID);
+  // Bound script: resolves to the Sheet this script was created from.
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) throw new Error('Not bound to a Sheet. Create the script via Extensions -> Apps Script from inside your Sheet.');
   var sheet = ss.getSheetByName(TAB_NAME);
   if (!sheet) {
     sheet = ss.insertSheet(TAB_NAME);
