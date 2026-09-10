@@ -1,10 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { CheckCircle2, Loader2, AlertCircle, Phone } from "lucide-react";
+import { CheckCircle2, AlertCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { REGISTRATION_ENDPOINT, CONTACT_PHONE, CONTACT_PHONE_DISPLAY } from "@/lib/registration";
 import type { WaitlistCopy } from "@/i18n/pages/waitlist";
+import { useSubmitProgress } from "@/components/forms/useSubmitProgress";
+import { SubmitProgress } from "@/components/forms/SubmitProgress";
 
 const field =
   "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12";
@@ -13,7 +15,7 @@ const errorText = "mt-1.5 text-sm text-[#B42318]";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "error" | "unconfirmed";
 
 export function WaitlistForm({
   c,
@@ -26,6 +28,7 @@ export function WaitlistForm({
 }) {
   const [status, setStatus] = React.useState<Status>("idle");
   const [errors, setErrors] = React.useState<Record<string, string>>({});
+  const pct = useSubmitProgress(status === "submitting", status === "success");
 
   async function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -57,10 +60,11 @@ export function WaitlistForm({
         }),
       });
       const out = await res.json().catch(() => ({ ok: res.ok }));
-      if (!out.ok) throw new Error();
-      setStatus("success");
+      // An explicit ok:false is a real rejection (validation); anything else
+      // that fails is a response we could not read, not a write that failed.
+      setStatus(out.ok ? "success" : "error");
     } catch {
-      setStatus("error");
+      setStatus("unconfirmed");
     }
   }
 
@@ -122,6 +126,13 @@ export function WaitlistForm({
         <input id="wl-role" name="currentRole" className={field} />
       </div>
 
+      {status === "unconfirmed" && (
+        <p role="alert" className="flex items-start gap-2 rounded-xl bg-[#FFFAEB] p-4 text-sm text-[#B54708]">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>{c.unconfirmed}</span>
+        </p>
+      )}
+
       {status === "error" && (
         <p role="alert" className="flex items-start gap-2 rounded-xl bg-[#FEF3F2] p-4 text-sm text-[#B42318]">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
@@ -132,13 +143,13 @@ export function WaitlistForm({
         </p>
       )}
 
-      <Button type="submit" size="l" className="w-full" disabled={status === "submitting"}>
-        {status === "submitting" ? (
-          <><Loader2 className="h-4 w-4 animate-spin" /> {c.submitting}</>
-        ) : (
-          c.submit
-        )}
-      </Button>
+      {status === "submitting" ? (
+        <SubmitProgress pct={pct} label={c.submitting} />
+      ) : (
+        <Button type="submit" size="l" className="w-full">
+          {c.submit}
+        </Button>
+      )}
 
       <a href={`tel:${CONTACT_PHONE}`}
         className="flex items-center justify-center gap-2 text-[14px] font-semibold text-[#0A192F] hover:text-[#C9A227]">

@@ -21,6 +21,7 @@ export interface WaitlistCopy {
   successTitle: string;
   successBody: string;
   errorBody: string;
+  unconfirmed: string;
   privacy: string;
   speakToSomeone: string;
 }
@@ -43,6 +44,7 @@ export const waitlistCopy: Record<Locale, WaitlistCopy> = {
     successTitle: "You are on the list",
     successBody: "Check your inbox for confirmation. We will send your invitation as soon as the app opens.",
     errorBody: "We could not add you just now. Please try again, or call us.",
+    unconfirmed: "Your details were sent, but we did not get a confirmation back. Check your email before trying again, so you are not added twice.",
     privacy: "We use your details only to invite you to the mentorship app.",
     speakToSomeone: "Speak with someone",
   },
@@ -63,6 +65,7 @@ export const waitlistCopy: Record<Locale, WaitlistCopy> = {
     successTitle: "Vous êtes inscrit",
     successBody: "Consultez votre boîte de réception pour la confirmation. Nous vous enverrons votre invitation dès l'ouverture de l'application.",
     errorBody: "Nous n'avons pas pu vous inscrire. Veuillez réessayer ou nous appeler.",
+    unconfirmed: "Vos informations ont été envoyées, mais nous n'avons pas reçu de confirmation. Vérifiez votre e-mail avant de réessayer, pour ne pas être inscrit deux fois.",
     privacy: "Vos informations servent uniquement à vous inviter à l'application de mentorat.",
     speakToSomeone: "Parler à quelqu'un",
   },
@@ -83,6 +86,7 @@ export const waitlistCopy: Record<Locale, WaitlistCopy> = {
     successTitle: "Está na lista",
     successBody: "Verifique a sua caixa de entrada para a confirmação. Enviaremos o seu convite assim que a aplicação abrir.",
     errorBody: "Não foi possível inscrevê-lo agora. Tente novamente ou ligue-nos.",
+    unconfirmed: "Os seus dados foram enviados, mas não recebemos confirmação. Verifique o seu e-mail antes de tentar de novo, para não ser inscrito duas vezes.",
     privacy: "Usamos os seus dados apenas para o convidar para a aplicação de mentoria.",
     speakToSomeone: "Falar com alguém",
   },
@@ -103,6 +107,7 @@ export const waitlistCopy: Record<Locale, WaitlistCopy> = {
     successTitle: "Uko kwenye orodha",
     successBody: "Angalia barua pepe yako kwa uthibitisho. Tutakutumia mwaliko mara tu programu itakapofunguliwa.",
     errorBody: "Hatukuweza kukuandikisha sasa. Tafadhali jaribu tena, au tupigie simu.",
+    unconfirmed: "Taarifa zako zilitumwa, lakini hatukupata uthibitisho. Angalia barua pepe yako kabla ya kujaribu tena, ili usiandikishwe mara mbili.",
     privacy: "Tunatumia taarifa zako kukualika kwenye programu ya ushauri pekee.",
     speakToSomeone: "Zungumza na mtu",
   },
@@ -123,6 +128,7 @@ export const waitlistCopy: Record<Locale, WaitlistCopy> = {
     successTitle: "أنت على القائمة",
     successBody: "تحقّق من بريدك للتأكيد. سنرسل دعوتك فور فتح التطبيق.",
     errorBody: "تعذّر تسجيلك الآن. يرجى المحاولة مرة أخرى أو الاتصال بنا.",
+    unconfirmed: "أُرسلت بياناتك، لكننا لم نتلقَّ تأكيدًا. تحقّق من بريدك قبل المحاولة مجددًا حتى لا تُسجَّل مرتين.",
     privacy: "نستخدم بياناتك فقط لدعوتك إلى تطبيق الإرشاد.",
     speakToSomeone: "تحدّث مع أحدنا",
   },

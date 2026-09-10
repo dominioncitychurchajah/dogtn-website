@@ -1,17 +1,19 @@
 "use client";
 
 import * as React from "react";
-import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { REGISTRATION_ENDPOINT } from "@/lib/registration";
 import type { EventItem } from "@/data/types";
+import { useSubmitProgress } from "@/components/forms/useSubmitProgress";
+import { SubmitProgress } from "@/components/forms/SubmitProgress";
 
 const field =
   "w-full rounded-xl border-[1.5px] border-[#E2E8F0] bg-white px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12";
 const label = "mb-2 block text-sm font-semibold text-[#0A192F]";
 const errorText = "mt-1.5 text-sm text-[#B42318]";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success" | "error" | "unconfirmed";
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -21,6 +23,7 @@ export function EventRegistrationForm({ event }: { event: EventItem }) {
   const [status, setStatus] = React.useState<Status>("idle");
   const [errors, setErrors] = React.useState<Record<string, string>>({});
   const [message, setMessage] = React.useState("");
+  const pct = useSubmitProgress(status === "submitting", status === "success");
 
   function validate(data: Record<string, string>) {
     const e: Record<string, string> = {};
@@ -71,12 +74,19 @@ export function EventRegistrationForm({ event }: { event: EventItem }) {
         }),
       });
       const out = await res.json().catch(() => ({ ok: res.ok }));
-      if (!out.ok) throw new Error(out.error || "Registration failed");
-      setStatus("success");
+      if (out.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+        setMessage("We could not complete your registration. Please try again, or call +234 803 550 8230.");
+      }
     } catch {
-      setStatus("error");
+      // The row is written and the mail sent before the response returns, so a
+      // response we cannot read is not a registration that failed. Saying
+      // "error" here would invite a duplicate booking.
+      setStatus("unconfirmed");
       setMessage(
-        "We could not complete your registration. Please try again, or email dominioncitychurchajah1@gmail.com.",
+        "Your details were sent, but we did not get a confirmation back. Check your email before trying again, so you are not registered twice.",
       );
     }
   }
@@ -171,20 +181,27 @@ export function EventRegistrationForm({ event }: { event: EventItem }) {
           placeholder="Ushering, media, protocol, choir, logistics…" />
       </div>
 
-      {status === "error" && (
-        <p role="alert" className="flex items-start gap-2 rounded-xl bg-[#FEF3F2] p-4 text-sm text-[#B42318]">
+      {(status === "error" || status === "unconfirmed") && (
+        <p
+          role="alert"
+          className={`flex items-start gap-2 rounded-xl p-4 text-sm ${
+            status === "unconfirmed"
+              ? "bg-[#FFFAEB] text-[#B54708]"
+              : "bg-[#FEF3F2] text-[#B42318]"
+          }`}
+        >
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           {message}
         </p>
       )}
 
-      <Button type="submit" size="l" className="w-full" disabled={status === "submitting"}>
-        {status === "submitting" ? (
-          <><Loader2 className="h-4 w-4 animate-spin" /> Registering…</>
-        ) : (
-          "Register for this event"
-        )}
-      </Button>
+      {status === "submitting" ? (
+        <SubmitProgress pct={pct} label="Registering…" />
+      ) : (
+        <Button type="submit" size="l" className="w-full">
+          Register for this event
+        </Button>
+      )}
 
       <p className="text-center text-xs leading-relaxed text-[#6B7280]">
         We use your details only to contact you about {event.title}.
