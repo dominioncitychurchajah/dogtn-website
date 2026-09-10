@@ -13,8 +13,9 @@ export const SITE_URL = (
 export const SITE_NAME = "David Ogbueli · Global Transformation Network";
 
 /**
- * schema.org `sameAs`. Split deliberately: these resolve two different
- * entities, and giving the Person the ministry's accounts would merge them.
+ * schema.org `sameAs` for Dr. David. The Organization deliberately declares
+ * none: Dominion City is a separate entity with its own site, so listing its
+ * accounts here would conflate the two.
  */
 export const PERSON_PROFILES = [
   "https://www.facebook.com/pastordavidogbueli/",
@@ -22,11 +23,6 @@ export const PERSON_PROFILES = [
   "https://www.youtube.com/channel/UCEwpTUF-FDHQwzcDx3eZ3hQ",
   // Canonical form; ng.linkedin.com is a country redirect to the same profile.
   "https://www.linkedin.com/in/drdavidogbueli",
-];
-
-export const ORG_PROFILES = [
-  "https://www.facebook.com/DominionCity",
-  "https://www.instagram.com/dominioncitylagos/",
 ];
 
 /** Build an absolute URL from a root-relative path. */

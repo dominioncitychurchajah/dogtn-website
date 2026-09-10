@@ -31,9 +31,9 @@ const fadeUp = {
 const CONTACT_EMAIL = "mail@davidogbueli.org";
 
 const SOCIAL_LINKS = [
-  { label: "YouTube", href: "https://www.youtube.com/@DominionCity" },
-  { label: "Instagram", href: "https://www.instagram.com/dominioncitylagos/" },
-  { label: "Facebook", href: "https://www.facebook.com/DominionCity" },
+  { label: "YouTube", href: "https://www.youtube.com/channel/UCEwpTUF-FDHQwzcDx3eZ3hQ" },
+  { label: "Instagram", href: "https://www.instagram.com/pastordavidogbueli/" },
+  { label: "Facebook", href: "https://www.facebook.com/pastordavidogbueli/" },
   { label: "Podcast", href: "https://open.spotify.com/show/2JO3Nr5fVyyuLuq8DiGQDa" },
 ];
 

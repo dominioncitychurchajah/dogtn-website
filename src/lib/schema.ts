@@ -1,6 +1,6 @@
 import type { Book } from "@/data/types";
 import { locales, type Locale } from "@/i18n/config";
-import { SITE_NAME, ORG_PROFILES, PERSON_PROFILES, absoluteUrl } from "./site";
+import { SITE_NAME, PERSON_PROFILES, absoluteUrl } from "./site";
 import { localePath } from "./seo";
 
 /**
@@ -23,7 +23,6 @@ export function organizationSchema() {
       url: absoluteUrl("/images/logo/dr-david-ogbueli-brand-white.webp"),
     },
     founder: { "@id": PERSON_ID },
-    sameAs: ORG_PROFILES,
   };
 }
 

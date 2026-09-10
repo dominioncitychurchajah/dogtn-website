@@ -42,7 +42,7 @@ export function Footer({ locale }: { locale: Locale }) {
     { label: "YouTube", href: "https://www.youtube.com/channel/UCEwpTUF-FDHQwzcDx3eZ3hQ", icon: YoutubeIcon },
     { label: "Instagram", href: "https://www.instagram.com/pastordavidogbueli/", icon: InstagramIcon },
     { label: "Facebook", href: "https://www.facebook.com/pastordavidogbueli/", icon: FacebookIcon },
-    { label: "Podcast", href: "https://open.spotify.com/", icon: Mic2 },
+    { label: "Podcast", href: "https://open.spotify.com/show/2JO3Nr5fVyyuLuq8DiGQDa", icon: Mic2 },
   ];
 
   const cols = [
