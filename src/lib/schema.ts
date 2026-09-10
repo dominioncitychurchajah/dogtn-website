@@ -38,7 +38,10 @@ export function personSchema() {
     "@id": PERSON_ID,
     name: "Dr. David Ogbueli",
     honorificPrefix: "Dr.",
-    jobTitle: "Founder and Senior Pastor",
+    jobTitle: ["Founder and Senior Pastor", "President, Dominion City Global"],
+    // Dominion City is a distinct entity with its own site, so it is named
+    // here as an affiliation rather than folded into this Organization.
+    affiliation: { "@type": "Organization", name: "Dominion City Global" },
     description:
       "Nigerian pastor, author and leadership teacher. He founded Dominion City in Enugu in 1991, a movement that has grown to more than 2,000 churches across over 50 nations, and has trained over 30,000 leaders through the Dominion Leadership Institute. He is the author of ten books on leadership, wealth and discipleship.",
     disambiguatingDescription:
@@ -47,10 +50,12 @@ export function personSchema() {
     image: absoluteUrl("/images/pastor/hero-stadium-arms-wide.jpg"),
     nationality: { "@type": "Country", name: "Nigeria" },
     worksFor: { "@id": ORG_ID },
-    // Sourced from his LinkedIn education section. NIPSS carries its official
-    // name here rather than LinkedIn's wording, so the entity resolves.
+    // His LinkedIn education section, plus Harvard, which the /his-story
+    // education cards carry and his profile simply does not list. NIPSS uses
+    // its official name rather than LinkedIn's wording, so the entity resolves.
     alumniOf: [
       { "@type": "CollegeOrUniversity", name: "University of Nigeria, Nsukka" },
+      { "@type": "CollegeOrUniversity", name: "Harvard Business School" },
       { "@type": "CollegeOrUniversity", name: "IESE Business School" },
       {
         "@type": "CollegeOrUniversity",
