@@ -68,7 +68,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
                   className="theme-logo-light h-12 w-auto lg:h-14"
                 />
                 <Image
-                  src="/images/logo/dr-david-ogbueli-brand-white.png"
+                  src="/images/logo/dr-david-ogbueli-brand-white.webp"
                   alt="David Ogbueli"
                   width={341}
                   height={122}
@@ -77,7 +77,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
               </>
             ) : (
               <Image
-                src="/images/logo/dr-david-ogbueli-brand-white.png"
+                src="/images/logo/dr-david-ogbueli-brand-white.webp"
                 alt="David Ogbueli"
                 width={341}
                 height={122}

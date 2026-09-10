@@ -187,7 +187,9 @@ export function TrailerPlayer({
               alt=""
               fill
               unoptimized
-              priority
+              // Below the fold: `priority` here preloaded a 155KB third-party
+              // image ahead of the hero on the critical path.
+              loading="lazy"
               onError={() => setPoster(posterUrl("hqdefault"))}
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"

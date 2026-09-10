@@ -98,7 +98,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="max-w-xs">
             <Link href={`/${locale}`} className="inline-flex items-center mb-5" aria-label="Dr. David Ogbueli — home">
               <Image
-                src="/images/logo/dr-david-ogbueli-brand-white.png"
+                src="/images/logo/dr-david-ogbueli-brand-white.webp"
                 alt="Dr. David Ogbueli"
                 width={341}
                 height={122}
