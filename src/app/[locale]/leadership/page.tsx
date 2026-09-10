@@ -109,7 +109,7 @@ export default async function LeadershipPage({
               {c.heroSubtitle}
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button href={`/${loc}/leadership/assessment`} size="l" className="uppercase tracking-widest">
+              <Button href={`/${loc}/leadership/assessment`} size="l" className="">
                 {c.startAssessment}
                 <ArrowRight className="h-5 w-5 rtl:rotate-180" aria-hidden />
               </Button>
@@ -117,7 +117,7 @@ export default async function LeadershipPage({
                 href={dliHref}
                 size="l"
                 variant="secondary"
-                className="border-paper-0/30 bg-transparent uppercase tracking-widest text-paper-0 hover:bg-paper-0/10"
+                className="border-paper-0/30 bg-transparent text-paper-0 hover:bg-paper-0/10"
               >
                 {c.exploreCourses}
               </Button>
@@ -158,7 +158,7 @@ export default async function LeadershipPage({
                   </div>
                 ))}
               </div>
-              <Button href={`/${loc}/leadership/assessment/question`} size="l" className="uppercase tracking-widest">
+              <Button href={`/${loc}/leadership/assessment/question`} size="l" className="">
                 {c.launchEngine}
               </Button>
             </div>

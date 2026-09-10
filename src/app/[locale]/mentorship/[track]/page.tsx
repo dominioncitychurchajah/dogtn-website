@@ -260,7 +260,7 @@ export default async function TrackPage({
           <h2 className="text-display-l text-paper-0">{c.readyTitle}</h2>
           <p className="mx-auto mt-8 text-body-l text-ink-300">{c.readyBody}</p>
           <div className="mt-12 flex justify-center">
-            <Button href={applyHref} size="l" className="uppercase tracking-widest">
+            <Button href={applyHref} size="l" className="">
               {c.beginApplicationCta}
             </Button>
           </div>

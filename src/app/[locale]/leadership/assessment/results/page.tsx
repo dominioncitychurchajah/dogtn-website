@@ -132,7 +132,7 @@ export default function ResultsPage() {
                   return (
                     <div key={d.key} className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-label-md font-semibold uppercase tracking-wider text-ink-500">
+                        <span className="text-label-md font-semibold text-ink-500">
                           {SHORT_LABEL[d.key] ?? d.label}
                         </span>
                         <span className="text-body-m font-bold text-ink-900">{score}%</span>
@@ -173,7 +173,7 @@ export default function ResultsPage() {
                   <p className="mt-4 text-body-m leading-relaxed text-ink-300">{result.why}</p>
 
                   <div className="mt-8 rounded-[var(--radius-m)] border border-paper-0/15 bg-paper-0/5 p-5">
-                    <span className="mb-2 block text-caption font-semibold uppercase tracking-wider text-gold-400">
+                    <span className="mb-2 block text-caption font-semibold text-gold-400">
                       Your next step
                     </span>
                     <p className="text-body-s leading-relaxed text-paper-0">{result.nextStep}</p>
@@ -195,7 +195,7 @@ export default function ResultsPage() {
                     <Button
                       href={`/${loc}/mentorship/${result.trackSlug}`}
                       size="l"
-                      className="w-full whitespace-normal h-auto min-h-14 px-6 py-4 text-center text-body-m leading-snug uppercase tracking-wider"
+                      className="w-full whitespace-normal h-auto min-h-14 px-6 py-4 text-center text-body-m leading-snug"
                     >
                       Explore Global Leadership Executive Track
                       <ArrowRight className="h-5 w-5 rtl:rotate-180" aria-hidden />
@@ -205,7 +205,7 @@ export default function ResultsPage() {
                       href={`/${loc}/institutions/dli`}
                       size="l"
                       variant="secondary"
-                      className="w-full whitespace-normal h-auto min-h-14 px-6 py-4 text-center text-body-m leading-snug uppercase tracking-wider border-paper-0/30 bg-transparent text-paper-0 hover:bg-paper-0/5"
+                      className="w-full whitespace-normal h-auto min-h-14 px-6 py-4 text-center text-body-m leading-snug border-paper-0/30 bg-transparent text-paper-0 hover:bg-paper-0/5"
                     >
                       Explore the Dominion Leadership Institute
                     </Button>
