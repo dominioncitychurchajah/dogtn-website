@@ -9,6 +9,7 @@ import { formatDate } from "@/lib/utils";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { mentorshipCopy } from "@/i18n/pages/mentorship";
 import { tracks, getTrack } from "@/data/mentorship";
+import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return tracks.map((t) => ({ track: t.slug }));
@@ -19,10 +20,15 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; track: string }>;
 }): Promise<Metadata> {
-  const { track } = await params;
+  const { locale, track } = await params;
   const data = getTrack(track);
-  if (!data) return { title: "Mentorship Track" };
-  return { title: `${data.name} Mentorship Track`, description: data.audience };
+  if (!data) return { title: "Mentorship Track", robots: { index: false } };
+  return buildMetadata({
+    locale: isLocale(locale) ? locale : defaultLocale,
+    path: `mentorship/${track}`,
+    title: `${data.name} Mentorship Track`,
+    description: data.audience,
+  });
 }
 
 // Icons for the program-level audience profiles (copy comes from i18n).

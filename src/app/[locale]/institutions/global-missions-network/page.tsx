@@ -16,12 +16,21 @@ import {
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { Section, Container, SectionHeading } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Global Missions Network",
-  description:
-    "A Kingdom relationship network for pastors, founders, and heads of ministries and organizations — to serve, collaborate, receive mentorship, and engage directly with Dr. David Ogbueli.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    locale: isLocale(locale) ? locale : defaultLocale,
+    path: "institutions/global-missions-network",
+    title: "Global Missions Network",
+    description: "A Kingdom relationship network for pastors, founders, and heads of ministries and organizations — to serve, collaborate, receive mentorship, and engage directly with Dr. David Ogbueli.",
+  });
+}
 
 const APPLY_PHONE_DISPLAY = "+234 803 550 8230";
 const APPLY_PHONE_TEL = "+2348035508230";

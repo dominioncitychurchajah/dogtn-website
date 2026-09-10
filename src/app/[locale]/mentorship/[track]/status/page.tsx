@@ -22,6 +22,7 @@ export async function generateMetadata({
   return {
     title: data ? `Application status · ${data.name}` : "Application Status",
     description: "Track the status of your DOGTN mentorship application.",
+    robots: { index: false, follow: true },
   };
 }
 

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { Locale } from "@/i18n/config";
+import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { journeys, getJourney } from "@/data/journeys";
 import { Container } from "@/components/layout/Section";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { JourneyPlayerClient } from "@/components/teachings/JourneyPlayerClient";
+import { buildMetadata } from "@/lib/seo";
 
 const POSTERS: Record<string, string> = {
   "discover-purpose": "/images/pastor/prayer-hands-raised.webp",
@@ -21,11 +22,17 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const journey = getJourney(slug);
-  return { title: journey?.title ?? "Journey" };
+  if (!journey) return { title: "Journey", robots: { index: false } };
+  return buildMetadata({
+    locale: isLocale(locale) ? locale : defaultLocale,
+    path: `journeys/${slug}`,
+    title: journey.title,
+    description: journey.description,
+  });
 }
 
 export default async function JourneyPlayerPage({

@@ -9,6 +9,7 @@ import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { mentorshipCopy } from "@/i18n/pages/mentorship";
 import { tracksByLevel, gleLabel } from "@/data/mentorship";
 import { formatDate } from "@/lib/utils";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -16,8 +17,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const c = mentorshipCopy[isLocale(locale) ? locale : defaultLocale];
-  return { title: c.metaTitle, description: c.metaDescription };
+  const loc = isLocale(locale) ? locale : defaultLocale;
+  const c = mentorshipCopy[loc];
+  return buildMetadata({ locale: loc, path: "mentorship", title: c.metaTitle, description: c.metaDescription });
 }
 
 export default async function MentorshipPage({

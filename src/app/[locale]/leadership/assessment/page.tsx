@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
 import { ArrowRight, Timer, FileText, ShieldCheck, Eye, Brain, Network, Globe, Building2, TrendingUp, Info } from "lucide-react";
-import type { Locale } from "@/i18n/config";
 import { Section, Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
+import { buildMetadata } from "@/lib/seo";
+import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 
-export const metadata: Metadata = {
-  title: "Leadership Assessment",
-  description:
-    "Ten quick questions that identify where you are in your leadership journey and which Global Leadership Executive mentorship track is designed for your next level.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    locale: isLocale(locale) ? locale : defaultLocale,
+    path: "leadership/assessment",
+    title: "Leadership Assessment",
+    description: "Ten quick questions that identify where you are in your leadership journey and which Global Leadership Executive mentorship track is designed for your next level.",
+  });
+}
 
 const PILLARS = [
   { label: "Character", icon: ShieldCheck },

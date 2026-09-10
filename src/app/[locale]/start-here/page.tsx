@@ -3,6 +3,7 @@ import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { startHereCopy } from "@/i18n/pages/start-here";
 import { Container } from "@/components/layout/Section";
 import { StartHereAI } from "./components/StartHereAI";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -10,8 +11,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const c = startHereCopy[isLocale(locale) ? locale : defaultLocale];
-  return { title: c.metaTitle };
+  const loc = isLocale(locale) ? locale : defaultLocale;
+  const c = startHereCopy[loc];
+  return buildMetadata({ locale: loc, path: "start-here", title: c.metaTitle });
 }
 
 const methodology = [

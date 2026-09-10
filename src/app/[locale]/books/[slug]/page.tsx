@@ -7,6 +7,9 @@ import { teachings } from "@/data/teachings";
 import { Container } from "@/components/layout/Section";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { booksCopy } from "@/i18n/pages/books";
+import { buildMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { bookSchema, graph } from "@/lib/schema";
 
 interface PageProps {
   params: Promise<{
@@ -22,19 +25,21 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const book = BOOKS.find((b) => b.slug === slug);
-  
+
   if (!book) {
-    return {
-      title: "Book Not Found",
-    };
+    return { title: "Book Not Found", robots: { index: false } };
   }
-  
-  return {
+
+  return buildMetadata({
+    locale: isLocale(locale) ? locale : defaultLocale,
+    path: `books/${book.slug}`,
     title: `${book.title} | Books | Dr. David Ogbueli`,
     description: book.desc,
-  };
+    image: book.cover,
+    type: "book",
+  });
 }
 
 export default async function BookDetailPage({ params }: PageProps) {
@@ -51,6 +56,7 @@ export default async function BookDetailPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[#F5F1E8] pt-32 pb-20">
+      <JsonLd data={graph(bookSchema(book, loc))} />
       <Container>
         <div className="mb-8">
           <Link

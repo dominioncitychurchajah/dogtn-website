@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 // Self-hosted fonts (no build-time network fetch).
 import "@fontsource-variable/inter/index.css";
 import "@fontsource-variable/inter/wght-italic.css";
@@ -7,6 +8,9 @@ import "@fontsource-variable/playfair-display/wght-italic.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  // Lets every child segment express canonical/OG/hreflang URLs as relative
+  // paths; without it those fields are dropped or error at build.
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "David Ogbueli · Global Transformation Network",
     template: "%s · David Ogbueli",

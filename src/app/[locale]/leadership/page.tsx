@@ -28,6 +28,7 @@ import { leadershipCopy } from "@/i18n/pages/leadership";
 import { courses } from "@/data/courses";
 import { teachings } from "@/data/teachings";
 import { formatDate } from "@/lib/utils";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -35,8 +36,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const c = leadershipCopy[isLocale(locale) ? locale : defaultLocale];
-  return { title: c.metaTitle, description: c.metaDescription };
+  const loc = isLocale(locale) ? locale : defaultLocale;
+  const c = leadershipCopy[loc];
+  return buildMetadata({ locale: loc, path: "leadership", title: c.metaTitle, description: c.metaDescription });
 }
 
 const PILLAR_ICONS = [ShieldCheck, Eye, Brain, TrendingUp, Handshake];
