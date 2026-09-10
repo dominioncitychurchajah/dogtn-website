@@ -24,6 +24,7 @@ const STATIC_PATHS = [
   { path: "institutions/dli", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "institutions/global-missions-network", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "partnership", priority: 0.7, changeFrequency: "monthly" as const },
+  { path: "register", priority: 0.9, changeFrequency: "weekly" as const },
   { path: "contact", priority: 0.6, changeFrequency: "yearly" as const },
 ];
 
