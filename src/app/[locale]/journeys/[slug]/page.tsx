@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
-import { journeys, getJourney } from "@/data/journeys";
+import { journeys, getJourney, journeyPosters, JOURNEY_POSTER_FALLBACK } from "@/data/journeys";
 import { Container } from "@/components/layout/Section";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { JourneyPlayerClient } from "@/components/teachings/JourneyPlayerClient";
 import { buildMetadata } from "@/lib/seo";
 
-const POSTERS: Record<string, string> = {
-  "discover-purpose": "/images/pastor/prayer-hands-raised.webp",
-  "become-a-leader": "/images/pastor/leadership-hand-raised.webp",
-  "grow-spiritually": "/images/pastor/preaching-purple-lit.webp",
-  "build-a-ministry": "/images/pastor/sermon-blue-backdrop.webp",
-  "transform-society": "/images/pastor/hero-stadium-arms-wide.jpg",
-};
 
 export function generateStaticParams() {
   return journeys.map((j) => ({ slug: j.slug }));
@@ -54,7 +47,7 @@ export default async function JourneyPlayerPage({
         ]}
       />
       <div className="mt-8">
-        <JourneyPlayerClient journey={journey} poster={POSTERS[journey.slug] ?? "/images/pastor/preaching-purple-lit.webp"} />
+        <JourneyPlayerClient journey={journey} poster={journeyPosters[journey.slug] ?? JOURNEY_POSTER_FALLBACK} />
       </div>
     </Container>
   );

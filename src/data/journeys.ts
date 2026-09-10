@@ -1,5 +1,16 @@
 import type { Journey } from "@/data/types";
 
+/** Poster art per journey. Shared by /start-here and /journeys/[slug]. */
+export const journeyPosters: Record<string, string> = {
+  "discover-purpose": "/images/pastor/prayer-hands-raised.webp",
+  "become-a-leader": "/images/pastor/leadership-hand-raised.webp",
+  "grow-spiritually": "/images/pastor/preaching-purple-lit.webp",
+  "build-a-ministry": "/images/pastor/sermon-blue-backdrop.webp",
+  "transform-society": "/images/pastor/hero-stadium-arms-wide.jpg",
+};
+
+export const JOURNEY_POSTER_FALLBACK = "/images/pastor/preaching-purple-lit.webp";
+
 export const journeys: Journey[] = [
   {
     slug: "discover-purpose",
