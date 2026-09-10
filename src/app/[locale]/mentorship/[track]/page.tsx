@@ -55,7 +55,6 @@ export default async function TrackPage({
     { icon: CalendarDays, label: c.timelineApplicationLabel, value: c.timelineApplicationValue },
     { icon: FileSearch, label: c.timelineReviewLabel, value: c.timelineReviewValue },
     { icon: Users, label: c.timelineInterviewLabel, value: c.timelineInterviewValue },
-    { icon: Rocket, label: c.timelineCohortStartLabel, value: formatDate(data.cohortDates[0]), highlight: true },
   ];
 
   return (
@@ -150,27 +149,8 @@ export default async function TrackPage({
       <Section surface="paper" id="expectations">
         <Container>
           <div className="flex flex-col gap-16 lg:flex-row lg:gap-20">
-            {/* Commitment table */}
-            <div className="flex-1">
-              <h2 className="mb-8 text-heading-1 text-ink-900">{c.commitmentTitle}</h2>
-              <div className="overflow-hidden border border-ink-100">
-                <table className="w-full border-collapse text-start">
-                  <tbody>
-                    {data.expectations.map((row, i) => (
-                      <tr key={row.item} className={i < data.expectations.length - 1 ? "border-b border-ink-100" : ""}>
-                        <th
-                          scope="row"
-                          className="w-1/3 bg-paper-50 px-6 py-6 text-start text-caption font-semibold uppercase tracking-wider text-ink-700"
-                        >
-                          {row.item}
-                        </th>
-                        <td className="px-6 py-6 text-body-m text-ink-900">{row.detail}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            {/* Commitment table removed with the cohort model: it stated
+                weekly hours, session cadence and residential intensives. */}
 
             {/* Oversight structure */}
             <div className="flex-1 bg-ink-900 p-12 text-paper-0">
@@ -196,26 +176,18 @@ export default async function TrackPage({
           <h2 className="mb-16 text-center text-heading-1 text-ink-900">{c.timelineTitle}</h2>
           <div className="relative flex flex-col justify-between gap-8 md:flex-row">
             <div className="absolute inset-x-0 top-1/2 hidden h-px -translate-y-1/2 bg-ink-100 md:block" aria-hidden />
-            {timeline.map(({ icon: Icon, label, value, highlight }) => (
+            {timeline.map(({ icon: Icon, label, value }) => (
               <div
                 key={label}
-                className={
-                  highlight
-                    ? "relative z-10 border border-ink-900 bg-ink-900 p-8 text-paper-0 md:w-64"
-                    : "relative z-10 border border-ink-100 bg-paper-0 p-8 md:w-64"
-                }
+                className="relative z-10 border border-ink-100 bg-paper-0 p-8 md:w-64"
               >
                 <Icon className="mb-4 h-9 w-9 text-gold-600" aria-hidden />
                 <h4
-                  className={
-                    highlight
-                      ? "mb-2 text-caption font-semibold uppercase tracking-wider text-gold-600"
-                      : "mb-2 text-caption font-semibold uppercase tracking-wider text-ink-500"
-                  }
+                  className="mb-2 text-caption font-semibold uppercase tracking-wider text-ink-500"
                 >
                   {label}
                 </h4>
-                <p className={highlight ? "text-heading-3 text-paper-0" : "text-heading-3 text-ink-900"}>{value}</p>
+                <p className="text-heading-3 text-ink-900">{value}</p>
               </div>
             ))}
           </div>

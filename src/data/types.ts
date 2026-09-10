@@ -125,18 +125,11 @@ export interface MentorshipTrack {
   slug: string;
   /** Global Leadership Executive level: 1, 2 or 3. */
   level: 1 | 2 | 3;
-  /** Course length in months — shown as a course fact. */
-  durationMonths: number;
-  /** Expected weekly commitment in hours — shown as a course fact. */
-  hoursPerWeek: number;
   name: string;
   audience: string;
   hero: string;
   image: string;
   outcomes: string[];
-  expectations: { item: string; detail: string }[];
-  mentorStructure: string;
-  cohortDates: string[];
   eligibility: string[];
   faqs: { q: string; a: string }[];
 }
