@@ -36,7 +36,7 @@ export function JourneyStrip({
   const cols = TILES.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-4";
 
   return (
-    <section className="border-b border-ink-100/60 bg-paper-0 py-12">
+    <section className="border-b border-ink-100/60 bg-paper-0 py-10">
       <Container>
         <div className={`grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 ${cols}`}>
           {TILES.map(({ label, icon: Icon, href }) => (

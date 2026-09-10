@@ -47,7 +47,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
   ];
 
   return (
-    <section className="relative z-30 -mt-16 pb-16 sm:pb-20 lg:-mt-24 lg:pb-24">
+    <section className="relative z-30 -mt-16 pb-6 sm:pb-8 lg:-mt-24 lg:pb-10">
       <Container>
         <div className="flex flex-col gap-12 overflow-hidden rounded-[2rem] border border-paper-0/10 bg-ink-900 p-10 shadow-elev-4 backdrop-blur-md lg:flex-row lg:gap-16 lg:p-16">
           {/* Countdown */}
