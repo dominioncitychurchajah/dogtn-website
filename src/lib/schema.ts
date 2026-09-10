@@ -47,14 +47,20 @@ export function personSchema() {
     image: absoluteUrl("/images/pastor/hero-stadium-arms-wide.jpg"),
     nationality: { "@type": "Country", name: "Nigeria" },
     worksFor: { "@id": ORG_ID },
+    // Sourced from his LinkedIn education section. NIPSS carries its official
+    // name here rather than LinkedIn's wording, so the entity resolves.
     alumniOf: [
       { "@type": "CollegeOrUniversity", name: "University of Nigeria, Nsukka" },
-      { "@type": "CollegeOrUniversity", name: "Harvard Business School" },
-      { "@type": "CollegeOrUniversity", name: "Lagos Business School" },
+      { "@type": "CollegeOrUniversity", name: "IESE Business School" },
+      {
+        "@type": "CollegeOrUniversity",
+        name: "Lagos Business School, Pan-Atlantic University",
+      },
       {
         "@type": "CollegeOrUniversity",
         name: "National Institute for Policy and Strategic Studies",
       },
+      { "@type": "CollegeOrUniversity", name: "Trinity University of Ambassadors" },
     ],
     knowsAbout: [
       "Leadership development",
