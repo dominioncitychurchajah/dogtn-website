@@ -8,7 +8,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "video",
     durationMin: 52,
-    thumbnail: "/images/pastor/testimony-throne-chair.jpg",
+    thumbnail: "/images/pastor/testimony-throne-chair.webp",
     tags: ["Wealth", "Covenant", "Wisdom"],
     publishedAt: "2026-01-14",
     description:
@@ -21,7 +21,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "video",
     durationMin: 42,
-    thumbnail: "/images/pastor/preaching-purple-lit.jpg",
+    thumbnail: "/images/pastor/preaching-purple-lit.webp",
     tags: ["Governance", "Kingdom", "Leadership"],
     publishedAt: "2026-01-07",
     description:
@@ -36,7 +36,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "video",
     durationMin: 48,
-    thumbnail: "/images/pastor/dli-conference-whiteboard.jpg",
+    thumbnail: "/images/pastor/dli-conference-whiteboard.webp",
     tags: ["Governance", "Nations", "Society"],
     publishedAt: "2026-01-28",
     description:
@@ -50,7 +50,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "video",
     durationMin: 44,
-    thumbnail: "/images/pastor/whiteboard-5-laws-bw.jpg",
+    thumbnail: "/images/pastor/whiteboard-5-laws-bw.webp",
     tags: ["Communication", "Speech", "Wisdom"],
     publishedAt: "2026-02-11",
     description:
@@ -64,7 +64,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "audio",
     durationMin: 38,
-    thumbnail: "/images/pastor/preaching-purple-lit.jpg",
+    thumbnail: "/images/pastor/preaching-purple-lit.webp",
     tags: ["Communication", "Faith", "Speech"],
     publishedAt: "2026-02-25",
     description:
@@ -77,7 +77,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "video",
     durationMin: 56,
-    thumbnail: "/images/pastor/sermon-blue-backdrop.jpg",
+    thumbnail: "/images/pastor/sermon-blue-backdrop.webp",
     tags: ["Wisdom", "Wealth", "Prosperity"],
     publishedAt: "2026-03-10",
     description:
@@ -91,7 +91,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "article",
     durationMin: 14,
-    thumbnail: "/images/pastor/ecosystem-side-profile.jpg",
+    thumbnail: "/images/pastor/ecosystem-side-profile.webp",
     tags: ["Wealth", "Mindset", "Stewardship"],
     publishedAt: "2026-03-24",
     description:
@@ -105,7 +105,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "video",
     durationMin: 50,
-    thumbnail: "/images/pastor/leadership-hand-raised.jpg",
+    thumbnail: "/images/pastor/leadership-hand-raised.webp",
     tags: ["Leadership", "Mentorship", "Character"],
     publishedAt: "2026-04-07",
     description:
@@ -119,7 +119,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "audio",
     durationMin: 41,
-    thumbnail: "/images/pastor/leadership-hand-raised.jpg",
+    thumbnail: "/images/pastor/leadership-hand-raised.webp",
     tags: ["Character", "Integrity", "Leadership"],
     publishedAt: "2026-04-21",
     description:
@@ -133,7 +133,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "audio",
     durationMin: 36,
-    thumbnail: "/images/pastor/prayer-hands-raised.jpg",
+    thumbnail: "/images/pastor/prayer-hands-raised.webp",
     tags: ["Prayer", "Devotion", "Spiritual Growth"],
     publishedAt: "2026-05-05",
     description:
@@ -147,7 +147,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "article",
     durationMin: 11,
-    thumbnail: "/images/pastor/prayer-hands-raised.jpg",
+    thumbnail: "/images/pastor/prayer-hands-raised.webp",
     tags: ["Rest", "Grace", "Spiritual Growth"],
     publishedAt: "2026-05-19",
     description:
@@ -175,7 +175,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "video",
     durationMin: 33,
-    thumbnail: "/images/pastor/hero-night-of-glory.jpg",
+    thumbnail: "/images/pastor/hero-night-of-glory.webp",
     tags: ["Vision", "Destiny", "Faith"],
     publishedAt: "2026-06-23",
     description:
@@ -189,7 +189,7 @@ export const teachings: Teaching[] = [
     speaker: "Dr. David Ogbueli",
     format: "audio",
     durationMin: 39,
-    thumbnail: "/images/pastor/community-vestments-auditorium.jpg",
+    thumbnail: "/images/pastor/community-vestments-auditorium.webp",
     tags: ["Vision", "Governance", "Leadership"],
     publishedAt: "2026-03-03",
     description:

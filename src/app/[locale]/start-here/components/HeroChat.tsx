@@ -76,7 +76,7 @@ export function HeroChat({
     <section className="relative min-h-[80vh] flex flex-col bg-ink-900 text-paper-0 ambient-gradient">
       {/* Background image */}
       <Image
-        src="/images/pastor/ecosystem-side-profile.jpg"
+        src="/images/pastor/ecosystem-side-profile.webp"
         alt=""
         fill
         sizes="100vw"

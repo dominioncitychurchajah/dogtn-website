@@ -9,7 +9,7 @@ export const events: EventItem[] = [
     date: "2026-10-15T18:00:00.000Z",
     location: "Eko Convention Centre, Lagos, Nigeria",
     online: false,
-    image: "/images/pastor/hero-night-of-glory.jpg",
+    image: "/images/pastor/hero-night-of-glory.webp",
     summary: "A night of intense worship, apostolic teaching, and divine transformation.",
     description:
       "Our signature evening gathering returns to Lagos. Join thousands for a night of worship, prophetic ministry, and a stirring charge from Dr. David Ogbueli. Come expectant.",
@@ -24,7 +24,7 @@ export const events: EventItem[] = [
     endDate: "2026-07-26T18:00:00.000Z",
     location: "Houston, Texas, USA",
     online: false,
-    image: "/images/pastor/hero-night-of-glory.jpg",
+    image: "/images/pastor/hero-night-of-glory.webp",
     summary: "Four nights of powerful ministry, world-class worship experiences, prayer and altar ministry, and children's ministry...",
     description:
       "Four nights of powerful ministry, world-class worship experiences, prayer and altar ministry, and children's ministry (DC Kidz).",
@@ -39,7 +39,7 @@ export const events: EventItem[] = [
     endDate: "2026-08-09T18:00:00.000Z",
     location: "Canada",
     online: false,
-    image: "/images/pastor/sermon-blue-backdrop.jpg",
+    image: "/images/pastor/sermon-blue-backdrop.webp",
     summary: "The annual Dominion City gathering for Canada — worship, the Word, and fellowship across the Canadian chapters.",
     description:
       "The annual Dominion City gathering for Canada — worship, the Word, and fellowship across the Canadian chapters.",
@@ -55,7 +55,7 @@ export const events: EventItem[] = [
     endDate: "2026-09-27T18:00:00.000Z",
     location: "Dominion City Lagos HQ, beside Lagos Business School, Ajah, Lagos",
     online: false,
-    image: "/images/pastor/dli-conference-whiteboard.jpg",
+    image: "/images/pastor/dli-conference-whiteboard.webp",
     summary: "Empowerment for All Round Dominion — five days of teaching on leadership, marketplace dominion, and capacity.",
     description:
       "Empowerment for All Round Dominion. Five days at Dominion City Lagos HQ, 8AM and 5PM daily, with the opening session on Thursday at 5PM. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Rev. Tony Akinyemi, Dr. David Sseppuuya and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity. An exclusive men's session runs Wednesday 23rd morning and evening, and Thursday 24th morning.",
@@ -70,7 +70,7 @@ export const events: EventItem[] = [
     endDate: "2026-10-24T18:00:00.000Z",
     location: "London, UK",
     online: false,
-    image: "/images/pastor/preaching-purple-lit.jpg",
+    image: "/images/pastor/preaching-purple-lit.webp",
     summary: "\"Leading in Babylon\" — equipping leaders to serve faithfully in culture.",
     description:
       "\"Leading in Babylon\" — equipping marketplace and ministry leaders to stand out and serve faithfully in culture, in person in London and streamed worldwide.",
@@ -85,7 +85,7 @@ export const events: EventItem[] = [
     endDate: "2026-06-27T18:00:00.000Z",
     location: "Enugu/Onitsha Expressway, Awka, Nigeria",
     online: false,
-    image: "/images/pastor/prayer-hands-raised.jpg",
+    image: "/images/pastor/prayer-hands-raised.webp",
     summary: "Healing. Miracle. Encounter. Breakthrough.",
     description:
       "Healing. Miracle. Encounter. Breakthrough.",
@@ -100,7 +100,7 @@ export const events: EventItem[] = [
     endDate: "2026-06-28T18:00:00.000Z",
     location: "Enugu/Onitsha Expressway, Awka, Nigeria",
     online: false,
-    image: "/images/pastor/testimony-throne-chair.jpg",
+    image: "/images/pastor/testimony-throne-chair.webp",
     summary: "Church Growth, Church Management & Supernatural Ministry.",
     description:
       "Church Growth, Church Management & Supernatural Ministry.",
@@ -115,7 +115,7 @@ export const events: EventItem[] = [
     endDate: "2026-05-24T18:00:00.000Z",
     location: "United Kingdom",
     online: false,
-    image: "/images/pastor/leadership-hand-raised.jpg",
+    image: "/images/pastor/leadership-hand-raised.webp",
     summary: "Worship. The Word. Healings & Miracles. Encounters.",
     description:
       "Worship. The Word. Healings & Miracles. Encounters.",
@@ -145,7 +145,7 @@ export const events: EventItem[] = [
     endDate: "2026-04-06T18:00:00.000Z",
     location: "Lagos, Nigeria",
     online: false,
-    image: "/images/pastor/community-vestments-auditorium.jpg",
+    image: "/images/pastor/community-vestments-auditorium.webp",
     summary: "The annual Global Camp Meeting — worship, the Word, and fellowship for chapters worldwide.",
     description:
       "The annual Global Camp Meeting — worship, the Word, and fellowship for chapters worldwide.",
@@ -160,7 +160,7 @@ export const events: EventItem[] = [
     endDate: "2026-03-21T18:00:00.000Z",
     location: "Enugu, Nigeria",
     online: false,
-    image: "/images/pastor/whiteboard-5-laws-bw.jpg",
+    image: "/images/pastor/whiteboard-5-laws-bw.webp",
     summary: "Three nights of prayer for the sick — testimonies of healing from across the city and beyond.",
     description:
       "Three nights of prayer for the sick — testimonies of healing from across the city and beyond.",
@@ -175,7 +175,7 @@ export const events: EventItem[] = [
     endDate: "2025-12-31T18:00:00.000Z",
     location: "Enugu, Nigeria",
     online: false,
-    image: "/images/pastor/hero-night-of-glory.jpg",
+    image: "/images/pastor/hero-night-of-glory.webp",
     summary: "A season-closing gathering devoted to prayer and prophetic ministry.",
     description:
       "A season-closing gathering devoted to prayer and prophetic ministry.",
@@ -190,7 +190,7 @@ export const events: EventItem[] = [
     endDate: "2025-12-14T18:00:00.000Z",
     location: "Enugu, Nigeria",
     online: false,
-    image: "/images/pastor/sermon-blue-backdrop.jpg",
+    image: "/images/pastor/sermon-blue-backdrop.webp",
     summary: "The whole family home for five days — worship, the Word and impartation to close the year in the presence of God.",
     description:
       "The whole family home for five days — worship, the Word and impartation to close the year in the presence of God.",
@@ -205,7 +205,7 @@ export const events: EventItem[] = [
     endDate: "2025-12-06T18:00:00.000Z",
     location: "Main Bowl, Abuja, Nigeria",
     online: false,
-    image: "/images/pastor/dli-conference-whiteboard.jpg",
+    image: "/images/pastor/dli-conference-whiteboard.webp",
     summary: "Healing. Miracles. Signs. Wonders. Salvation.",
     description:
       "Healing. Miracles. Signs. Wonders. Salvation.",
@@ -220,7 +220,7 @@ export const events: EventItem[] = [
     endDate: "2025-10-18T18:00:00.000Z",
     location: "Abuja, Nigeria",
     online: false,
-    image: "/images/pastor/preaching-purple-lit.jpg",
+    image: "/images/pastor/preaching-purple-lit.webp",
     summary: "Three days of leadership development for pastors, professionals and marketplace leaders across the network.",
     description:
       "Three days of leadership development for pastors, professionals and marketplace leaders across the network.",
@@ -235,7 +235,7 @@ export const events: EventItem[] = [
     endDate: "2025-09-28T18:00:00.000Z",
     location: "Lagos, Nigeria",
     online: false,
-    image: "/images/pastor/prayer-hands-raised.jpg",
+    image: "/images/pastor/prayer-hands-raised.webp",
     summary: "Reigning as Priests & Kings. Financial & Marketplace Dominion. Excellence in Leadership and business advancement.",
     description:
       "Reigning as Priests & Kings. Financial & Marketplace Dominion. Excellence in Leadership and business advancement.",
@@ -250,7 +250,7 @@ export const events: EventItem[] = [
     endDate: "2025-09-14T18:00:00.000Z",
     location: "Lagos, Nigeria",
     online: false,
-    image: "/images/pastor/testimony-throne-chair.jpg",
+    image: "/images/pastor/testimony-throne-chair.webp",
     summary: "A four-day feast of teaching and study — growing believers deep in the Word before the year's final quarter.",
     description:
       "A four-day feast of teaching and study — growing believers deep in the Word before the year's final quarter.",
@@ -265,7 +265,7 @@ export const events: EventItem[] = [
     endDate: "2025-09-07T18:00:00.000Z",
     location: "Ikeja, Lagos, Nigeria",
     online: false,
-    image: "/images/pastor/leadership-hand-raised.jpg",
+    image: "/images/pastor/leadership-hand-raised.webp",
     summary: "Principles of Family Success, Raising Godly Seeds, and a Marriage Retreat for Ministers & their Spouses.",
     description:
       "Principles of Family Success, Raising Godly Seeds, and a Marriage Retreat for Ministers & their Spouses.",
@@ -295,7 +295,7 @@ export const events: EventItem[] = [
     endDate: "2025-08-10T18:00:00.000Z",
     location: "Enugu, Nigeria",
     online: false,
-    image: "/images/pastor/community-vestments-auditorium.jpg",
+    image: "/images/pastor/community-vestments-auditorium.webp",
     summary: "Chapters from four continents camping together — four days of prayer, fellowship and the Word under one roof.",
     description:
       "Chapters from four continents camping together — four days of prayer, fellowship and the Word under one roof.",
@@ -310,7 +310,7 @@ export const events: EventItem[] = [
     endDate: "2025-07-26T18:00:00.000Z",
     location: "Port Harcourt, Nigeria",
     online: false,
-    image: "/images/pastor/whiteboard-5-laws-bw.jpg",
+    image: "/images/pastor/whiteboard-5-laws-bw.webp",
     summary: "Three high-energy days raising a new breed of young people — worship, real talk and commissioning for campus and care...",
     description:
       "Three high-energy days raising a new breed of young people — worship, real talk and commissioning for campus and career.",
@@ -325,7 +325,7 @@ export const events: EventItem[] = [
     endDate: "2025-07-06T18:00:00.000Z",
     location: "Anambra, Nigeria",
     online: false,
-    image: "/images/pastor/hero-night-of-glory.jpg",
+    image: "/images/pastor/hero-night-of-glory.webp",
     summary: "Church Growth, Church Management & Supernatural Ministry.",
     description:
       "Church Growth, Church Management & Supernatural Ministry.",
@@ -340,7 +340,7 @@ export const events: EventItem[] = [
     endDate: "2025-07-05T18:00:00.000Z",
     location: "Anambra, Nigeria",
     online: false,
-    image: "/images/pastor/sermon-blue-backdrop.jpg",
+    image: "/images/pastor/sermon-blue-backdrop.webp",
     summary: "Unlocking youth potential through tech and entrepreneurship.",
     description:
       "Unlocking youth potential through tech and entrepreneurship.",
@@ -355,7 +355,7 @@ export const events: EventItem[] = [
     endDate: "2025-04-21T18:00:00.000Z",
     location: "Lagos, Nigeria",
     online: false,
-    image: "/images/pastor/dli-conference-whiteboard.jpg",
+    image: "/images/pastor/dli-conference-whiteboard.webp",
     summary: "\"Global Trends\" — seeing and owning the future.",
     description:
       "\"Global Trends\" — seeing and owning the future.",

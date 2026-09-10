@@ -17,9 +17,9 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
   const c = partnershipCopy[loc];
 
   const TESTIMONIALS = [
-    { quote: c.testimonials.t1Quote, name: c.testimonials.t1Name, location: c.testimonials.t1Location, tier: c.testimonials.t1Tier, image: "/images/pastor/whiteboard-5-laws-bw.jpg" },
-    { quote: c.testimonials.t2Quote, name: c.testimonials.t2Name, location: c.testimonials.t2Location, tier: c.testimonials.t2Tier, image: "/images/pastor/ecosystem-side-profile.jpg" },
-    { quote: c.testimonials.t3Quote, name: c.testimonials.t3Name, location: c.testimonials.t3Location, tier: c.testimonials.t3Tier, image: "/images/pastor/leadership-hand-raised.jpg" },
+    { quote: c.testimonials.t1Quote, name: c.testimonials.t1Name, location: c.testimonials.t1Location, tier: c.testimonials.t1Tier, image: "/images/pastor/whiteboard-5-laws-bw.webp" },
+    { quote: c.testimonials.t2Quote, name: c.testimonials.t2Name, location: c.testimonials.t2Location, tier: c.testimonials.t2Tier, image: "/images/pastor/ecosystem-side-profile.webp" },
+    { quote: c.testimonials.t3Quote, name: c.testimonials.t3Name, location: c.testimonials.t3Location, tier: c.testimonials.t3Tier, image: "/images/pastor/leadership-hand-raised.webp" },
   ];
 
 
@@ -111,7 +111,7 @@ export function PartnershipClient({ locale }: PartnershipClientProps) {
               className="lg:col-span-5 relative aspect-video lg:aspect-square w-full overflow-hidden rounded-[12px] border border-white/10 bg-white/5 shadow-elev-3 flex items-center justify-center group cursor-pointer"
             >
               <Image
-                src="/images/partnership/mission-video-thumb.jpg"
+                src="/images/partnership/mission-video-thumb.webp"
                 alt="Partnership Solves All Problems — Dr. David Ogbueli"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"

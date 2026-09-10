@@ -234,7 +234,7 @@ export default function ResultsPage() {
                 aria-hidden
               />
               <Image
-                src="/images/pastor/sermon-blue-backdrop.jpg"
+                src="/images/pastor/sermon-blue-backdrop.webp"
                 alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

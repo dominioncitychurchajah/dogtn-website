@@ -9,7 +9,7 @@ export const tracks: MentorshipTrack[] = [
     name: "Emerging Leaders",
     audience: "Students and early-career leaders discovering their calling.",
     hero: "Find your footing. Discover the leader you were made to be.",
-    image: "/images/pastor/leadership-hand-raised.jpg",
+    image: "/images/pastor/leadership-hand-raised.webp",
     outcomes: [
       "Clarity about your gifts, calling, and next step",
       "Foundational habits of character and self-leadership",
@@ -44,7 +44,7 @@ export const tracks: MentorshipTrack[] = [
     name: "Global Leaders",
     audience: "Ministers and ministry leaders stewarding a work.",
     hero: "Go deeper. Steward your calling for the long haul.",
-    image: "/images/pastor/preaching-purple-lit.jpg",
+    image: "/images/pastor/preaching-purple-lit.webp",
     outcomes: [
       "Renewed depth in the interior life and devotion",
       "Practical wisdom for leading people and building healthy culture",
@@ -80,7 +80,7 @@ export const tracks: MentorshipTrack[] = [
     name: "Nation Builders",
     audience: "Senior leaders shaping institutions, sectors, and nations.",
     hero: "Build what outlasts you. Carry transformation to nations.",
-    image: "/images/pastor/dli-conference-whiteboard.jpg",
+    image: "/images/pastor/dli-conference-whiteboard.webp",
     outcomes: [
       "A strategy to disciple your sphere — business, government, media, or culture",
       "Peer relationships with other senior leaders and nation builders",

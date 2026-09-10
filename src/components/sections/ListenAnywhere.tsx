@@ -47,7 +47,7 @@ export function ListenAnywhere({ locale }: { locale: string }) {
 
           <div className="relative mx-auto min-w-0 aspect-[412/531] w-full max-w-[340px] self-end lg:mx-0 lg:aspect-auto lg:min-h-[560px] lg:max-w-none">
             <Image
-              src="/images/media/listen-anywhere.png"
+              src="/images/media/listen-anywhere.webp"
               alt=""
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"

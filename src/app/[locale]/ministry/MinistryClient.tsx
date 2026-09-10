@@ -47,7 +47,7 @@ export default function MinistryClient({ locale }: MinistryClientProps) {
       {/* SECTION 1 — HERO */}
       <section className="relative w-full min-h-[60vh] bg-[#0A192F] flex flex-col justify-center items-center overflow-hidden pt-24 pb-16">
         <Image
-          src="/images/pastor/community-vestments-auditorium.jpg"
+          src="/images/pastor/community-vestments-auditorium.webp"
           alt="Ministry Background"
           fill
           className="object-cover opacity-20"

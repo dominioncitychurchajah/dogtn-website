@@ -45,7 +45,7 @@ export default function HisStoryClient({ locale }: HisStoryClientProps) {
       {/* SECTION 1 — HERO */}
       <section className="relative min-h-[60vh] flex items-center justify-center bg-[#0A192F] pt-24 pb-20">
         <Image
-          src="/images/pastor/sermon-blue-backdrop.jpg"
+          src="/images/pastor/sermon-blue-backdrop.webp"
           alt="Dr. David Ogbueli Sermon Background"
           fill
           unoptimized

@@ -80,7 +80,7 @@ export function RadioSection({ locale }: { locale: string }) {
         >
           <div className="relative min-w-0 aspect-[3/4] overflow-hidden rounded-[24px] bg-[#0A192F] lg:aspect-auto lg:min-h-[520px]">
             <Image
-              src="/images/radio/dr-david-ogbueli-mic.jpg"
+              src="/images/radio/dr-david-ogbueli-mic.webp"
               alt="Dr. David Ogbueli"
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"
@@ -114,7 +114,7 @@ export function RadioSection({ locale }: { locale: string }) {
               <div className="flex items-center gap-3 rounded-[18px] bg-white p-3 ring-1 ring-[#0A192F]/5">
                 <span className="shrink-0 rounded-full bg-[linear-gradient(135deg,#F5A9CE,#7CC6F0,#3B5BDB)] p-[2px]">
                   <Image
-                    src="/images/radio/mandate-radio-logo.png"
+                    src="/images/radio/mandate-radio-logo.webp"
                     alt=""
                     width={56}
                     height={56}

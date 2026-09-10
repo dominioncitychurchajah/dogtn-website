@@ -7,10 +7,10 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { JourneyPlayerClient } from "@/components/teachings/JourneyPlayerClient";
 
 const POSTERS: Record<string, string> = {
-  "discover-purpose": "/images/pastor/prayer-hands-raised.jpg",
-  "become-a-leader": "/images/pastor/leadership-hand-raised.jpg",
-  "grow-spiritually": "/images/pastor/preaching-purple-lit.jpg",
-  "build-a-ministry": "/images/pastor/sermon-blue-backdrop.jpg",
+  "discover-purpose": "/images/pastor/prayer-hands-raised.webp",
+  "become-a-leader": "/images/pastor/leadership-hand-raised.webp",
+  "grow-spiritually": "/images/pastor/preaching-purple-lit.webp",
+  "build-a-ministry": "/images/pastor/sermon-blue-backdrop.webp",
   "transform-society": "/images/pastor/hero-stadium-arms-wide.jpg",
 };
 
@@ -47,7 +47,7 @@ export default async function JourneyPlayerPage({
         ]}
       />
       <div className="mt-8">
-        <JourneyPlayerClient journey={journey} poster={POSTERS[journey.slug] ?? "/images/pastor/preaching-purple-lit.jpg"} />
+        <JourneyPlayerClient journey={journey} poster={POSTERS[journey.slug] ?? "/images/pastor/preaching-purple-lit.webp"} />
       </div>
     </Container>
   );
