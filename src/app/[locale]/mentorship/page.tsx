@@ -122,9 +122,15 @@ export default async function MentorshipPage({
                     ))}
                   </ul>
 
-                  <div className="mt-auto flex items-center justify-between pt-8">
-                    <Badge tone="neutral">{gleLabel(track)}</Badge>
-                    <span className="inline-flex items-center gap-1.5 text-caption font-bold uppercase tracking-widest text-gold-hover">
+                  {/* "Global Leadership Executive I" in a pill beside an
+                      uppercase, wide-tracked CTA left both wrapping in a
+                      narrow card. The label now sits on its own line as an
+                      eyebrow, and the CTA keeps one line. */}
+                  <div className="mt-auto pt-8">
+                    <span className="block text-caption font-semibold uppercase tracking-[0.14em] text-ink-500">
+                      {gleLabel(track)}
+                    </span>
+                    <span className="mt-2.5 inline-flex items-center gap-1.5 whitespace-nowrap text-body-s font-bold text-gold-hover">
                       {c.exploreTrackCta}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" aria-hidden />
                     </span>

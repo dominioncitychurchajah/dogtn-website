@@ -19,10 +19,18 @@
   --color-paper-0: #ffffff;
   --color-paper-50: #f9f7f2;
 
-  /* ---- Color: Gold (primary accent — CTAs & honor) ---- */
-  --color-gold-600: #c5a059;
-  --color-gold-400: #ddc08c;
-  --color-gold-hover: #a9814a;
+  /* ---- Color: Gold (primary accent — CTAs & honor) ----
+     One gold, derived from the brand value #C9A227. The site previously ran
+     two: this token was #c5a059 (muted tan) while 166 hardcoded #C9A227
+     sat alongside it, so a page's gold depended on which system it happened
+     to use. All three below are the same hue and saturation, differing only
+     in lightness.
+       600  base. 7.28:1 on navy; dark text on it 7.28:1
+       400  light tint for dark surfaces and gold-button hover. 9.76:1 on navy
+       hover deep enough to pass as text on white (4.61:1) */
+  --color-gold-600: #c9a227;
+  --color-gold-400: #dfbe59;
+  --color-gold-hover: #8d721b;
 
   /* ---- Color: Flame (energy / live / urgent) ---- */
   --color-flame-600: #e25822;
@@ -201,8 +209,8 @@
   --color-ink-500: #a9acb6;
   --color-ink-100: #252c3d;
 
-  /* Gold link/hover colour brightens for contrast on dark */
-  --color-gold-hover: #d8b878;
+  /* Gold link/hover brightens on dark: #8d721b is only 3.82:1 on navy. */
+  --color-gold-hover: #dbb848;
 }
 
 /* Theme-aware logo swap (Header renders both when on a solid bar). */

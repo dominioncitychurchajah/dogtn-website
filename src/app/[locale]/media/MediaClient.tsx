@@ -342,7 +342,7 @@ export default function MediaClient({ locale }: { locale: string }) {
               href={EVENTS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-[8px] bg-[#C9A227] px-8 py-4 text-sm font-bold uppercase tracking-widest text-[#0A192F] transition-colors hover:bg-[#e0b430]"
+              className="mt-8 inline-flex items-center gap-2 rounded-[8px] bg-[#C9A227] px-8 py-4 text-sm font-bold uppercase tracking-widest text-[#0A192F] transition-colors hover:bg-[#dfbe59]"
             >
               <CalendarDays className="w-4 h-4" />
               {c.eventsCtaButton}

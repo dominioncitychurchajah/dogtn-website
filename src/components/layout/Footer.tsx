@@ -160,7 +160,7 @@ export function Footer({ locale }: { locale: Locale }) {
                 />
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-[#C9A227] text-[#0A192F] text-sm font-bold rounded-[8px] transition-all hover:-translate-y-0.5 hover:bg-[#e0b430] active:translate-y-0 cursor-pointer flex items-center justify-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
+                  className="px-5 py-2.5 bg-[#C9A227] text-[#0A192F] text-sm font-bold rounded-[8px] transition-all hover:-translate-y-0.5 hover:bg-[#dfbe59] active:translate-y-0 cursor-pointer flex items-center justify-center gap-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
                 >
                   <Send className="w-3.5 h-3.5" />
                   Join Now
