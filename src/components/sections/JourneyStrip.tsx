@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles, GraduationCap, Users, BookOpen, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
+import { Users, BookOpen, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { homeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
@@ -9,8 +9,6 @@ export function JourneyStrip({ locale }: { locale: Locale }) {
   const c = homeCopy[loc].journeyStrip;
 
   const TILES = [
-    { label: c.growSpiritually, icon: Sparkles, href: "/journeys/grow-spiritually" },
-    { label: c.becomeLeader, icon: GraduationCap, href: "/mentorship" },
     // No community/chapters page exists yet; contact is the nearest real destination.
     { label: c.joinCommunity, icon: Users, href: "/contact" },
     { label: c.accessTeachings, icon: BookOpen, href: "/media" },
