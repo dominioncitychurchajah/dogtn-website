@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles, GraduationCap, Users, BookOpen, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
+import { Sparkles, GraduationCap, Users, Landmark, Handshake, Heart, ArrowRight } from "lucide-react";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { homeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
@@ -19,21 +19,21 @@ export function JourneyStrip({
   const c = homeCopy[loc].journeyStrip;
 
   const ALL = [
-    // Was /journeys/grow-spiritually, a route that no longer exists.
-    { key: "growSpiritually", label: c.growSpiritually, icon: Sparkles, href: "/start-here" },
+    // Was /journeys/grow-spiritually, deleted with the journeys. It now owns
+    // the Media Center, which is why the "Access Teachings" tile is gone.
+    { key: "growSpiritually", label: c.growSpiritually, icon: Sparkles, href: "/media" },
     { key: "becomeLeader", label: c.becomeLeader, icon: GraduationCap, href: "/mentorship" },
     // No community/chapters page exists yet; contact is the nearest real destination.
     { key: "joinCommunity", label: c.joinCommunity, icon: Users, href: "/contact" },
-    { key: "accessTeachings", label: c.accessTeachings, icon: BookOpen, href: "/media" },
     { key: "exploreMinistry", label: c.exploreMinistry, icon: Landmark, href: "/ministry" },
     { key: "partner", label: c.partner, icon: Handshake, href: "/partnership" },
     { key: "volunteer", label: c.volunteer, icon: Heart, href: "/contact" },
   ] as const;
 
   const TILES = ALL.filter((t) => !exclude.includes(t.key as never));
-  // 7 tiles sit 4+3; 5 tiles fit one row of five. Literal classes so Tailwind
-  // sees them.
-  const cols = TILES.length > 5 ? "lg:grid-cols-4" : "lg:grid-cols-5";
+  // Six tiles read best as 3+3; four fit a single row. Literal classes so
+  // Tailwind sees them.
+  const cols = TILES.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-4";
 
   return (
     <section className="border-b border-ink-100/60 bg-paper-0 py-12">
