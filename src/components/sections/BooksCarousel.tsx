@@ -206,7 +206,10 @@ export function BooksCarousel({ locale }: { locale: string }) {
         onPanEnd={onPanEnd}
         style={{ touchAction: "pan-y" }}
       >
-        <div ref={viewportRef} className="overflow-hidden">
+        {/* Clip sideways only in effect: the vertical padding (cancelled by the
+            negative margin) leaves room so card shadows fade out instead of
+            being sliced off at the viewport edge. */}
+        <div ref={viewportRef} className="-my-16 overflow-hidden py-16">
           <motion.div className="grid" style={{ x: dragX }}>
             {books.map((book, i) => {
               const rel = circularDelta(active, i, count);
@@ -358,8 +361,8 @@ function BookCard({
       className={cn(
         "group relative flex h-full select-none flex-col overflow-hidden rounded-[28px] bg-white transition-shadow duration-500",
         active
-          ? "shadow-[0_30px_70px_-24px_rgba(10,25,47,0.45)]"
-          : "shadow-[0_12px_30px_-18px_rgba(10,25,47,0.35)]",
+          ? "shadow-[0_28px_56px_-24px_rgba(10,25,47,0.32),0_8px_18px_-10px_rgba(10,25,47,0.14)]"
+          : "shadow-[0_14px_32px_-20px_rgba(10,25,47,0.22)]",
       )}
     >
       {/* Stage — a real 3D desk render where one exists, otherwise a warm
