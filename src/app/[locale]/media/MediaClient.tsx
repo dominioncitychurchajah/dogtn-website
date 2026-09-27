@@ -44,6 +44,12 @@ type Video = { title: string; event: string; youtubeId: string; category: string
 // davidogbueli.org. IDs verified via YouTube's oEmbed endpoint.
 const videos: Video[] = [
   // ── Teachings ─────────────────────────────────────────────
+  { title: "The Mystery that Brings an End to Contentions", event: "Teaching", youtubeId: "43KO6Je7Us4", category: "Teachings" },
+  { title: "The Blood of Jesus and the Redemption of Generations", event: "Teaching Series", youtubeId: "piio7iJW-_g", category: "Teachings" },
+  { title: "The Blood of Jesus and the Redemption of Generations: Panel Discussion", event: "Teaching Series", youtubeId: "JG55NdOgR7w", category: "Teachings" },
+  { title: "The Application of the Blood of Jesus", event: "Teaching Series", youtubeId: "YvITNRBvYYg", category: "Teachings" },
+  { title: "Repentance and Self-Examination, Part 1", event: "Teaching Series", youtubeId: "zABp9HYmyKg", category: "Teachings" },
+  { title: "Repentance and Self-Examination, Part 2", event: "Teaching Series", youtubeId: "bxBjpdaDok8", category: "Teachings" },
   { title: "Kingdom-Centric Christianity, Part 1", event: "Sunday Message", youtubeId: "o_sOd1B8ZT4", category: "Teachings" },
   { title: "Love: The Greatest Moral Virtue", event: "Sunday Message", youtubeId: "GvO5ijXQrQg", category: "Teachings" },
   { title: "Energy Frequencies", event: "Sunday Message", youtubeId: "JY6dZu4XU1Q", category: "Teachings" },
@@ -74,6 +80,8 @@ const videos: Video[] = [
   { title: "GMTV Studio Session with ESV (Dr) Iroy Orji", event: "Camp Meeting 2025", youtubeId: "dMvKf0aSZjM", category: "GMTV Studio" },
 
   // ── Conference Archives ───────────────────────────────────
+  { title: "The Grace Revolution: Balanced, Part 1", event: "USA Camp Meeting 2026", youtubeId: "1HlYqGnAd_0", category: "Conference Archives" },
+  { title: "The Grace Revolution: Balanced, Part 2", event: "USA Camp Meeting 2026", youtubeId: "zq2IsT43gGg", category: "Conference Archives" },
   { title: "Understanding the Human Nature, Part 2", event: "DCC 30th Anniversary", youtubeId: "K5nsVHeZTmI", category: "Conference Archives" },
   { title: "Jewish Secrets of Wealth Creation", event: "Global Camp Meeting 2026", youtubeId: "XzZt3_citMM", category: "Conference Archives" },
   { title: "Living with Eternity in Perspective", event: "Global Camp Meeting 2026", youtubeId: "iZzSoW4G83g", category: "Conference Archives" },
