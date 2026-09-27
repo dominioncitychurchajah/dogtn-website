@@ -34,14 +34,8 @@ const RENDERS: Record<string, string> = {
     "/images/books/renders/the-laws-of-proper-speech-desk.webp",
   "discipleship-codes":
     "/images/books/renders/discipleship-codes-desk.webp",
-  "praying-through-the-gates-of-time":
-    "/images/books/renders/praying-through-the-gates-of-time-desk.webp",
-  "the-glory-of-the-eagle":
-    "/images/books/renders/the-glory-of-the-eagle-desk.webp",
   "building-the-word-foundation":
     "/images/books/renders/building-the-word-foundation-desk.webp",
-  "the-reflection-principle":
-    "/images/books/renders/the-reflection-principle-desk.webp",
   "tools-of-prophetic-dominion":
     "/images/books/renders/tools-of-prophetic-dominion-desk.webp",
   "the-love-revolution":
@@ -86,7 +80,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
 
   const prefersReduced = useReducedMotion();
   const viewportRef = React.useRef<HTMLDivElement>(null);
-  const [metrics, setMetrics] = React.useState({ card: 0, step: 0, sides: true });
+  const [metrics, setMetrics] = React.useState({ card: 0, step: 0, reach: 1 });
   const [active, setActive] = React.useState(0);
   const [liked, setLiked] = React.useState<Set<string>>(new Set());
   const [paused, setPaused] = React.useState(false);
@@ -94,7 +88,8 @@ export function BooksCarousel({ locale }: { locale: string }) {
   const [inView, setInView] = React.useState(false);
   const dragX = useMotionValue(0);
 
-  // Measure viewport → card width, stride, and whether side cards show.
+  // Measure viewport → card width, stride, and how many neighbours each side
+  // are visible (enough to fill the full-bleed row edge to edge).
   React.useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
@@ -102,18 +97,12 @@ export function BooksCarousel({ locale }: { locale: string }) {
       const v = el.clientWidth;
       const w = window.innerWidth;
       let card: number;
-      let sides: boolean;
-      if (w < 640) {
-        card = v; // mobile: one full-width card
-        sides = false;
-      } else if (w < 1024) {
-        card = Math.round(v * 0.66); // tablet: centre + peeking neighbours
-        sides = true;
-      } else {
-        card = Math.min(520, Math.max(460, Math.round(v * 0.34))); // desktop: three cards
-        sides = true;
-      }
-      setMetrics({ card, step: card + GAP, sides });
+      if (w < 640) card = v - 32; // mobile: one card
+      else if (w < 1024) card = Math.round(v * 0.62); // tablet: centre + peeking neighbours
+      else card = Math.min(520, Math.max(440, Math.round(v * 0.3))); // desktop
+      const step = card + GAP;
+      const reach = w < 640 ? 0 : Math.ceil((v - card) / 2 / step);
+      setMetrics({ card, step, reach });
     };
     measure();
     const ro = new ResizeObserver(measure);
@@ -202,7 +191,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
 
       {/* Showcase */}
       <motion.div
-        className="relative mx-auto w-full max-w-[1400px] px-4 sm:px-6"
+        className="relative w-full"
         role="region"
         aria-roledescription="carousel"
         aria-label={c.carouselHeading}
@@ -222,7 +211,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
             {books.map((book, i) => {
               const rel = circularDelta(active, i, count);
               const isCenter = rel === 0;
-              const isSide = Math.abs(rel) === 1 && metrics.sides;
+              const isSide = rel !== 0 && Math.abs(rel) <= metrics.reach;
               const shown = isCenter || isSide;
               return (
                 <motion.div
@@ -230,7 +219,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
                   className="h-full [grid-area:1/1] justify-self-center"
                   style={{
                     width: metrics.card || "86%",
-                    zIndex: isCenter ? 20 : isSide ? 10 : 0,
+                    zIndex: isCenter ? 20 : isSide ? 10 - Math.abs(rel) : 0,
                     pointerEvents: shown ? "auto" : "none",
                   }}
                   animate={{
@@ -267,7 +256,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
             go(-1);
           }}
           aria-label={c.prevBook}
-          className="group/nav absolute left-1 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/70 text-[#0A192F] shadow-[0_10px_30px_-8px_rgba(10,25,47,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] active:scale-95 sm:grid lg:left-2"
+          className="group/nav absolute left-1 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/70 text-[#0A192F] shadow-[0_10px_30px_-8px_rgba(10,25,47,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] active:scale-95 sm:grid lg:left-6"
         >
           <ChevronLeft className="h-6 w-6 transition-transform duration-300 group-hover/nav:-translate-x-0.5" />
         </button>
@@ -278,7 +267,7 @@ export function BooksCarousel({ locale }: { locale: string }) {
             go(1);
           }}
           aria-label={c.nextBook}
-          className="group/nav absolute right-1 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/70 text-[#0A192F] shadow-[0_10px_30px_-8px_rgba(10,25,47,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] active:scale-95 sm:grid lg:right-2"
+          className="group/nav absolute right-1 top-1/2 z-30 hidden h-14 w-14 -translate-y-1/2 place-items-center rounded-full border border-white/60 bg-white/70 text-[#0A192F] shadow-[0_10px_30px_-8px_rgba(10,25,47,0.4)] backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-[#0A192F] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A227] active:scale-95 sm:grid lg:right-6"
         >
           <ChevronRight className="h-6 w-6 transition-transform duration-300 group-hover/nav:translate-x-0.5" />
         </button>

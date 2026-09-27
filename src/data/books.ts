@@ -100,52 +100,6 @@ export const BOOKS: Book[] = [
     ]
   },
   {
-    slug: "praying-through-the-gates-of-time",
-    title: "Praying Through the Gates of Time",
-    subtitle: "Revelatory Prayer for Shifts in Nations",
-    author: "Dr. David Ogbueli",
-    amazonUrl: "https://www.amazon.com/Praying-Through-Gates-David-Ogbueli/dp/9789831056",
-    cover: "/images/books/praying-through-the-gates-of-time.webp",
-    category: "prayer",
-    formats: ["ebook", "paperback", "audiobook"],
-    price: { amount: 9500, currency: "NGN" },
-    synopsis: "A revelatory approach to prayer that shifts nations.",
-    sample: "There are doors in time that only open when prayer is offered in season...",
-    relatedTeachings: [],
-    featured: true,
-    desc: "A revelatory approach to prayer that shifts nations.",
-    fullDesc: "Dr. Ogbueli unlocks prophetic dimensions of prayer that transcend personal petitions, moving into strategic intercession that shapes the course of nations.",
-    takeaways: [
-      "Understanding the gates of time and seasons",
-      "Strategic intercession for national transformation",
-      "Prophetic prayer and divine alignment",
-      "Moving from petition to declaration"
-    ]
-  },
-  {
-    slug: "the-glory-of-the-eagle",
-    title: "The Glory of the Eagle",
-    subtitle: "The Spirit of Leadership and Dominion",
-    author: "Dr. David Ogbueli",
-    amazonUrl: "https://www.amazon.com/GLORY-EAGLE-DAVID-OGBUELI/dp/1790622956",
-    cover: "/images/books/the-glory-of-the-eagle.webp",
-    category: "leadership",
-    formats: ["ebook", "paperback"],
-    price: { amount: 10000, currency: "NGN" },
-    synopsis: "Understanding the spirit of leadership and dominion.",
-    sample: "An eagle does not escape the storm; it simply changes altitude to master it...",
-    relatedTeachings: [],
-    featured: true,
-    desc: "Understanding the spirit of leadership and dominion.",
-    fullDesc: "Through the symbolic lens of the eagle, Dr. Ogbueli reveals the characteristics of true apostolic leaders who carry the weight of nations on their shoulders.",
-    takeaways: [
-      "The eagle's eye: Vision that transcends circumstances",
-      "Soaring above the storms of life and ministry",
-      "Building nests of legacy for the next generation",
-      "The dimensions of kingdom dominion"
-    ]
-  },
-  {
     slug: "building-the-word-foundation",
     title: "Building the Word Foundation",
     author: "Dr. David Ogbueli",
@@ -159,21 +113,6 @@ export const BOOKS: Book[] = [
     relatedTeachings: [],
     desc: "The authority and unifying inspiration of Scripture",
     fullDesc: "An examination of the Bible's impact on lives and societies throughout recorded history, establishing its authority, its unity across many authors and centuries, and why it is the word of God."
-  },
-  {
-    slug: "the-reflection-principle",
-    title: "The Reflection Principle",
-    author: "Dr. David Ogbueli",
-    amazonUrl: "https://a.co/d/0d3Sln62",
-    cover: "/images/books/the-reflection-principle.webp",
-    category: "leadership",
-    formats: ["ebook", "paperback"],
-    price: { amount: 8000, currency: "NGN" },
-    synopsis:
-      "Depicts the intersection between leadership and followership, drawing time-tested principles on delegation and succession planning for building organisations that endure beyond their founders.",
-    relatedTeachings: [],
-    desc: "Leadership, followership, and building what outlasts you",
-    fullDesc: "Depicts the intersection between leadership and followership, drawing time-tested principles on delegation and succession planning for building organisations that endure beyond their founders."
   },
   {
     slug: "tools-of-prophetic-dominion",
