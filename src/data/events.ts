@@ -50,15 +50,15 @@ export const events: EventItem[] = [
     title: "Next Level Conference",
     type: "Conference",
     institution: "Dominion City",
-    // Wed 23 Sep 8AM WAT (GMT+1) through Sun 27 Sep. Opening session Thu 24th, 5PM.
-    date: "2026-09-23T07:00:00.000Z",
-    endDate: "2026-09-27T18:00:00.000Z",
+    // Men's session Wed 30 Sep 8AM WAT (GMT+1); conference Thu 1 – Sun 4 Oct, opening session Thu 5PM.
+    date: "2026-09-30T07:00:00.000Z",
+    endDate: "2026-10-04T18:00:00.000Z",
     location: "Dominion City Lagos HQ, beside Lagos Business School, Ajah, Lagos",
     online: false,
-    image: "/images/events/next-level-conference-2026.webp",
+    image: "/images/events/next-level-conference-2026-oct.webp",
     summary: "Empowerment for All Round Dominion, five days of teaching on leadership, marketplace dominion, and capacity.",
     description:
-      "Empowerment for All Round Dominion. Five days at Dominion City Lagos HQ, 8AM and 5PM daily, with the opening session on Thursday at 5PM. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Rev. Tony Akinyemi, Dr. David Sseppuuya and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity. An exclusive men's session runs Wednesday 23rd morning and evening, and Thursday 24th morning.",
+      "Empowerment for All Round Dominion. Five days at Dominion City Lagos HQ, 8AM and 5PM daily, with the opening session on Thursday at 5PM. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Rev. Tony Akinyemi, Dr. David Sseppuuya and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity. An exclusive men's session runs Wednesday 30th September at 8AM and 5PM, ahead of the conference from 1st to 4th October.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
   },
   {

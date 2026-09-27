@@ -6,17 +6,13 @@ import { ArrowRight, MapPin, Radio } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { HomeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
+import { events } from "@/data/events";
 
-/** Milliseconds until the next Sunday 08:00 (local time). */
+// ponytail: pinned to Next Level Conference; swap the slug/copy after it ends.
+const TARGET = new Date(events.find((e) => e.slug === "next-level-conference")!.date).getTime();
+
 function timeToNextGathering() {
-  const now = new Date();
-  const target = new Date(now);
-  target.setHours(8, 0, 0, 0);
-  let daysUntil = (7 - now.getDay()) % 7; // 0 = Sunday
-  if (daysUntil === 0 && now.getTime() >= target.getTime()) daysUntil = 7;
-  target.setDate(now.getDate() + daysUntil);
-
-  const diff = Math.max(0, target.getTime() - now.getTime());
+  const diff = Math.max(0, TARGET - Date.now());
   return {
     days: Math.floor(diff / 86_400_000),
     hours: Math.floor((diff / 3_600_000) % 24),

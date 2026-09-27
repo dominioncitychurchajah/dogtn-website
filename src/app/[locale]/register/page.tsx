@@ -5,6 +5,7 @@ import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { buildMetadata, localePath } from "@/lib/seo";
 import { Section, Container } from "@/components/layout/Section";
 import { EventRegistrationForm } from "@/components/events/EventRegistrationForm";
+import { NextLevelConference, NEXT_LEVEL_SLUG } from "@/components/events/NextLevelConference";
 import { nextUpcomingEvent } from "@/lib/registration";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { graph, eventSchema } from "@/lib/schema";
@@ -61,11 +62,22 @@ export default async function RegisterPage({
     timeZone: "Africa/Lagos",
   });
 
+  const jsonLd = (
+    <JsonLd data={graph(eventSchema(event, absoluteUrl(localePath(loc, "register"))))} />
+  );
+
+  if (event.slug === NEXT_LEVEL_SLUG) {
+    return (
+      <>
+        {jsonLd}
+        <NextLevelConference event={event} loc={loc} />
+      </>
+    );
+  }
+
   return (
     <>
-      <JsonLd
-        data={graph(eventSchema(event, absoluteUrl(localePath(loc, "register"))))}
-      />
+      {jsonLd}
       <Section className="bg-[#F5F1E8]">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
