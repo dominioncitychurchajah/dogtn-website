@@ -5,12 +5,10 @@ export interface QuizState {
   answers: Record<string, number>;
   placement: Record<string, string>;
   currentIndex: number;
-  email?: string;
   setAnswer: (id: string, value: number) => void;
   setPlacement: (key: string, value: string) => void;
   next: () => void;
   prev: () => void;
-  setEmail: (e: string) => void;
   reset: () => void;
 }
 
@@ -20,7 +18,6 @@ export const useQuizStore = create<QuizState>()(
       answers: {},
       placement: {},
       currentIndex: 0,
-      email: undefined,
       setAnswer: (id, value) =>
         set((state) => ({ answers: { ...state.answers, [id]: value } })),
       setPlacement: (key, value) =>
@@ -30,9 +27,8 @@ export const useQuizStore = create<QuizState>()(
         set((state) => ({
           currentIndex: Math.max(0, state.currentIndex - 1),
         })),
-      setEmail: (e) => set({ email: e }),
       reset: () =>
-        set({ answers: {}, placement: {}, currentIndex: 0, email: undefined }),
+        set({ answers: {}, placement: {}, currentIndex: 0 }),
     }),
     {
       name: "dogtn-assessment",

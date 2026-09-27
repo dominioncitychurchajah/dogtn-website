@@ -77,7 +77,7 @@ export function Footer({ locale }: { locale: Locale }) {
     {
       title: "Contact",
       links: [
-        { label: "Prayer Request", href: p("/contact#contact-form") },
+        { label: "Prayer Request", href: p("/contact?type=prayer#contact-form") },
         { label: "General Contact", href: p("/contact") },
       ],
     },

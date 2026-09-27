@@ -85,7 +85,15 @@ export function ContactClient() {
   const OFFICES = buildOffices(c);
   const FAQS = buildFaqs(c);
 
-  const [messageType, setMessageType] = useState("");
+  // Smart default: most people are sending a general message. Links elsewhere
+  // on the site can pre-pick the right one with ?type=prayer, ?type=testimony…
+  const [messageType, setMessageType] = useState("general");
+  React.useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get("type");
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off read of the URL, unknown until mount
+    if (t && MESSAGE_TYPES.some((m) => m.value === t)) setMessageType(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- read the URL once on mount
+  }, []);
   const [status, setStatus] = useState<"idle" | "success">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
@@ -207,7 +215,7 @@ export function ContactClient() {
 
               <div>
                 <label className="mb-1.5 block text-[13px] font-semibold text-[#0A192F]">{c.phoneNumber}</label>
-                <input name="phone" type="tel" placeholder="+1 (555) 000-0000" className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
+                <input name="phone" type="tel" placeholder="+234 803 000 0000" className="w-full rounded-xl border-[1.5px] border-[#E2E8F0] px-4 py-3.5 text-[15px] focus:border-[#C9A227] focus:outline-none focus:ring-[3px] focus:ring-[#C9A227]/12" />
                 <p className="mt-1 text-xs text-[#718096]">{c.phoneHelper}</p>
               </div>
 

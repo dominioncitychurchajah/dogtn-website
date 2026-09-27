@@ -478,7 +478,7 @@ export default async function DLIPage({
                     <option>Advanced Certificate Course</option>
                   </select>
                 </div>
-                <Button type="submit">Submit Inquiry</Button>
+                <Button type="submit">Get enrolment details</Button>
               </form>
             </div>
             <div className="flex flex-col justify-center gap-10">

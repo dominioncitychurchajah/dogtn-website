@@ -143,7 +143,7 @@ export function EventRegistrationForm({ event }: { event: EventItem }) {
         <div>
           <label className={label} htmlFor="country">Country</label>
           <input id="country" name="country" className={field} autoComplete="country-name"
-            aria-invalid={!!errors.country} />
+            defaultValue="Nigeria" aria-invalid={!!errors.country} />
           {errors.country && <p className={errorText}>{errors.country}</p>}
         </div>
         <div>
@@ -199,7 +199,7 @@ export function EventRegistrationForm({ event }: { event: EventItem }) {
         <SubmitProgress pct={pct} label="Registering…" />
       ) : (
         <Button type="submit" size="l" className="w-full">
-          Register for this event
+          Reserve my free seat
         </Button>
       )}
 
