@@ -135,7 +135,6 @@ export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
             title: "The library",
             links: [
               { label: "All Books", href: p("/books") },
-              { label: "Praying Through the Gates of Time", href: p("/books/praying-through-the-gates-of-time") },
               { label: "The Love Revolution", href: p("/books/the-love-revolution") },
             ],
           },

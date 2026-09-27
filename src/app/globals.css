@@ -42,6 +42,12 @@
 
   /* ---- Typography families (self-hosted via @fontsource) ---- */
   --font-display: "Playfair Display Variable", ui-serif, Georgia, serif;
+  /* `font-serif` is a Tailwind default (ui-serif, Georgia, Times). As a class
+     it beat the h1..h6 rule below, so the 59 headings using it rendered in
+     Georgia while the 42 using `font-display` rendered in Playfair — two
+     serifs across the site, and Playfair downloaded but largely unused.
+     Pointing the token at the same stack fixes every one of them. */
+  --font-serif: "Playfair Display Variable", ui-serif, Georgia, serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
 
   /* ---- Type scale (desktop). Mobile handled via responsive utils. ---- */

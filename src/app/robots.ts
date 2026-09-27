@@ -14,7 +14,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/*/admin/", "/verify/", "/*/leadership/assessment/question/", "/*/leadership/assessment/results/", "/*/leadership/assessment/email-gate/", "/*/mentorship/*/apply/"],
+      disallow: ["/*/admin/", "/verify/", "/*/leadership/assessment/question/", "/*/leadership/assessment/results/", "/*/mentorship/*/apply/"],
     },
     sitemap: absoluteUrl("/sitemap.xml"),
     host: absoluteUrl("/"),

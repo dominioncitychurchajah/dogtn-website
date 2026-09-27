@@ -38,7 +38,7 @@ export function QuizEngine({ locale }: { locale: Locale }) {
 
   function goNext() {
     if (isLast) {
-      router.push(`/${locale}/leadership/assessment/email-gate`);
+      router.push(`/${locale}/leadership/assessment/results`);
       return;
     }
     next();
