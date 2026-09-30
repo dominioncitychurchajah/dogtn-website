@@ -2,18 +2,13 @@ import { events } from "@/data/events";
 import type { EventItem } from "@/data/types";
 
 /**
- * Google Apps Script Web App URL that receives registrations.
- *
- * NEXT_PUBLIC_ is correct here and is NOT the mistake the Groq key makes:
- * an Apps Script Web App URL is a public endpoint by design, like a form
- * action. The notification address and the Sheet id live inside the script,
- * server-side, so changing who gets notified needs no site rebuild.
+ * Where the registration and waitlist forms post. It is our own Cloudflare Pages
+ * Function (functions/api/submit.js): it saves to the D1 database first, then
+ * hands the email and the Google Sheet copy to Apps Script (APPS_SCRIPT_URL in
+ * wrangler.toml). Same origin, so it only works on the deployed site or under
+ * `wrangler pages dev`, not `next dev`.
  */
-const DEFAULT_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbzxCM75M2n5raIzNRolj5SdaX_-ht37GCEnAQSTZDVyjTeXlaQgIqWeYXiSOEa0fWM/exec";
-
-export const REGISTRATION_ENDPOINT =
-  process.env.NEXT_PUBLIC_REGISTRATION_ENDPOINT ?? DEFAULT_ENDPOINT;
+export const REGISTRATION_ENDPOINT = "/api/submit";
 
 /** The next event that has not finished yet, or null once none remain. */
 export function nextUpcomingEvent(now = new Date()): EventItem | null {

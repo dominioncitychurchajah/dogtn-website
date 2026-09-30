@@ -1,0 +1,20 @@
+# Cloudflare Pages project config. With this file present, Pages reads bindings
+# and vars from here (the dashboard had none, so nothing is overridden).
+# Secrets (e.g. PAYSTACK_SECRET_KEY) are still set in the dashboard.
+name = "dr-david-ogbueli"
+pages_build_output_dir = "out"
+compatibility_date = "2026-07-10"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dogtn-forms"
+database_id = "135c2319-d172-4c31-8d0d-ba64c513a99b"
+migrations_dir = "migrations"
+
+[vars]
+# Where confirmation emails and the Sheet mirror are handled (Google Apps Script).
+APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxCM75M2n5raIzNRolj5SdaX_-ht37GCEnAQSTZDVyjTeXlaQgIqWeYXiSOEa0fWM/exec"
+# Cloudflare Access (Zero Trust) guarding /admin and /api/admin. Until both are
+# set, the admin API refuses every request.
+ACCESS_TEAM_DOMAIN = ""
+ACCESS_AUD = ""

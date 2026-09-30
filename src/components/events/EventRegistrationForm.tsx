@@ -53,12 +53,6 @@ export function EventRegistrationForm({ event }: { event: EventItem }) {
       return;
     }
 
-    if (!REGISTRATION_ENDPOINT) {
-      setStatus("error");
-      setMessage("Registration is not connected yet. Please try again shortly.");
-      return;
-    }
-
     setStatus("submitting");
     try {
       const res = await fetch(REGISTRATION_ENDPOINT, {

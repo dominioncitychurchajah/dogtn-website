@@ -8,13 +8,17 @@ alwaysApply: false
 
 ## What exists
 
-There is **exactly one** piece of server-side code:
-`functions/api/paystack-verify.js`, a Cloudflare Pages Function that verifies a
-Paystack transaction against Paystack's API. That's the entire backend.
+Cloudflare Pages Functions in `functions/api/`, deployed with the static site:
 
-- Pages Functions live in `functions/` and are deployed automatically with the
-  static site — no separate service.
-- They receive `env` (bindings/vars) and a standard `Request`, return a `Response`.
+- `paystack-verify.js` — verifies a Paystack transaction.
+- `submit.js` — saves registrations / waitlist sign-ups to D1, then hands email and the
+  Sheet mirror to Apps Script (ADR-007).
+- `admin/*` — sign-up list, CSV export, email retry; `_middleware.js` enforces the
+  Cloudflare Access JWT (fails closed).
+
+Shared code lives in `server/` (outside `functions/` so it is not routed). Bindings and
+vars are in `wrangler.toml`; secrets stay in the dashboard. They receive `env` and a
+standard `Request`, return a `Response`.
 
 ## Secrets
 

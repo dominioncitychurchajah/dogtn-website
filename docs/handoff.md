@@ -1,6 +1,6 @@
 # Handoff — Current Status & Next Tasks
 
-_Last updated: 2026-07-25._
+_Last updated: 2026-09-30._
 
 ## Coordinates
 
@@ -9,6 +9,23 @@ _Last updated: 2026-07-25._
 - Production: `https://dogtn-website.pages.dev`
 - Cloudflare Pages project: `dr-david-ogbueli` (note: differs from the domain)
 - Push access: **only** the `dominioncitychurchajah` GitHub account.
+
+## Forms backend (2026-09-30, ADR-007) — open setup steps
+
+Registrations and the mentorship waitlist now save to Cloudflare D1 (`dogtn-forms`)
+via `POST /api/submit`; Apps Script only sends the confirmation email and mirrors the
+Sheet. Admin list/CSV/email-retry at `/admin/submissions`. Still to do by the owner:
+
+1. **Cloudflare Access** (Zero Trust → Access → Applications → Self-hosted) covering
+   `davidogbueli.org/admin*`, `davidogbueli.org/api/admin*` and the same paths on
+   `dogtn-website.pages.dev`; put the team domain and Application Audience (AUD) tag
+   into `ACCESS_TEAM_DOMAIN` / `ACCESS_AUD` in `wrangler.toml`. Until then the admin
+   API answers 503 (by design).
+2. **Redeploy the Apps Script** from `docs/apps-script/registration.gs` (Manage
+   deployments → Edit → New version) so it stops the per-sign-up team email and
+   honours `resend`. The old version still works, just at half the capacity.
+3. Optional: move confirmation email to Brevo / Amazon SES when Gmail's 100/day is
+   routinely exceeded (change `sendConfirmation` in `server/forms.js`).
 
 ## Current known-good state
 

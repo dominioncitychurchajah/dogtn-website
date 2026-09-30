@@ -6,9 +6,11 @@ alwaysApply: false
 
 # Database
 
-## Current reality: there is none
+## Current reality
 
-The project has **no database and no persistence layer**. All content is
+One D1 database, `dogtn-forms` (binding `DB`), holds **form submissions only**
+(schema in `migrations/`, apply with `npx wrangler d1 migrations apply dogtn-forms
+--remote`). See ADR-007. **Content** still has no database: it is
 hand-authored **static TypeScript** in `src/data/*.ts`:
 
 - `books.ts` — the book catalog (titles, slugs, covers, prices, categories, takeaways)
