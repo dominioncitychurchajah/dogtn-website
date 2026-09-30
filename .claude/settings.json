@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__ccd_pr__set_auto_merge",
+      "Bash(gh pr merge:*)"
+    ]
+  }
+}
