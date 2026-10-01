@@ -11,7 +11,7 @@ export default function AssessmentQuestionPage() {
   const locale = (params?.locale as string | undefined) ?? "en";
 
   return (
-    <Section surface="alt">
+    <Section surface="alt" className="min-h-dvh pt-28 sm:pt-32 lg:pt-36">
       <Container>
         <QuizEngine locale={locale as Locale} />
       </Container>

@@ -6,8 +6,8 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { useQuizStore } from "@/lib/quiz-store";
 import { questions } from "@/data/assessment";
-import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 // The flow is exactly the 10 assessment questions — nothing else is presented.
 const TOTAL = questions.length;
@@ -21,8 +21,8 @@ export function QuizEngine({ locale }: { locale: Locale }) {
   const prev = useQuizStore((s) => s.prev);
 
   // Avoid hydration mismatch: only trust persisted store after mount.
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+  // false on the server and during hydration, true afterwards.
+  const mounted = React.useSyncExternalStore(noop, () => true, () => false);
 
   const advanceTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   React.useEffect(
@@ -46,7 +46,8 @@ export function QuizEngine({ locale }: { locale: Locale }) {
 
   function scheduleAdvance() {
     if (advanceTimer.current) clearTimeout(advanceTimer.current);
-    advanceTimer.current = setTimeout(goNext, 250);
+    // Long enough to see the choice land, short enough to keep momentum.
+    advanceTimer.current = setTimeout(goNext, 450);
   }
 
   function selectQuestion(qid: string, value: number) {
@@ -63,73 +64,105 @@ export function QuizEngine({ locale }: { locale: Locale }) {
   const onSelect = (v: number) => selectQuestion(q.id, v);
   const legendId = `q-${q.id}`;
 
-  const answered = idx + 1;
-  const pct = Math.round((answered / TOTAL) * 100);
-  const progressText = `Question ${answered} of ${TOTAL}, ${pct}% complete`;
+  // Progress = questions actually answered, not the one on screen.
+  const answeredCount = mounted ? questions.filter((qq) => answers[qq.id] !== undefined).length : 0;
+  const progressText = `Question ${idx + 1} of ${TOTAL}`;
+
+  // Keyboard: 1–4 pick an answer, Enter continues.
+  React.useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" && (e.target as HTMLInputElement).type !== "radio") return;
+      const n = Number(e.key);
+      if (Number.isInteger(n) && n >= 1 && n <= options.length) {
+        e.preventDefault();
+        onSelect(options[n - 1].value);
+      } else if (e.key === "Enter" && selected !== undefined && tag !== "BUTTON") {
+        e.preventDefault();
+        goNext();
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
   return (
     <div className="mx-auto max-w-3xl">
-      {/* Progress */}
-      <div className="mb-10">
-        <div className="mb-2 flex items-end justify-between">
+      {/* Progress: one segment per question; filled = answered, ringed = on screen */}
+      <div className="mb-8">
+        <div className="mb-3 flex items-end justify-between gap-4">
           <p className="text-caption font-semibold uppercase tracking-[0.2em] text-gold-hover">
-            {mounted ? topic : " "}
+            {mounted ? topic : "\u00a0"}
           </p>
-          <p aria-live="polite" className="text-body-s font-semibold text-ink-500">
-            {mounted ? progressText : " "}
+          <p aria-live="polite" className="shrink-0 text-body-s font-semibold tabular-nums text-ink-500">
+            {mounted ? progressText : "\u00a0"}
           </p>
         </div>
-        <ProgressBar
-          value={mounted ? answered : 0}
-          max={TOTAL}
-          label={progressText}
-        />
+        <div
+          role="progressbar"
+          aria-valuenow={answeredCount}
+          aria-valuemin={0}
+          aria-valuemax={TOTAL}
+          aria-label={`${answeredCount} of ${TOTAL} questions answered`}
+          className="flex gap-1.5"
+        >
+          {questions.map((qq, i) => {
+            const done = mounted && answers[qq.id] !== undefined;
+            return (
+              <span
+                key={qq.id}
+                className={cn(
+                  "h-1.5 flex-1 rounded-full transition-colors duration-300",
+                  done ? "bg-gold-600" : "bg-ink-100",
+                  mounted && i === idx && "ring-2 ring-gold-600/40 ring-offset-2 ring-offset-paper-50",
+                )}
+              />
+            );
+          })}
+        </div>
       </div>
 
-      {/* Question card */}
-      <fieldset className="rounded-[var(--radius-xl)] border border-ink-100 bg-paper-0 p-6 shadow-elev-1 sm:p-10">
+      {/* Question card. The legend is floated so it sits inside the card instead
+          of cutting through the fieldset's top border (the browser default). */}
+      <fieldset
+        key={q.id}
+        className="animate-fade-up rounded-[var(--radius-xl)] border border-ink-100 bg-paper-0 p-5 shadow-elev-1 sm:p-10"
+      >
         <legend
           id={legendId}
-          className="mb-8 block text-heading-2 leading-tight text-ink-900"
+          className="float-left mb-6 w-full font-display text-heading-3 leading-snug text-ink-900 sm:mb-8 sm:text-heading-2"
         >
           {prompt}
         </legend>
 
-        <div role="radiogroup" aria-labelledby={legendId} className="grid gap-3">
+        <div role="radiogroup" aria-labelledby={legendId} className="clear-left grid gap-3">
           {options.map((opt, i) => {
             const isSelected = mounted && selected === opt.value;
             return (
               <label
                 key={String(opt.value)}
-                className={
-                  "group relative flex cursor-pointer items-center justify-between gap-4 rounded-[var(--radius-l)] border px-5 py-4 transition-all " +
-                  (isSelected
-                    ? "border-gold-600 bg-gold-600/5 shadow-elev-1"
-                    : "border-ink-100 bg-paper-0 hover:border-gold-400")
-                }
+                className={cn(
+                  "group relative flex min-h-[64px] cursor-pointer items-center gap-4 rounded-[var(--radius-l)] border-2 px-4 py-3.5 transition-[border-color,background-color,box-shadow] duration-200 sm:px-5",
+                  "has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-gold-600",
+                  isSelected
+                    ? "border-gold-600 bg-gold-600/10 shadow-elev-1"
+                    : "border-ink-100 bg-paper-0 hover:border-gold-600/50 hover:bg-paper-50",
+                )}
               >
-                <span className="flex items-center gap-4">
-                  <span
-                    className={
-                      "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-body-s font-semibold transition-colors " +
-                      (isSelected
-                        ? "border-gold-600 bg-gold-600 text-ink-900"
-                        : "border-ink-100 text-ink-500 group-hover:border-gold-400")
-                    }
-                    aria-hidden
-                  >
-                    {i + 1}
-                  </span>
-                  <span
-                    className={
-                      "text-body-m " +
-                      (isSelected
-                        ? "font-semibold text-ink-900"
-                        : "text-ink-700")
-                    }
-                  >
-                    {opt.label}
-                  </span>
+                <span
+                  className={cn(
+                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-body-s font-bold tabular-nums transition-colors",
+                    isSelected
+                      ? "border-gold-600 bg-gold-600 text-ink-900"
+                      : "border-ink-100 text-ink-500 group-hover:border-gold-600/50 group-hover:text-ink-700",
+                  )}
+                  aria-hidden
+                >
+                  {isSelected ? <Check className="h-4.5 w-4.5" strokeWidth={3} /> : i + 1}
+                </span>
+                <span className={cn("flex-1 text-body-m leading-snug", isSelected ? "font-semibold text-ink-900" : "text-ink-700")}>
+                  {opt.label}
                 </span>
                 <input
                   type="radio"
@@ -139,17 +172,13 @@ export function QuizEngine({ locale }: { locale: Locale }) {
                   onChange={() => onSelect(opt.value)}
                   className="sr-only"
                 />
-                <Check
-                  className={
-                    "h-5 w-5 shrink-0 text-gold-600 transition-opacity " +
-                    (isSelected ? "opacity-100" : "opacity-0")
-                  }
-                  aria-hidden
-                />
               </label>
             );
           })}
         </div>
+        <p className="mt-5 hidden text-caption text-ink-500 sm:block">
+          Tip: press 1–{options.length} to choose{selected !== undefined ? ", Enter to continue" : ""}.
+        </p>
       </fieldset>
 
       {/* Navigation */}
@@ -163,10 +192,14 @@ export function QuizEngine({ locale }: { locale: Locale }) {
           <ArrowLeft className="h-5 w-5 rtl:rotate-180" aria-hidden />
           Back
         </Button>
+        {mounted && selected === undefined && (
+          <p className="hidden flex-1 text-end text-body-s text-ink-500 sm:block">Choose an answer to continue</p>
+        )}
         <Button
           onClick={goNext}
           disabled={mounted && selected === undefined}
           size="m"
+          className="disabled:cursor-not-allowed"
         >
           {isLast ? "See my results" : "Continue"}
           <ArrowRight className="h-5 w-5 rtl:rotate-180" aria-hidden />
@@ -175,6 +208,8 @@ export function QuizEngine({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
+const noop = () => () => {};
 
 function dimensionLabel(key: string): string {
   switch (key) {
