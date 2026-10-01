@@ -7,6 +7,7 @@ import {
   CalendarPlus,
   Car,
   Check,
+  ExternalLink,
   Clock,
   Crown,
   HandHeart,
@@ -88,6 +89,9 @@ const SUBNAV = [
 ] as const;
 
 export function NextLevelConference({ event, loc }: { event: EventItem; loc: Locale }) {
+  // External registration (Dominion City's form) when the event has one; otherwise our own form below.
+  const registerUrl = event.registrationUrl ?? "#register";
+  const regLink = event.registrationUrl ? { target: "_blank", rel: "noopener noreferrer" } : {};
   return (
     <>
       {/* Hero: the 2025 recap leads, the details follow */}
@@ -108,7 +112,7 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-              <Button href="#register" size="l" className="font-bold">
+              <Button href={registerUrl} {...regLink} size="l" className="font-bold">
                 Register free <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
               </Button>
               <Button
@@ -133,7 +137,8 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
             </a>
           ))}
           <Link
-            href="#register"
+            href={registerUrl}
+            {...regLink}
             className="ms-auto shrink-0 rounded-full bg-gold-600 px-4 py-1.5 text-ink-900 hover:bg-gold-hover"
           >
             Register
@@ -314,28 +319,45 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
             align="center"
             eyebrow="Register · Serve"
             title="Reserve your seat at Next Level Conference 2026."
-            intro="It's free. Registering tells us how many seats to set out. If you'd like to serve on the workforce, say so on the form."
+            intro={
+              event.registrationUrl
+                ? "It's free. Registration is on the Dominion City website and takes about a minute; you can offer to serve on the workforce there too."
+                : "It's free. Registering tells us how many seats to set out. If you'd like to serve on the workforce, say so on the form."
+            }
           />
-          <div className="mx-auto max-w-2xl rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6 shadow-elev-2 sm:p-8">
-            {/* Start people past zero: choosing the event is step one, already done. */}
-            <ol className="mb-8 flex items-center gap-2 text-caption font-semibold text-ink-500">
-              {["Event chosen", "Your details", "Seat reserved"].map((step, i) => (
-                <li key={step} className="flex flex-1 items-center gap-2">
-                  <span
-                    className={
-                      "grid h-6 w-6 shrink-0 place-items-center rounded-full text-[11px] " +
-                      (i === 0 ? "bg-gold-600 text-ink-900" : i === 1 ? "border-2 border-gold-600 text-ink-900" : "border border-ink-100")
-                    }
-                  >
-                    {i === 0 ? <Check className="h-3.5 w-3.5" aria-hidden /> : i + 1}
-                  </span>
-                  <span className={i < 2 ? "text-ink-900" : undefined}>{step}</span>
-                  {i < 2 && <span className="h-px flex-1 bg-ink-100" aria-hidden />}
-                </li>
-              ))}
-            </ol>
-            <EventRegistrationForm event={event} />
-          </div>
+          {event.registrationUrl ? (
+            <div className="text-center">
+              <a
+                href={event.registrationUrl}
+                {...regLink}
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-8 text-body-l font-semibold text-ink-900 hover:bg-gold-hover"
+              >
+                Register on dominioncity.cc <ExternalLink className="h-5 w-5" aria-hidden />
+              </a>
+              <p className="mt-3 text-body-s text-ink-500">Opens the official Dominion City registration form.</p>
+            </div>
+          ) : (
+            <div className="mx-auto max-w-2xl rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6 shadow-elev-2 sm:p-8">
+              {/* Start people past zero: choosing the event is step one, already done. */}
+              <ol className="mb-8 flex items-center gap-2 text-caption font-semibold text-ink-500">
+                {["Event chosen", "Your details", "Seat reserved"].map((step, i) => (
+                  <li key={step} className="flex flex-1 items-center gap-2">
+                    <span
+                      className={
+                        "grid h-6 w-6 shrink-0 place-items-center rounded-full text-[11px] " +
+                        (i === 0 ? "bg-gold-600 text-ink-900" : i === 1 ? "border-2 border-gold-600 text-ink-900" : "border border-ink-100")
+                      }
+                    >
+                      {i === 0 ? <Check className="h-3.5 w-3.5" aria-hidden /> : i + 1}
+                    </span>
+                    <span className={i < 2 ? "text-ink-900" : undefined}>{step}</span>
+                    {i < 2 && <span className="h-px flex-1 bg-ink-100" aria-hidden />}
+                  </li>
+                ))}
+              </ol>
+              <EventRegistrationForm event={event} />
+            </div>
+          )}
         </Container>
       </Section>
 
@@ -346,7 +368,8 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
             Thursday 1 October, 5PM, at Dominion City Lagos HQ. Entry is free.
           </p>
           <Link
-            href="#register"
+            href={registerUrl}
+            {...regLink}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 px-7 py-3.5 text-body-m font-semibold text-paper-0 hover:bg-ink-700"
           >
             Register now, it&rsquo;s free <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />

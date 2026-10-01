@@ -60,6 +60,7 @@ export const events: EventItem[] = [
     description:
       "Empowerment for All Round Dominion. Five days at Dominion City Lagos HQ, 8AM and 5PM daily, with the opening session on Thursday at 5PM. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Rev. Tony Akinyemi, Dr. David Sseppuuya and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity. An exclusive men's session runs Wednesday 30th September at 8AM and 5PM, ahead of the conference from 1st to 4th October.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
+    registrationUrl: "https://www.dominioncity.cc/en/f/next-level-conference-2026-registration",
   },
   {
     slug: "global-leadership-summit-2026",

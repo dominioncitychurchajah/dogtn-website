@@ -7,10 +7,12 @@ import type { Locale } from "@/i18n/config";
 import type { HomeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
 import { cn } from "@/lib/utils";
+import { events } from "@/data/events";
 
 /** Where the conference streams. /live opens whatever is live on the channel. */
 export const LIVE_URL = "https://www.youtube.com/@DominionCity/live";
 const REPLAYS_URL = "https://www.youtube.com/@DominionCity/streams";
+const REGISTER_URL = events.find((e) => e.slug === "next-level-conference")?.registrationUrl;
 
 /** YouTube's own red and the filled play logo, so the button reads as YouTube at a glance. */
 const YT_BUTTON = "bg-[#FF0000] text-white hover:bg-[#CC0000]";
@@ -195,7 +197,8 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
               </a>
               {/* Our own registration; hidden once the conference is over. */}
               {phase?.kind !== "after" && <Link
-                href={`/${locale}/register`}
+                href={REGISTER_URL ?? `/${locale}/register`}
+                {...(REGISTER_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] border border-paper-0/15 px-5 text-body-m font-semibold text-paper-0 hover:bg-paper-0/10"
               >
                 {copy.planVisit}
