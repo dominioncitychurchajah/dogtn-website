@@ -20,9 +20,10 @@ affect it.
 ## `GET /api/admin/submissions?type=registration|waitlist[&format=csv]`
 ## `POST /api/admin/retry-emails`
 
-Behind Cloudflare Access; `functions/api/admin/_middleware.js` verifies the
-`Cf-Access-Jwt-Assertion` JWT (`server/access.js`) and returns 503 until
-`ACCESS_TEAM_DOMAIN`/`ACCESS_AUD` are set, 401 without a valid token. Submissions
+Behind the admin gate (`server/access.js` → `adminGate`): a Cloudflare Access JWT
+(`ACCESS_TEAM_DOMAIN`/`ACCESS_AUD`) **or** the admin password (Basic auth, secret
+`ADMIN_PASSWORD`, or the 12-hour session cookie it sets). 401 when not signed in, 503
+when neither login is configured. The `/<locale>/admin` pages use the same gate. Submissions
 returns `{ type, rows }` or a CSV download (formula cells neutralised). Retry resends
 up to 25 failed/stuck confirmation emails via Apps Script with `resend: true` and
 returns `{ tried, sent, failed, remaining }`.

@@ -101,3 +101,20 @@ test("admin access requires a valid Cloudflare Access token", async (t) => {
   assert.equal(await check(null), null);
   assert.equal(await check(await token({}), { ACCESS_TEAM_DOMAIN: "", ACCESS_AUD: "" }), null);
 });
+
+test("admin password gate: Basic login, session cookie, and refusals", async () => {
+  const { adminGate, adminCookie } = await import("../server/access.js");
+  const env = { ADMIN_PASSWORD: "correct horse" };
+  const req = (headers = {}) => new Request("https://s/en/admin/", { headers });
+  const basic = (p) => ({ Authorization: `Basic ${btoa(`admin:${p}`)}` });
+
+  assert.equal(await adminGate(req(basic("correct horse")), env), null);
+  assert.equal((await adminGate(req(basic("wrong")), env)).status, 401);
+  assert.match((await adminGate(req(), env)).headers.get("WWW-Authenticate"), /Basic/);
+
+  const cookie = (await adminCookie(env)).split(";")[0];
+  assert.equal(await adminGate(req({ Cookie: cookie }), env), null);
+  assert.equal((await adminGate(req({ Cookie: cookie }), { ADMIN_PASSWORD: "rotated" })).status, 401);
+  assert.equal((await adminGate(req({ Cookie: cookie.replace(/=\d+/, "=9999999999999") }), env)).status, 401);
+  assert.equal((await adminGate(req(basic("x")), {})).status, 503);
+});

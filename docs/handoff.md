@@ -16,7 +16,8 @@ Registrations and the mentorship waitlist now save to Cloudflare D1 (`dogtn-form
 via `POST /api/submit`; Apps Script only sends the confirmation email and mirrors the
 Sheet. Admin list/CSV/email-retry at `/admin/submissions`. Still to do by the owner:
 
-1. **Cloudflare Access** (Zero Trust → Access → Applications → Self-hosted) covering
+1. **Admin password** (done when `ADMIN_PASSWORD` is set as a Pages secret). Optional
+   upgrade: **Cloudflare Access** (Zero Trust → Access → Applications → Self-hosted) covering
    `davidogbueli.org/admin*`, `davidogbueli.org/api/admin*` and the same paths on
    `dogtn-website.pages.dev`; put the team domain and Application Audience (AUD) tag
    into `ACCESS_TEAM_DOMAIN` / `ACCESS_AUD` in `wrangler.toml`. Until then the admin

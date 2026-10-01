@@ -14,7 +14,9 @@ migrations_dir = "migrations"
 [vars]
 # Where confirmation emails and the Sheet mirror are handled (Google Apps Script).
 APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxCM75M2n5raIzNRolj5SdaX_-ht37GCEnAQSTZDVyjTeXlaQgIqWeYXiSOEa0fWM/exec"
-# Cloudflare Access (Zero Trust) guarding /admin and /api/admin. Until both are
-# set, the admin API refuses every request.
+# Admin login. Either a password (secret ADMIN_PASSWORD, set with
+#   npx wrangler pages secret put ADMIN_PASSWORD --project-name dr-david-ogbueli
+# ) or Cloudflare Access (Zero Trust) with the two values below. With neither,
+# /admin and /api/admin refuse every request.
 ACCESS_TEAM_DOMAIN = ""
 ACCESS_AUD = ""
