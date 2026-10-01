@@ -73,6 +73,8 @@ export interface EventItem {
   summary: string;
   description: string;
   tiers: { name: string; price: number; currency: "NGN" | "USD" }[];
+  /** When set, registration happens on this external form instead of our own. */
+  registrationUrl?: string;
 }
 
 export interface Book {
