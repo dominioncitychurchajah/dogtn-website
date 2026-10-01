@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ArrowRight, MapPin, PlayCircle, Radio } from "lucide-react";
+import { ArrowRight, MapPin, Radio } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { HomeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
@@ -11,6 +11,17 @@ import { cn } from "@/lib/utils";
 /** Where the conference streams. /live opens whatever is live on the channel. */
 export const LIVE_URL = "https://www.youtube.com/@DominionCity/live";
 const REPLAYS_URL = "https://www.youtube.com/@DominionCity/streams";
+
+/** YouTube's own red and the filled play logo, so the button reads as YouTube at a glance. */
+const YT_BUTTON = "bg-[#FF0000] text-white hover:bg-[#CC0000]";
+function YouTubeLogo({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 28 20" className={className} aria-hidden>
+      <rect width="28" height="20" rx="5" fill="#fff" />
+      <path d="M11 5.5v9l8-4.5z" fill="#FF0000" />
+    </svg>
+  );
+}
 
 // Next Level 2026 sessions (UTC; Lagos is UTC+1). day 0 = Wednesday men's session.
 const SESSIONS: { start: string; day: number; part: "morning" | "evening" }[] = [
@@ -82,7 +93,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
           {/* Countdown */}
           <div className="flex-1">
             {phase?.kind === "live" && (
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#E5322D] px-3 py-1 text-caption font-bold uppercase tracking-[0.2em] text-white">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-[#FF0000] px-3 py-1 text-caption font-bold uppercase tracking-[0.2em] text-white">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-white" aria-hidden /> {copy.liveNow}
               </span>
             )}
@@ -113,10 +124,10 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
                 rel="noopener noreferrer"
                 className={cn(
                   "mt-10 inline-flex h-14 items-center justify-center gap-3 rounded-[var(--radius-m)] px-8 text-body-l font-semibold",
-                  phase.kind === "live" ? "bg-[#E5322D] text-white hover:bg-[#c9201c]" : "bg-gold-600 text-ink-900 hover:bg-gold-hover",
+                  YT_BUTTON,
                 )}
               >
-                <PlayCircle className="h-6 w-6" aria-hidden />
+                <YouTubeLogo className="h-6 w-8" />
                 {phase.kind === "live" ? copy.watchLive : copy.watchReplays}
               </a>
             ) : (
@@ -174,9 +185,12 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
               <a
                 href={watching ? LIVE_URL : `/${locale}/media`}
                 {...(watching ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-5 text-body-m font-semibold text-ink-900 hover:bg-gold-hover"
+                className={cn(
+                  "inline-flex h-11 items-center justify-center gap-2 rounded-[var(--radius-m)] px-5 text-body-m font-semibold",
+                  watching ? YT_BUTTON : "bg-gold-600 text-ink-900 hover:bg-gold-hover",
+                )}
               >
-                <Radio className="h-4 w-4" aria-hidden />
+                {watching ? <YouTubeLogo className="h-5 w-7" /> : <Radio className="h-4 w-4" aria-hidden />}
                 {watching ? copy.watchOnYoutube : copy.watchOnline}
               </a>
               {/* Our own registration; hidden once the conference is over. */}
