@@ -332,7 +332,7 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
                 {...regLink}
                 className="inline-flex h-14 items-center justify-center gap-2 rounded-[var(--radius-m)] bg-gold-600 px-8 text-body-l font-semibold text-ink-900 hover:bg-gold-hover"
               >
-                Register on dominioncity.cc <ExternalLink className="h-5 w-5" aria-hidden />
+                Click here to register <ExternalLink className="h-5 w-5" aria-hidden />
               </a>
               <p className="mt-3 text-body-s text-ink-500">Opens the official Dominion City registration form.</p>
             </div>
