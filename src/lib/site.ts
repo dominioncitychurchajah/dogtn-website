@@ -2,12 +2,12 @@
  * Canonical origin for this site. Everything that needs an absolute URL
  * (canonicals, hreflang, Open Graph, sitemap, JSON-LD) derives from here.
  *
- * Cloudflare Pages serves the production build from `dogtn-website.pages.dev`.
- * When a custom domain lands, set NEXT_PUBLIC_SITE_URL in the Pages build
- * settings — nothing else needs to change.
+ * The live domain is davidogbueli.org (Cloudflare Pages project
+ * `dr-david-ogbueli`; dogtn-website.pages.dev is only its internal address).
+ * NEXT_PUBLIC_SITE_URL overrides it if the domain ever changes.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://dogtn-website.pages.dev"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://davidogbueli.org"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "David Ogbueli · Global Transformation Network";

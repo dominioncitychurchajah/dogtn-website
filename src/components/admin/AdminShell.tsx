@@ -96,7 +96,7 @@ export function AdminShell({
               DO
             </span>
             <span className="flex flex-col leading-tight">
-              <span className="text-body-s font-semibold text-ink-900">DOGTN Admin</span>
+              <span className="text-body-s font-semibold text-ink-900">David Ogbueli Admin</span>
               <span className="text-caption text-ink-500">Console</span>
             </span>
           </Link>
@@ -117,7 +117,7 @@ export function AdminShell({
           />
           <div className="absolute inset-y-0 start-0 flex w-72 max-w-[80%] flex-col bg-paper-0 py-5 shadow-elev-4">
             <div className="flex items-center justify-between px-5 pb-6">
-              <span className="text-body-s font-semibold">DOGTN Admin</span>
+              <span className="text-body-s font-semibold">David Ogbueli Admin</span>
               <button
                 aria-label="Close"
                 onClick={() => setMobileOpen(false)}

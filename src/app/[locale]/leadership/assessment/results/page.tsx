@@ -244,7 +244,7 @@ export default function ResultsPage() {
             <div>
               <h2 className="text-heading-1 text-paper-0">Unlocking Your Leadership Signature</h2>
               <p className="mt-6 text-body-l leading-relaxed text-ink-300">
-                {trackLabel} is a deliberate inflection point in the DOGTN ecosystem. It is where
+                {trackLabel} is a deliberate inflection point in Dr. David Ogbueli&rsquo;s mentorship. It is where
                 raw talent is forged into institutional authority through the acquisition of the
                 Three Pillars: Visionary Clarity, Tactical Competence, and Ethical Fortitude.
               </p>

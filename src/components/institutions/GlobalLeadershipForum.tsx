@@ -7,7 +7,7 @@ import { ForumCountdown } from "./ForumCountdown";
 import { ForumRegistration } from "./ForumRegistration";
 
 const SPEAKERS = [
-  { name: "Dr. David Ogbueli", role: "Founder & Host, DOGTN", image: "/images/pastor/leadership-hand-raised.webp" },
+  { name: "Dr. David Ogbueli", role: "Founder & Host", image: "/images/pastor/leadership-hand-raised.webp" },
   { name: "Pastor Nobert Onaga", role: "Global Policy Advisor", image: "/images/pastor/nobert-onaga.webp" },
 ];
 

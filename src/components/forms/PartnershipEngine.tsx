@@ -152,7 +152,7 @@ export function PartnershipEngine() {
     setValidationError("");
     setIsProcessing(true);
 
-    const reference = `dogtn_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    const reference = `davidogbueli_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 
     const handler = window.PaystackPop.setup({
       key: PAYSTACK_PUBLIC_KEY,

@@ -16,7 +16,7 @@ export function organizationSchema() {
     "@type": "Organization",
     "@id": ORG_ID,
     name: SITE_NAME,
-    alternateName: "DOGTN",
+    alternateName: "Dr. David Ogbueli Ministries",
     url: absoluteUrl("/"),
     logo: {
       "@type": "ImageObject",

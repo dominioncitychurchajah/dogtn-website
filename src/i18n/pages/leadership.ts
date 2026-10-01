@@ -100,7 +100,7 @@ export const leadershipCopy: Record<Locale, LeadershipCopy> = {
     journalTitle: "The Leadership Journal",
     validateTitle: "Validate Credentials",
     validateBody:
-      "Verify the authenticity of any DOGTN Leadership Institute certificate.",
+      "Verify the authenticity of any David Ogbueli Leadership Institute certificate.",
     certPlaceholder: "Enter certificate ID (e.g. DLI-2026-0891)",
     verify: "Verify",
     blockchainNote: "Every credential we issue is secured and independently verifiable.",
@@ -153,7 +153,7 @@ export const leadershipCopy: Record<Locale, LeadershipCopy> = {
     journalTitle: "Le Journal du leadership",
     validateTitle: "Valider les certifications",
     validateBody:
-      "Vérifiez instantanément l'authenticité des certificats et des accréditations professionnelles du DOGTN Leadership Institute.",
+      "Vérifiez instantanément l'authenticité des certificats et des accréditations professionnelles du David Ogbueli Leadership Institute.",
     certPlaceholder: "Saisissez l'identifiant du certificat (ex. DLI-2026-0891)",
     verify: "Vérifier",
     blockchainNote: "Protocole de vérification sécurisé par blockchain activé.",
@@ -206,7 +206,7 @@ export const leadershipCopy: Record<Locale, LeadershipCopy> = {
     journalTitle: "O Jornal da liderança",
     validateTitle: "Validar credenciais",
     validateBody:
-      "Verifique instantaneamente a autenticidade dos certificados e credenciais profissionais do DOGTN Leadership Institute.",
+      "Verifique instantaneamente a autenticidade dos certificados e credenciais profissionais do David Ogbueli Leadership Institute.",
     certPlaceholder: "Introduza o ID do certificado (ex. DLI-2026-0891)",
     verify: "Verificar",
     blockchainNote: "Protocolo de verificação protegido por blockchain ativado.",
@@ -258,7 +258,7 @@ export const leadershipCopy: Record<Locale, LeadershipCopy> = {
     journalTitle: "Jarida la Uongozi",
     validateTitle: "Thibitisha Vyeti",
     validateBody:
-      "Thibitisha papo hapo uhalisia wa vyeti na sifa za kitaaluma za DOGTN Leadership Institute.",
+      "Thibitisha papo hapo uhalisia wa vyeti na sifa za kitaaluma za David Ogbueli Leadership Institute.",
     certPlaceholder: "Weka kitambulisho cha cheti (mf. DLI-2026-0891)",
     verify: "Thibitisha",
     blockchainNote: "Itifaki ya uthibitisho iliyolindwa kwa blockchain imewezeshwa.",
@@ -310,7 +310,7 @@ export const leadershipCopy: Record<Locale, LeadershipCopy> = {
     journalTitle: "مجلة القيادة",
     validateTitle: "التحقق من الاعتمادات",
     validateBody:
-      "تحقّق فورًا من صحة شهادات واعتمادات معهد DOGTN للقيادة المهنية.",
+      "تحقّق فورًا من صحة شهادات واعتمادات معهد David Ogbueli للقيادة المهنية.",
     certPlaceholder: "أدخل معرّف الشهادة (مثال: DLI-2026-0891)",
     verify: "تحقّق",
     blockchainNote: "تم تفعيل بروتوكول تحقّق مؤمَّن بتقنية البلوك تشين.",
