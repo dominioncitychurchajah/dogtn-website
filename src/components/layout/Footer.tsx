@@ -111,13 +111,6 @@ export function Footer({ locale }: { locale: Locale }) {
 
             <div className="mt-6 space-y-2.5 text-sm text-white/60">
               <a
-                href="tel:+14705352006"
-                className="flex items-center gap-2.5 rounded-sm py-0.5 transition-all hover:translate-x-1 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
-              >
-                <Phone className="h-3.5 w-3.5 shrink-0 text-[#C9A227]" aria-hidden />
-                +1-470-535-2006
-              </a>
-              <a
                 href="tel:+2348035508230"
                 className="flex items-center gap-2.5 rounded-sm py-0.5 transition-all hover:translate-x-1 hover:text-[#C9A227] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#C9A227] focus-visible:outline-offset-2"
               >
