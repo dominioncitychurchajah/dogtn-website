@@ -1,8 +1,10 @@
 /**
- * GET /api/admin/submissions?type=registration|waitlist&format=csv
- * Newest first. JSON for the admin page; CSV opens in Excel / Google Sheets.
+ * GET  /api/admin/submissions?type=registration|waitlist[&trash=1][&format=csv]
+ *      Newest first. JSON for the admin page; CSV opens in Excel / Google Sheets.
+ * POST /api/admin/submissions  { ...form fields, sendEmail: boolean }
+ *      Add someone by hand (phone / walk-in registrations).
  */
-import { json } from "../../../server/forms.js";
+import { createSubmission, json, normalize, sendConfirmation, toPayload } from "../../../../server/forms.js";
 
 const COLUMNS = {
   registration: [
@@ -26,10 +28,12 @@ const cell = (v) => {
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const type = url.searchParams.get("type") === "waitlist" ? "waitlist" : "registration";
+  const trash = url.searchParams.get("trash") === "1";
 
   // ponytail: returns the newest 5,000; add paging if a single form ever passes that.
   const { results } = await env.DB.prepare(
-    `SELECT * FROM submissions WHERE type = ?1 ORDER BY created_at DESC LIMIT 5000`,
+    `SELECT * FROM submissions WHERE type = ?1 AND deleted_at IS ${trash ? "NOT NULL" : "NULL"}
+      ORDER BY created_at DESC LIMIT 5000`,
   ).bind(type).all();
 
   if (url.searchParams.get("format") !== "csv") return json({ type, rows: results });
@@ -44,4 +48,17 @@ export async function onRequestGet({ request, env }) {
       "Content-Disposition": `attachment; filename="${type === "waitlist" ? "mentorship-waitlist" : "registrations"}-${day}.csv"`,
     },
   });
+}
+
+export async function onRequestPost({ request, env, waitUntil }) {
+  const body = await request.json().catch(() => null);
+  const s = normalize(body);
+  if (s.error) return json({ ok: false, error: s.error }, 400);
+
+  const id = await createSubmission(env.DB, s, body.sendEmail ? "pending" : "skipped");
+  if (!id) {
+    return json({ ok: false, error: "This person is already signed up for that. Search for them (or check Trash) and edit instead." }, 409);
+  }
+  if (body.sendEmail) waitUntil(sendConfirmation(env, id, toPayload(s)));
+  return json({ ok: true, id });
 }

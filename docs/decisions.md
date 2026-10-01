@@ -149,6 +149,14 @@ setup. It covers `/<locale>/admin*` pages (`functions/[locale]/admin/_middleware
 and `/api/admin/*`; a correct password sets a signed 12-hour `HttpOnly; SameSite=Strict`
 cookie. Either Access or the password admits; with neither configured, 503.
 
+**Amendment (2026-10-01, admin CRUD):** the sign-ups page can add (POST
+`/api/admin/submissions`, never overwrites an existing person), edit (PATCH `/:id`,
+same validation as the public form), delete to Trash (DELETE `/:id` sets `deleted_at`,
+migration 0002) and restore/resend per row. A public resubmission revives a trashed
+row. The demo-only admin sections (Content Studio, Applications, Giving, Chapters,
+Journeys link, fake users/KPIs) were removed; the dashboard shows real sign-up
+numbers; public header/footer/chat are hidden on `/admin` (`PublicOnly`).
+
 **Consequences:** Nothing is lost to the email cap; failed emails are retried from the
 admin page (Apps Script gets `resend: true` and skips the Sheet). The per-sign-up team
 alert email is gone (it halved capacity). A resubmission by the same email for the

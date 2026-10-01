@@ -99,18 +99,6 @@ export interface Book {
   reviews?: { quote: string; name: string }[];
 }
 
-export interface Chapter {
-  id: string;
-  name: string;
-  area: string;
-  city: string;
-  country: string;
-  serviceTimes: string[];
-  contact: string;
-  lat: number;
-  lng: number;
-}
-
 export interface Course {
   id: string;
   title: string;

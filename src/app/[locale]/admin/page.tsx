@@ -1,85 +1,121 @@
-import type { Metadata } from "next";
-import { Users, HandHeart, GraduationCap, UserPlus, TrendingUp, ArrowUpRight } from "lucide-react";
+"use client";
 
-export const metadata: Metadata = { title: "Admin · Dashboard" };
+import * as React from "react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import { ArrowUpRight, CalendarCheck, GraduationCap, MailWarning, UserPlus } from "lucide-react";
+import { formatDate } from "@/lib/utils";
 
-const KPIS = [
-  { label: "Open applications", value: "48", delta: "+12 this week", icon: Users },
-  { label: "Active cohorts", value: "6", delta: "2 starting soon", icon: GraduationCap },
-  { label: "Giving this month", value: "₦8.4M", delta: "+18% MoM", icon: HandHeart },
-  { label: "New members", value: "1,204", delta: "+9% MoM", icon: UserPlus },
-];
+// Real numbers only: everything here comes from the sign-ups database via the
+// same admin API as the Sign-ups page.
 
-const ACTIVITY = [
-  { who: "Chidera N.", what: "submitted an application to Ministry Leaders", when: "12m ago" },
-  { who: "System", what: "published “The Laws of Kingdom Governance”", when: "1h ago" },
-  { who: "Ada O.", what: "moved 3 applicants to Interview", when: "2h ago" },
-  { who: "Golden Heart Foundation", what: "received a ₦250,000 monthly gift", when: "5h ago" },
-  { who: "Emeka U.", what: "completed DLI Basic, certificate issued", when: "Yesterday" },
-];
+interface Row {
+  id: number;
+  type: "registration" | "waitlist";
+  ref_title: string;
+  full_name: string;
+  email_status: string;
+  created_at: string;
+}
+
+async function load(type: Row["type"]): Promise<Row[]> {
+  const res = await fetch(`/api/admin/submissions?type=${type}`, { cache: "no-store" });
+  const out = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(out.error || `Error ${res.status}`);
+  return out.rows;
+}
 
 export default function AdminDashboard() {
+  const { locale } = useParams<{ locale: string }>();
+  const [data, setData] = React.useState<{ reg: Row[]; wait: Row[]; weekAgo: string } | null>(null);
+  const [error, setError] = React.useState("");
+
+  React.useEffect(() => {
+    Promise.all([load("registration"), load("waitlist")])
+      .then(([reg, wait]) => setData({ reg, wait, weekAgo: new Date(Date.now() - 7 * 86_400_000).toISOString() }))
+      .catch((err) => setError(err instanceof Error ? err.message : "Could not load"));
+  }, []);
+
+  if (error) return <p role="alert" className="text-body-m text-flame-600">{error}</p>;
+  if (!data) return <p className="text-body-m text-ink-500">Loading…</p>;
+
+  const all = [...data.reg, ...data.wait];
+  const unsent = all.filter((r) => r.email_status === "failed" || r.email_status === "pending").length;
+  const byTitle = (rows: Row[]) =>
+    Object.entries(rows.reduce<Record<string, number>>((m, r) => ({ ...m, [r.ref_title]: (m[r.ref_title] ?? 0) + 1 }), {})).sort(
+      (a, b) => b[1] - a[1],
+    );
+  const signups = `/${locale}/admin/submissions`;
+
+  const kpis = [
+    { label: "Event registrations", value: data.reg.length, icon: CalendarCheck },
+    { label: "Mentorship waitlist", value: data.wait.length, icon: GraduationCap },
+    { label: "New in the last 7 days", value: all.filter((r) => r.created_at >= data.weekAgo).length, icon: UserPlus },
+    { label: "Emails waiting to send", value: unsent, icon: MailWarning, warn: unsent > 0 },
+  ];
+
   return (
     <div className="space-y-8">
-      {/* KPI cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {KPIS.map((k) => {
-          const Icon = k.icon;
-          return (
-            <div key={k.label} className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-5">
-              <div className="flex items-center justify-between">
-                <span className="grid h-10 w-10 place-items-center rounded-[var(--radius-m)] bg-ink-900 text-gold-400">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span className="inline-flex items-center gap-1 text-caption font-semibold text-verd-600">
-                  <TrendingUp className="h-3.5 w-3.5" /> {k.delta}
-                </span>
-              </div>
-              <p className="mt-4 font-display text-heading-1 text-ink-900">{k.value}</p>
-              <p className="text-body-s text-ink-500">{k.label}</p>
-            </div>
-          );
-        })}
+        {kpis.map((k) => (
+          <Link key={k.label} href={signups} className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-5 hover:border-gold-600">
+            <span className={`grid h-10 w-10 place-items-center rounded-[var(--radius-m)] ${k.warn ? "bg-flame-600/15 text-flame-600" : "bg-ink-900 text-gold-400"}`}>
+              <k.icon className="h-5 w-5" />
+            </span>
+            <p className="mt-4 font-display text-heading-1 text-ink-900">{k.value}</p>
+            <p className="text-body-s text-ink-500">{k.label}</p>
+          </Link>
+        ))}
       </div>
 
-      {/* Charts placeholder + activity */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-6">
-          <div className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6">
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-heading-3 text-ink-900">Applications over time</h2>
-              <span className="text-caption text-ink-500">Last 12 weeks</span>
-            </div>
-            {/* Faux bar chart */}
-            <div className="flex h-48 items-end gap-2">
-              {[40, 55, 38, 62, 70, 48, 80, 66, 90, 72, 85, 96].map((h, i) => (
-                <div key={i} className="flex-1 rounded-t bg-gold-600/80" style={{ height: `${h}%` }} />
-              ))}
-            </div>
-          </div>
-          <div className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6">
-            <h2 className="mb-4 text-heading-3 text-ink-900">Giving by fund</h2>
-            <div className="flex h-32 items-center justify-center rounded-[var(--radius-m)] bg-paper-50 text-body-s text-ink-300">
-              Chart placeholder, donut by fund
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        {[
+          { title: "Waitlist by track", rows: byTitle(data.wait) },
+          { title: "Registrations by event", rows: byTitle(data.reg) },
+        ].map((block) => (
+          <section key={block.title} className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6">
+            <h2 className="text-heading-3 text-ink-900">{block.title}</h2>
+            {block.rows.length === 0 ? (
+              <p className="mt-4 text-body-s text-ink-500">None yet.</p>
+            ) : (
+              <ul className="mt-4 space-y-3">
+                {block.rows.map(([title, n]) => (
+                  <li key={title} className="flex items-center gap-3 text-body-s">
+                    <span className="w-40 shrink-0 truncate text-ink-700">{title}</span>
+                    <span className="h-2 flex-1 overflow-hidden rounded-full bg-paper-50">
+                      <span className="block h-full rounded-full bg-gold-600" style={{ width: `${(n / block.rows[0][1]) * 100}%` }} />
+                    </span>
+                    <span className="w-8 text-end font-semibold text-ink-900">{n}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ))}
+      </div>
 
-        <div className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6">
-          <h2 className="mb-4 text-heading-3 text-ink-900">Recent activity</h2>
-          <ul className="space-y-4">
-            {ACTIVITY.map((a, i) => (
-              <li key={i} className="flex gap-3">
-                <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-gold-hover" />
-                <p className="text-body-s text-ink-700">
-                  <span className="font-semibold text-ink-900">{a.who}</span> {a.what}.
-                  <span className="ms-1 text-caption text-ink-300">{a.when}</span>
-                </p>
+      <section className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-heading-3 text-ink-900">Latest sign-ups</h2>
+          <Link href={signups} className="inline-flex items-center gap-1 text-body-s font-semibold text-gold-hover">
+            See all <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <ul className="mt-4 divide-y divide-ink-100">
+          {all
+            .sort((a, b) => b.created_at.localeCompare(a.created_at))
+            .slice(0, 6)
+            .map((r) => (
+              <li key={`${r.type}-${r.id}`} className="flex items-center justify-between gap-4 py-3 text-body-s">
+                <span>
+                  <span className="font-semibold text-ink-900">{r.full_name}</span>{" "}
+                  <span className="text-ink-500">{r.type === "waitlist" ? "joined the" : "registered for"} {r.ref_title}{r.type === "waitlist" ? " waitlist" : ""}</span>
+                </span>
+                <span className="shrink-0 text-ink-500">{formatDate(r.created_at)}</span>
               </li>
             ))}
-          </ul>
-        </div>
-      </div>
+        </ul>
+      </section>
     </div>
   );
 }
