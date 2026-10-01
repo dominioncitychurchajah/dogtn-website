@@ -8,11 +8,15 @@ import { DatabaseSync } from "node:sqlite";
 import { normalize, saveSubmission } from "../server/forms.js";
 import { verifyAccess } from "../server/access.js";
 import { onRequestPost as retryEmails } from "../functions/api/admin/retry-emails.js";
-import { onRequestGet as listSubmissions } from "../functions/api/admin/submissions.js";
+import { onRequestGet as listSubmissions, onRequestPost as addSubmission } from "../functions/api/admin/submissions/index.js";
+import { onRequestPatch as editSubmission, onRequestDelete as trashSubmission } from "../functions/api/admin/submissions/[id].js";
+import { onRequestPost as restoreSubmission } from "../functions/api/admin/submissions/[id]/restore.js";
 
 function fakeD1() {
   const db = new DatabaseSync(":memory:");
-  db.exec(readFileSync(new URL("../migrations/0001_submissions.sql", import.meta.url), "utf8"));
+  for (const f of ["0001_submissions.sql", "0002_soft_delete.sql"]) {
+    db.exec(readFileSync(new URL(`../migrations/${f}`, import.meta.url), "utf8"));
+  }
   return {
     raw: db,
     prepare(sql) {
@@ -117,4 +121,34 @@ test("admin password gate: Basic login, session cookie, and refusals", async () 
   assert.equal((await adminGate(req({ Cookie: cookie }), { ADMIN_PASSWORD: "rotated" })).status, 401);
   assert.equal((await adminGate(req({ Cookie: cookie.replace(/=\d+/, "=9999999999999") }), env)).status, 401);
   assert.equal((await adminGate(req(basic("x")), {})).status, 503);
+});
+
+test("admin CRUD: add, edit, trash, restore, and re-signup revives", async () => {
+  const DB = fakeD1();
+  const env = { DB };
+  const call = (fn, { body, id, url = "https://s/api/admin/submissions" } = {}) =>
+    fn({ env, params: { id: String(id) }, waitUntil: () => {}, request: new Request(url, { method: "POST", body: body && JSON.stringify(body) }) });
+  const list = async (q = "") => (await (await call(listSubmissions, { url: `https://s/api/admin/submissions?type=registration${q}` })).json()).rows;
+  const person = { fullName: "Walk In", email: "walk@in.com", phone: "1", country: "NG", eventSlug: "nl", eventTitle: "Next Level" };
+
+  const added = await (await call(addSubmission, { body: { ...person, sendEmail: false } })).json();
+  assert.equal(added.ok, true);
+  assert.equal((await list())[0].email_status, "skipped");
+  assert.equal((await call(addSubmission, { body: person })).status, 409); // no silent overwrite
+
+  await saveSubmission(DB, reg({ email: "other@x.com" }));
+  assert.equal((await call(editSubmission, { id: added.id, body: { email: "other@x.com", eventSlug: "nl" } })).status, 409);
+  assert.equal((await call(editSubmission, { id: added.id, body: { fullName: "Walk In Fixed", seats: 4 } })).status, 200);
+  assert.equal((await list()).find((r) => r.id === added.id).seats, 4);
+  assert.equal((await call(editSubmission, { id: added.id, body: { email: "bad" } })).status, 400);
+
+  await call(trashSubmission, { id: added.id });
+  assert.equal((await list()).some((r) => r.id === added.id), false);
+  assert.equal((await list("&trash=1"))[0].id, added.id);
+  await call(restoreSubmission, { id: added.id });
+  assert.equal((await list()).some((r) => r.id === added.id), true);
+
+  await call(trashSubmission, { id: added.id });
+  await saveSubmission(DB, normalize({ ...person, fullName: "Came Back" })); // public form again
+  assert.equal((await list()).find((r) => r.id === added.id).full_name, "Came Back");
 });

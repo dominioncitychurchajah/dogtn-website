@@ -62,7 +62,7 @@ export async function saveSubmission(db, s) {
          ref_title = excluded.ref_title, full_name = excluded.full_name, phone = excluded.phone,
          country = excluded.country, seats = excluded.seats, volunteer = excluded.volunteer,
          volunteer_areas = excluded.volunteer_areas, current_role = excluded.current_role,
-         email_status = 'pending', email_error = NULL,
+         email_status = 'pending', email_error = NULL, deleted_at = NULL,
          updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
        RETURNING id`,
     )
@@ -73,6 +73,67 @@ export async function saveSubmission(db, s) {
     .first();
   return row.id;
 }
+
+const NOW = "strftime('%Y-%m-%dT%H:%M:%fZ', 'now')";
+
+/**
+ * Admin "add sign-up": a plain insert, so it never overwrites someone's
+ * existing entry. Returns the new id, or null if that person is already
+ * signed up for that event/track (including rows in Trash).
+ */
+export async function createSubmission(db, s, emailStatus) {
+  const row = await db
+    .prepare(
+      `INSERT INTO submissions
+         (type, ref, ref_title, full_name, email, phone, country, seats, volunteer, volunteer_areas, current_role, email_status)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)
+       ON CONFLICT (type, ref, email) DO NOTHING
+       RETURNING id`,
+    )
+    .bind(
+      s.type, s.ref, s.refTitle, s.fullName, s.email, s.phone, s.country,
+      s.seats ?? null, s.volunteer ?? null, s.volunteerAreas ?? null, s.currentRole ?? null, emailStatus,
+    )
+    .first();
+  return row?.id ?? null;
+}
+
+/** Admin edit. Returns false when the new email/event clashes with another row. */
+export async function updateSubmission(db, id, s) {
+  try {
+    await db
+      .prepare(
+        `UPDATE submissions SET ref = ?2, ref_title = ?3, full_name = ?4, email = ?5, phone = ?6, country = ?7,
+           seats = ?8, volunteer = ?9, volunteer_areas = ?10, current_role = ?11, updated_at = ${NOW}
+         WHERE id = ?1`,
+      )
+      .bind(
+        id, s.ref, s.refTitle, s.fullName, s.email, s.phone, s.country,
+        s.seats ?? null, s.volunteer ?? null, s.volunteerAreas ?? null, s.currentRole ?? null,
+      )
+      .run();
+    return true;
+  } catch (err) {
+    if (/UNIQUE/i.test(String(err?.message ?? err))) return false;
+    throw err;
+  }
+}
+
+export const getSubmission = (db, id) => db.prepare("SELECT * FROM submissions WHERE id = ?1").bind(id).first();
+
+/** Trash (deleted = true) or restore. */
+export const setDeleted = (db, id, deleted) =>
+  db
+    .prepare(`UPDATE submissions SET deleted_at = ${deleted ? NOW : "NULL"}, updated_at = ${NOW} WHERE id = ?1`)
+    .bind(id)
+    .run();
+
+/** Row -> the shape normalize() accepts, so admin edits are validated like the public form. */
+export const rowToInput = (r) => ({
+  type: r.type, fullName: r.full_name, email: r.email, phone: r.phone, country: r.country,
+  eventSlug: r.ref, eventTitle: r.ref_title, seats: r.seats, volunteer: r.volunteer,
+  volunteerAreas: r.volunteer_areas, track: r.ref, trackName: r.ref_title, currentRole: r.current_role,
+});
 
 /** The payload Apps Script expects, from a normalized submission. */
 export function toPayload(s) {

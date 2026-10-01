@@ -28,6 +28,11 @@ returns `{ type, rows }` or a CSV download (formula cells neutralised). Retry re
 up to 25 failed/stuck confirmation emails via Apps Script with `resend: true` and
 returns `{ tried, sent, failed, remaining }`.
 
+Row management (same gate): `POST /api/admin/submissions` (add; `sendEmail` boolean;
+409 if that person/event already exists), `PATCH /api/admin/submissions/:id` (edit;
+409 on clash), `DELETE /api/admin/submissions/:id` (to Trash), `POST …/:id/restore`,
+`POST …/:id/resend`. Lists exclude Trash unless `trash=1`.
+
 ## `POST /api/paystack-verify`
 
 **File:** `functions/api/paystack-verify.js` (Cloudflare Pages Function)

@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MiniAudioPlayer } from "@/components/layout/MiniAudioPlayer";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { PublicOnly } from "@/components/layout/PublicOnly";
 import { ToastProvider } from "@/components/ui/Toast";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { graph, organizationSchema, personSchema, websiteSchema } from "@/lib/schema";
@@ -72,13 +73,17 @@ export default async function LocaleLayout({
         Skip to content
       </a>
       <ToastProvider>
-        <Header locale={locale} strings={navStrings} />
+        <PublicOnly>
+          <Header locale={locale} strings={navStrings} />
+        </PublicOnly>
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer locale={locale} />
-        <MiniAudioPlayer />
-        <ChatWidget locale={locale} />
+        <PublicOnly>
+          <Footer locale={locale} />
+          <MiniAudioPlayer />
+          <ChatWidget locale={locale} />
+        </PublicOnly>
       </ToastProvider>
     </div>
   );
