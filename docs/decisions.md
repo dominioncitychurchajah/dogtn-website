@@ -143,6 +143,12 @@ an error although the row was saved, and retries created duplicates. Payload CMS
 considered and rejected: it needs a running Node server, i.e. undoing ADR-001, to
 solve what is a storage-and-email problem.
 
+**Amendment (2026-10-01):** a password gate (HTTP Basic, user `admin`, secret
+`ADMIN_PASSWORD`) was added alongside Access so the admin works without Zero Trust
+setup. It covers `/<locale>/admin*` pages (`functions/[locale]/admin/_middleware.js`)
+and `/api/admin/*`; a correct password sets a signed 12-hour `HttpOnly; SameSite=Strict`
+cookie. Either Access or the password admits; with neither configured, 503.
+
 **Consequences:** Nothing is lost to the email cap; failed emails are retried from the
 admin page (Apps Script gets `resend: true` and skips the Sheet). The per-sign-up team
 alert email is gone (it halved capacity). A resubmission by the same email for the

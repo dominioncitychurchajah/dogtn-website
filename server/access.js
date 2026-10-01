@@ -59,3 +59,76 @@ export async function verifyAccess(request, env) {
     return null;
   }
 }
+
+/*
+ * Password login (HTTP Basic, user "admin", password = ADMIN_PASSWORD secret).
+ * A successful login also sets a signed 12-hour cookie so the admin page's own
+ * fetches to /api/admin/* work without a second prompt.
+ */
+const COOKIE = "dogtn_admin";
+const enc = new TextEncoder();
+
+async function hmac(secret, data) {
+  const key = await crypto.subtle.importKey("raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  return btoa(String.fromCharCode(...new Uint8Array(await crypto.subtle.sign("HMAC", key, enc.encode(data)))));
+}
+
+// Compare digests, not the strings, so timing does not leak the password.
+async function sameSecret(a, b) {
+  const [x, y] = await Promise.all([a, b].map((s) => crypto.subtle.digest("SHA-256", enc.encode(s))));
+  const u = new Uint8Array(x), v = new Uint8Array(y);
+  return u.every((n, i) => n === v[i]);
+}
+
+/** True for a valid admin cookie or a correct Basic password. */
+export async function verifyPassword(request, env) {
+  const secret = env.ADMIN_PASSWORD;
+  if (!secret) return false;
+
+  const cookie = (request.headers.get("Cookie") || "").match(new RegExp(`(?:^|;\\s*)${COOKIE}=([^;]+)`))?.[1];
+  if (cookie) {
+    const [exp, sig] = decodeURIComponent(cookie).split(".");
+    if (Number(exp) > Date.now() && (await sameSecret(sig ?? "", await hmac(secret, exp)))) return true;
+  }
+
+  const auth = request.headers.get("Authorization") || "";
+  if (!auth.startsWith("Basic ")) return false;
+  let decoded = "";
+  try { decoded = atob(auth.slice(6)); } catch { return false; }
+  const pass = decoded.slice(decoded.indexOf(":") + 1);
+  return sameSecret(pass, secret);
+}
+
+export async function adminCookie(env) {
+  const exp = String(Date.now() + 12 * 3600 * 1000);
+  const value = encodeURIComponent(`${exp}.${await hmac(env.ADMIN_PASSWORD, exp)}`);
+  return `${COOKIE}=${value}; Path=/; Max-Age=43200; HttpOnly; Secure; SameSite=Strict`;
+}
+
+/**
+ * Shared gate for admin pages and the admin API: Cloudflare Access login or the
+ * password. Returns null when allowed, otherwise the response to send.
+ */
+export async function adminGate(request, env) {
+  if ((await verifyAccess(request, env)) || (await verifyPassword(request, env))) return null;
+  const ready = env.ADMIN_PASSWORD || (env.ACCESS_TEAM_DOMAIN && env.ACCESS_AUD);
+  return new Response(ready ? "Sign in required" : "Admin login is not set up yet", {
+    status: ready ? 401 : 503,
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-store",
+      ...(env.ADMIN_PASSWORD ? { "WWW-Authenticate": 'Basic realm="DOGTN admin", charset="UTF-8"' } : {}),
+    },
+  });
+}
+
+/** Run the next handler; on a password login, hand out the session cookie. */
+export async function nextWithSession(context) {
+  const out = await context.next();
+  const res = new Response(out.body, out); // headers from next() can be immutable
+  res.headers.set("Cache-Control", "no-store");
+  if (context.env.ADMIN_PASSWORD && context.request.headers.get("Authorization")?.startsWith("Basic ")) {
+    res.headers.append("Set-Cookie", await adminCookie(context.env));
+  }
+  return res;
+}

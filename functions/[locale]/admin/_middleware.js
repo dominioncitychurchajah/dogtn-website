@@ -1,4 +1,4 @@
-/** Every /api/admin/* request needs Cloudflare Access or the admin password. */
+/** The /<locale>/admin pages themselves: same gate as the admin API. */
 import { adminGate, nextWithSession } from "../../../server/access.js";
 
 export async function onRequest(context) {
