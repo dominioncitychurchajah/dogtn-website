@@ -1,25 +1,27 @@
 /**
- * Form endpoint for dogtn-website. Handles two kinds of submission, told
- * apart by the `type` field: "registration" (an event) and "waitlist" (the
- * mentorship app). Each writes to its own tab and sends its own emails.
+ * Email sender + Sheet mirror for dogtn-website. The website's own backend
+ * (Cloudflare Pages Function /api/submit, data in Cloudflare D1) saves every
+ * submission first and then calls this script, so a Gmail quota error here
+ * never loses a sign-up. Two kinds of submission, told apart by `type`:
+ * "registration" (an event) and "waitlist" (the mentorship app).
+ *
+ * The team no longer gets one email per sign-up: that doubled Gmail usage
+ * against the 100/day cap. Sign-ups are listed at /admin/submissions instead.
+ * `resend: true` means the row is already in the Sheet; only email again.
  *
  * Setup (about two minutes):
  *   1. Open your Google Sheet -> Extensions -> Apps Script.
  *      Opening it from inside the Sheet binds the script to that Sheet, so
  *      there is no id to configure here and none to leak into a public repo.
  *   2. Paste this file over Code.gs.
- *   3. Check NOTIFY_EMAIL below.
- *   4. Deploy -> New deployment -> type "Web app".
+ *   3. Deploy -> New deployment -> type "Web app".
  *        Execute as:      Me
- *        Who has access:  Anyone            <- required; the site posts anonymously
- *   5. Copy the /exec URL and set it as NEXT_PUBLIC_REGISTRATION_ENDPOINT
- *      in the Cloudflare Pages build settings.
- *
- * Changing who gets notified is a one-line edit here plus a redeploy of this
- * script. It needs no rebuild of the website.
+ *        Who has access:  Anyone            <- required; the site's backend posts anonymously
+ *   4. Copy the /exec URL into APPS_SCRIPT_URL in wrangler.toml. Updating an
+ *      existing deployment (Manage deployments -> Edit -> New version) keeps
+ *      the same URL, so no change on the website side is needed.
  */
 
-var NOTIFY_EMAIL = 'dominioncitychurchajah1@gmail.com';
 // Display name on outgoing mail. Without it Gmail shows the raw account name
 // ("dominioncitychurcha..."), which is what recipients were seeing.
 var SENDER_NAME = 'Gabe';
@@ -123,8 +125,7 @@ function doPost(e) {
 
     if (d.type === 'waitlist') return handleWaitlist_(d);
 
-    var sheet = getSheet_(TAB_REGISTRATIONS, HEADERS_REGISTRATIONS);
-    sheet.appendRow([
+    if (!d.resend) getSheet_(TAB_REGISTRATIONS, HEADERS_REGISTRATIONS).appendRow([
       new Date(),
       d.eventTitle || '',
       d.fullName,
@@ -136,7 +137,6 @@ function doPost(e) {
       d.volunteerAreas || ''
     ]);
 
-    notify_(d, seats);
     confirm_(d, seats);
 
     return json({ ok: true });
@@ -152,8 +152,7 @@ function doGet() {
 
 /** Mentorship-app waitlist: no seats, no event, a track preference instead. */
 function handleWaitlist_(d) {
-  var sheet = getSheet_(TAB_WAITLIST, HEADERS_WAITLIST);
-  sheet.appendRow([
+  if (!d.resend) getSheet_(TAB_WAITLIST, HEADERS_WAITLIST).appendRow([
     new Date(),
     d.trackName || 'No preference',
     d.fullName,
@@ -162,19 +161,6 @@ function handleWaitlist_(d) {
     d.country,
     d.currentRole || ''
   ]);
-
-  MailApp.sendEmail({
-    to: NOTIFY_EMAIL,
-    name: SENDER_NAME,
-    subject: 'Mentorship waitlist: ' + d.fullName + ' - ' + (d.trackName || 'No preference'),
-    body: d.fullName + ' joined the mentorship waitlist.\n\n' +
-          'Track:   ' + (d.trackName || 'No preference') + '\n' +
-          'Email:   ' + d.email + '\n' +
-          'Phone:   ' + d.phone + '\n' +
-          'Country: ' + d.country + '\n' +
-          (d.currentRole ? 'Role:    ' + d.currentRole + '\n' : ''),
-    replyTo: d.email
-  });
 
   var first = firstName_(d.fullName);
   var track = d.trackName || 'mentorship';
@@ -213,26 +199,6 @@ function getSheet_(tabName, headers) {
     sheet.setFrozenRows(1);
   }
   return sheet;
-}
-
-function notify_(d, seats) {
-  var volunteer = d.volunteer === 'yes' ? 'YES'
-                : d.volunteer === 'maybe' ? 'Maybe' : 'No';
-  var body =
-    d.fullName + ' has registered for ' + (d.eventTitle || 'an event') + '.\n\n' +
-    'Email:     ' + d.email + '\n' +
-    'Phone:     ' + d.phone + '\n' +
-    'Country:   ' + d.country + '\n' +
-    'Seats:     ' + seats + '\n' +
-    'Workforce: ' + volunteer + (d.volunteerAreas ? ' (' + d.volunteerAreas + ')' : '') + '\n';
-
-  MailApp.sendEmail({
-    to: NOTIFY_EMAIL,
-    name: SENDER_NAME,
-    subject: 'New registration: ' + d.fullName + ' — ' + (d.eventTitle || 'Event'),
-    body: body,
-    replyTo: d.email
-  });
 }
 
 function confirm_(d, seats) {

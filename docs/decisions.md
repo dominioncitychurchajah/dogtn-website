@@ -74,7 +74,7 @@ confirmed server-side so it can't be spoofed from the browser.
 
 ## ADR-004 — `/admin` ships without authentication (accepted gap)
 
-**Status:** Accepted (temporary) · **Date:** 2026 (recorded 2026-07-25)
+**Status:** Superseded in part by ADR-007 (live data is behind Cloudflare Access) · **Date:** 2026 (recorded 2026-07-25)
 
 **Decision:** The `/admin/*` dashboard is read-only over static data and has **no auth**.
 
@@ -90,7 +90,7 @@ gains write access (which would also require a database + real auth).
 
 ## ADR-005 — No database; content is static TypeScript
 
-**Status:** Accepted · **Date:** 2026 (recorded 2026-07-25)
+**Status:** Accepted for content; superseded for form submissions by ADR-007 · **Date:** 2026 (recorded 2026-07-25)
 
 **Decision:** All content lives in `src/data/*.ts` and is imported directly. No DB, ORM,
 or persistence layer.
@@ -120,3 +120,34 @@ deliberately.
 
 **Consequences:** Every new UI string must be added to all five locale objects.
 `ar` renders RTL. Don't hardcode user-facing English in a component that has a copy module.
+
+---
+
+## ADR-007 — Form submissions in Cloudflare D1; Apps Script only sends email
+
+**Status:** Accepted · **Date:** 2026-09-30
+
+**Decision:** Event registrations and the mentorship waitlist post to our own Pages
+Function `POST /api/submit`, which writes to a D1 database (`dogtn-forms`, binding
+`DB`, declared in `wrangler.toml`) *before* anything else. The confirmation email and
+the Google Sheet mirror are handed to the existing Apps Script afterwards
+(`waitUntil`), and the outcome is recorded per row (`email_status`). The team reads
+sign-ups at `/admin/submissions` (JSON + CSV via `/api/admin/*`), which is behind
+**Cloudflare Access**; the Functions also verify the Access JWT and fail closed until
+`ACCESS_TEAM_DOMAIN` + `ACCESS_AUD` are set.
+
+**Context / why:** The browser used to post straight to Apps Script, which appended to
+the Sheet and then sent two Gmail messages (team alert + confirmation). Consumer
+Gmail caps MailApp at 100/day, so after ~50 sign-ups the script threw, the student saw
+an error although the row was saved, and retries created duplicates. Payload CMS was
+considered and rejected: it needs a running Node server, i.e. undoing ADR-001, to
+solve what is a storage-and-email problem.
+
+**Consequences:** Nothing is lost to the email cap; failed emails are retried from the
+admin page (Apps Script gets `resend: true` and skips the Sheet). The per-sign-up team
+alert email is gone (it halved capacity). A resubmission by the same email for the
+same event/track updates one row (`UNIQUE(type, ref, email)`). Moving email to Brevo /
+SES later only touches `sendConfirmation` in `server/forms.js`. Local testing needs
+`wrangler pages dev out` (not `next dev`). Tests use Node's built-in runner
+(`npm test`, no new dependency) rather than Vitest.
+

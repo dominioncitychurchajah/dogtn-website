@@ -6,7 +6,9 @@ alwaysApply: false
 
 # API & Integrations
 
-## Server endpoint (the only one)
+## Server endpoints
+
+See `docs/api.md` for `/api/submit` and `/api/admin/*` (forms backend, ADR-007).
 
 `POST /api/paystack-verify` → `functions/api/paystack-verify.js`
 

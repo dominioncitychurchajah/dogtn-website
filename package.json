@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --test --no-warnings tests/*.test.mjs",
     "pages:dev": "next build && wrangler pages dev out"
   },
   "dependencies": {

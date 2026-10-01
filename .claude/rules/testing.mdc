@@ -7,7 +7,8 @@ alwaysApply: true
 
 ## Current reality
 
-There is **no automated test suite** in this project. Verification is:
+`npm test` runs `tests/*.test.mjs` (Node built-in runner) for the forms backend.
+Otherwise verification is:
 
 1. `npx tsc --noEmit` — must be type-clean.
 2. `npm run build` — must compile and generate all static pages (currently 339/339).
