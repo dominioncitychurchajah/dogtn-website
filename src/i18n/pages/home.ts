@@ -33,6 +33,18 @@ export interface HomeCopy {
     emailSupport: string;
     watchOnline: string;
     planVisit: string;
+    liveNow: string;
+    happeningNow: string;
+    watchLive: string;
+    watchOnYoutube: string;
+    nextSession: string;
+    /** "{n}" is replaced with the day number. */
+    dayOf: string;
+    morning: string;
+    evening: string;
+    mensSession: string;
+    endedBody: string;
+    watchReplays: string;
   };
   journeyStrip: {
     growSpiritually: string;
@@ -159,6 +171,17 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       emailSupport: "Email Support",
       watchOnline: "Watch Online",
       planVisit: "Register Now",
+      liveNow: "Live now",
+      happeningNow: "Happening now",
+      watchLive: "Watch live on YouTube",
+      watchOnYoutube: "Watch on YouTube",
+      nextSession: "Next session",
+      dayOf: "Day {n} of 4",
+      morning: "Morning session",
+      evening: "Evening session",
+      mensSession: "Exclusive men's session",
+      endedBody: "Thank you for joining us. Every session is available to watch again on YouTube.",
+      watchReplays: "Watch the sessions again",
     },
     journeyStrip: {
       growSpiritually: "Grow Spiritually",
@@ -284,6 +307,17 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       emailSupport: "Assistance par e-mail",
       watchOnline: "Regarder en ligne",
       planVisit: "S'inscrire",
+      liveNow: "En direct",
+      happeningNow: "En cours",
+      watchLive: "Regarder en direct sur YouTube",
+      watchOnYoutube: "Regarder sur YouTube",
+      nextSession: "Prochaine session",
+      dayOf: "Jour {n} sur 4",
+      morning: "Session du matin",
+      evening: "Session du soir",
+      mensSession: "Session réservée aux hommes",
+      endedBody: "Merci d'avoir été avec nous. Toutes les sessions sont à revoir sur YouTube.",
+      watchReplays: "Revoir les sessions",
     },
     journeyStrip: {
       growSpiritually: "Grandir Spirituellement",
@@ -410,6 +444,17 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       emailSupport: "Suporte por E-mail",
       watchOnline: "Assistir Online",
       planVisit: "Inscreva-se",
+      liveNow: "Ao vivo",
+      happeningNow: "A decorrer",
+      watchLive: "Assistir ao vivo no YouTube",
+      watchOnYoutube: "Assistir no YouTube",
+      nextSession: "Próxima sessão",
+      dayOf: "Dia {n} de 4",
+      morning: "Sessão da manhã",
+      evening: "Sessão da tarde",
+      mensSession: "Sessão exclusiva para homens",
+      endedBody: "Obrigado por estar connosco. Todas as sessões podem ser revistas no YouTube.",
+      watchReplays: "Rever as sessões",
     },
     journeyStrip: {
       growSpiritually: "Crescer Espiritualmente",
@@ -536,6 +581,17 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       emailSupport: "Msaada wa Barua Pepe",
       watchOnline: "Tazama Mtandaoni",
       planVisit: "Jisajili Sasa",
+      liveNow: "Mubashara sasa",
+      happeningNow: "Inaendelea sasa",
+      watchLive: "Tazama mubashara YouTube",
+      watchOnYoutube: "Tazama YouTube",
+      nextSession: "Kipindi kijacho",
+      dayOf: "Siku {n} kati ya 4",
+      morning: "Kipindi cha asubuhi",
+      evening: "Kipindi cha jioni",
+      mensSession: "Kipindi maalum cha wanaume",
+      endedBody: "Asante kwa kujiunga nasi. Kila kipindi kinapatikana kutazamwa tena YouTube.",
+      watchReplays: "Tazama vipindi tena",
     },
     journeyStrip: {
       growSpiritually: "Kua Kiroho",
@@ -662,6 +718,17 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       emailSupport: "الدعم عبر البريد الإلكتروني",
       watchOnline: "شاهد عبر الإنترنت",
       planVisit: "سجّل الآن",
+      liveNow: "مباشر الآن",
+      happeningNow: "جارٍ الآن",
+      watchLive: "شاهد البث المباشر على يوتيوب",
+      watchOnYoutube: "شاهد على يوتيوب",
+      nextSession: "الجلسة التالية",
+      dayOf: "اليوم {n} من 4",
+      morning: "الجلسة الصباحية",
+      evening: "الجلسة المسائية",
+      mensSession: "جلسة خاصة بالرجال",
+      endedBody: "شكرًا لانضمامكم إلينا. جميع الجلسات متاحة للمشاهدة مرة أخرى على يوتيوب.",
+      watchReplays: "شاهد الجلسات مرة أخرى",
     },
     journeyStrip: {
       growSpiritually: "انمُ روحيًا",
