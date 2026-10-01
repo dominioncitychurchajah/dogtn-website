@@ -1,5 +1,5 @@
 /**
- * Email sender + Sheet mirror for dogtn-website. The website's own backend
+ * Email sender + Sheet mirror for davidogbueli.org. The website's own backend
  * (Cloudflare Pages Function /api/submit, data in Cloudflare D1) saves every
  * submission first and then calls this script, so a Gmail quota error here
  * never loses a sign-up. Two kinds of submission, told apart by `type`:
@@ -25,7 +25,7 @@
 // Display name on outgoing mail. Without it Gmail shows the raw account name
 // ("dominioncitychurcha..."), which is what recipients were seeing.
 var SENDER_NAME = 'Gabe';
-var SITE_URL = 'https://dogtn-website.pages.dev';
+var SITE_URL = 'https://davidogbueli.org';
 // PNG, not the site's WebP logo: Outlook still will not render WebP.
 // Logo with its paper background baked in. Mail clients invert backgrounds in
 // dark mode but never image pixels, so the navy wordmark stays legible on both.

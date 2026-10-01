@@ -23,7 +23,7 @@ import { cn } from "@/lib/utils";
  * the player is created through the API rather than a plain <iframe>.
  */
 
-// ⚠️ Interim video: an existing message from the DOGTN channel stands in until the
+// ⚠️ Interim video: an existing message from the Pastor David Ogbueli channel stands in until the
 // real mentorship trailer is published. Swap this one ID — nothing else changes.
 const TRAILER_YOUTUBE_ID = "yznUhbmTK8I";
 

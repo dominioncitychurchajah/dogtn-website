@@ -1,4 +1,4 @@
-/** Conversation tree for "Gabe", the DOGTN chat guide. Phase 1 MVP: quick-reply chips only, no free text. */
+/** Conversation tree for "Gabe", the David Ogbueli site chat guide. Phase 1 MVP: quick-reply chips only, no free text. */
 
 export type GabeChip =
   | { kind: "advance"; label: string; to: string; event?: string }

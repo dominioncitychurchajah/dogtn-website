@@ -65,7 +65,7 @@ const CALENDAR_ICS =
     [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//DOGTN//Next Level 2026//EN",
+      "PRODID:-//DavidOgbueli//Next Level 2026//EN",
       "BEGIN:VEVENT",
       "UID:next-level-conference-2026@davidogbueli.org",
       "DTSTAMP:20260927T000000Z",

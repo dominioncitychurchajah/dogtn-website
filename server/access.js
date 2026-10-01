@@ -117,7 +117,7 @@ export async function adminGate(request, env) {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "no-store",
-      ...(env.ADMIN_PASSWORD ? { "WWW-Authenticate": 'Basic realm="DOGTN admin", charset="UTF-8"' } : {}),
+      ...(env.ADMIN_PASSWORD ? { "WWW-Authenticate": 'Basic realm="David Ogbueli admin", charset="UTF-8"' } : {}),
     },
   });
 }
