@@ -20,7 +20,7 @@ export const tracks: MentorshipTrack[] = [
     ],
     faqs: [
       { q: "Who leads the mentorship?", a: "Dr. David Ogbueli." },
-      { q: "When does it start?", a: "The mentorship runs in a dedicated app. Join the waitlist and we will send your invitation when it opens." },
+      { q: "When does it start?", a: "The mentorship runs in a dedicated app. Create your account there and you can start your track." },
       { q: "What does the track involve?", a: "The shape of each track is shared with you when you join." },
       { q: "Do I need prior leadership experience?", a: "No. This track is designed for those just beginning." },
     ],
@@ -45,7 +45,7 @@ export const tracks: MentorshipTrack[] = [
     ],
     faqs: [
       { q: "Who leads the mentorship?", a: "Dr. David Ogbueli." },
-      { q: "When does it start?", a: "The mentorship runs in a dedicated app. Join the waitlist and we will send your invitation when it opens." },
+      { q: "When does it start?", a: "The mentorship runs in a dedicated app. Create your account there and you can start your track." },
       { q: "What does the track involve?", a: "The shape of each track is shared with you when you join." },
       { q: "How does this differ from Level 1?", a: "Level 2 assumes you already carry responsibility for others, so the work centres on sustaining and multiplying it." },
     ],
@@ -70,7 +70,7 @@ export const tracks: MentorshipTrack[] = [
     ],
     faqs: [
       { q: "Who leads the mentorship?", a: "Dr. David Ogbueli." },
-      { q: "When does it start?", a: "The mentorship runs in a dedicated app. Join the waitlist and we will send your invitation when it opens." },
+      { q: "When does it start?", a: "The mentorship runs in a dedicated app. Create your account there and you can start your track." },
       { q: "What does the track involve?", a: "The shape of each track is shared with you when you join." },
       { q: "Is this only for ministers?", a: "No. It is for leaders across business, government, media, and culture." },
     ],

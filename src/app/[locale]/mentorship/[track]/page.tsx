@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Church, Briefcase, TrendingUp, CalendarDays, FileSearch, Users, Rocket } from "lucide-react";
+import { Church, Briefcase, TrendingUp } from "lucide-react";
 import { Section, Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
@@ -50,12 +50,6 @@ export default async function TrackPage({
   const c = mentorshipCopy[loc];
 
   const applyHref = MENTORSHIP_APP_URL;
-
-  const timeline = [
-    { icon: CalendarDays, label: c.timelineApplicationLabel, value: c.timelineApplicationValue },
-    { icon: FileSearch, label: c.timelineReviewLabel, value: c.timelineReviewValue },
-    { icon: Users, label: c.timelineInterviewLabel, value: c.timelineInterviewValue },
-  ];
 
   return (
     <>
@@ -166,30 +160,6 @@ export default async function TrackPage({
                 ))}
               </div>
             </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Key timeline */}
-      <Section surface="alt">
-        <Container>
-          <h2 className="mb-16 text-center text-heading-1 text-ink-900">{c.timelineTitle}</h2>
-          <div className="relative flex flex-col justify-between gap-8 md:flex-row">
-            <div className="absolute inset-x-0 top-1/2 hidden h-px -translate-y-1/2 bg-ink-100 md:block" aria-hidden />
-            {timeline.map(({ icon: Icon, label, value }) => (
-              <div
-                key={label}
-                className="relative z-10 border border-ink-100 bg-paper-0 p-8 md:w-64"
-              >
-                <Icon className="mb-4 h-9 w-9 text-gold-600" aria-hidden />
-                <h4
-                  className="mb-2 text-caption font-semibold uppercase tracking-wider text-ink-500"
-                >
-                  {label}
-                </h4>
-                <p className="text-heading-3 text-ink-900">{value}</p>
-              </div>
-            ))}
           </div>
         </Container>
       </Section>

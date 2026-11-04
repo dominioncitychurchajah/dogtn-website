@@ -43,14 +43,6 @@ export interface MentorshipCopy {
   oversightTitle: string;
   /** 3 program-level oversight roles, order matches the page component. */
   oversightRoles: { title: string; desc: string }[];
-  timelineTitle: string;
-  timelineApplicationLabel: string;
-  timelineApplicationValue: string;
-  timelineReviewLabel: string;
-  timelineReviewValue: string;
-  timelineInterviewLabel: string;
-  timelineInterviewValue: string;
-  timelineCohortStartLabel: string;
   eligibilityTitle: string;
   faqTitle: string;
   readyTitle: string;
@@ -120,19 +112,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
         desc: "Continuous spiritual governance ensuring character remains the foundation of your leadership.",
       },
     ],
-    timelineTitle: "Key Timeline",
-    timelineApplicationLabel: "Application Window",
-    timelineApplicationValue: "Oct 1 – Oct 31",
-    timelineReviewLabel: "Review Period",
-    timelineReviewValue: "Nov 1 – Nov 10",
-    timelineInterviewLabel: "Interview Week",
-    timelineInterviewValue: "Nov 15 – Nov 22",
-    timelineCohortStartLabel: "Invitation",
     eligibilityTitle: "Eligibility Checklist",
     faqTitle: "Frequent Enquiries",
     readyTitle: "Ready to join?",
     readyBody:
-      "Join the waitlist and we will send your invitation when the mentorship app opens.",
+      "Create your account in the mentorship app and start with your track.",
     beginApplicationCta: "Join Mentorship",
   },
   fr: {
@@ -196,19 +180,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
         desc: "Une gouvernance spirituelle continue veillant à ce que le caractère demeure le fondement de votre leadership.",
       },
     ],
-    timelineTitle: "Calendrier clé",
-    timelineApplicationLabel: "Période de candidature",
-    timelineApplicationValue: "1 oct. – 31 oct.",
-    timelineReviewLabel: "Période d'examen",
-    timelineReviewValue: "1 nov. – 10 nov.",
-    timelineInterviewLabel: "Semaine d'entretiens",
-    timelineInterviewValue: "15 nov. – 22 nov.",
-    timelineCohortStartLabel: "Invitation",
     eligibilityTitle: "Liste d'éligibilité",
     faqTitle: "Questions fréquentes",
     readyTitle: "Prêt à nous rejoindre ?",
     readyBody:
-      "Rejoignez la liste d'attente et nous vous enverrons votre invitation à l'ouverture de l'application.",
+      "Créez votre compte dans l'application de mentorat et commencez votre parcours.",
     beginApplicationCta: "Rejoindre le mentorat",
   },
   pt: {
@@ -272,19 +248,11 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
         desc: "Governação espiritual contínua que garante que o caráter permanece o fundamento da sua liderança.",
       },
     ],
-    timelineTitle: "Cronograma Principal",
-    timelineApplicationLabel: "Período de candidatura",
-    timelineApplicationValue: "1 out. – 31 out.",
-    timelineReviewLabel: "Período de análise",
-    timelineReviewValue: "1 nov. – 10 nov.",
-    timelineInterviewLabel: "Semana de entrevistas",
-    timelineInterviewValue: "15 nov. – 22 nov.",
-    timelineCohortStartLabel: "Convite",
     eligibilityTitle: "Lista de Elegibilidade",
     faqTitle: "Perguntas Frequentes",
     readyTitle: "Pronto para entrar?",
     readyBody:
-      "Entre na lista de espera e enviaremos o seu convite quando a aplicação abrir.",
+      "Crie a sua conta na aplicação do mentorado e comece pelo seu percurso.",
     beginApplicationCta: "Entrar no Mentorado",
   },
   sw: {
@@ -348,14 +316,6 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
         desc: "Utawala wa kiroho unaoendelea unaohakikisha tabia inabaki kuwa msingi wa uongozi wako.",
       },
     ],
-    timelineTitle: "Ratiba Muhimu",
-    timelineApplicationLabel: "Kipindi cha Kuomba",
-    timelineApplicationValue: "1 Okt – 31 Okt",
-    timelineReviewLabel: "Kipindi cha Ukaguzi",
-    timelineReviewValue: "1 Nov – 10 Nov",
-    timelineInterviewLabel: "Wiki ya Mahojiano",
-    timelineInterviewValue: "15 Nov – 22 Nov",
-    timelineCohortStartLabel: "Mwanzo wa Kikundi",
     eligibilityTitle: "Orodha ya Ustahiki",
     faqTitle: "Maswali Yanayoulizwa Mara kwa Mara",
     readyTitle: "Uko tayari kujiunga?",
@@ -424,14 +384,6 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
         desc: "حوكمة روحية مستمرة تضمن بقاء الشخصية أساس قيادتك.",
       },
     ],
-    timelineTitle: "الجدول الزمني الرئيسي",
-    timelineApplicationLabel: "فترة التقديم",
-    timelineApplicationValue: "1 أكتوبر – 31 أكتوبر",
-    timelineReviewLabel: "فترة المراجعة",
-    timelineReviewValue: "1 نوفمبر – 10 نوفمبر",
-    timelineInterviewLabel: "أسبوع المقابلات",
-    timelineInterviewValue: "15 نوفمبر – 22 نوفمبر",
-    timelineCohortStartLabel: "بداية المجموعة",
     eligibilityTitle: "قائمة الأهلية",
     faqTitle: "الأسئلة الشائعة",
     readyTitle: "هل أنت مستعد للانضمام؟",
