@@ -110,15 +110,18 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
               <span className="text-gold-600">{copy.titleAccent}</span>
               {copy.titlePost}
             </h2>
-            <p className="mt-3 text-body-l text-ink-300">
-              {phase?.kind === "live"
-                ? sessionLabel(phase.session)
-                : phase?.kind === "after"
-                  ? copy.endedBody
-                  : phase?.kind === "between"
-                    ? `${copy.nextSession}: ${sessionLabel(phase.session)}`
-                    : copy.subtitle}
-            </p>
+            {/* Dates and daily times stay on the card through the conference;
+                the line under them tracks which session is running. */}
+            <p className="mt-3 text-body-l text-ink-300">{copy.subtitle}</p>
+            {phase && phase.kind !== "before" && (
+              <p className="mt-2 text-body-m font-semibold text-gold-600">
+                {phase.kind === "live"
+                  ? sessionLabel(phase.session)
+                  : phase.kind === "after"
+                    ? copy.endedBody
+                    : `${copy.nextSession}: ${sessionLabel(phase.session)}`}
+              </p>
+            )}
 
             {phase?.kind === "live" || phase?.kind === "after" ? (
               <a
