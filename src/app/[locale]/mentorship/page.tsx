@@ -1,15 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, Users, Clock, CalendarDays } from "lucide-react";
 import { Section, Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { mentorshipCopy } from "@/i18n/pages/mentorship";
-import { tracksByLevel, gleLabel } from "@/data/mentorship";
+import { tracksByLevel } from "@/data/mentorship";
 import { formatDate } from "@/lib/utils";
 import { buildMetadata } from "@/lib/seo";
+import { MENTORSHIP_APP_URL } from "@/lib/site";
 
 export async function generateMetadata({
   params,
@@ -42,7 +40,7 @@ export default async function MentorshipPage({
           <h1 className="text-display-l leading-tight text-paper-0">{c.title}</h1>
           <p className="mx-auto mt-8 max-w-2xl text-body-l text-ink-300">{c.subtitle}</p>
           <div className="mt-12 flex justify-center">
-            <Button href="#tracks" size="l" className="uppercase tracking-wider">
+            <Button href={MENTORSHIP_APP_URL} size="l" className="uppercase tracking-wider">
               {c.exploreTracksCta}
             </Button>
           </div>
@@ -57,7 +55,7 @@ export default async function MentorshipPage({
             <p className="mt-5 text-body-l leading-relaxed text-ink-500">{c.progressionBody}</p>
           </div>
 
-          {/* Level rail — makes the I -> II -> III order explicit before the cards */}
+          {/* Level rail — the I -> II -> III order, with the detail in the app. */}
           <ol className="mx-auto mb-14 flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
             {tracksByLevel.map((track, i) => (
               <li key={track.slug} className="flex items-center gap-2 sm:flex-1">
@@ -75,70 +73,6 @@ export default async function MentorshipPage({
               </li>
             ))}
           </ol>
-
-          <div className="mb-10 text-center">
-            <h3 className="text-heading-2 text-ink-900">{c.gridTitle}</h3>
-            <p className="mx-auto mt-3 max-w-2xl text-body-m text-ink-500">{c.gridSubtitle}</p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {tracksByLevel.map((track) => (
-              <Link
-                key={track.slug}
-                href={`/${locale}/mentorship/${track.slug}`}
-                className="group flex flex-col overflow-hidden rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 shadow-elev-1 transition-all duration-500 hover:border-gold-600 hover:shadow-elev-3"
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-ink-900">
-                  <Image
-                    src={track.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full bg-gold-600 px-2.5 py-1 text-caption font-bold uppercase tracking-wider text-ink-900">
-                    {gleLabel(track)}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-8">
-                  <h4 className="text-heading-3 text-ink-900 transition-colors group-hover:text-gold-hover">
-                    {track.name}
-                  </h4>
-                  <p className="mt-2 flex items-start gap-2 text-body-s text-ink-500">
-                    <Users className="mt-0.5 h-4 w-4 shrink-0 text-gold-hover" aria-hidden />
-                    {track.audience}
-                  </p>
-
-                  {/* Course facts removed: duration, weekly hours and cohort
-                      dates described a programme shape that is not published.
-                      What a track involves is shared on joining. */}
-
-                  <ul className="mt-6 space-y-2.5">
-                    {track.outcomes.slice(0, 3).map((outcome) => (
-                      <li key={outcome} className="flex items-start gap-3 text-body-s text-ink-700">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-600" aria-hidden />
-                        {outcome}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* "Global Leadership Executive I" in a pill beside an
-                      uppercase, wide-tracked CTA left both wrapping in a
-                      narrow card. The label now sits on its own line as an
-                      eyebrow, and the CTA keeps one line. */}
-                  <div className="mt-auto pt-8">
-                    <span className="block text-caption font-semibold uppercase tracking-[0.14em] text-ink-500">
-                      {gleLabel(track)}
-                    </span>
-                    <span className="mt-2.5 inline-flex items-center gap-1.5 whitespace-nowrap text-body-s font-bold text-gold-hover">
-                      {c.exploreTrackCta}
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" aria-hidden />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
         </Container>
       </Section>
 

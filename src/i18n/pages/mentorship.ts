@@ -67,7 +67,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     title: "Global Leadership Executive",
     subtitle:
       "A structured pathway for leaders ready to grow and step into greater responsibility. Choose the track that meets you where you are, and learn from mentors who have walked the road.",
-    exploreTracksCta: "Explore the Tracks",
+    exploreTracksCta: "Explore Mentorship Tracks",
     progressionTitle: "One programme, three levels",
     progressionBody:
       "Global Leadership Executive is a single formation path in three levels. You enter where your responsibility actually sits today, and each level prepares you for the next: character before position, sustainability before scale, multiplication before legacy.",
@@ -84,7 +84,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     closingBody:
       "Take the leadership assessment and discover the track that matches your current season.",
     takeAssessmentCta: "Take Leadership Assessment",
-    applyNow: "Apply Now",
+    applyNow: "Join Mentorship",
     viewExpectations: "View Expectations",
     curatedTitle: "Intentionally Curated",
     curatedSubtitle:
@@ -130,10 +130,10 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineCohortStartLabel: "Invitation",
     eligibilityTitle: "Eligibility Checklist",
     faqTitle: "Frequent Enquiries",
-    readyTitle: "Ready to apply?",
+    readyTitle: "Ready to join?",
     readyBody:
       "Join the waitlist and we will send your invitation when the mentorship app opens.",
-    beginApplicationCta: "Begin Application",
+    beginApplicationCta: "Join Mentorship",
   },
   fr: {
     metaTitle: "Global Leadership Executive",
@@ -143,7 +143,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     title: "Global Leadership Executive",
     subtitle:
       "Un cheminement structuré pour les leaders prêts à être formés, corrigés, équipés et envoyés vers de plus grandes responsabilités. Choisissez le parcours qui vous rejoint là où vous êtes, et grandissez auprès de mentors qui ont parcouru le chemin.",
-    exploreTracksCta: "Découvrir les parcours",
+    exploreTracksCta: "Découvrir les parcours de mentorat",
     progressionTitle: "Un programme, trois niveaux",
     progressionBody:
       "Global Leadership Executive est un seul chemin de formation en trois niveaux. Vous entrez là où se situe réellement votre responsabilité aujourd'hui, et chaque niveau prépare le suivant : le caractère avant la position, la durabilité avant l'échelle, la multiplication avant l'héritage.",
@@ -160,7 +160,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     closingBody:
       "Passez l'évaluation de leadership, elle vous oriente vers le parcours conçu pour votre saison.",
     takeAssessmentCta: "Faire l'évaluation de leadership",
-    applyNow: "Postuler maintenant",
+    applyNow: "Rejoindre le mentorat",
     viewExpectations: "Voir les attentes",
     curatedTitle: "Soigneusement conçu",
     curatedSubtitle:
@@ -206,10 +206,10 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineCohortStartLabel: "Invitation",
     eligibilityTitle: "Liste d'éligibilité",
     faqTitle: "Questions fréquentes",
-    readyTitle: "Prêt à postuler ?",
+    readyTitle: "Prêt à nous rejoindre ?",
     readyBody:
       "Rejoignez la liste d'attente et nous vous enverrons votre invitation à l'ouverture de l'application.",
-    beginApplicationCta: "Commencer la candidature",
+    beginApplicationCta: "Rejoindre le mentorat",
   },
   pt: {
     metaTitle: "Global Leadership Executive",
@@ -219,7 +219,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     title: "Global Leadership Executive",
     subtitle:
       "Um caminho estruturado para líderes prontos a ser formados, corrigidos, equipados e enviados para maiores responsabilidades. Escolha o percurso que o encontra onde está, e cresça sob mentores que já percorreram o caminho.",
-    exploreTracksCta: "Explorar os percursos",
+    exploreTracksCta: "Explorar os percursos do mentorado",
     progressionTitle: "Um programa, três níveis",
     progressionBody:
       "O Global Leadership Executive é um único percurso de formação em três níveis. Você entra onde a sua responsabilidade realmente está hoje, e cada nível prepara o seguinte: carácter antes da posição, sustentabilidade antes da escala, multiplicação antes do legado.",
@@ -236,7 +236,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     closingBody:
       "Faça a avaliação de liderança, ela indica-lhe o percurso criado para a sua estação.",
     takeAssessmentCta: "Fazer a Avaliação de Liderança",
-    applyNow: "Candidatar-se agora",
+    applyNow: "Entrar no Mentorado",
     viewExpectations: "Ver expectativas",
     curatedTitle: "Cuidadosamente concebido",
     curatedSubtitle:
@@ -282,10 +282,10 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineCohortStartLabel: "Convite",
     eligibilityTitle: "Lista de Elegibilidade",
     faqTitle: "Perguntas Frequentes",
-    readyTitle: "Pronto para se candidatar?",
+    readyTitle: "Pronto para entrar?",
     readyBody:
       "Entre na lista de espera e enviaremos o seu convite quando a aplicação abrir.",
-    beginApplicationCta: "Iniciar candidatura",
+    beginApplicationCta: "Entrar no Mentorado",
   },
   sw: {
     metaTitle: "Global Leadership Executive",
@@ -295,7 +295,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     title: "Global Leadership Executive",
     subtitle:
       "Njia iliyopangwa kwa viongozi walio tayari kuundwa, kusahihishwa, kuandaliwa na kutumwa kwenye majukumu makubwa zaidi. Chagua njia inayokukuta ulipo, na ukue chini ya washauri waliopita njia hiyo.",
-    exploreTracksCta: "Chunguza Njia",
+    exploreTracksCta: "Chunguza Njia za Ushauri",
     progressionTitle: "Programu moja, viwango vitatu",
     progressionBody:
       "Global Leadership Executive ni njia moja ya malezi katika viwango vitatu. Unaingia pale ambapo jukumu lako lipo sasa, na kila kiwango kinakutayarisha kwa kinachofuata: tabia kabla ya nafasi, uendelevu kabla ya ukubwa, kuzidisha kabla ya urithi.",
@@ -312,7 +312,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     closingBody:
       "Fanya tathmini ya uongozi, inakuelekeza kwenye njia iliyoundwa kwa msimu wako.",
     takeAssessmentCta: "Fanya Tathmini ya Uongozi",
-    applyNow: "Omba Sasa",
+    applyNow: "Jiunge na Ushauri",
     viewExpectations: "Angalia Matarajio",
     curatedTitle: "Imeandaliwa kwa Makusudi",
     curatedSubtitle:
@@ -358,10 +358,10 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineCohortStartLabel: "Mwanzo wa Kikundi",
     eligibilityTitle: "Orodha ya Ustahiki",
     faqTitle: "Maswali Yanayoulizwa Mara kwa Mara",
-    readyTitle: "Uko tayari kuomba?",
+    readyTitle: "Uko tayari kujiunga?",
     readyBody:
       "Jiunge na kikundi kijacho cha viongozi waliojitolea kwa ubora wa kitaasisi na mabadiliko binafsi.",
-    beginApplicationCta: "Anza Maombi",
+    beginApplicationCta: "Jiunge na Ushauri",
   },
   ar: {
     metaTitle: "Global Leadership Executive",
@@ -371,7 +371,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     title: "Global Leadership Executive",
     subtitle:
       "مسار منظَّم للقادة المستعدين ليُشكَّلوا ويُصحَّحوا ويُجهَّزوا ويُرسَلوا إلى مسؤوليات أعظم. اختر المسار الذي يلتقيك حيث أنت، وانمُ تحت إشراف مرشدين ساروا الطريق.",
-    exploreTracksCta: "استكشف المسارات",
+    exploreTracksCta: "استكشف مسارات الإرشاد",
     progressionTitle: "برنامج واحد، ثلاثة مستويات",
     progressionBody:
       "‏Global Leadership Executive مسار تكوين واحد في ثلاثة مستويات. تبدأ من حيث تقع مسؤوليتك فعليًا اليوم، وكل مستوى يُعِدّك للذي يليه: الشخصية قبل المنصب، والاستدامة قبل التوسّع، والمضاعفة قبل الإرث.",
@@ -388,7 +388,7 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     closingBody:
       "أجرِ تقييم القيادة، فهو يوجِّهك إلى المسار المصمَّم لموسمك.",
     takeAssessmentCta: "ابدأ تقييم القيادة",
-    applyNow: "قدِّم الآن",
+    applyNow: "انضم إلى الإرشاد",
     viewExpectations: "اطّلع على التوقعات",
     curatedTitle: "مُصمَّم بعناية",
     curatedSubtitle:
@@ -434,9 +434,9 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     timelineCohortStartLabel: "بداية المجموعة",
     eligibilityTitle: "قائمة الأهلية",
     faqTitle: "الأسئلة الشائعة",
-    readyTitle: "هل أنت مستعد للتقديم؟",
+    readyTitle: "هل أنت مستعد للانضمام؟",
     readyBody:
       "انضم إلى المجموعة القادمة من القادة المكرَّسين للتميّز المؤسسي والتحوّل الشخصي.",
-    beginApplicationCta: "ابدأ التقديم",
+    beginApplicationCta: "انضم إلى الإرشاد",
   },
 };

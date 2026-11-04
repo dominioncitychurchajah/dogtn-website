@@ -50,17 +50,19 @@ export const events: EventItem[] = [
     title: "Next Level Conference",
     type: "Conference",
     institution: "Dominion City",
-    // Men's session Wed 30 Sep 8AM WAT (GMT+1); conference Thu 1 – Sun 4 Oct, opening session Thu 5PM.
-    date: "2026-09-30T07:00:00.000Z",
-    endDate: "2026-10-04T18:00:00.000Z",
-    location: "Dominion City Lagos HQ, beside Lagos Business School, Ajah, Lagos",
+    // South East edition, Aba: opening session Wed 4 Nov 5PM WAT (GMT+1),
+    // then 8AM & 5PM daily through Sun 8 Nov.
+    date: "2026-11-04T16:00:00.000Z",
+    endDate: "2026-11-08T18:00:00.000Z",
+    location:
+      "Golden Heart Place, KM3 Aba\u2013Umuahia Expressway, after Igwilo Aluminum Company, Aba, Abia State",
     online: false,
     image: "/images/events/next-level-conference-2026-oct.webp",
-    summary: "Empowerment for All Round Dominion, five days of teaching on leadership, marketplace dominion, and capacity.",
+    summary: "South East, Aba. Empowerment for All Round Dominion, five days of teaching on leadership, marketplace dominion, and capacity.",
     description:
-      "Empowerment for All Round Dominion. Five days at Dominion City Lagos HQ, 8AM and 5PM daily, with the opening session on Thursday at 5PM. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Rev. Tony Akinyemi, Dr. David Sseppuuya and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity. An exclusive men's session runs Wednesday 30th September at 8AM and 5PM, ahead of the conference from 1st to 4th October.",
+      "Empowerment for All Round Dominion. Five days at Golden Heart Place, Aba, with the opening session on Wednesday 4 November at 5PM and sessions at 8AM and 5PM daily from Thursday to Sunday. Hosted by Dr. David Ogbueli with Bishop Titus Masika, Dr. Chiefo Ejioforbiri, Dr. Niyi Adesanya, Dr. David Sseppuuya, Dr. David Ogunshola and Apst. Charles Osazuwa. Sessions cover Reigning as Priests & Kings, Financial & Marketplace Dominion, the Joseph & Esther Revolution, Excellence in Leadership, Advancement in Business & Career, and Building Capacity to Thrive in Adversity.",
     tiers: [{ name: "General", price: 0, currency: "NGN" }],
-    registrationUrl: "https://www.dominioncity.cc/en/f/next-level-conference-2026-registration",
+    registrationUrl: "https://www.dominioncity.cc/f/next-level-conference-2026-registration-form-southeast",
   },
   {
     slug: "global-leadership-summit-2026",
