@@ -201,12 +201,6 @@ export function TrailerPlayer({
                 <PlayCircle className="h-8 w-8 sm:h-10 sm:w-10" aria-hidden />
               </span>
             </span>
-            <span className="absolute bottom-4 left-4 flex flex-wrap items-center gap-2 text-start sm:bottom-5 sm:left-5">
-              <span className="rounded-full bg-[#C9A227]/90 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#0A192F]">
-                {c.eyebrow}
-              </span>
-              <span className="text-body-s font-medium text-white/90">{c.duration}</span>
-            </span>
           </button>
         )}
 

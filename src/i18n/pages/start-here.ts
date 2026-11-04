@@ -58,7 +58,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationTitle: "Not sure where to begin?",
     orientationBody:
       "Our transformation diagnostic identifies your current stage and recommends the journey best suited to your calling, in 10 questions.",
-    ctaTakeOrientation: "Take the orientation",
+    ctaTakeOrientation: "Take Leadership Assessment",
     ctaTalkMentor: "Talk to a mentor",
     chatHero: {
       greetingPre: "Hi, ",
@@ -105,7 +105,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationTitle: "Vous ne savez pas par où commencer ?",
     orientationBody:
       "Notre diagnostic de transformation identifie votre étape actuelle et recommande le parcours le mieux adapté à votre appel, en 10 questions.",
-    ctaTakeOrientation: "Faire l'orientation",
+    ctaTakeOrientation: "Faire l'évaluation de leadership",
     ctaTalkMentor: "Parler à un mentor",
     chatHero: {
       greetingPre: "Bonjour, ",
@@ -152,7 +152,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationTitle: "Não sabe por onde começar?",
     orientationBody:
       "O nosso diagnóstico de transformação identifica a sua etapa atual e recomenda a jornada mais adequada ao seu chamado, em cerca de sete minutos.",
-    ctaTakeOrientation: "Fazer a orientação",
+    ctaTakeOrientation: "Fazer a Avaliação de Liderança",
     ctaTalkMentor: "Falar com um mentor",
     chatHero: {
       greetingPre: "Olá, ",
@@ -199,7 +199,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationTitle: "Huna uhakika pa kuanzia?",
     orientationBody:
       "Uchunguzi wetu wa mabadiliko hutambua hatua yako ya sasa na kupendekeza safari inayofaa zaidi kwa wito wako, kwa takriban dakika saba.",
-    ctaTakeOrientation: "Fanya mwongozo",
+    ctaTakeOrientation: "Fanya Tathmini ya Uongozi",
     ctaTalkMentor: "Zungumza na mshauri",
     chatHero: {
       greetingPre: "Habari, ",
@@ -246,7 +246,7 @@ export const startHereCopy: Record<Locale, StartHereCopy> = {
     orientationTitle: "لست متأكدًا من أين تبدأ؟",
     orientationBody:
       "يحدد تشخيص التحوّل لدينا مرحلتك الحالية ويوصي بالرحلة الأنسب لدعوتك، في نحو سبع دقائق.",
-    ctaTakeOrientation: "ابدأ التوجيه",
+    ctaTakeOrientation: "ابدأ تقييم القيادة",
     ctaTalkMentor: "تحدث إلى مرشد",
     chatHero: {
       greetingPre: "مرحبًا، ",

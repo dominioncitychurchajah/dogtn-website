@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { SITE_URL } from "@/lib/site";
 // Self-hosted fonts (no build-time network fetch).
 import "@fontsource-variable/inter/index.css";
@@ -24,6 +25,9 @@ export const metadata: Metadata = {
     "A global network dedicated to purpose, discipleship, leadership, mentorship, and the strategic building of institutions and nations.",
 };
 
+/** Google Analytics 4 property for davidogbueli.org. */
+const GA_MEASUREMENT_ID = "G-TRHGT3JCVY";
+
 // Runs before first paint so the chosen theme never flashes.
 const themeInit = `(function(){try{var p=localStorage.getItem('dogtn-theme');var d=p==='dark'||((!p||p==='system')&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})()`;
 
@@ -44,6 +48,18 @@ export default function RootLayout({
       <body className="min-h-dvh flex flex-col bg-paper-0 text-ink-900">
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         {children}
+        {/* Google Analytics (gtag.js). Site-wide from the root layout, so it
+            loads once and survives client-side navigation. */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`}
+        </Script>
       </body>
     </html>
   );

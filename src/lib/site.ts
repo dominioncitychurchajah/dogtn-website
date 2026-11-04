@@ -10,6 +10,12 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://davidogbueli.org"
 ).replace(/\/$/, "");
 
+/**
+ * Mentorship lives in its own app: every "apply" / "join the mentorship" CTA
+ * hands off to its login rather than collecting the application here.
+ */
+export const MENTORSHIP_APP_URL = "https://dee-pee.netlify.app/login";
+
 export const SITE_NAME = "David Ogbueli · Global Transformation Network";
 
 /**
