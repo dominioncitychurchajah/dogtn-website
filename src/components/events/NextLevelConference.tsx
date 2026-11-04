@@ -23,6 +23,7 @@ import { Section, Container, SectionHeading } from "@/components/layout/Section"
 import { Button } from "@/components/ui/Button";
 import { EventHeroVideo } from "@/components/events/EventHeroVideo";
 import { EventRegistrationForm } from "@/components/events/EventRegistrationForm";
+import { LINEUP, initials } from "@/data/next-level";
 
 // ponytail: English-only copy, like the rest of the register page.
 // Rendered by /register while Next Level is the next upcoming event.
@@ -48,20 +49,6 @@ const SCHEDULE = [
   { date: "Sun · Nov 8", title: "Closing Day", body: "8AM & 5PM. The last two sessions." },
 ];
 
-const LINEUP: { name: string; role: string; image?: string }[] = [
-  { name: "Bishop Titus Masika", role: "Guest speaker", image: "titus-masika" },
-  { name: "Dr. Chiefo Ejioforbiri", role: "Guest speaker", image: "chiefo-ejioforbiri" },
-  { name: "Dr. Niyi Adesanya", role: "Guest speaker", image: "niyi-adesanya" },
-  { name: "Dr. David Sseppuuya", role: "Guest speaker", image: "david-sseppuuya" },
-  // ponytail: no portrait in /public/images/ministers yet — the card shows
-  // initials until one is added under this slug.
-  { name: "Dr. David Ogunshola", role: "Guest speaker" },
-  { name: "Apostle Charles Osazuwa", role: "Guest speaker", image: "charles-osazuwa" },
-  { name: "Peterson Okopi", role: "Music minister" },
-  { name: "Anthony Kani", role: "Music minister", image: "anthony-kani" },
-  { name: "David Nkennor", role: "Music minister", image: "david-nkennor" },
-  { name: "Min. Rhema Onuoha", role: "Music minister", image: "rhema-onuoha" },
-];
 
 // All-day block Wed 4 – Sun 8 Nov; session times live in the description.
 const CALENDAR_ICS =
@@ -252,12 +239,7 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
                     />
                   ) : (
                     <span aria-hidden className="font-display text-heading-1 text-ink-300">
-                      {sp.name
-                        .replace(/^(Dr\.|Bishop|Apostle|Rev\.|Min\.|Apst\.)\s+/, "")
-                        .split(" ")
-                        .map((w) => w[0])
-                        .join("")
-                        .slice(0, 2)}
+                      {initials(sp.name)}
                     </span>
                   )}
                 </div>
