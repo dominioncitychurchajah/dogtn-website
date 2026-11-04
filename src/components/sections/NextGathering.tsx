@@ -94,7 +94,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
   return (
     <section className="relative z-30 -mt-16 pb-6 sm:pb-8 lg:-mt-24 lg:pb-10">
       <Container>
-        <div className="flex flex-col gap-12 overflow-hidden rounded-[2rem] border border-paper-0/10 bg-ink-900 p-10 shadow-elev-4 backdrop-blur-md lg:flex-row lg:gap-16 lg:p-16">
+        <div className="flex flex-col gap-12 overflow-hidden rounded-[2rem] border border-paper-0/10 bg-ink-900 p-10 shadow-elev-4 backdrop-blur-md lg:p-12 xl:flex-row xl:gap-16 xl:p-16">
           {/* Countdown */}
           <div className="flex-1">
             {phase?.kind === "live" && (
@@ -204,7 +204,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
           </div>
 
           {/* Location & details */}
-          <div className="flex w-full flex-col justify-center border-t border-paper-0/10 pt-10 lg:w-[380px] lg:border-l lg:border-t-0 lg:pl-16 lg:pt-0">
+          <div className="flex w-full flex-col justify-center border-t border-paper-0/10 pt-10 xl:w-[380px] xl:shrink-0 xl:border-l xl:border-t-0 xl:ps-16 xl:pt-0">
             <div className="mb-8 flex items-start gap-4">
               <MapPin className="mt-0.5 h-7 w-7 shrink-0 text-gold-600" aria-hidden />
               <div>
@@ -226,7 +226,7 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
                 <dd className="text-body-m font-medium text-gold-600">{copy.parkingValue}</dd>
               </div>
             </dl>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row xl:flex-col">
               <a
                 href={watching ? LIVE_URL : `/${locale}/media`}
                 {...(watching ? { target: "_blank", rel: "noopener noreferrer" } : {})}
