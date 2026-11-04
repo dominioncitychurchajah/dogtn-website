@@ -1,1 +1,6 @@
 /  /en/  302
+
+# The mentorship application moved into the app, so the old on-site form is
+# gone. Both spellings, because the site serves trailing-slash URLs.
+/:locale/mentorship/:track/apply   https://dee-pee.netlify.app/login  302
+/:locale/mentorship/:track/apply/  https://dee-pee.netlify.app/login  302
