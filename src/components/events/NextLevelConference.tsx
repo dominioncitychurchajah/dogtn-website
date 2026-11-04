@@ -27,8 +27,11 @@ import { EventRegistrationForm } from "@/components/events/EventRegistrationForm
 // ponytail: English-only copy, like the rest of the register page.
 // Rendered by /register while Next Level is the next upcoming event.
 export const NEXT_LEVEL_SLUG = "next-level-conference";
-const PROMO_YOUTUBE_ID = "-YrEweSNqFQ";
-const MAP_QUERY = "Dominion City Lagos HQ, Lagos Business School, Ajah, Lagos";
+// The Lagos promo (-YrEweSNqFQ) has the October dates and venue burned into
+// its thumbnail, so it is withheld until the South East promo is published.
+// Set this to the Aba video id and the hero plays it again.
+const PROMO_YOUTUBE_ID: string | null = null;
+const MAP_QUERY = "Golden Heart Place, KM3 Aba-Umuahia Expressway, Aba, Abia State";
 
 const PILLARS = [
   { icon: Crown, title: "Reigning as Priests & Kings", body: "Your authority as a believer, and what it asks of you." },
@@ -40,26 +43,27 @@ const PILLARS = [
 ];
 
 const SCHEDULE = [
-  { date: "Wed · Sep 30", title: "Exclusive Men's Session", body: "8AM & 5PM. Men only." },
-  { date: "Thu · Oct 1", title: "Opening Session", body: "5PM. The first session of the main conference." },
-  { date: "Fri–Sat · Oct 2–3", title: "Main Sessions", body: "8AM & 5PM each day." },
-  { date: "Sun · Oct 4", title: "Closing Day", body: "8AM & 5PM. The last two sessions." },
+  { date: "Wed · Nov 4", title: "Opening Session", body: "5PM. The first session of the conference." },
+  { date: "Thu–Sat · Nov 5–7", title: "Main Sessions", body: "8AM & 5PM each day." },
+  { date: "Sun · Nov 8", title: "Closing Day", body: "8AM & 5PM. The last two sessions." },
 ];
 
-const LINEUP = [
+const LINEUP: { name: string; role: string; image?: string }[] = [
   { name: "Bishop Titus Masika", role: "Guest speaker", image: "titus-masika" },
   { name: "Dr. Chiefo Ejioforbiri", role: "Guest speaker", image: "chiefo-ejioforbiri" },
   { name: "Dr. Niyi Adesanya", role: "Guest speaker", image: "niyi-adesanya" },
-  { name: "Rev. Tony Akinyemi", role: "Guest speaker", image: "tony-akinyemi" },
   { name: "Dr. David Sseppuuya", role: "Guest speaker", image: "david-sseppuuya" },
+  // ponytail: no portrait in /public/images/ministers yet — the card shows
+  // initials until one is added under this slug.
+  { name: "Dr. David Ogunshola", role: "Guest speaker" },
   { name: "Apostle Charles Osazuwa", role: "Guest speaker", image: "charles-osazuwa" },
-  { name: "Min. Rhema Onuoha", role: "Music minister", image: "rhema-onuoha" },
+  { name: "Peterson Okopi", role: "Music minister" },
   { name: "Anthony Kani", role: "Music minister", image: "anthony-kani" },
-  { name: "Min. Yinka Okeleye", role: "Music minister", image: "yinka-okeleye" },
   { name: "David Nkennor", role: "Music minister", image: "david-nkennor" },
+  { name: "Min. Rhema Onuoha", role: "Music minister", image: "rhema-onuoha" },
 ];
 
-// All-day block Wed 30 Sep – Sun 4 Oct; session times live in the description.
+// All-day block Wed 4 – Sun 8 Nov; session times live in the description.
 const CALENDAR_ICS =
   "data:text/calendar;charset=utf-8," +
   encodeURIComponent(
@@ -69,12 +73,12 @@ const CALENDAR_ICS =
       "PRODID:-//DavidOgbueli//Next Level 2026//EN",
       "BEGIN:VEVENT",
       "UID:next-level-conference-2026@davidogbueli.org",
-      "DTSTAMP:20260927T000000Z",
-      "DTSTART;VALUE=DATE:20260930",
-      "DTEND;VALUE=DATE:20261005",
-      "SUMMARY:Next Level Conference 2026",
-      "LOCATION:Dominion City Lagos HQ\\, beside Lagos Business School\\, Ajah\\, Lagos",
-      "DESCRIPTION:Men's session Wed 30 Sep 8AM & 5PM. Conference 1–4 Oct\\, 8AM & 5PM daily. Opening session Thu 1 Oct 5PM.",
+      "DTSTAMP:20261104T000000Z",
+      "DTSTART;VALUE=DATE:20261104",
+      "DTEND;VALUE=DATE:20261109",
+      "SUMMARY:Next Level Conference 2026 · South East\\, Aba",
+      "LOCATION:Golden Heart Place\\, KM3 Aba–Umuahia Expressway\\, after Igwilo Aluminum Company\\, Aba\\, Abia State",
+      "DESCRIPTION:Opening session Wed 4 Nov 5PM. Sessions 8AM & 5PM daily Thu 5 – Sun 8 Nov.",
       "END:VEVENT",
       "END:VCALENDAR",
     ].join("\r\n"),
@@ -97,7 +101,9 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
       {/* Hero: the 2025 recap leads, the details follow */}
       <header className="bg-ink-900 pb-16 pt-28 text-paper-0 lg:pb-20 lg:pt-32">
         <Container>
-          <EventHeroVideo youtubeId={PROMO_YOUTUBE_ID} title="Watch: Next Level Conference 2026" />
+          {PROMO_YOUTUBE_ID && (
+            <EventHeroVideo youtubeId={PROMO_YOUTUBE_ID} title="Watch: Next Level Conference 2026" />
+          )}
           <div className="mt-10 flex flex-col gap-8 lg:mt-12 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <span className="text-caption font-semibold uppercase tracking-[0.25em] text-gold-600">
@@ -107,8 +113,8 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
                 Next Level <span className="text-gold-600">Conference</span> 2026
               </h1>
               <p className="mt-4 text-body-l text-ink-300">
-                1–4 October at Dominion City Lagos HQ, Ajah. 8AM & 5PM daily, with an exclusive
-                men&rsquo;s session on Wednesday 30 September.
+                South East, Aba. 4–8 November at Golden Heart Place, Aba. 8AM &amp; 5PM daily, with
+                the opening session on Wednesday 4 November at 5PM.
               </p>
             </div>
             <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
@@ -183,7 +189,7 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
           {/* Give before asking: the calendar entry needs no sign-up. */}
           <a
             href={CALENDAR_ICS}
-            download="next-level-conference-2026.ics"
+            download="next-level-conference-2026-aba.ics"
             className="mt-10 inline-flex items-center gap-2 rounded-full border border-ink-900 px-5 py-2.5 text-body-s font-semibold text-ink-900 hover:bg-ink-900 hover:text-paper-0"
           >
             <CalendarPlus className="h-4 w-4" aria-hidden /> Add to my calendar
@@ -211,8 +217,8 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
               <h3 className="mt-5 font-display text-heading-2 text-ink-900">Dr. David Ogbueli</h3>
               <p className="mt-4 text-body-l text-ink-500">
                 Dr. David Ogbueli founded Dominion City in Enugu in 1991 and has spent the years since
-                training leaders in the church and in the marketplace. He hosts Next Level at the
-                Lagos HQ.
+                training leaders in the church and in the marketplace. He hosts this South East
+                edition in Aba.
               </p>
               <Link
                 href={`/${loc}/his-story`}
@@ -230,19 +236,30 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
           <SectionHeading
             eyebrow="The lineup"
             title="Ministering this time."
-            intro="Six guest speakers and four music ministers join Dr. Ogbueli this year."
+            intro="Six guest speakers and four music ministers join Dr. Ogbueli in Aba."
           />
           <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {LINEUP.map((sp) => (
               <li key={sp.name} className="overflow-hidden rounded-[var(--radius-l)] border border-ink-100 bg-paper-0">
-                <div className="relative aspect-[4/5] bg-paper-50">
-                  <Image
-                    src={`/images/ministers/${sp.image}.webp`}
-                    alt={sp.name}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                    className="object-cover object-top"
-                  />
+                <div className="relative grid aspect-[4/5] place-items-center bg-paper-50">
+                  {sp.image ? (
+                    <Image
+                      src={`/images/ministers/${sp.image}.webp`}
+                      alt={sp.name}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <span aria-hidden className="font-display text-heading-1 text-ink-300">
+                      {sp.name
+                        .replace(/^(Dr\.|Bishop|Apostle|Rev\.|Min\.|Apst\.)\s+/, "")
+                        .split(" ")
+                        .map((w) => w[0])
+                        .join("")
+                        .slice(0, 2)}
+                    </span>
+                  )}
                 </div>
                 <div className="p-4">
                   <h3 className="text-body-m font-semibold text-ink-900">{sp.name}</h3>
@@ -256,10 +273,10 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
 
       <Section surface="alt" id="location" className="scroll-mt-32">
         <Container>
-          <SectionHeading eyebrow="Plan your visit" title="Find us in Ajah." />
+          <SectionHeading eyebrow="Plan your visit" title="Find us in Aba." />
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="rounded-[var(--radius-l)] border border-ink-100 bg-paper-0 p-8">
-              <h3 className="font-display text-heading-3 text-ink-900">Dominion City Lagos HQ</h3>
+              <h3 className="font-display text-heading-3 text-ink-900">Golden Heart Place, Aba</h3>
               <ul className="mt-6 space-y-4 text-body-m text-ink-500">
                 <li className="flex gap-3">
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
@@ -267,7 +284,7 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
                 </li>
                 <li className="flex gap-3">
                   <Clock className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
-                  Sessions at 8AM & 5PM daily. Opening session Thursday 1 October, 5PM.
+                  Sessions at 8AM &amp; 5PM daily. Opening session Wednesday 4 November, 5PM.
                 </li>
                 <li className="flex gap-3">
                   <Car className="mt-0.5 h-5 w-5 shrink-0 text-gold-600" aria-hidden />
@@ -288,7 +305,7 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
               </a>
             </div>
             <iframe
-              title="Map to Dominion City Lagos HQ"
+              title="Map to Golden Heart Place, Aba"
               src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -365,7 +382,7 @@ export function NextLevelConference({ event, loc }: { event: EventItem; loc: Loc
         <Container>
           <h2 className="font-display text-heading-1">Don&rsquo;t miss the opening session.</h2>
           <p className="mx-auto mt-3 max-w-xl text-body-l text-ink-900/80">
-            Thursday 1 October, 5PM, at Dominion City Lagos HQ. Entry is free.
+            Wednesday 4 November, 5PM, at Golden Heart Place, Aba. Entry is free.
           </p>
           <Link
             href={registerUrl}
