@@ -2,12 +2,14 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, MapPin, Radio } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { HomeCopy } from "@/i18n/pages/home";
 import { Container } from "@/components/layout/Section";
 import { cn } from "@/lib/utils";
 import { events } from "@/data/events";
+import { HOST, LINEUP, initials } from "@/data/next-level";
 
 /** Where the conference streams. /live opens whatever is live on the channel. */
 export const LIVE_URL = "https://www.youtube.com/@DominionCity/live";
@@ -162,6 +164,43 @@ export function NextGathering({ copy, locale }: { copy: HomeCopy["nextGathering"
                 ))}
               </div>
             )}
+
+            {/* Who is ministering. Faces here, full cards on /register. */}
+            <Link
+              href={`/${locale}/register#lineup`}
+              className="group mt-10 flex flex-wrap items-center gap-x-4 gap-y-3"
+            >
+              {/* Overlap comes from a negative start margin on every face plus
+                  matching padding on the list, so the row can wrap on a narrow
+                  phone without the first face of a new row sticking out. */}
+              <ul className="flex flex-wrap gap-y-2 ps-3">
+                {[HOST, ...LINEUP].map((m) => (
+                  <li
+                    key={m.name}
+                    title={m.name}
+                    className="relative -ms-3 grid h-10 w-10 place-items-center overflow-hidden rounded-full border-2 border-ink-900 bg-ink-700 ring-1 ring-paper-0/10 sm:h-11 sm:w-11"
+                  >
+                    {m.image ? (
+                      <Image
+                        src={`/images/ministers/${m.image}.webp`}
+                        alt={m.name}
+                        fill
+                        sizes="44px"
+                        className="object-cover object-top"
+                      />
+                    ) : (
+                      <span aria-hidden className="text-caption font-bold text-ink-300">
+                        {initials(m.name)}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <span className="inline-flex items-center gap-1.5 text-body-m text-ink-300 group-hover:text-paper-0">
+                {copy.lineupNote.replace("{n}", String(LINEUP.length))}
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
+              </span>
+            </Link>
           </div>
 
           {/* Location & details */}
