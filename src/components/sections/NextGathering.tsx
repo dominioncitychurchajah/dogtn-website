@@ -25,17 +25,18 @@ function YouTubeLogo({ className }: { className?: string }) {
   );
 }
 
-// Next Level 2026 sessions (UTC; Lagos is UTC+1). day 0 = Wednesday men's session.
+// Next Level 2026 South East sessions (UTC; Aba is UTC+1). Day 1 is the
+// Wednesday opening session; mornings are 8AM, evenings 5PM.
 const SESSIONS: { start: string; day: number; part: "morning" | "evening" }[] = [
-  { start: "2026-09-30T07:00:00Z", day: 0, part: "morning" },
-  { start: "2026-09-30T16:00:00Z", day: 0, part: "evening" },
-  { start: "2026-10-01T16:00:00Z", day: 1, part: "evening" }, // opening session
-  { start: "2026-10-02T07:00:00Z", day: 2, part: "morning" },
-  { start: "2026-10-02T16:00:00Z", day: 2, part: "evening" },
-  { start: "2026-10-03T07:00:00Z", day: 3, part: "morning" },
-  { start: "2026-10-03T16:00:00Z", day: 3, part: "evening" },
-  { start: "2026-10-04T07:00:00Z", day: 4, part: "morning" },
-  { start: "2026-10-04T16:00:00Z", day: 4, part: "evening" },
+  { start: "2026-11-04T16:00:00Z", day: 1, part: "evening" }, // opening session
+  { start: "2026-11-05T07:00:00Z", day: 2, part: "morning" },
+  { start: "2026-11-05T16:00:00Z", day: 2, part: "evening" },
+  { start: "2026-11-06T07:00:00Z", day: 3, part: "morning" },
+  { start: "2026-11-06T16:00:00Z", day: 3, part: "evening" },
+  { start: "2026-11-07T07:00:00Z", day: 4, part: "morning" },
+  { start: "2026-11-07T16:00:00Z", day: 4, part: "evening" },
+  { start: "2026-11-08T07:00:00Z", day: 5, part: "morning" },
+  { start: "2026-11-08T16:00:00Z", day: 5, part: "evening" },
 ];
 // ponytail: a session counts as "live" from 10 min before to 3 h after its start;
 // adjust if sessions run longer.
