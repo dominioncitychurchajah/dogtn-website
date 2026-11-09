@@ -37,9 +37,6 @@ export default async function MentorshipPage({
           way in. */}
       <section id="start" className="scroll-mt-28 bg-ink-900 px-5 py-24 text-paper-0 lg:px-16 lg:py-32">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="mb-6 block text-caption font-semibold uppercase tracking-[0.2em] text-gold-600">
-            {c.portalEyebrow}
-          </span>
           <h1 className="text-display-l leading-tight text-paper-0">{c.portalHeading}</h1>
           <p className="mx-auto mt-6 max-w-2xl text-body-l text-ink-300">{c.subtitle}</p>
         </div>

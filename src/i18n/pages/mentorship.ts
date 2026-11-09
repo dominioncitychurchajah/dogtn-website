@@ -17,7 +17,6 @@ export interface MentorshipCopy {
   subtitle: string;
   exploreTracksCta: string;
   /** The two doors into the mentorship app, used on the lander and the homepage. */
-  portalEyebrow: string;
   portalHeading: string;
   portalReturningTitle: string;
   portalReturningBody: string;
@@ -70,7 +69,6 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "A structured pathway for leaders ready to grow and step into greater responsibility. Choose the track that meets you where you are, and learn from mentors who have walked the road.",
     exploreTracksCta: "Explore Mentorship Tracks",
-    portalEyebrow: "Mentorship app",
     portalHeading: "Start, or continue, your mentorship",
     portalReturningTitle: "Already a student",
     portalReturningBody: "Pick up your track where you left off.",
@@ -148,7 +146,6 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "Un cheminement structuré pour les leaders prêts à être formés, corrigés, équipés et envoyés vers de plus grandes responsabilités. Choisissez le parcours qui vous rejoint là où vous êtes, et grandissez auprès de mentors qui ont parcouru le chemin.",
     exploreTracksCta: "Découvrir les parcours de mentorat",
-    portalEyebrow: "Application de mentorat",
     portalHeading: "Commencez ou poursuivez votre mentorat",
     portalReturningTitle: "Déjà inscrit",
     portalReturningBody: "Reprenez votre parcours là où vous l'avez laissé.",
@@ -226,7 +223,6 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "Um caminho estruturado para líderes prontos a ser formados, corrigidos, equipados e enviados para maiores responsabilidades. Escolha o percurso que o encontra onde está, e cresça sob mentores que já percorreram o caminho.",
     exploreTracksCta: "Explorar os percursos do mentorado",
-    portalEyebrow: "Aplicação do mentorado",
     portalHeading: "Comece ou continue o seu mentorado",
     portalReturningTitle: "Já é aluno",
     portalReturningBody: "Retome o seu percurso onde parou.",
@@ -304,7 +300,6 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "Njia iliyopangwa kwa viongozi walio tayari kuundwa, kusahihishwa, kuandaliwa na kutumwa kwenye majukumu makubwa zaidi. Chagua njia inayokukuta ulipo, na ukue chini ya washauri waliopita njia hiyo.",
     exploreTracksCta: "Chunguza Njia za Ushauri",
-    portalEyebrow: "Programu ya ushauri",
     portalHeading: "Anza au endelea na ushauri wako",
     portalReturningTitle: "Tayari ni mwanafunzi",
     portalReturningBody: "Endelea na njia yako pale ulipoishia.",
@@ -382,7 +377,6 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "مسار منظَّم للقادة المستعدين ليُشكَّلوا ويُصحَّحوا ويُجهَّزوا ويُرسَلوا إلى مسؤوليات أعظم. اختر المسار الذي يلتقيك حيث أنت، وانمُ تحت إشراف مرشدين ساروا الطريق.",
     exploreTracksCta: "استكشف مسارات الإرشاد",
-    portalEyebrow: "تطبيق الإرشاد",
     portalHeading: "ابدأ إرشادك أو تابعه",
     portalReturningTitle: "طالب حالي",
     portalReturningBody: "تابع مسارك من حيث توقفت.",

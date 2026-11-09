@@ -177,9 +177,6 @@ export function HomepageClient({ locale }: { locale: string }) {
       <section className="bg-[#0A192F] py-16 sm:py-20">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-3 block text-xs font-bold uppercase tracking-widest text-[#C9A227] sm:text-sm">
-              {mentorship.portalEyebrow}
-            </span>
             <h2 className="font-serif text-[28px] leading-[1.18] text-balance text-white sm:text-[40px]">
               {mentorship.portalHeading}
             </h2>
