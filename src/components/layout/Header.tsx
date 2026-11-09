@@ -152,7 +152,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
               target="_blank"
               rel="noopener noreferrer"
               aria-label={strings.studentLogin}
-              className="inline-flex items-center gap-1.5 rounded-full p-2 text-body-s font-semibold hover:bg-current/10 min-[1180px]:px-3"
+              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full p-2 text-body-s font-semibold hover:bg-current/10 min-[1180px]:px-3"
             >
               <LogIn className="h-5 w-5 min-[1180px]:h-4 min-[1180px]:w-4" aria-hidden />
               {/* Most students are on a phone: the icon stays, the word goes. */}
