@@ -13,6 +13,7 @@ export interface NavStrings {
   library: string;
   partnership: string;
   give: string;
+  studentLogin: string;
   myJourney: string;
   search: string;
   account: string;

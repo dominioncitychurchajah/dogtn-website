@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Search, Menu, ChevronDown } from "lucide-react";
+import { Search, Menu, ChevronDown, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -13,6 +13,8 @@ import { MegaMenu } from "./MegaMenu";
 import { buildNav, type NavStrings } from "./nav-config";
 import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
+import { MENTORSHIP_LOGIN_URL } from "@/lib/site";
+
 export function Header({ locale, strings }: { locale: Locale; strings: NavStrings }) {
   const pathname = usePathname();
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
@@ -143,6 +145,19 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
             </Link>
             <ThemeToggle className="hidden min-[1340px]:flex" />
             <LanguageSwitcher locale={locale} className="hidden sm:block" />
+            {/* Students arrive looking for the app, not for the site: the way
+                in is on every page rather than only on the mentorship lander. */}
+            <a
+              href={MENTORSHIP_LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={strings.studentLogin}
+              className="inline-flex items-center gap-1.5 rounded-full p-2 text-body-s font-semibold hover:bg-current/10 min-[1180px]:px-3"
+            >
+              <LogIn className="h-5 w-5 min-[1180px]:h-4 min-[1180px]:w-4" aria-hidden />
+              {/* Most students are on a phone: the icon stays, the word goes. */}
+              <span className="hidden min-[1180px]:inline">{strings.studentLogin}</span>
+            </a>
             <Button href={`/${locale}/leadership/assessment`} size="s" className="hidden sm:inline-flex">
               {strings.give}
             </Button>
@@ -169,6 +184,7 @@ export function Header({ locale, strings }: { locale: Locale; strings: NavString
         groups={groups}
         locale={locale}
         ctaLabel={strings.give}
+        studentLoginLabel={strings.studentLogin}
       />
     </>
   );

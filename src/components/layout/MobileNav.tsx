@@ -3,11 +3,12 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, LogIn, X } from "lucide-react";
 import type { NavGroup } from "./nav-config";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { MENTORSHIP_LOGIN_URL } from "@/lib/site";
 import type { Locale } from "@/i18n/config";
 
 export function MobileNav({
@@ -16,12 +17,14 @@ export function MobileNav({
   groups,
   locale,
   ctaLabel,
+  studentLoginLabel,
 }: {
   open: boolean;
   onClose: () => void;
   groups: NavGroup[];
   locale: Locale;
   ctaLabel: string;
+  studentLoginLabel: string;
 }) {
   React.useEffect(() => {
     if (open) document.body.style.overflow = "hidden";
@@ -145,6 +148,16 @@ export function MobileNav({
         <span className="text-body-s text-ink-300">Appearance</span>
         <ThemeToggle className="flex" />
       </div>
+      <a
+        href={MENTORSHIP_LOGIN_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClose}
+        className="flex items-center gap-2.5 border-t border-paper-0/10 px-5 py-4 text-body-m font-semibold text-paper-0"
+      >
+        <LogIn className="h-5 w-5 text-gold-600" aria-hidden />
+        {studentLoginLabel}
+      </a>
       <div className="flex items-center justify-between gap-4 border-t border-paper-0/10 px-5 py-4">
         <LanguageSwitcher locale={locale} />
         <Button href={`/${locale}/leadership/assessment`} onClick={onClose} className="flex-1">

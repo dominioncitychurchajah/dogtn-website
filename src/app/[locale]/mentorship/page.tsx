@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ChevronDown } from "lucide-react";
 import { Section, Container } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -7,7 +8,7 @@ import { mentorshipCopy } from "@/i18n/pages/mentorship";
 import { tracksByLevel } from "@/data/mentorship";
 import { formatDate } from "@/lib/utils";
 import { buildMetadata } from "@/lib/seo";
-import { MENTORSHIP_APP_URL } from "@/lib/site";
+import { PortalDoors } from "@/components/mentorship/PortalDoors";
 
 export async function generateMetadata({
   params,
@@ -31,24 +32,33 @@ export default async function MentorshipPage({
 
   return (
     <>
-      {/* Hero — deep navy, centered (consistent with the track page) */}
-      <section className="bg-ink-900 px-5 py-28 text-paper-0 lg:px-16 lg:py-40">
+      {/* Hero — the two doors come before any description of the programme:
+          a returning student should not have to read marketing to find the
+          way in. */}
+      <section id="start" className="scroll-mt-28 bg-ink-900 px-5 py-24 text-paper-0 lg:px-16 lg:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <span className="mb-6 block text-caption font-semibold uppercase tracking-[0.2em] text-gold-600">
-            {c.eyebrow}
+            {c.portalEyebrow}
           </span>
-          <h1 className="text-display-l leading-tight text-paper-0">{c.title}</h1>
-          <p className="mx-auto mt-8 max-w-2xl text-body-l text-ink-300">{c.subtitle}</p>
-          <div className="mt-12 flex justify-center">
-            <Button href={MENTORSHIP_APP_URL} size="l" className="uppercase tracking-wider">
-              {c.exploreTracksCta}
-            </Button>
-          </div>
+          <h1 className="text-display-l leading-tight text-paper-0">{c.portalHeading}</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-body-l text-ink-300">{c.subtitle}</p>
+        </div>
+
+        <PortalDoors locale={loc} className="mx-auto mt-12 max-w-3xl text-start" />
+
+        <div className="mt-12 text-center">
+          <a
+            href="#tracks"
+            className="inline-flex items-center gap-2 text-body-m font-semibold text-paper-0/70 transition-colors hover:text-gold-600"
+          >
+            {c.exploreTracksCta}
+            <ChevronDown className="h-4 w-4" aria-hidden />
+          </a>
         </div>
       </section>
 
       {/* The progression: one programme, three levels */}
-      <Section surface="alt" id="tracks">
+      <Section surface="alt" id="tracks" className="scroll-mt-24">
         <Container>
           <div className="mx-auto mb-14 max-w-3xl text-center">
             <h2 className="text-heading-1 text-ink-900">{c.progressionTitle}</h2>
