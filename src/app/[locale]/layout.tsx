@@ -55,6 +55,7 @@ export default async function LocaleLayout({
     library: t(dict, "nav.library"),
     partnership: t(dict, "nav.partnership"),
     give: t(dict, "nav.give"),
+    studentLogin: t(dict, "nav.studentLogin"),
     myJourney: t(dict, "nav.myJourney"),
     search: t(dict, "nav.search"),
     account: t(dict, "nav.account"),

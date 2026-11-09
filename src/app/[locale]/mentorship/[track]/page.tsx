@@ -12,7 +12,7 @@ import { tracks, getTrack } from "@/data/mentorship";
 import { buildMetadata, localePath } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqPageSchema, graph } from "@/lib/schema";
-import { absoluteUrl, MENTORSHIP_APP_URL } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return tracks.map((t) => ({ track: t.slug }));
@@ -49,7 +49,9 @@ export default async function TrackPage({
   const loc: Locale = isLocale(locale) ? locale : defaultLocale;
   const c = mentorshipCopy[loc];
 
-  const applyHref = MENTORSHIP_APP_URL;
+  // The lander holds the two doors; a track page should not have to guess
+  // whether its reader is a returning student or a new one.
+  const applyHref = `/${locale}/mentorship#start`;
 
   return (
     <>

@@ -11,10 +11,13 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 /**
- * Mentorship lives in its own app: every "apply" / "join the mentorship" CTA
- * hands off to its login rather than collecting the application here.
+ * Mentorship runs in its own app. The site never collects an application; it
+ * shows students the two doors and hands off. Returning students already have
+ * accounts there, so the log-in door is the one most people need.
  */
-export const MENTORSHIP_APP_URL = "https://dee-pee.netlify.app/login";
+const MENTORSHIP_APP = "https://dee-pee.netlify.app";
+export const MENTORSHIP_LOGIN_URL = `${MENTORSHIP_APP}/login`;
+export const MENTORSHIP_REGISTER_URL = `${MENTORSHIP_APP}/register`;
 
 export const SITE_NAME = "David Ogbueli · Global Transformation Network";
 

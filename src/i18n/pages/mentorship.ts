@@ -16,6 +16,15 @@ export interface MentorshipCopy {
   title: string;
   subtitle: string;
   exploreTracksCta: string;
+  /** The two doors into the mentorship app, used on the lander and the homepage. */
+  portalHeading: string;
+  portalReturningTitle: string;
+  portalReturningBody: string;
+  portalLoginCta: string;
+  portalNewTitle: string;
+  portalNewBody: string;
+  portalRegisterCta: string;
+  portalHelpBody: string;
   /** Progression narrative: I -> II -> III. */
   progressionTitle: string;
   progressionBody: string;
@@ -60,6 +69,15 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "A structured pathway for leaders ready to grow and step into greater responsibility. Choose the track that meets you where you are, and learn from mentors who have walked the road.",
     exploreTracksCta: "Explore Mentorship Tracks",
+    portalHeading: "Start, or continue, your mentorship",
+    portalReturningTitle: "Already a student",
+    portalReturningBody: "Pick up your track where you left off.",
+    portalLoginCta: "Log in",
+    portalNewTitle: "New here",
+    portalNewBody: "Create your account and start at the level that fits you.",
+    portalRegisterCta: "Register",
+    portalHelpBody:
+      "Sign in with the email you registered with. If the password will not work, use \u201cforgot password\u201d on the log-in page \u2014 or call us and we will sort it out:",
     progressionTitle: "One programme, three levels",
     progressionBody:
       "Global Leadership Executive is a single formation path in three levels. You enter where your responsibility actually sits today, and each level prepares you for the next: character before position, sustainability before scale, multiplication before legacy.",
@@ -128,6 +146,15 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "Un cheminement structuré pour les leaders prêts à être formés, corrigés, équipés et envoyés vers de plus grandes responsabilités. Choisissez le parcours qui vous rejoint là où vous êtes, et grandissez auprès de mentors qui ont parcouru le chemin.",
     exploreTracksCta: "Découvrir les parcours de mentorat",
+    portalHeading: "Commencez ou poursuivez votre mentorat",
+    portalReturningTitle: "Déjà inscrit",
+    portalReturningBody: "Reprenez votre parcours là où vous l'avez laissé.",
+    portalLoginCta: "Se connecter",
+    portalNewTitle: "Nouveau ici",
+    portalNewBody: "Créez votre compte et commencez au niveau qui vous correspond.",
+    portalRegisterCta: "S'inscrire",
+    portalHelpBody:
+      "Connectez-vous avec l'adresse e-mail de votre inscription. Si le mot de passe ne fonctionne pas, utilisez « mot de passe oublié » sur la page de connexion, ou appelez-nous :",
     progressionTitle: "Un programme, trois niveaux",
     progressionBody:
       "Global Leadership Executive est un seul chemin de formation en trois niveaux. Vous entrez là où se situe réellement votre responsabilité aujourd'hui, et chaque niveau prépare le suivant : le caractère avant la position, la durabilité avant l'échelle, la multiplication avant l'héritage.",
@@ -196,6 +223,15 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "Um caminho estruturado para líderes prontos a ser formados, corrigidos, equipados e enviados para maiores responsabilidades. Escolha o percurso que o encontra onde está, e cresça sob mentores que já percorreram o caminho.",
     exploreTracksCta: "Explorar os percursos do mentorado",
+    portalHeading: "Comece ou continue o seu mentorado",
+    portalReturningTitle: "Já é aluno",
+    portalReturningBody: "Retome o seu percurso onde parou.",
+    portalLoginCta: "Entrar",
+    portalNewTitle: "Novo por aqui",
+    portalNewBody: "Crie a sua conta e comece no nível certo para si.",
+    portalRegisterCta: "Registar",
+    portalHelpBody:
+      "Entre com o e-mail do seu registo. Se a palavra-passe não funcionar, use «esqueci a palavra-passe» na página de entrada, ou ligue-nos:",
     progressionTitle: "Um programa, três níveis",
     progressionBody:
       "O Global Leadership Executive é um único percurso de formação em três níveis. Você entra onde a sua responsabilidade realmente está hoje, e cada nível prepara o seguinte: carácter antes da posição, sustentabilidade antes da escala, multiplicação antes do legado.",
@@ -264,6 +300,15 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "Njia iliyopangwa kwa viongozi walio tayari kuundwa, kusahihishwa, kuandaliwa na kutumwa kwenye majukumu makubwa zaidi. Chagua njia inayokukuta ulipo, na ukue chini ya washauri waliopita njia hiyo.",
     exploreTracksCta: "Chunguza Njia za Ushauri",
+    portalHeading: "Anza au endelea na ushauri wako",
+    portalReturningTitle: "Tayari ni mwanafunzi",
+    portalReturningBody: "Endelea na njia yako pale ulipoishia.",
+    portalLoginCta: "Ingia",
+    portalNewTitle: "Mgeni hapa",
+    portalNewBody: "Fungua akaunti yako na uanze ngazi inayokufaa.",
+    portalRegisterCta: "Jisajili",
+    portalHelpBody:
+      "Ingia kwa barua pepe uliyotumia kujisajili. Nenosiri likikataa, tumia \u201cumesahau nenosiri\u201d kwenye ukurasa wa kuingia, au tupigie:",
     progressionTitle: "Programu moja, viwango vitatu",
     progressionBody:
       "Global Leadership Executive ni njia moja ya malezi katika viwango vitatu. Unaingia pale ambapo jukumu lako lipo sasa, na kila kiwango kinakutayarisha kwa kinachofuata: tabia kabla ya nafasi, uendelevu kabla ya ukubwa, kuzidisha kabla ya urithi.",
@@ -332,6 +377,15 @@ export const mentorshipCopy: Record<Locale, MentorshipCopy> = {
     subtitle:
       "مسار منظَّم للقادة المستعدين ليُشكَّلوا ويُصحَّحوا ويُجهَّزوا ويُرسَلوا إلى مسؤوليات أعظم. اختر المسار الذي يلتقيك حيث أنت، وانمُ تحت إشراف مرشدين ساروا الطريق.",
     exploreTracksCta: "استكشف مسارات الإرشاد",
+    portalHeading: "ابدأ إرشادك أو تابعه",
+    portalReturningTitle: "طالب حالي",
+    portalReturningBody: "تابع مسارك من حيث توقفت.",
+    portalLoginCta: "تسجيل الدخول",
+    portalNewTitle: "جديد هنا",
+    portalNewBody: "أنشئ حسابك وابدأ من المستوى المناسب لك.",
+    portalRegisterCta: "إنشاء حساب",
+    portalHelpBody:
+      "سجّل الدخول بالبريد الإلكتروني الذي استخدمته. إذا لم تنجح كلمة المرور، استخدم «نسيت كلمة المرور» في صفحة الدخول، أو اتصل بنا:",
     progressionTitle: "برنامج واحد، ثلاثة مستويات",
     progressionBody:
       "‏Global Leadership Executive مسار تكوين واحد في ثلاثة مستويات. تبدأ من حيث تقع مسؤوليتك فعليًا اليوم، وكل مستوى يُعِدّك للذي يليه: الشخصية قبل المنصب، والاستدامة قبل التوسّع، والمضاعفة قبل الإرث.",
