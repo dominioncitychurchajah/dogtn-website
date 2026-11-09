@@ -45,7 +45,6 @@ export interface HomeCopy {
     mensSession: string;
     endedBody: string;
     watchReplays: string;
-    lineupNote: string;
   };
   journeyStrip: {
     growSpiritually: string;
@@ -183,7 +182,6 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       mensSession: "Exclusive men's session",
       endedBody: "Thank you for joining us. Every session is available to watch again on YouTube.",
       watchReplays: "Watch the sessions again",
-      lineupNote: "Dr. David Ogbueli with {n} guest ministers",
     },
     journeyStrip: {
       growSpiritually: "Grow Spiritually",
@@ -320,7 +318,6 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       mensSession: "Session réservée aux hommes",
       endedBody: "Merci d'avoir été avec nous. Toutes les sessions sont à revoir sur YouTube.",
       watchReplays: "Revoir les sessions",
-      lineupNote: "Dr David Ogbueli et {n} ministres invités",
     },
     journeyStrip: {
       growSpiritually: "Grandir Spirituellement",
@@ -458,7 +455,6 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       mensSession: "Sessão exclusiva para homens",
       endedBody: "Obrigado por estar connosco. Todas as sessões podem ser revistas no YouTube.",
       watchReplays: "Rever as sessões",
-      lineupNote: "Dr. David Ogbueli com {n} ministros convidados",
     },
     journeyStrip: {
       growSpiritually: "Crescer Espiritualmente",
@@ -596,7 +592,6 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       mensSession: "Kipindi maalum cha wanaume",
       endedBody: "Asante kwa kujiunga nasi. Kila kipindi kinapatikana kutazamwa tena YouTube.",
       watchReplays: "Tazama vipindi tena",
-      lineupNote: "Dkt. David Ogbueli na wahudumu wageni {n}",
     },
     journeyStrip: {
       growSpiritually: "Kua Kiroho",
@@ -734,7 +729,6 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       mensSession: "جلسة خاصة بالرجال",
       endedBody: "شكرًا لانضمامكم إلينا. جميع الجلسات متاحة للمشاهدة مرة أخرى على يوتيوب.",
       watchReplays: "شاهد الجلسات مرة أخرى",
-      lineupNote: "د. ديفيد أوغبويلي مع {n} من الخدام الضيوف",
     },
     journeyStrip: {
       growSpiritually: "انمُ روحيًا",
