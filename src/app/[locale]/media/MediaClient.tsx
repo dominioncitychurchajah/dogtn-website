@@ -44,6 +44,10 @@ type Video = { title: string; event: string; youtubeId: string; category: string
 // davidogbueli.org. IDs verified via YouTube's oEmbed endpoint.
 const videos: Video[] = [
   // ── Teachings ─────────────────────────────────────────────
+  { title: "The 3 Levels of Ranking in Glory, Part 1", event: "Teaching", youtubeId: "C0UmFXr5WeI", category: "Teachings" },
+  { title: "The 3 Levels of Ranking in Glory, Part 2", event: "Teaching", youtubeId: "pwh4GBQNNHk", category: "Teachings" },
+  { title: "What Life Will Look Like After the Rapture", event: "Teaching", youtubeId: "rsmDOomm87I", category: "Teachings" },
+  { title: "How to 10X Your Impact, Part 3", event: "Teaching", youtubeId: "VklHSuGLAvU", category: "Teachings" },
   { title: "The Mystery that Brings an End to Contentions", event: "Teaching", youtubeId: "43KO6Je7Us4", category: "Teachings" },
   { title: "The Blood of Jesus and the Redemption of Generations", event: "Teaching Series", youtubeId: "piio7iJW-_g", category: "Teachings" },
   { title: "The Blood of Jesus and the Redemption of Generations: Panel Discussion", event: "Teaching Series", youtubeId: "JG55NdOgR7w", category: "Teachings" },
@@ -81,6 +85,9 @@ const videos: Video[] = [
 
   // ── Conference Archives ───────────────────────────────────
   { title: "The Grace Revolution: Balanced, Part 1", event: "USA Camp Meeting 2026", youtubeId: "1HlYqGnAd_0", category: "Conference Archives" },
+  { title: "Day 3, Morning Session", event: "Next Level Conference, Aba 2026", youtubeId: "IJpwWG0JIzg", category: "Conference Archives" },
+  { title: "Day 3, Evening Session \u2014 Apst. Charles Osazuwa", event: "Next Level Conference, Aba 2026", youtubeId: "CROsRH_tC9k", category: "Conference Archives" },
+  { title: "Protocol for Kingship \u2014 Apst. Charles Osazuwa", event: "Next Level Conference, Aba 2026", youtubeId: "G_dHS9Brjek", category: "Conference Archives" },
   { title: "The Grace Revolution: Balanced, Part 2", event: "USA Camp Meeting 2026", youtubeId: "zq2IsT43gGg", category: "Conference Archives" },
   { title: "Understanding the Human Nature, Part 2", event: "DCC 30th Anniversary", youtubeId: "K5nsVHeZTmI", category: "Conference Archives" },
   { title: "Jewish Secrets of Wealth Creation", event: "Global Camp Meeting 2026", youtubeId: "XzZt3_citMM", category: "Conference Archives" },
