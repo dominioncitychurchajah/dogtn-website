@@ -65,7 +65,6 @@ export interface NavGroup {
 export function buildNav(locale: Locale, s: NavStrings): NavGroup[] {
   const p = (path: string) => `/${locale}${path}`;
   return [
-    { label: s.startHere, href: p("/start-here") },
     {
       label: "About",
       href: p("/his-story"),
