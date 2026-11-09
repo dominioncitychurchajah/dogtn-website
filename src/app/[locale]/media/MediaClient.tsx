@@ -39,14 +39,16 @@ const SECTION_TABS: Partial<Record<TabKey, string>> = {
 
 type Video = { title: string; event: string; youtubeId: string; category: string };
 
-// Real messages from the official "Pastor David Ogbueli" YouTube channel
-// (youtube.com/@DominionCity), sourced from the VOD library at
-// davidogbueli.org. IDs verified via YouTube's oEmbed endpoint.
+// Real messages from the ministry's YouTube channels, "Pastor David Ogbueli"
+// and "Dominion City". IDs verified via YouTube's oEmbed endpoint; a message
+// that exists on both channels is listed once.
 const videos: Video[] = [
   // ── Teachings ─────────────────────────────────────────────
   { title: "The 3 Levels of Ranking in Glory, Part 1", event: "Teaching", youtubeId: "C0UmFXr5WeI", category: "Teachings" },
   { title: "The 3 Levels of Ranking in Glory, Part 2", event: "Teaching", youtubeId: "pwh4GBQNNHk", category: "Teachings" },
   { title: "What Life Will Look Like After the Rapture", event: "Teaching", youtubeId: "rsmDOomm87I", category: "Teachings" },
+  { title: "How to 10X Your Impact, Part 1", event: "Teaching", youtubeId: "LHYqembmMcE", category: "Teachings" },
+  { title: "How to 10X Your Impact, Part 2", event: "Teaching", youtubeId: "pUbMUCnUe0w", category: "Teachings" },
   { title: "How to 10X Your Impact, Part 3", event: "Teaching", youtubeId: "VklHSuGLAvU", category: "Teachings" },
   { title: "The Mystery that Brings an End to Contentions", event: "Teaching", youtubeId: "43KO6Je7Us4", category: "Teachings" },
   { title: "The Blood of Jesus and the Redemption of Generations", event: "Teaching Series", youtubeId: "piio7iJW-_g", category: "Teachings" },
